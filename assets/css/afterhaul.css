@@ -1,0 +1,116 @@
+/* AFTERHAUL website. Same family as the Hound Protocol sites (Barlow Semi Condensed, Share Tech Mono),
+   with its own ground: soot, road dust and the amber of a glow-plug lamp. */
+@font-face { font-family: "Barlow Semi Condensed"; font-weight: 200; font-display: swap; src: url("../fonts/barlow-semi-condensed-extralight.woff") format("woff"); }
+@font-face { font-family: "Barlow Semi Condensed"; font-weight: 300; font-display: swap; src: url("../fonts/barlow-semi-condensed-light.woff") format("woff"); }
+@font-face { font-family: "Barlow Semi Condensed"; font-weight: 400; font-display: swap; src: url("../fonts/barlow-semi-condensed-regular.woff") format("woff"); }
+@font-face { font-family: "Barlow Semi Condensed"; font-weight: 500; font-display: swap; src: url("../fonts/barlow-semi-condensed-medium.woff") format("woff"); }
+@font-face { font-family: "Share Tech Mono"; font-weight: 400; font-display: swap; src: url("../fonts/share-tech-mono-regular.woff") format("woff"); }
+
+:root {
+  color-scheme: dark;
+  --soot: #16130e;      /* exhaust-blackened steel */
+  --soot-2: #201b14;
+  --iron: #48443d;      /* lines, worn metal */
+  --dust: #c8b796;      /* road dust, body text */
+  --frost: #e4ebec;     /* headings */
+  --amber: #f0a202;     /* the glow-plug lamp: the only bright colour */
+  --rust: #8a3a1c;
+  --ui: "Barlow Semi Condensed", "Arial Narrow", Arial, sans-serif;
+  --mono: "Share Tech Mono", ui-monospace, Consolas, monospace;
+  --gutter: 16px;
+  --measure: 66ch;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--soot); color: var(--dust); font: 300 19px/1.65 var(--ui); overflow-x: hidden; }
+a { color: var(--frost); text-decoration-color: var(--amber); text-underline-offset: 4px; }
+a:hover { color: #fff; }
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+::selection { background: var(--amber); color: var(--soot); }
+.skip { position: absolute; left: -9999px; top: 8px; padding: 8px 14px; background: var(--amber); color: var(--soot); z-index: 30; }
+.skip:focus { left: 8px; }
+
+/* ---------- Top bar ---------- */
+.bar { position: fixed; top: 0; left: 0; right: 0; z-index: 20; display: flex; align-items: center; gap: 24px; padding: 14px clamp(16px, 4vw, 48px);
+  background: linear-gradient(var(--soot) 40%, rgba(22,19,14,0)); }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--frost); font: 500 17px/1 var(--ui); letter-spacing: .3em; text-transform: uppercase; }
+.mark svg { width: 28px; height: 28px; }
+.mark path:first-child { fill: var(--amber); }
+.mark path:last-child { fill: var(--dust); }
+.bar nav { margin-left: auto; display: flex; gap: 22px; }
+.bar nav a { color: var(--dust); text-decoration: none; font-size: 16px; }
+.bar nav a:hover { color: var(--frost); }
+
+/* ---------- Hero: the wordmark is the one loud thing ---------- */
+.hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; padding: 120px clamp(16px, 4vw, 48px) 72px; overflow: hidden;
+  background:
+    radial-gradient(120% 70% at 85% 0%, rgba(240,162,2,.08), transparent 60%),
+    repeating-linear-gradient(100deg, rgba(200,183,150,.035) 0 2px, transparent 2px 22px),
+    var(--soot); }
+.hero-in { position: relative; z-index: 1; width: 100%; }
+.wordmark { margin: 0; color: var(--frost); font: 200 clamp(76px, 19vw, 300px)/.8 var(--ui); letter-spacing: -.01em; text-transform: uppercase; }
+.wordmark span { display: block; }
+.wordmark span + span { padding-left: .9em; color: transparent; -webkit-text-stroke: 1.5px var(--dust); }
+.tagline { margin: 34px 0 6px; color: var(--frost); font: 400 clamp(24px, 3vw, 36px)/1.2 var(--ui); }
+.pitch { margin: 0; max-width: 46ch; font-size: clamp(18px, 1.6vw, 21px); }
+.ridge { position: absolute; left: 0; right: 0; bottom: 0; height: 34vh; pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,.35)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 200' preserveAspectRatio='none'%3E%3Cpath d='M0 200V120l90-38 70 30 120-70 110 60 80-24 140 66 90-40 150 52 120-74 110 40 120-26V200z' fill='%23201b14'/%3E%3C/svg%3E") bottom / 100% 100% no-repeat; }
+
+/* The cold start: hold the key, the lamp heats, the cab shakes */
+.dash { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin: 40px 0 26px; }
+.lamp { display: grid; place-items: center; width: 52px; height: 36px; border: 1px solid var(--iron); border-radius: 6px; background: var(--soot-2); }
+.lamp svg { width: 32px; height: 20px; fill: none; stroke: #5d5246; stroke-width: 2.4; stroke-linecap: round; transition: stroke .3s; }
+.lamp.heat svg { stroke: var(--amber); filter: drop-shadow(0 0 6px rgba(240,162,2,.7)); }
+.key { padding: 14px 22px; border: 1px solid var(--dust); border-radius: 2px; background: transparent; color: var(--frost); font: 400 17px/1 var(--ui); letter-spacing: .04em; cursor: pointer; }
+.key:hover { background: rgba(200,183,150,.08); }
+.key:disabled { opacity: .55; cursor: default; }
+.state { font: 400 14px/1 var(--mono); color: #8d8270; }
+.state.on { color: var(--amber); }
+.status { margin: 0; font-size: 16px; }
+.status .dot { display: inline-block; width: 8px; height: 8px; margin-right: 10px; border-radius: 50%; background: var(--amber); vertical-align: 2px; }
+body.idle .hero-in { animation: idle .09s steps(2) infinite; }
+body.crank .hero-in { animation: crank .07s steps(2) infinite; }
+@keyframes crank { 0% { transform: translate(0, 0) rotate(0); } 50% { transform: translate(3px, -2px) rotate(.25deg); } 100% { transform: translate(-3px, 2px) rotate(-.2deg); } }
+@keyframes idle { 0% { transform: translate(0, 0); } 50% { transform: translate(.6px, -.5px); } 100% { transform: translate(-.6px, .5px); } }
+
+/* ---------- The route: each section is a leg of the haul ---------- */
+.leg { position: relative; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 0 32px; padding: 110px clamp(16px, 4vw, 48px); border-top: 1px solid var(--iron); }
+.leg::before { content: ""; position: absolute; left: calc(clamp(16px, 4vw, 48px) + 60px); top: 0; bottom: 0; width: 0; border-left: 2px dashed rgba(200,183,150,.18); }
+.marker { position: relative; align-self: start; justify-self: center; padding: 6px 10px; background: var(--soot); border: 1px solid var(--iron); font: 400 14px/1 var(--mono); color: var(--dust); white-space: nowrap; }
+.leg-in { max-width: 980px; }
+.leg h2 { margin: 0 0 22px; color: var(--frost); font: 300 clamp(38px, 5.4vw, 72px)/1 var(--ui); letter-spacing: .01em; }
+.leg p { max-width: var(--measure); margin: 0 0 18px; }
+.lede { color: var(--frost); font-size: clamp(20px, 1.9vw, 24px); line-height: 1.5; }
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.pull { margin: 34px 0 0; padding: 0 0 0 22px; border-left: 3px solid var(--amber); color: var(--frost); font: 300 clamp(26px, 3vw, 40px)/1.2 var(--ui); max-width: 24ch; }
+.trades { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 26px; padding: 0; list-style: none; }
+.trades li { padding: 8px 14px; border: 1px solid var(--iron); color: var(--frost); font-size: 17px; }
+.regions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 30px 0 0; border-top: 1px solid var(--iron); border-left: 1px solid var(--iron); }
+.regions div { padding: 22px 22px 26px; border-right: 1px solid var(--iron); border-bottom: 1px solid var(--iron); }
+.regions dt { color: var(--frost); font: 400 24px/1.2 var(--ui); margin-bottom: 6px; }
+.regions dd { margin: 0; font-size: 17px; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+.btn { display: inline-block; padding: 15px 24px; background: var(--amber); color: var(--soot); font: 500 17px/1 var(--ui); letter-spacing: .03em; text-decoration: none; border: 1px solid var(--amber); }
+.btn:hover { background: #ffb91f; color: var(--soot); }
+.btn.ghost { background: transparent; color: var(--frost); border-color: var(--dust); }
+.btn.ghost:hover { background: rgba(200,183,150,.08); color: #fff; }
+
+/* ---------- Footer ---------- */
+.foot { padding: 40px clamp(16px, 4vw, 48px) 56px; border-top: 1px solid var(--iron); font-size: 15px; color: #8d8270; }
+.foot p { margin: 0 0 6px; }
+
+/* ---------- Smaller screens ---------- */
+@media (max-width: 860px) {
+  .bar nav { display: none; }
+  .leg { grid-template-columns: minmax(0, 1fr); padding: 80px var(--gutter); }
+  .leg::before { display: none; }
+  .marker { justify-self: start; margin-bottom: 20px; }
+  .cols, .regions { grid-template-columns: minmax(0, 1fr); }
+  .hero { padding: 110px var(--gutter) 56px; }
+  .wordmark span + span { padding-left: .5em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  body.idle .hero-in, body.crank .hero-in { animation: none; }
+}

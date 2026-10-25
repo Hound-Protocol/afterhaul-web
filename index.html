@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AFTERHAUL</title>
+<meta name="description" content="AFTERHAUL is a heavy-haul convoy game for crews of up to eight. Rebuild a broken land one load at a time, and feel every metre of it. In development by Hound Protocol.">
+<meta name="theme-color" content="#16130e">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/barlow-semi-condensed-extralight.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="assets/css/afterhaul.css">
+</head>
+<body>
+<a class="skip" href="#feel">Skip to content</a>
+
+<header class="bar">
+  <a class="mark" href="#top" aria-label="AFTERHAUL, back to top"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 48 L30 14 h6 L22 48z"/><path d="M32 48 L44 22 h6 L38 48z"/></svg><span>Afterhaul</span></a>
+  <nav aria-label="Sections">
+    <a href="#feel">The feel</a><a href="#crew">The crew</a><a href="#land">The land</a><a href="#progress">Progress</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="title">
+    <div class="hero-in">
+      <h1 id="title" class="wordmark" aria-label="Afterhaul"><span aria-hidden="true">AFTER</span><span aria-hidden="true">HAUL</span></h1>
+      <p class="tagline">The world ended. The work didn't.</p>
+      <p class="pitch">A heavy-haul convoy game for crews of up to eight. Rebuild a broken land one load at a time, and feel every metre of it.</p>
+      <div class="dash" role="group" aria-label="Cold start">
+        <span class="lamp" id="lamp" aria-hidden="true"><svg viewBox="0 0 40 24"><path d="M3 12c4-6 6 6 10 0s6 6 10 0 6 6 10 0"/><path d="M36 6v12"/></svg></span>
+        <button class="key" id="key" type="button" aria-describedby="keyState">Start the engine</button>
+        <span class="state" id="keyState" aria-live="polite">Glow plug cold</span>
+      </div>
+      <p class="status"><span class="dot" aria-hidden="true"></span>In development by <a href="https://hound-protocol.github.io/hound-protocol-web/">Hound Protocol</a>. Nothing to download yet.</p>
+    </div>
+    <div class="ridge" aria-hidden="true"></div>
+  </section>
+
+  <section class="leg" id="feel" aria-labelledby="feelTitle">
+    <div class="marker" aria-hidden="true">km 0</div>
+    <div class="leg-in">
+      <h2 id="feelTitle">You feel the load</h2>
+      <div class="cols">
+        <p>A rock under the front wheel kicks back through the steering. Your driver braces, grunts, and fights to keep both hands on the wheel. Fifty tonnes on a climb, and the engine tells you how close you are to the edge.</p>
+        <p>There is no dashboard of numbers floating over the world. You read the truck the way drivers do: by the shake of the cab, the strain in the engine, the creak of the straps behind you, the silence after a crash.</p>
+      </div>
+      <blockquote class="pull">Sound is how you know you've gone too far.</blockquote>
+    </div>
+  </section>
+
+  <section class="leg" id="crew" aria-labelledby="crewTitle">
+    <div class="marker" aria-hidden="true">km 140</div>
+    <div class="leg-in">
+      <h2 id="crewTitle">Nobody hauls alone</h2>
+      <p class="lede">Up to eight players run one company. Every driver has a trade: someone finds the line through the mud, someone carries the heaviest loads, someone keeps the crew fed, patched up and moving.</p>
+      <ul class="trades" aria-label="Some of the trades in a crew">
+        <li>Pathfinders</li><li>Heavy haulers</li><li>Medics</li><li>Mechanics</li><li>Cooks</li><li>Recovery crews</li>
+      </ul>
+      <p>Talk is part of the world. Shout across a valley and hear it echo. Lose the radio behind a ridge. Whisper in the cab. Help each other, and the company pays you for it.</p>
+    </div>
+  </section>
+
+  <section class="leg" id="land" aria-labelledby="landTitle">
+    <div class="marker" aria-hidden="true">km 610</div>
+    <div class="leg-in">
+      <h2 id="landTitle">The land after</h2>
+      <p class="lede">One land, many regions, all of it waiting to be rebuilt. The seasons turn, the weather bites, and every delivery leaves something standing that wasn't there before.</p>
+      <dl class="regions">
+        <div><dt>The city</dt><dd>Where the work starts, and where it comes back to.</dd></div>
+        <div><dt>Timber country</dt><dd>Loose rock, steep grades, heavy cargo.</dd></div>
+        <div><dt>The northern wild</dt><dd>No roads. Mud to the axles.</dd></div>
+        <div><dt>The frontline</dt><dd>Supplies that cannot wait.</dd></div>
+        <div><dt>The long desert</dt><dd>An hour of nothing, and the heat.</dd></div>
+        <div><dt>The deep cold</dt><dd>Stop too long and the truck won't start again.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="leg" id="progress" aria-labelledby="progTitle">
+    <div class="marker" aria-hidden="true">km 1,000</div>
+    <div class="leg-in">
+      <h2 id="progTitle">Where we are</h2>
+      <p class="lede">AFTERHAUL is in early development. We are building the first truck, piece by piece, until it feels right. There is no release date and nothing to download yet.</p>
+      <p>Follow along with Hound Protocol, the community organization making the game.</p>
+      <div class="actions">
+        <a class="btn" href="https://discord.gg/QTpJ89kMCM" target="_blank" rel="noopener noreferrer">Join the Discord</a>
+        <a class="btn ghost" href="https://hound-protocol.github.io/hound-protocol-web/">Meet Hound Protocol</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>AFTERHAUL by Hound Protocol. Pre-release website <span id="siteVersion">0.0.1-pre</span>.</p>
+  <p>AFTERHAUL and the Hound Protocol name and logo are reserved. No cookies, analytics or trackers.</p>
+</footer>
+<script src="assets/js/afterhaul.js"></script>
+</body>
+</html>
