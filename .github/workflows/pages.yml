@@ -1,9 +1,10 @@
 name: Deploy site
 
-# The AFTERHAUL website stays offline until launch. This runs only by hand.
-# Before running: make the repository public (or use a paid plan), set
-# Settings -> Pages -> Source: GitHub Actions, and remove the noindex tag.
+# The site is unlisted until launch: it carries noindex and nothing links to it.
+# Needs Settings -> Pages -> Source: GitHub Actions.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -23,7 +24,7 @@ jobs:
       - name: Collect the site
         run: |
           mkdir _site
-          cp -r index.html assets _site/
+          cp -r index.html robots.txt assets _site/
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
