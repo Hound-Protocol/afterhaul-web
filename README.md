@@ -26,5 +26,8 @@ Pre-release versions are `0.0.x-pre`. The version is shown in the footer (`#site
 2. Pushes to `main` deploy automatically.
 3. At launch, remove `<meta name="robots" content="noindex">` from `index.html` and the `Disallow` line in `robots.txt`.
 
+## AI disclosure (HP-POL-002)
+Code, copy and the SVG favicon and mark were written or drawn in code with Claude and reviewed by the owner. No generative AI images, music or voices are used.
+
 ## License
 Proprietary. Copyright (C) 2026 Hound Protocol. All rights reserved. See [LICENSE](LICENSE).
