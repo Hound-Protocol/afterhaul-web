@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.5-pre · Tighter spacing · 2026-10-27
+- Section padding cut from 120 px to 48-80 px top and bottom, which removes the large empty bands between sections.
+
 ## 0.1.4-pre · Plain hero text · 2026-10-27
 - Hero tagline now describes the game: a co-op offroad trucking game for up to eight players.
 
