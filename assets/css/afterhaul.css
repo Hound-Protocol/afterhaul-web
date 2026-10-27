@@ -186,3 +186,10 @@ a:hover { color: #fff; }
   .js .rv { opacity: 1; transform: none; transition: none; }
   .reg, .reg:hover { transform: none; }
 }
+
+/* Operators */
+.ops { list-style: none; margin: 2.2rem 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; background: var(--iron); border: 1px solid var(--iron); }
+.ops li { background: var(--soot); padding: 1.3rem 1.2rem 1.4rem; }
+.ops svg { width: 44px; height: 44px; fill: none; stroke: var(--amber); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-bottom: .8rem; }
+.ops h3 { margin: 0 0 .3rem; font-size: 1.15rem; font-weight: 500; color: var(--frost); }
+.ops p { margin: 0; font-size: 1rem; line-height: 1.45; color: var(--dust); }
