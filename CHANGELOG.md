@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.18-pre · Link preview text · 2026-10-27
+- New description for search, Discord and other link previews (also set as Open Graph and Twitter card text).
+
 ## 0.1.17-pre · Progress text · 2026-10-27
 - "Where we are" now says the game is in early development stages and that updates will be posted here and at the BETA launch on Steam.
 
