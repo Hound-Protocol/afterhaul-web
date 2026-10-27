@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.4-pre · Plain hero text · 2026-10-27
+- Hero tagline now describes the game: a co-op offroad trucking game for up to eight players.
+
 ## 0.1.3-pre · Work-in-progress notice · 2026-10-27
 - Red notice at the top: work in progress, placeholders and incomplete features. Nav link "The game" renamed "About".
 
