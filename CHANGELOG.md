@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.15-pre · Warzone firefight · 2026-10-27
+- Frontline: tanks and soldiers stand still in the far background behind the rocks (no wobble) and shoot at each other: rifle bursts with muzzle flashes and tracers, tank shells with impact flashes.
+
 ## 0.1.14-pre · Warzone units and placeholder figure · 2026-10-27
 - Frontline: tanks (two driving, one parked that fires with a muzzle flash when a shell is launched) and kneeling soldiers sit in the background, behind the ruins.
 - Visual design: the owner's placeholder character picture is shown, with the placeholder notice. Listed in THIRD_PARTY_NOTICES.md; source and licence to confirm.
