@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.8-pre · Howitzer frontline · 2026-10-27
+- Frontline: one shell every 5 to 10 seconds, falling very fast. Each impact raises a thin column of mud that climbs slowly high above the ground, then collapses.
+
 ## 0.1.7-pre · Work-in-progress pop-up · 2026-10-27
 - A pop-up on first load says the site and game are a work in progress with placeholders and incomplete features. It shows once per visit; the red bar stays.
 
