@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.11-pre · Story · 2026-10-27
+- About section: the twist (illicit cargo, choices shape each region), the country at war and the recovery task force, campaign and side quests, and the characters you meet.
+
 ## 0.1.10-pre · Video previews · 2026-10-27
 - Each sound-design video shows its YouTube preview picture (linked from YouTube, not copied). Footer and note now say previews and videos come from YouTube.
 
