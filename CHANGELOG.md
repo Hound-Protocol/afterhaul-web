@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.20-pre · Visits counter (prepared) · 2026-10-27
+- The dashboard bar shows a visits counter in place of Idling / Under load. It counts one visit per browser session through GoatCounter and stays at ---- until the site code is put in the goatcounter meta tag.
+
 ## 0.1.19-pre · Discord on hold · 2026-10-27
 - The Join the Discord button is no longer a link. It is crossed out on a red striped background, with a red note: Discord opens once the game has a prototype.
 

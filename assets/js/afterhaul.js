@@ -364,8 +364,6 @@
     if (E.state !== "off" && E.state !== "crank") target += Math.min(0.62, S.strain * 0.9);
     E.rpm += (target - E.rpm) * 0.12;
     if (needle) needle.style.transform = "rotate(" + (-80 + E.rpm * 160).toFixed(1) + "deg)";
-    var label = E.state === "off" ? "Engine off" : E.state === "crank" ? "Cranking" : S.strain > 0.25 ? "Under load" : "Idling";
-    if (label !== lastLabel && eng) { eng.textContent = label; eng.className = "eng" + (E.state === "off" ? "" : " on"); lastLabel = label; }
     if (odo) odo.textContent = ("0000" + Math.round(S.progress * 1000)).slice(-4);
     if (rail) { rail.classList.toggle("on", y > S.vh * 0.4); railDot.style.top = (S.progress * (rail.clientHeight - 22)).toFixed(1) + "px"; }
     // shake and heat haze
@@ -405,4 +403,21 @@
       box.replaceChild(f, b);
     });
   });
+
+  /* ---------- Visits counter (GoatCounter; off until the meta tag has a site code) ---------- */
+  (function () {
+    var m = $('meta[name="goatcounter"]'), code = m && m.getAttribute("content").trim(), el = $("#visits");
+    if (!code || !el) return;
+    var base = "https://" + code + ".goatcounter.com", seen = false;
+    try { seen = !!sessionStorage.getItem("gcSeen"); } catch (e) {}
+    function show() {
+      fetch(base + "/counter//.json").then(function (r) { return r.json(); }).then(function (d) {
+        var n = parseInt(String(d.count).replace(/\D/g, ""), 10); if (!isNaN(n)) el.textContent = ("0000" + n).slice(-Math.max(4, String(n).length));
+      }).catch(function () {});
+    }
+    if (seen) { show(); return; }
+    var img = new Image();
+    img.onload = img.onerror = function () { try { sessionStorage.setItem("gcSeen", "1"); } catch (e) {} setTimeout(show, 400); };
+    img.src = base + "/count?p=%2F&t=AFTERHAUL&r=" + encodeURIComponent(doc.referrer || "");
+  })();
 })();
