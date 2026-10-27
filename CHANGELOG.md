@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.10-pre · Video previews · 2026-10-27
+- Each sound-design video shows its YouTube preview picture (linked from YouTube, not copied). Footer and note now say previews and videos come from YouTube.
+
 ## 0.1.9-pre · Design choices · 2026-10-27
 - New "Design choices" section: sound design (three click-to-play YouTube videos with the team's notes) and visual design (with a placeholder image frame and the "not actual in-game graphics" notice).
 - Videos use youtube-nocookie.com and load only after you press play. Footer wording updated to say so.

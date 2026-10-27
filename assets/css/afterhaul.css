@@ -219,3 +219,8 @@ a:hover { color: #fff; }
 .ph { margin: 26px 0 0; max-width: 860px; }
 .ph .frame { aspect-ratio: 16 / 9; display: grid; place-items: center; border: 2px dashed var(--iron); background: repeating-linear-gradient(45deg, rgba(200,183,150,.04) 0 14px, transparent 14px 28px); color: #9a8d74; font: 400 15px var(--mono); letter-spacing: .08em; }
 .ph figcaption { margin-top: 10px; color: #e0554b; font: 500 16px var(--ui); }
+
+.video button img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .72; transition: opacity .3s, transform .6s; }
+.video button:hover img { opacity: .9; transform: scale(1.02); }
+.video button::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(transparent 50%, rgba(10,8,5,.75)); pointer-events: none; }
+.video button svg, .video button span { position: relative; z-index: 2; text-shadow: 0 1px 6px #000; }
