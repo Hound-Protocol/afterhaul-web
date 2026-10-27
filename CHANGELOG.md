@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.13-pre · City traffic · 2026-10-27
+- The city card shows a skyline with lit windows, street lights and two lanes of moving traffic (headlights and tail lights). No weather.
+
 ## 0.1.12-pre · Mud pillar and debris · 2026-10-27
 - Frontline: the mud pillar is now made of particles that rise slowly, get smaller and more scattered toward the top, then fall back as the pillar sinks. Six times more flying debris.
 
