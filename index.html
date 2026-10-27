@@ -9,7 +9,7 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/barlow-semi-condensed-extralight.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="assets/css/afterhaul.css?v=0.1.8">
+<link rel="stylesheet" href="assets/css/afterhaul.css?v=0.1.9">
 </head>
 <body>
 <a class="skip" href="#game">Skip to content</a>
@@ -20,7 +20,7 @@
 <header class="bar">
   <a class="mark" href="#top" aria-label="AFTERHAUL, back to top"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 48 L30 14 h6 L22 48z"/><path d="M32 48 L44 22 h6 L38 48z"/></svg><span>Afterhaul</span></a>
   <nav aria-label="Sections">
-    <a href="#game">About</a><a href="#crew">The crew</a><a href="#land">The land</a><a href="#progress">Progress</a>
+    <a href="#game">About</a><a href="#crew">The crew</a><a href="#land">The land</a><a href="#design">Design</a><a href="#progress">Progress</a>
   </nav>
 </header>
 
@@ -76,6 +76,38 @@
     </div>
   </section>
 
+  <section class="leg" id="design" aria-labelledby="designTitle">
+    <div class="marker" aria-hidden="true">km 820</div>
+    <div class="leg-in wide">
+      <h2 id="designTitle" class="rv">Design choices</h2>
+      <p class="lede rv">Before Afterhaul comes to fruition, our team was pondering over design choices that will define the personality of the game world.</p>
+
+      <h3 class="sub rv">Sound design</h3>
+      <p class="kicker rv">Visceral, Intense, Loud &amp; Charismatic</p>
+      <p class="rv">We want trucks to sound like raw machines with a punch to it. Treat the gas gentle, and the truck is going to respond gently. Hit the gas at 100%, and it's going to unleash its raw sound.</p>
+      <div class="clip rv">
+        <p>Our vision of in-cab sound design and what we are trying to design.</p>
+        <div class="video" data-yt="vLtViltm9SY"><button type="button" aria-label="Play video: In-cab sound design"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M20 15l14 9-14 9z"/></svg><span>Play video</span></button></div>
+      </div>
+      <div class="clip rv">
+        <p>We predominantly source our inspiration of sound design from drag racing competitions, which we try our best to implement into the game with sound occlusion, distant sound processing, directional sound processing &amp; more sound compression to achieve visceral &amp; authentic sound design.</p>
+        <div class="video" data-yt="4nQ6fNl1yU4" data-start="34"><button type="button" aria-label="Play video: Drag racing sound"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M20 15l14 9-14 9z"/></svg><span>Play video</span></button></div>
+      </div>
+      <div class="clip rv">
+        <p>In Afterhaul, crashing your truck is going to be a cinematic, intense and audio-rich experience. Our goal is to make every object its own sound source, and we are developing a system that will allow the player to hear the entire chaos of their cabin in an orchestrated, natural format. We are learning how impacts, crashes and accidents sound, and how we can transform that intensity and atmosphere into Afterhaul accurately, as in the video provided.</p>
+        <div class="video" data-yt="3DwSPq0JSqk"><button type="button" aria-label="Play video: Crash sound"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M20 15l14 9-14 9z"/></svg><span>Play video</span></button></div>
+      </div>
+      <p class="note rv">Videos are other people's work, shown as inspiration. They load from YouTube only when you press play.</p>
+
+      <h3 class="sub rv">Visual design</h3>
+      <p class="rv">Afterhaul is a low poly / high detail project. We aim for high performance and accessibility on even lower end setups. Our goal is to achieve low poly design, with physics, especially applied to our Active-Ragdoll system characters.</p>
+      <figure class="ph rv">
+        <div class="frame" role="img" aria-label="Placeholder for character artwork"><span>Placeholder image</span></div>
+        <figcaption>Not actual in-game graphics, placeholder images.</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section class="leg" id="progress" aria-labelledby="progTitle">
     <div class="marker" aria-hidden="true">km 1,000</div>
     <div class="leg-in">
@@ -91,8 +123,8 @@
 </main>
 
 <footer class="foot">
-  <p>AFTERHAUL by Hound Protocol. Pre-release website <span id="siteVersion">0.1.8-pre</span>.</p>
-  <p>AFTERHAUL and the Hound Protocol name and logo are reserved. No cookies, analytics or trackers.</p>
+  <p>AFTERHAUL by Hound Protocol. Pre-release website <span id="siteVersion">0.1.9-pre</span>.</p>
+  <p>AFTERHAUL and the Hound Protocol name and logo are reserved. No cookies, analytics or trackers on this site. Videos load from YouTube only when you press play.</p>
 </footer>
 
 <div class="hud" id="hud" aria-hidden="true">
@@ -109,6 +141,6 @@
   </form>
 </dialog>
 
-<script src="assets/js/afterhaul.js?v=0.1.8"></script>
+<script src="assets/js/afterhaul.js?v=0.1.9"></script>
 </body>
 </html>

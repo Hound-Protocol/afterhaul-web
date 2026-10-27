@@ -2,6 +2,10 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.9-pre · Design choices · 2026-10-27
+- New "Design choices" section: sound design (three click-to-play YouTube videos with the team's notes) and visual design (with a placeholder image frame and the "not actual in-game graphics" notice).
+- Videos use youtube-nocookie.com and load only after you press play. Footer wording updated to say so.
+
 ## 0.1.8-pre · Howitzer frontline · 2026-10-27
 - Frontline: one shell every 5 to 10 seconds, falling very fast. Each impact raises a thin column of mud that climbs slowly high above the ground, then collapses.
 

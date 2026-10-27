@@ -320,4 +320,15 @@
     d.addEventListener("close", function () { try { sessionStorage.setItem("wipSeen", "1"); } catch (e) {} });
     setTimeout(function () { try { d.showModal(); } catch (e) {} }, 400);
   })();
+
+  /* ---------- Click-to-play videos (nothing loads from YouTube until pressed) ---------- */
+  $$(".video").forEach(function (box) {
+    var b = $("button", box);
+    b.addEventListener("click", function () {
+      var f = doc.createElement("iframe"), st = box.getAttribute("data-start");
+      f.src = "https://www.youtube-nocookie.com/embed/" + box.getAttribute("data-yt") + "?autoplay=1&rel=0" + (st && st !== "0" ? "&start=" + st : "");
+      f.title = b.getAttribute("aria-label").replace("Play video: ", ""); f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen = true; f.referrerPolicy = "strict-origin-when-cross-origin";
+      box.replaceChild(f, b);
+    });
+  });
 })();
