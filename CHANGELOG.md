@@ -2,6 +2,10 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.1-pre · Simpler · 2026-10-27
+- Removed the cold-start key and the strain line. Replaced "You feel the load" with a short description of the game ("What is AFTERHAUL?").
+- Kept the region cards with their weather, the road, and the dashboard bar.
+
 ## 0.1.0-pre · Scrolling is driving · 2026-10-27
 - Full overhaul. A fixed instrument cluster follows you down the page: odometer (km 0 to 1,000), rev needle and engine state.
 - Hero: perspective road that moves with your scroll, four code-drawn ridges with parallax, dust, headlights and engine shake after the cold start. Heat haze on the wordmark while the engine runs.

@@ -107,22 +107,6 @@
     }
   })();
 
-  /* ---------- Strain trace (the feel section) ---------- */
-  var strain = $("#strain"), sctx = strain && strain.getContext("2d"), sw = 0, sh = 0, strainOn = false;
-  function sizeStrain() { if (!strain) return; var dpr = Math.min(window.devicePixelRatio || 1, 2), b = strain.getBoundingClientRect(); sw = b.width; sh = b.height; strain.width = Math.round(sw * dpr); strain.height = Math.round(sh * dpr); sctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
-  function drawStrain(t) {
-    sctx.clearRect(0, 0, sw, sh);
-    var run = E.state !== "off", amp = 2 + (run ? 6 : 0) + S.strain * 34, f = 0.02 + E.rpm * 0.06, x, y, k;
-    [{ c: "rgba(200,183,150,.28)", a: 0.6, p: 0 }, { c: "rgba(240,162,2,.95)", a: 1, p: 1.7 }].forEach(function (L) {
-      sctx.strokeStyle = L.c; sctx.lineWidth = L.a === 1 ? 2 : 1.4; sctx.beginPath();
-      for (x = 0; x <= sw; x += 3) {
-        k = Math.sin(x * f + t * 0.012 * (1 + E.rpm * 3) + L.p) * amp * L.a + Math.sin(x * 0.31 + t * 0.03) * amp * 0.25 * (run ? 1 : 0.2);
-        y = sh / 2 + k; x === 0 ? sctx.moveTo(x, y) : sctx.lineTo(x, y);
-      }
-      sctx.stroke();
-    });
-  }
-
   /* ---------- Regions: silhouettes and weather ---------- */
   var SIL = {
     city: ["#0d0c0a", function (r) { var d = "M0 300 L0 220", x = 0; while (x < 400) { var w = 22 + r() * 30, h = 90 + r() * 120; d += " L" + x + " " + (300 - h) + " L" + (x + w) + " " + (300 - h) + (r() < 0.4 ? " L" + (x + w) + " " + (300 - h * 0.7) : ""); x += w; } return d + " L400 300 Z"; }],
@@ -181,23 +165,11 @@
     if (strain) sio.observe(strain); if (hero) sio.observe(hero);
   } else weather.forEach(function (w) { w.vis = true; });
 
-  /* ---------- The cold start ---------- */
-  var key = $("#key"), lamp = $("#lamp"), state = $("#keyState"), timers = [];
-  function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
-  function say(text, on) { state.textContent = text; state.className = "state" + (on ? " on" : ""); }
-  function setEngine(s) { E.state = s; body.classList.toggle("running", s === "idle"); }
-  if (key) key.addEventListener("click", function () {
-    timers.forEach(clearTimeout); timers = [];
-    if (E.state === "idle") { setEngine("off"); lamp.className = "lamp"; key.textContent = "Start the engine"; say("Engine off"); return; }
-    key.disabled = true; lamp.className = "lamp heat"; say("Heating the glow plugs", true);
-    later(function () {
-      lamp.className = "lamp"; say("Cranking", true); setEngine("crank");
-      later(function () { setEngine("idle"); key.disabled = false; key.textContent = "Shut it down"; say("Running", true); }, 900);
-    }, reduce ? 300 : 1600);
-  });
+  var strain = null, sctx = null, strainOn = false, sizeStrain = function () {};
+  E.state = "idle";
 
   /* ---------- One loop ---------- */
-  var last = 0, mx = 0, frameN = 0, heatEl = $("#heat feDisplacementMap"), heatNoise = $("#heatNoise"), lastLabel = "";
+  var last = 0, mx = 0, frameN = 0, lastLabel = "";
   window.addEventListener("mousemove", function (e) { mx = e.clientX / window.innerWidth - 0.5; }, { passive: true });
   function frame(t) {
     frameN++;
@@ -215,17 +187,15 @@
     if (rail) { rail.classList.toggle("on", y > S.vh * 0.4); railDot.style.top = (S.progress * (rail.clientHeight - 22)).toFixed(1) + "px"; }
     // shake and heat haze
     if (!reduce && heroIn) {
-      var amp = E.state === "crank" ? 3 : E.state === "idle" ? 0.5 + S.strain * 1.6 : 0;
+      var amp = S.strain * 1.2;
       root.style.setProperty("--shake-x", (amp ? (Math.random() - 0.5) * amp * 2 : 0).toFixed(2) + "px");
       root.style.setProperty("--shake-y", (amp ? (Math.random() - 0.5) * amp * 1.4 : 0).toFixed(2) + "px");
-      if (heatEl && E.state === "idle" && frameN % 3 === 0) { heatEl.setAttribute("scale", (2.5 + S.strain * 5).toFixed(1)); heatNoise.setAttribute("baseFrequency", (0.004 + 0.0008 * Math.sin(t * 0.001)).toFixed(5) + " 0.03"); }
     }
     // hero parallax, road and dust
     if (heroOn) {
       if (!reduce) layers.forEach(function (l) { l.el.style.transform = "translate(" + (mx * -40 * l.k * 10).toFixed(1) + "px," + (S.y * l.k).toFixed(1) + "px)"; });
       if (rctx && (!reduce || frameN < 3)) drawRoad(t);
     }
-    if (strainOn && sctx && (!reduce || frameN < 3)) drawStrain(t);
     for (var i = 0; i < weather.length; i++) if (weather[i].vis && !reduce) weather[i].draw(t);
     requestAnimationFrame(frame);
   }

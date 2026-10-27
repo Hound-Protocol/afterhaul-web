@@ -12,7 +12,7 @@ Marketing-level content only: the pitch, the atmosphere, the crew, the regions, 
 | --- | --- |
 | `index.html` | The page |
 | `assets/css/afterhaul.css` | Styles |
-| `assets/js/afterhaul.js` | Scroll-driven road, instrument cluster, regional weather and the cold start |
+| `assets/js/afterhaul.js` | Scroll-driven road, dashboard bar and regional weather |
 | `assets/fonts/` | Barlow Semi Condensed and Share Tech Mono (SIL Open Font License) |
 | `CHANGELOG.md` | Site versions |
 

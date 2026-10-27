@@ -12,13 +12,13 @@
 <link rel="stylesheet" href="assets/css/afterhaul.css">
 </head>
 <body>
-<a class="skip" href="#feel">Skip to content</a>
+<a class="skip" href="#game">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
 
 <header class="bar">
   <a class="mark" href="#top" aria-label="AFTERHAUL, back to top"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 48 L30 14 h6 L22 48z"/><path d="M32 48 L44 22 h6 L38 48z"/></svg><span>Afterhaul</span></a>
   <nav aria-label="Sections">
-    <a href="#feel">The feel</a><a href="#crew">The crew</a><a href="#land">The land</a><a href="#progress">Progress</a>
+    <a href="#game">The game</a><a href="#crew">The crew</a><a href="#land">The land</a><a href="#progress">Progress</a>
   </nav>
 </header>
 
@@ -34,30 +34,17 @@
       <h1 id="title" class="wordmark" aria-label="Afterhaul"><span aria-hidden="true">AFTER</span><span aria-hidden="true">HAUL</span></h1>
       <p class="tagline">The world ended. The work didn't.</p>
       <p class="pitch">A heavy-haul convoy game for crews of up to eight. Rebuild a broken land one load at a time, and feel every metre of it.</p>
-      <div class="dash" role="group" aria-label="Cold start">
-        <span class="lamp" id="lamp" aria-hidden="true"><svg viewBox="0 0 40 24"><path d="M3 12c4-6 6 6 10 0s6 6 10 0 6 6 10 0"/><path d="M36 6v12"/></svg></span>
-        <button class="key" id="key" type="button" aria-describedby="keyState">Start the engine</button>
-        <span class="state" id="keyState" aria-live="polite">Glow plug cold</span>
-      </div>
       <p class="status"><span class="dot" aria-hidden="true"></span>In development by <a href="https://hound-protocol.github.io/hound-protocol-web/">Hound Protocol</a>. Nothing to download yet.</p>
     </div>
-    <a class="scrollcue" href="#feel" aria-label="Scroll to start the haul"><span>Drive on</span><i></i></a>
+    <a class="scrollcue" href="#game" aria-label="Scroll to start the haul"><span>Drive on</span><i></i></a>
   </section>
 
-  <section class="leg" id="feel" aria-labelledby="feelTitle">
+  <section class="leg" id="game" aria-labelledby="gameTitle">
     <div class="marker" aria-hidden="true">km 0</div>
     <div class="leg-in">
-      <h2 id="feelTitle" class="rv">You feel the load</h2>
-      <canvas class="strain" id="strain" aria-hidden="true"></canvas>
-      <div class="shouts">
-        <p class="shout rv"><span>A rock under the front wheel kicks back through the steering.</span></p>
-        <p class="shout rv r"><span>Your driver braces, grunts, and fights to keep both hands on the wheel.</span></p>
-        <p class="shout rv"><span>Fifty tonnes on a climb, and the engine tells you how close you are to the edge.</span></p>
-      </div>
-      <div class="cols rv">
-        <p>There is no dashboard of numbers floating over the world. You read the truck the way drivers do: by the shake of the cab, the strain in the engine, the creak of the straps behind you, the silence after a crash.</p>
-        <blockquote class="pull">Sound is how you know you've gone too far.</blockquote>
-      </div>
+      <h2 id="gameTitle" class="rv">What is AFTERHAUL?</h2>
+      <p class="lede rv">AFTERHAUL is a co-op offroad trucking game. You and up to seven friends run a hauling company in a land that has been knocked flat, taking jobs, moving heavy loads over bad ground and rebuilding as you go.</p>
+      <p class="rv">Expect big trucks, rough terrain, changing weather and a low-poly look. It is in early development, so there is a lot still to build.</p>
     </div>
   </section>
 
@@ -105,7 +92,7 @@
 </main>
 
 <footer class="foot">
-  <p>AFTERHAUL by Hound Protocol. Pre-release website <span id="siteVersion">0.1.0-pre</span>.</p>
+  <p>AFTERHAUL by Hound Protocol. Pre-release website <span id="siteVersion">0.1.1-pre</span>.</p>
   <p>AFTERHAUL and the Hound Protocol name and logo are reserved. No cookies, analytics or trackers.</p>
 </footer>
 
@@ -114,8 +101,6 @@
   <svg class="gauge" viewBox="0 0 120 72"><g id="ticks"></g><path class="arc" d="M12 64 A48 48 0 0 1 108 64"/><g id="needle"><line x1="60" y1="64" x2="60" y2="22"/></g><circle cx="60" cy="64" r="5"/></svg>
   <span class="eng" id="eng">Engine off</span>
 </div>
-
-<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><filter id="heat" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence id="heatNoise" type="fractalNoise" baseFrequency="0.004 0.03" numOctaves="1" seed="3"/><feDisplacementMap in="SourceGraphic" scale="0"/></filter></svg>
 
 <script src="assets/js/afterhaul.js"></script>
 </body>
