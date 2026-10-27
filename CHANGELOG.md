@@ -2,6 +2,10 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.0.6-pre · Fence breaks on contact · 2026-10-27
+- The fence now breaks the moment the truck's nose touches it ("Break on contact", with a Truck nose setting), not when the truck's centre arrives. Pieces start moving at once.
+- New Push setting (how much of the truck's speed pieces take) and a wider, stronger default burst.
+
 ## 0.0.5-pre · Scene editor, camera fixes · 2026-10-27
 - **Camera bug fixed:** while time is frozen, the camera you move stays where you put it. Sway and push-in are applied only while drawing and never move the real camera (push-in is also limited so it cannot reach the aimed object).
 - **Pan, Tilt and Roll** for the shot camera (keyed with K). They work with Look at. With Free aim, use the rotate gizmo.

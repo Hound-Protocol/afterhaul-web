@@ -153,7 +153,7 @@ function buildFence(p) { // posts and boards are separate pieces so they can bre
 }
 const TYPES = {
   truck:  { label: 'Truck (stand-in)', build: buildTruck, params: { follow: true, airAt: 1000, wheelSpin: 6 } },
-  fence:  { label: 'Fence', build: buildFence, params: { segments: 6, impact: 2, breaker: '', power: 7, up: 6, spin: 8, reach: 4, seed: 1, conform: true, driftSpin: 0.35, driftMove: 0.12 } },
+  fence:  { label: 'Fence', build: buildFence, params: { segments: 6, impact: 2, breaker: '', power: 9, up: 8, spin: 8, reach: 5, push: 0.45, seed: 1, conform: true, driftSpin: 0.35, driftMove: 0.12, auto: true, nose: 4 } },
   hill:   { label: 'Hill', build: buildHill, params: { height: 10, sigma: 12, stretch: 2.4, bumps: 0.7, corridor: 4, seed: 3 } },
   road:   { label: 'Road (from truck path)', build: () => new THREE.Group(), params: { breaker: '', width: 6, until: 3 }, instant: true, world: true },
   forest: { label: 'Forest and rocks', build: () => new THREE.Group(), params: { cx: 0, cz: -10, width: 110, depth: 200, trees: 110, rocks: 60, clear: 10, seed: 5 }, instant: true, world: true },
@@ -286,14 +286,27 @@ function fenceSignature(ent) {
     br && [br.id, br.keys, br.params, br.keys.length ? 0 : br.root.position.toArray()],
     S.objects.filter(o => o.type === 'hill').map(h => [h.params, h.root.position.toArray(), h.root.scale.toArray()])]);
 }
+// Time when the truck's nose first crosses the fence line (the fence's local Z plane).
+function findContact(ent, br) {
+  const P = ent.params, fp = poseAt(ent, 0), n = new V3(0, 0, 1).applyQuaternion(new Q().fromArray(fp.q)), c = new V3(...fp.p);
+  let prev = null;
+  for (let t = 0; t <= S.duration + 1e-6; t += 0.005) {
+    const ps = fullPose(br, t), f = new V3(0, 0, 1).applyQuaternion(new Q().fromArray(ps.q));
+    const sd = new V3(...ps.p).addScaledVector(f, P.nose).sub(c).dot(n);
+    if (prev !== null && Math.sign(sd) !== Math.sign(prev) && prev !== 0) return t;
+    prev = sd;
+  }
+  return null;
+}
 function bakeFence(ent) {
   const pieces = ent.root.userData.pieces, P = ent.params, rnd = mulberry(P.seed * 9973);
   const br = byId(P.breaker) || S.objects.find(isTruck);
   const out = { sig: fenceSignature(ent), tracks: [], delays: [], lifts: [], axes: [], dirs: [] };
-  if (!br) { out.tracks = pieces.map(() => null); out.lifts = pieces.map(() => 0); return out; }
-  const pa = fullPose(br, P.impact - 0.05).p, pb = fullPose(br, P.impact + 0.05).p, pc = fullPose(br, P.impact).p;
+  if (!br) { out.tracks = pieces.map(() => null); out.lifts = pieces.map(() => 0); out.T = P.impact; return out; }
+  const T = (P.auto && findContact(ent, br)) ?? P.impact; out.T = T;
+  const pa = fullPose(br, T - 0.05).p, pb = fullPose(br, T + 0.05).p, pc = fullPose(br, T).p;
   const vT = new V3(...pb).sub(new V3(...pa)).multiplyScalar(10), tp = new V3(...pc);
-  const fp = poseAt(ent, P.impact);
+  const fp = poseAt(ent, T);
   const M = new THREE.Matrix4().compose(new V3(...fp.p), new Q(...fp.q), new V3(...fp.s));
   const fq = new Q(...fp.q);
   ent.root.updateMatrixWorld();
@@ -302,9 +315,9 @@ function bakeFence(ent) {
     const lift = P.conform ? groundAt(wp.x, wp.z) - fp.p[1] : 0; wp.y += lift; out.lifts.push(lift);
     const d = Math.hypot(wp.x - tp.x, wp.z - tp.z);
     if (d > P.reach) { out.tracks.push(null); out.delays.push(0); out.axes.push(null); out.dirs.push(null); continue; }
-    const f = clamp(1 - d / P.reach, 0.25, 1);
+    const f = clamp(1 - (d / P.reach) ** 2, 0.4, 1);
     const outDir = new V3(wp.x - tp.x, 0, wp.z - tp.z); if (outDir.lengthSq() < 1e-4) outDir.set(rnd() - 0.5, 0, rnd() - 0.5); outDir.normalize();
-    const v = vT.clone().multiplyScalar(0.5 + 0.4 * f)
+    const v = vT.clone().multiplyScalar(P.push * (0.7 + 0.3 * f))
       .addScaledVector(outDir, P.power * f * (0.5 + rnd()))
       .add(new V3((rnd() - 0.5) * P.power * 0.6, P.up * f * (0.5 + rnd() * 0.8), (rnd() - 0.5) * P.power * 0.6));
     const axis = new V3(rnd() - 0.5, rnd() - 0.5, rnd() - 0.5).normalize(), w = P.spin * f * (0.5 + rnd());
@@ -319,7 +332,7 @@ function bakeFence(ent) {
       }
       buf.set([p.x, p.y, p.z, q.x, q.y, q.z, q.w], i * 7);
     }
-    out.tracks.push(buf); out.delays.push(d * 0.015);
+    out.tracks.push(buf); out.delays.push(d * 0.004);
   }
   return out;
 }
@@ -330,7 +343,7 @@ function updateFence(ent, t) {
   ent.root.updateMatrixWorld();
   ent.root.getWorldQuaternion(_rq); _rq.invert();
   pieces.forEach((m, i) => {
-    const tr = ent.bake.tracks[i], tau = (t - P.impact - ent.bake.delays[i]) * SIM_FPS;
+    const tr = ent.bake.tracks[i], tau = (t - ent.bake.T - ent.bake.delays[i]) * SIM_FPS;
     if (!tr || tau <= 0) { m.position.copy(m.userData.rest.p); m.position.y += ent.bake.lifts[i] || 0; m.quaternion.copy(m.userData.rest.q); return; }
     const a = clamp(Math.floor(tau), 0, SIM_STEPS - 1), b = Math.min(a + 1, SIM_STEPS - 1), u = clamp(tau - a, 0, 1);
     _ip.set(tr[a * 7], tr[a * 7 + 1], tr[a * 7 + 2]).lerp(new V3(tr[b * 7], tr[b * 7 + 1], tr[b * 7 + 2]), u);
@@ -554,9 +567,10 @@ function renderInspector() {
     insp.append(section('Break'));
     const sel = document.createElement('select'); sel.innerHTML = '<option value="">First truck</option>' + S.objects.filter(isTruck).map(o => `<option value="${o.id}">${o.name}</option>`).join('');
     sel.value = ent.params.breaker; sel.onchange = () => { ent.params.breaker = sel.value; evaluateAll(S.t); markDirty(); }; insp.append(rowOf('Hit by', sel));
-    [['impact', 'Impact (s)', 0, 60, 0.05], ['power', 'Burst', 0, 30, 0.5], ['up', 'Lift', 0, 20, 0.5], ['spin', 'Spin', 0, 30, 0.5], ['reach', 'Reach (m)', 0.5, 20, 0.25], ['seed', 'Seed', 1, 9999, 1]]
+    [['nose', 'Truck nose (m)', 0, 12, 0.25], ['impact', 'Impact (s), if not auto', 0, 60, 0.05], ['push', 'Push (x truck speed)', 0, 1.5, 0.05], ['power', 'Burst', 0, 30, 0.5], ['up', 'Lift', 0, 20, 0.5], ['spin', 'Spin', 0, 30, 0.5], ['reach', 'Reach (m)', 0.5, 20, 0.25], ['seed', 'Seed', 1, 9999, 1]]
       .forEach(a => insp.append(paramRow(ent, ...a)));
-    insp.append(boolRow(ent, 'conform', 'Follow slope'));
+    insp.append(boolRow(ent, 'auto', 'Break on contact'), boolRow(ent, 'conform', 'Follow slope'));
+    const hit = document.createElement('p'); hit.className = 'hint'; hit.textContent = ent.bake ? `Truck touches the fence at ${ent.bake.T.toFixed(2)} s.` : ''; insp.append(hit);
     insp.append(section('While frozen'), paramRow(ent, 'driftSpin', 'Pieces spin', 0, 3, 0.05), paramRow(ent, 'driftMove', 'Pieces drift', 0, 2, 0.02));
     const p = document.createElement('p'); p.className = 'hint'; p.textContent = 'The break is baked from the truck path. Move the truck keys and it re-bakes. Keep the fence still.'; insp.append(p);
   }
@@ -842,7 +856,7 @@ function defaultScene() { // a long hill, a fence near the crest, a clear road, 
     { t: 2.55, p: [9, gy(9, 3) + 1.0, 3], q: I, s: [1, 1, 1], f: 32, c: [0, 0, 0] },
   ];
   camEnt.params.lookAt = truck.id; camEnt.params.lookY = 1.6; camEnt.params.drift = 0.3; camEnt.params.push = 0.05;
-  S.freezeAt = 2.55; S.ramp = 0.5; S.duration = 7;
+  S.freezeAt = 2.5; S.ramp = 0.5; S.duration = 7;
   $('#dur').value = S.duration; $('#ramp').value = S.ramp;
 }
 try { const saved = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null'); if (saved && saved.version === 2) loadScene(saved); else defaultScene(); } catch (_) { defaultScene(); }
