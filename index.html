@@ -18,7 +18,7 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/barlow-semi-condensed-extralight.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="assets/css/afterhaul.css?v=0.1.20">
+<link rel="stylesheet" href="assets/css/afterhaul.css?v=0.2.0">
 </head>
 <body>
 <a class="skip" href="#game">Skip to content</a>
@@ -29,7 +29,7 @@
 <header class="bar">
   <a class="mark" href="#top" aria-label="AFTERHAUL, back to top"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 48 L30 14 h6 L22 48z"/><path d="M32 48 L44 22 h6 L38 48z"/></svg><span>Afterhaul</span></a>
   <nav aria-label="Sections">
-    <a href="#game">About</a><a href="#crew">The crew</a><a href="#land">The land</a><a href="#design">Design</a><a href="#progress">Progress</a>
+    <a href="#about">About</a><a href="#crew">The crew</a><a href="#land">The land</a><a href="#design">Design</a><a href="#docs">Documentation</a>
   </nav>
 </header>
 
@@ -50,97 +50,161 @@
     <a class="scrollcue" href="#game" aria-label="Scroll to start the haul"><span>Drive on</span><i></i></a>
   </section>
 
-  <section class="leg" id="game" aria-labelledby="gameTitle">
-    <div class="marker" aria-hidden="true">km 0</div>
-    <div class="leg-in">
-      <h2 id="gameTitle" class="rv">What is AFTERHAUL?</h2>
-      <p class="lede rv">AFTERHAUL is a co-op offroad trucking game. You and up to seven friends run a hauling company in a land that has been knocked flat, taking jobs, moving heavy loads over bad ground and rebuilding as you go.</p>
-      <p class="rv">But that's not all. You might mix yourself up in suspicious activities, transporting illicit cargo for questionable characters and soaking your toes in bad business. The choices you and your crew make shape the future of each region.</p>
+  <section class="explore" id="explore" aria-label="Explore AFTERHAUL">
+  <div class="explore-in">
+  <div class="tabs" role="tablist" aria-label="Sections">
+    <button class="tab t-about" type="button" role="tab" id="tab-about" aria-selected="true" aria-controls="panel-about" data-tab="about"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M17 42L21 6h6l4 36"/><path d="M24 10v5M24 22v6M24 35v5"/></svg><b>About</b><small>The game, crew, land and design</small></button>
+    <button class="tab t-docs" type="button" role="tab" id="tab-docs" aria-selected="false" aria-controls="panel-docs" data-tab="docs"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 8h14a4 4 0 0 1 4 4v28a3 3 0 0 0-3-3H8zM40 8H26M40 8v29H29a3 3 0 0 0-3 3"/><path d="M13 16h8M13 22h8M13 28h6"/></svg><b>Documentation</b><small>The player guide</small></button>
+    <span class="tabs-gap" aria-hidden="true"></span>
+    <button class="tab t-log soon" type="button" role="tab" id="tab-log" aria-selected="false" aria-controls="panel-log" data-tab="log" aria-disabled="true" tabindex="-1"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="9" width="38" height="30" rx="3"/><path d="M12 19l7 5-7 5M23 30h12"/></svg><b>Dev log</b><small>News and progress</small><em>Soon</em></button>
+    <button class="tab t-community soon" type="button" role="tab" id="tab-community" aria-selected="false" aria-controls="panel-community" data-tab="community" aria-disabled="true" tabindex="-1"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 10h24a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H17l-7 6v-6H6z"/><path d="M37 19h5v16h-4v5l-6-5H20"/></svg><b>Community</b><small>Where players meet</small><em>Soon</em></button>
+    <button class="tab t-press soon" type="button" role="tab" id="tab-press" aria-selected="false" aria-controls="panel-press" data-tab="press" aria-disabled="true" tabindex="-1"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="14" width="38" height="25" rx="3"/><circle cx="24" cy="26.5" r="7"/><path d="M16 14l3-6h10l3 6"/></svg><b>Press</b><small>Media and contact</small><em>Soon</em></button>
+  </div>
+  <div class="panel" role="tabpanel" id="panel-about" aria-labelledby="tab-about" data-theme="about">
+    <div class="ptools"><button type="button" data-act="expand">Expand all</button><button type="button" data-act="collapse">Collapse all</button></div>
+<section class="acc leg" id="game"><h2 class="acc-h"><button type="button" aria-expanded="true" aria-controls="game-b"><span>What is AFTERHAUL?</span><i aria-hidden="true"></i></button></h2>
+<div class="acc-b" id="game-b"><div class="acc-in"><div class="leg-in">
+<p class="lede">AFTERHAUL is a co-op offroad trucking game. You and up to seven friends run a hauling company in a land that has been knocked flat, taking jobs, moving heavy loads over bad ground and rebuilding as you go.</p>
+      <p>But that's not all. You might mix yourself up in suspicious activities, transporting illicit cargo for questionable characters and soaking your toes in bad business. The choices you and your crew make shape the future of each region.</p>
 
-      <h3 class="sub rv">A country at war</h3>
-      <p class="rv">AFTERHAUL takes place in a fictional country at war. The government has formed your crew into a national recovery task force, to help with specific logistical tasks. You rebuild region by region, fixing the country to help it win the war. The end of the road is an ongoing front line.</p>
+      <h3 class="sub">A country at war</h3>
+      <p>AFTERHAUL takes place in a fictional country at war. The government has formed your crew into a national recovery task force, to help with specific logistical tasks. You rebuild region by region, fixing the country to help it win the war. The end of the road is an ongoing front line.</p>
 
-      <h3 class="sub rv">Campaign and side quests</h3>
-      <p class="rv">The campaign is a linear run of one-time contracts. Side quests open up small to medium-sized stories along the way.</p>
-      <p class="rv">You will meet characters with their own personalities, main quests and side quests: business owners, shop owners and ordinary people who need a bit of help, like moving everything in their house to a new place. And mafia bosses you've accidentally tangled with.</p>
-      <p class="rv">Expect big trucks, rough terrain, changing weather and a low-poly look. It is in early development, so there is a lot still to build.</p>
-    </div>
-  </section>
-
-  <section class="leg" id="crew" aria-labelledby="crewTitle">
-    <div class="marker" aria-hidden="true">km 140</div>
-    <div class="leg-in">
-      <h2 id="crewTitle" class="rv">A team you can count on</h2>
-      <p class="lede rv">Up to eight players run one company. Every driver has a trade: someone finds the line through the mud, someone carries the heaviest loads, someone keeps the crew fed, patched up and moving.</p>
-      <ul class="ops rv" aria-label="The eight operator classes"><li><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M24 11l5 13-5 13-5-13z"/><circle cx="24" cy="24" r="1.6"/></svg><h3>Field Operator</h3><p>Leads the convoy and picks the line.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 34V14h22v20M26 21h9l7 7v6H26"/><circle cx="12" cy="36" r="4"/><circle cx="35" cy="36" r="4"/></svg><h3>Heavy Ordnance Operator</h3><p>Moves the heaviest loads and runs the old trucks.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="7" width="34" height="34" rx="6"/><path d="M24 14v20M14 24h20"/></svg><h3>Medical Operator</h3><p>Keeps the crew alive.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 24h36a18 12 0 0 1-36 0z"/><path d="M17 16c-3-3 3-5 0-9M26 16c-3-3 3-5 0-9M35 16c-3-3 3-5 0-9"/></svg><h3>Provisions Operator</h3><p>Feeds the crew and stretches the supplies.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="14"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M10 10l4 4M34 34l4 4M38 10l-4 4M14 34l-4 4"/></svg><h3>Mechanical Operator</h3><p>Keeps the trucks running between garages.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="8" r="3"/><path d="M24 11v18a7 7 0 1 0 7-7"/><path d="M28 18l3 4-4 2"/></svg><h3>Recovery Operator</h3><p>Gets stuck trucks moving again.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 15l18-8 18 8v20l-18 8-18-8z"/><path d="M6 15l18 8 18-8M24 23v20"/></svg><h3>Logistics Operator</h3><p>Stocks the convoy and protects its supplies.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l15 6v12c0 9-6 15-15 19C15 38 9 32 9 23V11z"/><path d="M24 14v22"/></svg><h3>Security Operator</h3><p>Protects the convoy from wildlife and threats.</p></li></ul>
-      <p class="rv">All operators are capable on their own, but specialized operators outperform other operators at what they're specialized for.</p>
-    </div>
-  </section>
-
-  <section class="leg" id="land" aria-labelledby="landTitle">
-    <div class="marker" aria-hidden="true">km 610</div>
-    <div class="leg-in wide">
-      <h2 id="landTitle" class="rv">The land after</h2>
-      <p class="lede rv">One land, many regions, all of it waiting to be rebuilt. The seasons turn, the weather bites, and every delivery leaves something standing that wasn't there before.</p>
+      <h3 class="sub">Campaign and side quests</h3>
+      <p>The campaign is a linear run of one-time contracts. Side quests open up small to medium-sized stories along the way.</p>
+      <p>You will meet characters with their own personalities, main quests and side quests: business owners, shop owners and ordinary people who need a bit of help, like moving everything in their house to a new place. And mafia bosses you've accidentally tangled with.</p>
+      <p>Expect big trucks, rough terrain, changing weather and a low-poly look. It is in early development, so there is a lot still to build.</p>
+</div></div></div></section><section class="acc leg" id="crew"><h2 class="acc-h"><button type="button" aria-expanded="false" aria-controls="crew-b"><span>A team you can count on</span><i aria-hidden="true"></i></button></h2>
+<div class="acc-b" id="crew-b"><div class="acc-in"><div class="leg-in">
+<p class="lede">Up to eight players run one company. Every driver has a trade: someone finds the line through the mud, someone carries the heaviest loads, someone keeps the crew fed, patched up and moving.</p>
+      <ul class="ops" aria-label="The eight operator classes"><li><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M24 11l5 13-5 13-5-13z"/><circle cx="24" cy="24" r="1.6"/></svg><h3>Field Operator</h3><p>Leads the convoy and picks the line.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 34V14h22v20M26 21h9l7 7v6H26"/><circle cx="12" cy="36" r="4"/><circle cx="35" cy="36" r="4"/></svg><h3>Heavy Ordnance Operator</h3><p>Moves the heaviest loads and runs the old trucks.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="7" width="34" height="34" rx="6"/><path d="M24 14v20M14 24h20"/></svg><h3>Medical Operator</h3><p>Keeps the crew alive.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 24h36a18 12 0 0 1-36 0z"/><path d="M17 16c-3-3 3-5 0-9M26 16c-3-3 3-5 0-9M35 16c-3-3 3-5 0-9"/></svg><h3>Provisions Operator</h3><p>Feeds the crew and stretches the supplies.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="14"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M10 10l4 4M34 34l4 4M38 10l-4 4M14 34l-4 4"/></svg><h3>Mechanical Operator</h3><p>Keeps the trucks running between garages.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="8" r="3"/><path d="M24 11v18a7 7 0 1 0 7-7"/><path d="M28 18l3 4-4 2"/></svg><h3>Recovery Operator</h3><p>Gets stuck trucks moving again.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 15l18-8 18 8v20l-18 8-18-8z"/><path d="M6 15l18 8 18-8M24 23v20"/></svg><h3>Logistics Operator</h3><p>Stocks the convoy and protects its supplies.</p></li><li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l15 6v12c0 9-6 15-15 19C15 38 9 32 9 23V11z"/><path d="M24 14v22"/></svg><h3>Security Operator</h3><p>Protects the convoy from wildlife and threats.</p></li></ul>
+      <p>All operators are capable on their own, but specialized operators outperform other operators at what they're specialized for.</p>
+</div></div></div></section><section class="acc leg" id="land"><h2 class="acc-h"><button type="button" aria-expanded="false" aria-controls="land-b"><span>The land after</span><i aria-hidden="true"></i></button></h2>
+<div class="acc-b" id="land-b"><div class="acc-in"><div class="leg-in wide">
+<p class="lede">One land, many regions, all of it waiting to be rebuilt. The seasons turn, the weather bites, and every delivery leaves something standing that wasn't there before.</p>
       <div class="regions">
-        <article class="reg rv" data-w="city"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The city</h3><p>Where the work starts, and where it comes back to.</p></div></article>
-        <article class="reg rv" data-w="timber"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>Timber country</h3><p>Loose rock, steep grades, heavy cargo.</p></div></article>
-        <article class="reg rv" data-w="wild"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The northern wild</h3><p>No roads. Mud to the axles.</p></div></article>
-        <article class="reg rv" data-w="front"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The frontline</h3><p>Supplies that cannot wait.</p></div></article>
-        <article class="reg rv" data-w="desert"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The long desert</h3><p>An hour of nothing, and the heat.</p></div></article>
-        <article class="reg rv" data-w="cold"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The arctic</h3><p>Snow, ice and a road you can barely trust. Stop too long and the truck won't start again.</p></div></article>
+        <article class="reg" data-w="city"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The city</h3><p>Where the work starts, and where it comes back to.</p></div></article>
+        <article class="reg" data-w="timber"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>Timber country</h3><p>Loose rock, steep grades, heavy cargo.</p></div></article>
+        <article class="reg" data-w="wild"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The northern wild</h3><p>No roads. Mud to the axles.</p></div></article>
+        <article class="reg" data-w="front"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The frontline</h3><p>Supplies that cannot wait.</p></div></article>
+        <article class="reg" data-w="desert"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The long desert</h3><p>An hour of nothing, and the heat.</p></div></article>
+        <article class="reg" data-w="cold"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The arctic</h3><p>Snow, ice and a road you can barely trust. Stop too long and the truck won't start again.</p></div></article>
       </div>
-    </div>
-  </section>
-
-  <section class="leg" id="design" aria-labelledby="designTitle">
-    <div class="marker" aria-hidden="true">km 820</div>
-    <div class="leg-in wide">
-      <h2 id="designTitle" class="rv">Design choices</h2>
-      <p class="lede rv">Before Afterhaul comes to fruition, our team was pondering over design choices that will define the personality of the game world.</p>
-
-      <h3 class="sub rv">Sound design</h3>
-      <p class="kicker rv">Visceral, Intense, Loud &amp; Charismatic</p>
-      <p class="rv">We want trucks to sound like raw machines with a punch to it. Treat the gas gentle, and the truck is going to respond gently. Hit the gas at 100%, and it's going to unleash its raw sound.</p>
-      <div class="clip rv">
-        <p>Our vision of in-cab sound design and what we are trying to design.</p>
+</div></div></div></section><section class="acc leg" id="design"><h2 class="acc-h"><button type="button" aria-expanded="false" aria-controls="design-b"><span>Design choices</span><i aria-hidden="true"></i></button></h2>
+<div class="acc-b" id="design-b"><div class="acc-in"><div class="leg-in wide">
+<p class="lede">Before Afterhaul comes to fruition, our team was pondering over design choices that will define the personality of the game world.</p>
+<section class="acc leg sub" id="sound"><h3 class="acc-h"><button type="button" aria-expanded="false" aria-controls="sound-b"><span>Sound design</span><i aria-hidden="true"></i></button></h3>
+<div class="acc-b" id="sound-b"><div class="acc-in"><div class="leg-in">
+<p class="kicker">Visceral, Intense, Loud &amp; Charismatic</p>
+      <p>We want trucks to sound like raw machines with a punch to it. Treat the gas gentle, and the truck is going to respond gently. Hit the gas at 100%, and it's going to unleash its raw sound.</p>
+      <div class="clip">
+        <p>Our vision of in-cab sound design and what we are aspiring to design in AFTERHAUL.</p>
         <div class="video" data-yt="vLtViltm9SY"><button type="button" aria-label="Play video: In-cab sound design"><img src="https://i.ytimg.com/vi/vLtViltm9SY/hqdefault.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M20 15l14 9-14 9z"/></svg><span>Play video</span></button></div>
       </div>
-      <div class="clip rv">
+      <div class="clip">
         <p>We predominantly source our inspiration of sound design from drag racing competitions, which we try our best to implement into the game with sound occlusion, distant sound processing, directional sound processing &amp; more sound compression to achieve visceral &amp; authentic sound design.</p>
         <div class="video" data-yt="4nQ6fNl1yU4" data-start="34"><button type="button" aria-label="Play video: Drag racing sound"><img src="https://i.ytimg.com/vi/4nQ6fNl1yU4/hqdefault.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M20 15l14 9-14 9z"/></svg><span>Play video</span></button></div>
       </div>
-      <div class="clip rv">
+      <div class="clip">
         <p>In Afterhaul, crashing your truck is going to be a cinematic, intense and audio-rich experience. Our goal is to make every object its own sound source, and we are developing a system that will allow the player to hear the entire chaos of their cabin in an orchestrated, natural format. We are learning how impacts, crashes and accidents sound, and how we can transform that intensity and atmosphere into Afterhaul accurately, as in the video provided.</p>
         <div class="video" data-yt="3DwSPq0JSqk"><button type="button" aria-label="Play video: Crash sound"><img src="https://i.ytimg.com/vi/3DwSPq0JSqk/hqdefault.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M20 15l14 9-14 9z"/></svg><span>Play video</span></button></div>
       </div>
-      <p class="note rv">Videos are other people's work, shown as inspiration. Their preview pictures and the videos themselves come from YouTube.</p>
-
-      <h3 class="sub rv">Visual design</h3>
-      <p class="rv">Afterhaul is a low poly / high detail project. We aim for high performance and accessibility on even lower end setups. Our goal is to achieve low poly design, with physics, especially applied to our Active-Ragdoll system characters.</p>
-      <figure class="ph rv">
+      <p class="note">Videos are other people's work, shown as inspiration. Their preview pictures and the videos themselves come from YouTube.</p>
+</div></div></div></section>
+<section class="acc leg sub" id="visual"><h3 class="acc-h"><button type="button" aria-expanded="false" aria-controls="visual-b"><span>Visual design</span><i aria-hidden="true"></i></button></h3>
+<div class="acc-b" id="visual-b"><div class="acc-in"><div class="leg-in">
+<p>Afterhaul is a low poly / high detail project. We aim for high performance and accessibility on even lower end setups. Our goal is to achieve low poly design, with physics, especially applied to our Active-Ragdoll system characters.</p>
+      <figure class="ph">
         <img src="assets/img/placeholder-character.png" width="292" height="525" loading="lazy" alt="Placeholder: a low-poly man in a navy jacket and maroon trousers, standing">
         <figcaption>Not actual in-game graphics, placeholder images.</figcaption>
       </figure>
-    </div>
-  </section>
-
-  <section class="leg" id="progress" aria-labelledby="progTitle">
-    <div class="marker" aria-hidden="true">km 1,000</div>
-    <div class="leg-in">
-      <h2 id="progTitle" class="rv">Where we are</h2>
-      <p class="lede rv">AFTERHAUL is still in early development stages. More information will be posted here as the project is being developed, and upon launch of the BETA on Steam.</p>
-      <p class="rv">Follow along with Hound Protocol, the community organization making the game.</p>
-      <div class="actions rv">
+</div></div></div></section>
+</div></div></div></section><section class="acc leg" id="progress"><h2 class="acc-h"><button type="button" aria-expanded="false" aria-controls="progress-b"><span>Where we are</span><i aria-hidden="true"></i></button></h2>
+<div class="acc-b" id="progress-b"><div class="acc-in"><div class="leg-in">
+<p class="lede">AFTERHAUL is still in early development stages. More information will be posted here as the project is being developed, and upon launch of the BETA on Steam.</p>
+      <p>Follow along with Hound Protocol, the community organization making the game.</p>
+      <div class="actions">
         <div class="soon"><span class="btn off" role="link" aria-disabled="true">Join the Discord</span><p>Discord will open up for access once the game has a prototype</p></div>
         <a class="btn ghost" href="https://hound-protocol.github.io/hound-protocol-web/">Meet Hound Protocol</a>
       </div>
-    </div>
-  </section>
+</div></div></div></section>
+  </div>
+  <div class="panel" role="tabpanel" id="panel-docs" aria-labelledby="tab-docs" data-theme="docs" hidden>
+    <div class="ptools"><button type="button" data-act="expand">Expand all</button><button type="button" data-act="collapse">Collapse all</button></div>
+<!-- DOCS:START -->
+<p class="lede">The player guide. It is a draft: it describes the game as planned, and the game is not playable yet. Pages are written in words, with no tuned numbers.</p>
+<h3 class="grp">Start here</h3>
+<section class="acc leg" id="doc-welcome"><h3 class="acc-h"><button type="button" aria-expanded="false" aria-controls="doc-welcome-b"><span>Welcome</span><i aria-hidden="true"></i></button></h3>
+<div class="acc-b" id="doc-welcome-b"><div class="acc-in"><div class="leg-in doc">
+<p>AFTERHAUL is a co-op trucking game for up to 8 friends. The story takes place in a fictional country at war. Your crew is a national recovery task force: it hauls the materials that rebuild the land, one load at a time, to help win the war.</p>
+<p>One player is the <strong>Operations Chief</strong>. The Chief hosts the world, takes the jobs and decides who joins the crew. The others are <strong>Operators</strong>. Money is <strong>nuts</strong>. Jobs come from <strong>employers</strong>.</p>
+<p>Where to read next:</p>
+<ul><li><a href="#doc-crew">Crews and sessions</a> for how a session works.</li><li><a href="#doc-regions">Regions</a> for the six maps.</li><li><a href="#doc-surfaces">Ground surfaces</a> for what is under your wheels.</li></ul>
+<p class="status"><em>Status: draft. The game is in early development and this guide describes what is planned.</em></p>
+</div></div></div></section>
+<section class="acc leg" id="doc-crew"><h3 class="acc-h"><button type="button" aria-expanded="false" aria-controls="doc-crew-b"><span>Crews and sessions</span><i aria-hidden="true"></i></button></h3>
+<div class="acc-b" id="doc-crew-b"><div class="acc-in"><div class="leg-in doc">
+<p>The Operations Chief sets each session to one of three levels:</p>
+<ul><li><strong>Solo:</strong> only you.</li><li><strong>Friends only:</strong> your friends can join.</li><li><strong>Invite only:</strong> only people you invite can join.</li></ul>
+<p>There is no open session. Players who want to join a crew apply from the session browser. The Chief sees each applicant's standing as an icon and chooses who to accept.</p>
+<p class="status"><em>Status: draft. Written from the design; not yet playable.</em></p>
+</div></div></div></section>
+<h3 class="grp">Reference</h3>
+<section class="acc leg" id="doc-regions"><h3 class="acc-h"><button type="button" aria-expanded="false" aria-controls="doc-regions-b"><span>Regions</span><i aria-hidden="true"></i></button></h3>
+<div class="acc-b" id="doc-regions-b"><div class="acc-in"><div class="leg-in doc">
+<p>Six maps, each with its own land. The land is generated for your campaign, so no two crews drive the same map. The names are invented. Each region takes its conditions from a real kind of place.</p>
+<h4>Verhaven</h4>
+<p><strong>Inspired by:</strong> Western and central Europe.</p>
+<p>A town and a port city. Classic deliveries and easy driving.</p>
+<p><strong>Common ground:</strong> dirt track, mud, gravel.</p>
+<p><strong>On the map:</strong> a few ponds, patches of forest, a river crossed by a bridge.</p>
+<h4>Volkhmar</h4>
+<p><strong>Inspired by:</strong> Russian taiga.</p>
+<p>Logging, deep mud and few roads. Access is limited and needs a license.</p>
+<p><strong>Common ground:</strong> mud, dirt track, deep mud, gravel.</p>
+<p><strong>On the map:</strong> a few ponds, thick forest.</p>
+<h4>Dunmarrow</h4>
+<p><strong>Inspired by:</strong> Open desert.</p>
+<p>Very wide and very hot. Long hauls, heat and sandstorms.</p>
+<p><strong>Common ground:</strong> gravel, sand, dirt track.</p>
+<p><strong>On the map:</strong> almost no trees.</p>
+<h4>Pohjavaara</h4>
+<p><strong>Inspired by:</strong> Finnish Lapland inside the Arctic Circle.</p>
+<p>Deep cold and snow. Heaters and insulation are required.</p>
+<p><strong>Common ground:</strong> snow, packed snow, dirt track, ice.</p>
+<p><strong>On the map:</strong> many lakes and wetlands, patches of forest, a mountain ridge.</p>
+<h4>Drennmark</h4>
+<p><strong>Inspired by:</strong> An active war zone.</p>
+<p>Critical supply runs under fire. The front line moves with the deliveries.</p>
+<p><strong>Common ground:</strong> dirt track, mud, gravel.</p>
+<p><strong>On the map:</strong> a few ponds, patches of forest, a river crossed by a bridge.</p>
+<h4>Sorvanga</h4>
+<p><strong>Inspired by:</strong> Remote tundra.</p>
+<p>Very cold and very remote. Hard rough ground mixed with soft rough ground.</p>
+<p><strong>Common ground:</strong> mud, gravel, snow, deep mud, dirt track.</p>
+<p><strong>On the map:</strong> many lakes and wetlands, almost no trees.</p>
+</div></div></div></section>
+<section class="acc leg" id="doc-surfaces"><h3 class="acc-h"><button type="button" aria-expanded="false" aria-controls="doc-surfaces-b"><span>Ground surfaces</span><i aria-hidden="true"></i></button></h3>
+<div class="acc-b" id="doc-surfaces-b"><div class="acc-in"><div class="leg-in doc">
+<p>Every wheel feels the ground under it. Soft ground slows you and pulls at the truck. The right tires help a lot.</p>
+<div class="tbl"><table><thead><tr><th>Surface</th><th>Difficulty</th><th>Holds ruts</th></tr></thead><tbody><tr><td>Tarmac</td><td>easy</td><td>no</td></tr><tr><td>Wet tarmac</td><td>moderate</td><td>no</td></tr><tr><td>Gravel</td><td>moderate</td><td>no</td></tr><tr><td>Dirt track</td><td>moderate</td><td>yes</td></tr><tr><td>Mud</td><td>hard</td><td>yes</td></tr><tr><td>Deep mud</td><td>extreme</td><td>yes</td></tr><tr><td>Sand</td><td>hard</td><td>yes</td></tr><tr><td>Rock</td><td>moderate</td><td>no</td></tr><tr><td>Snow</td><td>hard</td><td>yes</td></tr><tr><td>Packed snow</td><td>hard</td><td>no</td></tr><tr><td>Ice</td><td>extreme</td><td>no</td></tr><tr><td>Shallow water</td><td>hard</td><td>no</td></tr></tbody></table></div>
+<p>Ruts deepen as trucks pass: fresh, tracked, then rutted. A rutted track is harder to leave than to follow.</p>
+</div></div></div></section>
+<h3 class="grp">Modding</h3>
+<section class="acc leg" id="doc-modding"><h3 class="acc-h"><button type="button" aria-expanded="false" aria-controls="doc-modding-b"><span>Making a mod</span><i aria-hidden="true"></i></button></h3>
+<div class="acc-b" id="doc-modding-b"><div class="acc-in"><div class="leg-in doc">
+<p>Two kinds of mod exist. <strong>Data mods</strong> add or replace content, such as trucks, cargo and text, and keep your achievements. <strong>Script mods</strong> run code written in Lua and turn achievements off for everyone in the session. Everyone in a session needs the same mods.</p>
+<p>The full guide for mod makers will be published here when the mod tools are ready.</p>
+<p class="status"><em>Status: draft. The mod rules and checker are built. The script host is not.</em></p>
+</div></div></div></section>
+<!-- DOCS:END -->
+  </div>
+  </div>
+</section>
 </main>
 
 <footer class="foot">
-  <p>AFTERHAUL by Hound Protocol. Pre-release website <span id="siteVersion">0.1.20-pre</span>.</p>
+  <p>AFTERHAUL by Hound Protocol. Pre-release website <span id="siteVersion">0.2.0-pre</span>.</p>
   <p>AFTERHAUL and the Hound Protocol name and logo are reserved. No cookies, analytics or trackers of our own. Video previews and videos come from YouTube.</p>
 </footer>
 
@@ -151,13 +215,15 @@
 </div>
 
 <dialog class="wip" id="wip" aria-labelledby="wipTitle">
-  <form method="dialog">
+  <div class="wip-bar" aria-hidden="true"></div>
+  <div class="wip-body">
+    <svg class="wip-icon" viewBox="0 0 64 64" aria-hidden="true"><path class="tri" d="M32 7L60 56H4z"/><path class="bang" d="M32 24v16M32 47v3"/></svg>
     <h2 id="wipTitle">Work in progress</h2>
     <p>This website and the game are still being built. Placeholders and incomplete features are present, and some things will change or be missing.</p>
-    <button class="btn" id="wipOk" autofocus>Got it</button>
-  </form>
+    <button class="btn" id="wipOk" type="button" autofocus>Got it</button>
+  </div>
 </dialog>
 
-<script src="assets/js/afterhaul.js?v=0.1.20"></script>
+<script src="assets/js/afterhaul.js?v=0.2.0"></script>
 </body>
 </html>

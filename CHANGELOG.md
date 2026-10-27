@@ -2,6 +2,13 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.2.0-pre · Explore tabs, documentation, collapsible sections · 2026-10-27
+- New tab row under the hero: About, Documentation, then three placeholder tabs (Dev log, Community, Press), each with its own colour and texture. The three are marked Soon.
+- About holds the game, crew, land and design sections as collapsible sections (sound and visual design are nested inside Design). Expand all and Collapse all buttons on every panel. Deep links such as #land and #docs open the right tab and section.
+- Documentation holds the player guide, built from the game repo by tools/build_docs.py (decision 0018).
+- The work-in-progress pop-up has a new animation: striped bar, drawn warning triangle, staggered text, animated close.
+- Land cards are no longer selectable and do not react to the mouse. Northern wild wind is now constant. Frontline impacts gently shake the scene. Timber country has a sawmill with a spinning saw, sawdust, and smoke.
+
 ## 0.1.20-pre · Visits counter (prepared) · 2026-10-27
 - The dashboard bar shows a visits counter in place of Idling / Under load. It counts one visit per browser session through GoatCounter and stays at ---- until the site code is put in the goatcounter meta tag.
 

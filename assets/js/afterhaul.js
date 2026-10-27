@@ -130,8 +130,28 @@
       return p;
     }
     function size() { var dpr = Math.min(window.devicePixelRatio || 1, 2); w = el.clientWidth; h = el.clientHeight; c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); trees = null; parts = []; for (var i = 0; i < cfg; i++) parts.push(spawn({}, true)); }
-    var now = 0, nextShell = 1200, mud = [], cols = [], trees = null, shells = [], blasts = [], clods = [], smoke = [], tracers = [], flash = 0;
+    var shake = 0, now = 0, nextShell = 1200, mud = [], cols = [], trees = null, shells = [], blasts = [], clods = [], smoke = [], tracers = [], flash = 0;
     function mkTrees() { trees = []; var rr = rng(99), L, n, i; for (L = 0; L < 2; L++) { n = Math.ceil(w / (L ? 38 : 30)); for (i = 0; i < n; i++) trees.push({ L: L, x: (i + rr() * 0.8) * (w / n), hh: (L ? 120 : 90) + rr() * 80, ww: (L ? 34 : 26) + rr() * 16, ph: rr() * 6.28 }); } trees.sort(function (a, b) { return a.L - b.L; }); }
+    function sawmill(t, base) {
+      var x = w * 0.56, y = h * 0.78, s = Math.max(1, w / 330), i, ph, px, py, g, ang = t * 0.02;
+      ctx.fillStyle = "#0b140e"; ctx.fillRect(x - 44 * s, y, 170 * s, 6 * s);
+      ctx.fillStyle = "#16251a";
+      ctx.fillRect(x, y - 38 * s, 62 * s, 38 * s);
+      ctx.beginPath(); ctx.moveTo(x - 6 * s, y - 38 * s); ctx.lineTo(x + 31 * s, y - 58 * s); ctx.lineTo(x + 68 * s, y - 38 * s); ctx.closePath(); ctx.fill(); ctx.strokeStyle = "rgba(160,200,150,.28)"; ctx.lineWidth = 1; ctx.stroke();
+      ctx.fillRect(x + 48 * s, y - 70 * s, 7 * s, 34 * s);
+      ctx.fillStyle = "rgba(255,196,100," + (0.8 + 0.12 * Math.sin(t * 0.004)) + ")"; ctx.fillRect(x + 8 * s, y - 28 * s, 9 * s, 8 * s); ctx.fillRect(x + 24 * s, y - 28 * s, 9 * s, 8 * s);
+      ctx.fillStyle = "#1a2a1d"; ctx.fillRect(x - 36 * s, y - 14 * s, 36 * s, 14 * s);
+      for (i = 0; i < 4; i++) { ctx.fillStyle = i % 2 ? "#14100a" : "#1c150c"; ctx.beginPath(); ctx.arc(x - 30 * s + i * 9 * s, y - 20 * s, 5 * s, 0, 6.283); ctx.fill(); }
+      ctx.fillStyle = "#241a0e"; ctx.fillRect(x + 62 * s, y - 10 * s, 52 * s, 5 * s); ctx.fillRect(x + 66 * s, y - 5 * s, 3 * s, 5 * s); ctx.fillRect(x + 108 * s, y - 5 * s, 3 * s, 5 * s);
+      ctx.save(); ctx.translate(x + 84 * s, y - 20 * s); ctx.rotate(reduce ? 0 : ang);
+      ctx.strokeStyle = "rgba(205,215,205,.85)"; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.arc(0, 0, 9 * s, 0, 6.283); ctx.stroke();
+      for (i = 0; i < 12; i++) { ctx.beginPath(); ctx.moveTo(Math.cos(i * 0.5236) * 9 * s, Math.sin(i * 0.5236) * 9 * s); ctx.lineTo(Math.cos(i * 0.5236 + 0.18) * 12 * s, Math.sin(i * 0.5236 + 0.18) * 12 * s); ctx.stroke(); }
+      ctx.restore();
+      ctx.fillStyle = "#2a1c0e"; ctx.fillRect(x + 66 * s, y - 14 * s, 36 * s, 4 * s);
+      ctx.fillStyle = "rgba(226,190,120,.7)";
+      for (i = 0; i < 14; i++) { ph = ((t * 0.0006 + i * 0.071) % 1); px = x + 88 * s + ph * 38 * s; py = y - 14 * s + ph * ph * 12 * s; ctx.fillRect(px, py, 1.6, 1.6); }
+      for (i = 0; i < 7; i++) { ph = ((t * 0.00007 + i / 7) % 1); px = x + 51 * s + ph * 70 * s; py = y - 72 * s - ph * 62 * s; g = 0.5 * (1 - ph); ctx.fillStyle = "rgba(150,155,150," + g + ")"; ctx.beginPath(); ctx.arc(px, py, (3 + ph * 11) * s * 0.8, 0, 6.283); ctx.fill(); }
+    }
     function drawTrees(t) {
       if (!trees) mkTrees();
       var wind = 1 + gust * 1.6, base = h * 0.9, i, k, tr, sw, tx, ty, y0, tier;
@@ -147,13 +167,14 @@
         }
         ctx.fillRect(tr.x - 2, y0 - 6, 4, h - y0 + 6);
       }
+      sawmill(t, base);
       ctx.fillStyle = "#0a120c"; ctx.fillRect(0, base - 2, w, h - base + 2);
       ctx.strokeStyle = "rgba(220,235,210,.10)"; ctx.lineWidth = 1;
       for (k = 0; k < 7; k++) { var yy = (k * 47 + t * 0.05 * wind * (1 + k % 3 * 0.3)) % (h * 0.8), xx = (t * 0.35 * wind * (1 + k * 0.2) + k * 133) % (w + 120) - 60; ctx.beginPath(); ctx.moveTo(xx, yy); ctx.lineTo(xx + 40 + k * 5, yy + 3); ctx.stroke(); }
     }
     function boom(x, y) {
       var i;
-      var vmax = 3.2, v, k; flash = 0.6;
+      var vmax = 3.2, v, k; flash = 0.6; shake = 1;
       for (i = 0; i < 170; i++) { v = 0.5 + vmax * Math.pow(r(), 1.7); k = v / vmax; mud.push({ x: x + (r() - 0.5) * 7, y: y, vx: (r() - 0.5) * 0.45 * (0.35 + k), vy: -v, s: (6.5 * (1 - 0.82 * k) + 1) * (0.7 + 0.6 * r()), d: r() * 24, gy: y + r() * 5, k: k }); }
       blasts.push({ x: x, y: y, a: 0 });
       for (i = 0; i < 48; i++) clods.push({ x: x + (r() - 0.5) * 10, y: y, vx: (r() - 0.5) * 7, vy: -(3 + r() * 8), s: 1.5 + r() * 4.5, rot: 0 });
@@ -224,6 +245,7 @@
     function drawFront(t) {
       var i, p, g;
       drawWar(t);
+      if (shake > 0.01) { shake *= 0.9; var sx = (Math.sin(t * 0.09) * 2.4 + Math.sin(t * 0.23) * 1.2) * shake, sy = (Math.cos(t * 0.11) * 2 + Math.sin(t * 0.19)) * shake; c.style.transform = sil.style.transform = "translate(" + sx.toFixed(2) + "px," + sy.toFixed(2) + "px) scale(1.03)"; } else if (c.style.transform) { c.style.transform = sil.style.transform = ""; shake = 0; }
       now = t; if (t >= nextShell) { nextShell = t + 5000 + r() * 5000; shells.push({ x: w * (0.15 + r() * 0.7), y: -20, vx: (r() - 0.5) * 0.5, vy: 26, gy: h * (0.66 + r() * 0.1) }); }
       if (r() < 0.008) { var dir = r() < 0.5 ? 1 : -1; tracers.push({ x: dir > 0 ? -50 : w + 50, y: h * (0.12 + r() * 0.5), vx: dir * (26 + r() * 10), vy: (r() - 0.5) * 1.2 }); }
       flash *= 0.88;
@@ -314,7 +336,7 @@
         if (!still) {
           if (type === "city") { p.y += (0.3 + p.k * 0.5) * gs; p.x += 0.15 * gs; }
           else if (type === "timber") { p.x += (2.2 + p.k * 2.2) * gs; p.y += Math.sin(t * 0.004 + p.ph) * 0.8 + 0.25; }
-          else if (type === "wild") { var sg = 1 + 0.45 * Math.sin(t * 0.0016 + p.y * 0.004) + 0.35 * Math.sin(t * 0.0047); p.x -= (15 + p.k * 12) * gs * sg; p.y += (1.5 + p.k * 2.5) * sg; }
+          else if (type === "wild") { p.x -= (15 + p.k * 12) * gs; p.y += 1.5 + p.k * 2.5; }
           else if (type === "front") { p.y -= (0.5 + p.k * 1.1) * gs; p.x += Math.sin(t * 0.003 + p.ph) * 0.6; }
           else if (type === "desert") { p.x += (3 + p.k * 4) * gs; p.y += Math.sin(t * 0.002 + p.ph) * 0.3; }
           else { p.y += (0.9 + p.k * 1.2) * gs; p.x -= (1.4 + p.k) * gs + Math.sin(t * 0.0015 + p.ph) * 0.5; }
@@ -330,12 +352,12 @@
       if (type === "desert") drawSun(t);
       if (type === "cold") drawArctic(t);
       if (type === "city") drawCity(t, still);
-      if (type === "wild") { var sv = 0.5 + 0.5 * Math.sin(t * 0.0016) * Math.sin(t * 0.0047 + 1); ctx.fillStyle = "rgba(150,170,180," + (0.05 + 0.09 * sv) + ")"; ctx.fillRect(0, 0, w, h); }
+      if (type === "wild") { ctx.fillStyle = "rgba(150,170,180,.09)"; ctx.fillRect(0, 0, w, h); }
       if (type === "front" && !still) drawFront(t);
       if (type === "desert") { ctx.strokeStyle = "rgba(255,232,170,.14)"; ctx.lineWidth = 1.4; for (i = 0; i < 3; i++) { ctx.beginPath(); for (var x = 0; x <= w; x += 6) { var yy = h * (0.5 + i * 0.09) + Math.sin(x * 0.04 + t * 0.003 * (i + 1)) * 3; x === 0 ? ctx.moveTo(x, yy) : ctx.lineTo(x, yy); } ctx.stroke(); } }
     }
     function hot(on) { gustT = on ? 1 : 0; }
-    el.addEventListener("mouseenter", function () { hot(true); }); el.addEventListener("mouseleave", function () { hot(false); });
+    
     size();
     var o = { el: el, size: size, draw: function (t) { gust += (gustT - gust) * 0.06; step(t, reduce); }, set vis(v) { vis = v; if (v && reduce) step(0, true); }, get vis() { return vis; } };
     return o;
@@ -385,12 +407,67 @@
   measure(); sizeStrain();
   requestAnimationFrame(frame);
 
-  /* ---------- Work-in-progress pop-up (once per visit) ---------- */
+  /* ---------- Work-in-progress pop-up (once per visit, animated in and out) ---------- */
   (function () {
-    var d = $("#wip"); if (!d || !d.showModal) return;
+    var d = $("#wip"), ok = $("#wipOk"); if (!d || !d.showModal) return;
     try { if (sessionStorage.getItem("wipSeen")) return; } catch (e) {}
-    d.addEventListener("close", function () { try { sessionStorage.setItem("wipSeen", "1"); } catch (e) {} });
-    setTimeout(function () { try { d.showModal(); } catch (e) {} }, 400);
+    var closing = false;
+    function shut() {
+      if (closing) return; closing = true;
+      try { sessionStorage.setItem("wipSeen", "1"); } catch (e) {}
+      if (reduce) { d.close(); return; }
+      d.classList.add("closing"); setTimeout(function () { d.close(); d.classList.remove("closing"); }, 300);
+    }
+    ok.addEventListener("click", shut);
+    d.addEventListener("cancel", function (e) { e.preventDefault(); shut(); });
+    d.addEventListener("click", function (e) { if (e.target === d) shut(); });
+    setTimeout(function () { try { d.showModal(); } catch (e) {} }, 450);
+  })();
+
+  /* ---------- Tabs, collapsible sections and deep links ---------- */
+  (function () {
+    var tabs = $$(".tab"), panels = $$(".panel");
+    function setOpen(acc, open) {
+      var b = $(".acc-h button", acc), was = acc.classList.contains("open");
+      acc.classList.toggle("open", open); b.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open && !was) setTimeout(function () { weather.forEach(function (w) { w.size(); }); measure(); }, 520); else setTimeout(measure, 520);
+    }
+    function showTab(k, silent) {
+      tabs.forEach(function (t) { var on = t.getAttribute("data-tab") === k; t.setAttribute("aria-selected", on ? "true" : "false"); });
+      panels.forEach(function (p) { p.hidden = p.id !== "panel-" + k; });
+      setTimeout(function () { weather.forEach(function (w) { w.size(); }); measure(); }, 60);
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { if (t.getAttribute("aria-disabled") === "true") return; showTab(t.getAttribute("data-tab")); history.replaceState(null, "", "#" + t.getAttribute("data-tab")); });
+      t.addEventListener("keydown", function (e) {
+        var live = tabs.filter(function (x) { return x.getAttribute("aria-disabled") !== "true"; }), k = live.indexOf(t);
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") { var n = live[(k + (e.key === "ArrowRight" ? 1 : live.length - 1)) % live.length]; n.focus(); n.click(); e.preventDefault(); }
+      });
+    });
+    $$(".acc").forEach(function (acc) {
+      $(".acc-h button", acc).addEventListener("click", function () { setOpen(acc, !acc.classList.contains("open")); });
+      if ($(".acc-h button", acc).getAttribute("aria-expanded") === "true") acc.classList.add("open");
+    });
+    $$(".ptools button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var open = b.getAttribute("data-act") === "expand";
+        $$(".acc", b.closest(".panel")).forEach(function (a) { setOpen(a, open); });
+      });
+    });
+    function route(smooth) {
+      var id = decodeURIComponent(location.hash.slice(1)); if (!id) return;
+      var el = doc.getElementById(id); if (!el) return;
+      var panel = el.closest ? el.closest(".panel") : null, k = null;
+      if (id === "about" || id === "docs") { k = id; el = $("#explore"); }
+      else if (panel) k = panel.id.replace("panel-", "");
+      if (k) showTab(k);
+      var p = el; while (p && p.closest) { p = p.closest(".acc"); if (!p) break; setOpen(p, true); p = p.parentElement; }
+      if (el.classList && el.classList.contains("acc")) setOpen(el, true);
+      setTimeout(function () { el.scrollIntoView({ behavior: reduce || !smooth ? "auto" : "smooth", block: "start" }); }, 80);
+      setTimeout(function () { if (Math.abs(el.getBoundingClientRect().top - 110) > 60) el.scrollIntoView({ behavior: "auto", block: "start" }); }, 900);
+    }
+    window.addEventListener("hashchange", function () { route(true); });
+    if (location.hash) { route(false); window.addEventListener("load", function () { setTimeout(function () { route(false); }, 50); }); }
   })();
 
   /* ---------- Click-to-play videos (nothing loads from YouTube until pressed) ---------- */
