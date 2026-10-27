@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AFTERHAUL scene editor</title>
+<link rel="stylesheet" href="editor.css">
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }
+</script>
+</head>
+<body>
+<div id="app">
+  <header id="top">
+    <strong class="brand">Scene editor</strong>
+    <span class="grp" role="group" aria-label="Gizmo">
+      <button data-mode="translate" class="on" title="Move (W)">Move</button>
+      <button data-mode="rotate" title="Rotate (E)">Rotate</button>
+      <button data-mode="scale" title="Scale (R)">Scale</button>
+      <label class="chk" title="Snap move to 0.5 m and rotation to 15 degrees"><input type="checkbox" id="snap"> Snap</label>
+    </span>
+    <span class="grp" role="group" aria-label="View">
+      <button data-view="free" class="on" title="Free camera (orbit: left drag, pan: right drag, zoom: wheel)">Free view</button>
+      <button data-view="shot" title="Look through the shot camera">Shot view</button>
+      <button id="frame" title="Frame the selected object (F)">Frame</button>
+      <button id="camFromView" title="Copy the free view into the shot camera">Shot camera from view</button>
+      <label class="chk"><input type="checkbox" id="letterbox"> 2.39:1 bars</label>
+    </span>
+    <span class="grp" role="group" aria-label="Scene">
+      <button id="freezeBtn" title="Freeze or release time (H)">Freeze</button>
+      <button id="saveBtn">Save</button>
+      <button id="loadBtn">Load</button>
+      <button id="glbBtn" title="Load a GLB model as a new object">Add GLB</button>
+      <input type="file" id="fileLoad" accept=".json" hidden>
+      <input type="file" id="fileGlb" accept=".glb,.gltf" hidden>
+    </span>
+    <span id="toast" role="status" aria-live="polite"></span>
+  </header>
+
+  <aside id="left">
+    <h2>Spawn</h2>
+    <p class="hint">Click a button, move over the ground, click to place. Shift-click keeps spawning. Esc cancels.</p>
+    <div id="spawn"></div>
+    <h2>Keys</h2>
+    <p class="hint">W move, E rotate, R scale, K key, Space play, H freeze, F frame, Delete remove.</p>
+  </aside>
+
+  <main id="stage"><canvas id="view"></canvas><div id="gimmick"></div></main>
+
+  <aside id="right">
+    <h2 id="inspTitle">Nothing selected</h2>
+    <div id="insp"></div>
+  </aside>
+
+  <footer id="tl">
+    <div id="tlbar">
+      <button id="play" title="Play or pause (Space)">Play</button>
+      <button id="stop" title="Back to 0">Stop</button>
+      <span id="time">0.00 / 8.00 s</span>
+      <button id="keyBtn" title="Key the selected object at the playhead (K)">Key (K)</button>
+      <label class="chk"><input type="checkbox" id="autokey"> Auto-key</label>
+      <label class="chk"><input type="checkbox" id="loop"> Loop</label>
+      <label class="num">Length <input type="number" id="dur" min="1" max="60" step="0.5" value="8"> s</label>
+      <span class="sep"></span>
+      <button id="setFreeze" title="Freeze time at the playhead">Freeze here</button>
+      <label class="num">Slow-down <input type="number" id="ramp" min="0.05" max="5" step="0.05" value="0.8"> s</label>
+      <button id="clearFreeze" title="Remove the freeze point">No freeze</button>
+      <span class="sep"></span>
+      <button id="zoomOut">-</button><button id="zoomIn">+</button>
+    </div>
+    <div id="tlscroll"><div id="tlin"><div id="tlruler"></div><div id="tltracks"></div><div id="tlhead"></div></div></div>
+  </footer>
+</div>
+<script type="module" src="editor.js"></script>
+</body>
+</html>

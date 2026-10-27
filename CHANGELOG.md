@@ -2,6 +2,10 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.0.3-pre · Scene editor · 2026-10-27
+- **Scene editor** (`tools/scene-editor/`, not deployed): spawn objects, move and rotate with gizmos, shot camera with FOV and look-at, keyframe timeline, a baked fence break, and a freeze with slow-down. Saves a scene JSON. Stand-in truck; load the real GLB with Add GLB.
+- Public page unchanged.
+
 ## 0.0.2-pre · Unlisted · 2026-10-25
 - Repository is public; site deploys on push, stays unlisted (`noindex`, `robots.txt`).
 
