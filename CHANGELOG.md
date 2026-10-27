@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.19-pre · Discord on hold · 2026-10-27
+- The Join the Discord button is no longer a link. It is crossed out on a red striped background, with a red note: Discord opens once the game has a prototype.
+
 ## 0.1.18-pre · Link preview text · 2026-10-27
 - New description for search, Discord and other link previews (also set as Open Graph and Twitter card text).
 

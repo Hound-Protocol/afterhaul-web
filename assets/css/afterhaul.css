@@ -226,3 +226,9 @@ a:hover { color: #fff; }
 .video button svg, .video button span { position: relative; z-index: 2; text-shadow: 0 1px 6px #000; }
 
 .ph img { display: block; width: auto; max-width: 100%; height: auto; max-height: 520px; border: 1px solid var(--iron); }
+
+.soon { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.btn.off { position: relative; cursor: not-allowed; color: #ffd9d6; text-decoration: line-through 2px; border-color: #b3261e; background: repeating-linear-gradient(135deg, #8f1d17 0 8px, #b3261e 8px 16px); }
+.btn.off:hover { transform: none; box-shadow: none; background: repeating-linear-gradient(135deg, #8f1d17 0 8px, #b3261e 8px 16px); color: #ffd9d6; }
+.soon p { margin: 0; max-width: 34ch; color: #e0554b; font: 500 15px/1.35 var(--ui); }
+.actions { align-items: flex-start; }
