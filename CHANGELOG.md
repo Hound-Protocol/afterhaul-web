@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.2.1-pre · Sound text · 2026-10-27
+- The in-cab sound design video text and the crash sound text now use the owner's wording.
+
 ## 0.2.0-pre · Explore tabs, documentation, collapsible sections · 2026-10-27
 - New tab row under the hero: About, Documentation, then three placeholder tabs (Dev log, Community, Press), each with its own colour and texture. The three are marked Soon.
 - About holds the game, crew, land and design sections as collapsible sections (sound and visual design are nested inside Design). Expand all and Collapse all buttons on every panel. Deep links such as #land and #docs open the right tab and section.
