@@ -224,3 +224,5 @@ a:hover { color: #fff; }
 .video button:hover img { opacity: .9; transform: scale(1.02); }
 .video button::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(transparent 50%, rgba(10,8,5,.75)); pointer-events: none; }
 .video button svg, .video button span { position: relative; z-index: 2; text-shadow: 0 1px 6px #000; }
+
+.ph img { display: block; width: auto; max-width: 100%; height: auto; max-height: 520px; border: 1px solid var(--iron); }

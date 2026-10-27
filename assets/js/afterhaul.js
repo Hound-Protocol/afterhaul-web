@@ -172,9 +172,37 @@
       }
       ctx.globalAlpha = 1;
     }
+    var lastShot = -9999;
+    function tank(x, y, s, dir, t, mv) {
+      var bob = mv ? Math.sin(t * 0.02 + x * 0.05) * 0.5 * s : 0, yy = y + bob;
+      ctx.fillStyle = "#1c110c";
+      ctx.fillRect(x - 21 * s, yy - 5 * s, 42 * s, 6 * s);
+      ctx.beginPath(); ctx.moveTo(x - 18 * s, yy - 5 * s); ctx.lineTo(x + 18 * s, yy - 5 * s); ctx.lineTo(x + 14 * s, yy - 11 * s); ctx.lineTo(x - 14 * s, yy - 11 * s); ctx.closePath(); ctx.fill();
+      ctx.fillRect(x - 8 * s, yy - 17 * s, 16 * s, 7 * s);
+      ctx.fillRect(dir > 0 ? x + 6 * s : x - 26 * s, yy - 15 * s, 20 * s, 2.2 * s);
+      ctx.strokeStyle = "rgba(255,140,60,.28)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x - 14 * s, yy - 11 * s); ctx.lineTo(x + 14 * s, yy - 11 * s); ctx.moveTo(x - 8 * s, yy - 17 * s); ctx.lineTo(x + 8 * s, yy - 17 * s); ctx.stroke();
+    }
+    function soldier(x, y, s, dir) {
+      ctx.fillStyle = "#1c110c";
+      ctx.fillRect(x - 5 * s, y - 4 * s, 11 * s, 4 * s);
+      ctx.beginPath(); ctx.moveTo(x - 3 * s, y - 4 * s); ctx.lineTo(x + 2 * s * dir, y - 12 * s); ctx.lineTo(x + 5 * s * dir, y - 12 * s); ctx.lineTo(x + 4 * s, y - 4 * s); ctx.closePath(); ctx.fill();
+      ctx.beginPath(); ctx.arc(x + 4 * s * dir, y - 15 * s, 2.6 * s, 0, 6.283); ctx.fill();
+      ctx.fillRect(dir > 0 ? x + 2 * s : x - 12 * s, y - 10 * s, 10 * s, 1.3 * s);
+      ctx.strokeStyle = "rgba(255,140,60,.25)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(x + 4 * s * dir, y - 15 * s, 2.6 * s, 3.6, 5.6); ctx.stroke();
+    }
+    function drawWar(t) {
+      var yb = h * 0.6, i, tx, g, soldiersAt = [0.14, 0.2, 0.43, 0.49, 0.58, 0.86];
+      tx = (t * 0.014) % (w + 160) - 80; tank(tx, yb, 1, 1, t, true);
+      ctx.fillStyle = "rgba(70,40,24,.35)"; for (i = 1; i < 6; i++) { ctx.beginPath(); ctx.arc(tx - 24 - i * 7, yb - 2 - i * 0.7 + Math.sin(t * 0.01 + i) * 1.5, 3 + i * 1.3, 0, 6.283); ctx.fill(); }
+      tx = w - ((t * 0.009 + 200) % (w + 160)) + 80; tank(tx, yb - 12, 0.7, -1, t, true);
+      tank(w * 0.66, yb + 4, 1.3, -1, t, false);
+      var since = t - lastShot; if (since < 140) { g = ctx.createRadialGradient(w * 0.66 - 30, yb - 12, 0, w * 0.66 - 30, yb - 12, 22); g.addColorStop(0, "rgba(255,230,160," + (1 - since / 140) + ")"); g.addColorStop(1, "rgba(255,120,30,0)"); ctx.fillStyle = g; ctx.fillRect(w * 0.66 - 56, yb - 40, 52, 52); }
+      for (i = 0; i < soldiersAt.length; i++) soldier(w * soldiersAt[i], yb + 2 + (i % 2) * 5, 1.4, i % 3 === 2 ? -1 : 1);
+    }
     function drawFront(t) {
       var i, p, g;
-      now = t; if (t >= nextShell) { nextShell = t + 5000 + r() * 5000; shells.push({ x: w * (0.15 + r() * 0.7), y: -20, vx: (r() - 0.5) * 0.5, vy: 26, gy: h * (0.66 + r() * 0.1) }); }
+      drawWar(t);
+      now = t; if (t >= nextShell) { lastShot = t; nextShell = t + 5000 + r() * 5000; shells.push({ x: w * (0.15 + r() * 0.7), y: -20, vx: (r() - 0.5) * 0.5, vy: 26, gy: h * (0.66 + r() * 0.1) }); }
       if (r() < 0.008) { var dir = r() < 0.5 ? 1 : -1; tracers.push({ x: dir > 0 ? -50 : w + 50, y: h * (0.12 + r() * 0.5), vx: dir * (26 + r() * 10), vy: (r() - 0.5) * 1.2 }); }
       flash *= 0.88;
       if (flash > 0.02) { ctx.fillStyle = "rgba(255,170,80," + (flash * 0.16) + ")"; ctx.fillRect(0, 0, w, h); }

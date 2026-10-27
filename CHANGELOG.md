@@ -2,6 +2,10 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.14-pre · Warzone units and placeholder figure · 2026-10-27
+- Frontline: tanks (two driving, one parked that fires with a muzzle flash when a shell is launched) and kneeling soldiers sit in the background, behind the ruins.
+- Visual design: the owner's placeholder character picture is shown, with the placeholder notice. Listed in THIRD_PARTY_NOTICES.md; source and licence to confirm.
+
 ## 0.1.13-pre · City traffic · 2026-10-27
 - The city card shows a skyline with lit windows, street lights and two lanes of moving traffic (headlights and tail lights). No weather.
 
