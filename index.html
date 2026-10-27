@@ -9,7 +9,7 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/barlow-semi-condensed-extralight.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="assets/css/afterhaul.css?v=0.1.6">
+<link rel="stylesheet" href="assets/css/afterhaul.css?v=0.1.7">
 </head>
 <body>
 <a class="skip" href="#game">Skip to content</a>
@@ -91,7 +91,7 @@
 </main>
 
 <footer class="foot">
-  <p>AFTERHAUL by Hound Protocol. Pre-release website <span id="siteVersion">0.1.6-pre</span>.</p>
+  <p>AFTERHAUL by Hound Protocol. Pre-release website <span id="siteVersion">0.1.7-pre</span>.</p>
   <p>AFTERHAUL and the Hound Protocol name and logo are reserved. No cookies, analytics or trackers.</p>
 </footer>
 
@@ -101,6 +101,14 @@
   <span class="eng" id="eng">Engine off</span>
 </div>
 
-<script src="assets/js/afterhaul.js?v=0.1.6"></script>
+<dialog class="wip" id="wip" aria-labelledby="wipTitle">
+  <form method="dialog">
+    <h2 id="wipTitle">Work in progress</h2>
+    <p>This website and the game are still being built. Placeholders and incomplete features are present, and some things will change or be missing.</p>
+    <button class="btn" id="wipOk" autofocus>Got it</button>
+  </form>
+</dialog>
+
+<script src="assets/js/afterhaul.js?v=0.1.7"></script>
 </body>
 </html>

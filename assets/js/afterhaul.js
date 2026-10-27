@@ -292,4 +292,12 @@
   window.addEventListener("load", function () { measure(); sizeStrain(); });
   measure(); sizeStrain();
   requestAnimationFrame(frame);
+
+  /* ---------- Work-in-progress pop-up (once per visit) ---------- */
+  (function () {
+    var d = $("#wip"); if (!d || !d.showModal) return;
+    try { if (sessionStorage.getItem("wipSeen")) return; } catch (e) {}
+    d.addEventListener("close", function () { try { sessionStorage.setItem("wipSeen", "1"); } catch (e) {} });
+    setTimeout(function () { try { d.showModal(); } catch (e) {} }, 400);
+  })();
 })();
