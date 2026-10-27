@@ -2,6 +2,12 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.0-pre · Scrolling is driving · 2026-10-27
+- Full overhaul. A fixed instrument cluster follows you down the page: odometer (km 0 to 1,000), rev needle and engine state.
+- Hero: perspective road that moves with your scroll, four code-drawn ridges with parallax, dust, headlights and engine shake after the cold start. Heat haze on the wordmark while the engine runs.
+- "The feel" has a live strain trace that reacts to scroll speed. "The crew" lights eight seats in sequence. "The land" has six regions, each with its own code-drawn weather (ash, sawdust, rain, embers, dust, snow).
+- Respects reduced motion (everything holds still). No audio, no generated art, no libraries.
+
 ## 0.0.6-pre · Fence breaks on contact · 2026-10-27
 - The fence now breaks the moment the truck's nose touches it ("Break on contact", with a Truck nose setting), not when the truck's centre arrives. Pieces start moving at once.
 - New Push setting (how much of the truck's speed pieces take) and a wider, stronger default burst.

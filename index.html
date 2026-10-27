@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AFTERHAUL</title>
 <meta name="description" content="AFTERHAUL is a heavy-haul convoy game for crews of up to eight. Rebuild a broken land one load at a time, and feel every metre of it. In development by Hound Protocol.">
-<meta name="theme-color" content="#16130e">
+<meta name="theme-color" content="#14110c">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/barlow-semi-condensed-extralight.woff" as="font" type="font/woff" crossorigin>
@@ -13,6 +13,7 @@
 </head>
 <body>
 <a class="skip" href="#feel">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
 
 <header class="bar">
   <a class="mark" href="#top" aria-label="AFTERHAUL, back to top"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 48 L30 14 h6 L22 48z"/><path d="M32 48 L44 22 h6 L38 48z"/></svg><span>Afterhaul</span></a>
@@ -21,9 +22,15 @@
   </nav>
 </header>
 
+<div class="rail" id="rail" aria-hidden="true"><i id="railDot"></i></div>
+
 <main id="top">
   <section class="hero" aria-labelledby="title">
-    <div class="hero-in">
+    <div class="sky" aria-hidden="true"></div>
+    <div class="ridges" id="ridges" aria-hidden="true"></div>
+    <!-- The truck scene will play here once the model is ready (see the scene editor). -->
+    <canvas class="road" id="road" aria-hidden="true"></canvas>
+    <div class="hero-in" id="heroIn">
       <h1 id="title" class="wordmark" aria-label="Afterhaul"><span aria-hidden="true">AFTER</span><span aria-hidden="true">HAUL</span></h1>
       <p class="tagline">The world ended. The work didn't.</p>
       <p class="pitch">A heavy-haul convoy game for crews of up to eight. Rebuild a broken land one load at a time, and feel every metre of it.</p>
@@ -34,56 +41,62 @@
       </div>
       <p class="status"><span class="dot" aria-hidden="true"></span>In development by <a href="https://hound-protocol.github.io/hound-protocol-web/">Hound Protocol</a>. Nothing to download yet.</p>
     </div>
-    <div class="ridge" aria-hidden="true"></div>
+    <a class="scrollcue" href="#feel" aria-label="Scroll to start the haul"><span>Drive on</span><i></i></a>
   </section>
 
   <section class="leg" id="feel" aria-labelledby="feelTitle">
     <div class="marker" aria-hidden="true">km 0</div>
     <div class="leg-in">
-      <h2 id="feelTitle">You feel the load</h2>
-      <div class="cols">
-        <p>A rock under the front wheel kicks back through the steering. Your driver braces, grunts, and fights to keep both hands on the wheel. Fifty tonnes on a climb, and the engine tells you how close you are to the edge.</p>
-        <p>There is no dashboard of numbers floating over the world. You read the truck the way drivers do: by the shake of the cab, the strain in the engine, the creak of the straps behind you, the silence after a crash.</p>
+      <h2 id="feelTitle" class="rv">You feel the load</h2>
+      <canvas class="strain" id="strain" aria-hidden="true"></canvas>
+      <div class="shouts">
+        <p class="shout rv"><span>A rock under the front wheel kicks back through the steering.</span></p>
+        <p class="shout rv r"><span>Your driver braces, grunts, and fights to keep both hands on the wheel.</span></p>
+        <p class="shout rv"><span>Fifty tonnes on a climb, and the engine tells you how close you are to the edge.</span></p>
       </div>
-      <blockquote class="pull">Sound is how you know you've gone too far.</blockquote>
+      <div class="cols rv">
+        <p>There is no dashboard of numbers floating over the world. You read the truck the way drivers do: by the shake of the cab, the strain in the engine, the creak of the straps behind you, the silence after a crash.</p>
+        <blockquote class="pull">Sound is how you know you've gone too far.</blockquote>
+      </div>
     </div>
   </section>
 
   <section class="leg" id="crew" aria-labelledby="crewTitle">
     <div class="marker" aria-hidden="true">km 140</div>
     <div class="leg-in">
-      <h2 id="crewTitle">Nobody hauls alone</h2>
-      <p class="lede">Up to eight players run one company. Every driver has a trade: someone finds the line through the mud, someone carries the heaviest loads, someone keeps the crew fed, patched up and moving.</p>
+      <h2 id="crewTitle" class="rv">Nobody hauls alone</h2>
+      <p class="lede rv">Up to eight players run one company. Every driver has a trade: someone finds the line through the mud, someone carries the heaviest loads, someone keeps the crew fed, patched up and moving.</p>
+      <div class="convoy rv" id="convoy" aria-hidden="true"></div>
       <ul class="trades" aria-label="Some of the trades in a crew">
         <li>Pathfinders</li><li>Heavy haulers</li><li>Medics</li><li>Mechanics</li><li>Cooks</li><li>Recovery crews</li>
       </ul>
-      <p>Talk is part of the world. Shout across a valley and hear it echo. Lose the radio behind a ridge. Whisper in the cab. Help each other, and the company pays you for it.</p>
+      <p class="rv">Talk is part of the world. Shout across a valley and hear it echo. Lose the radio behind a ridge. Whisper in the cab. Help each other, and the company pays you for it.</p>
     </div>
   </section>
 
   <section class="leg" id="land" aria-labelledby="landTitle">
     <div class="marker" aria-hidden="true">km 610</div>
-    <div class="leg-in">
-      <h2 id="landTitle">The land after</h2>
-      <p class="lede">One land, many regions, all of it waiting to be rebuilt. The seasons turn, the weather bites, and every delivery leaves something standing that wasn't there before.</p>
-      <dl class="regions">
-        <div><dt>The city</dt><dd>Where the work starts, and where it comes back to.</dd></div>
-        <div><dt>Timber country</dt><dd>Loose rock, steep grades, heavy cargo.</dd></div>
-        <div><dt>The northern wild</dt><dd>No roads. Mud to the axles.</dd></div>
-        <div><dt>The frontline</dt><dd>Supplies that cannot wait.</dd></div>
-        <div><dt>The long desert</dt><dd>An hour of nothing, and the heat.</dd></div>
-        <div><dt>The deep cold</dt><dd>Stop too long and the truck won't start again.</dd></div>
-      </dl>
+    <div class="leg-in wide">
+      <h2 id="landTitle" class="rv">The land after</h2>
+      <p class="lede rv">One land, many regions, all of it waiting to be rebuilt. The seasons turn, the weather bites, and every delivery leaves something standing that wasn't there before.</p>
+      <div class="regions">
+        <article class="reg rv" data-w="city"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The city</h3><p>Where the work starts, and where it comes back to.</p></div></article>
+        <article class="reg rv" data-w="timber"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>Timber country</h3><p>Loose rock, steep grades, heavy cargo.</p></div></article>
+        <article class="reg rv" data-w="wild"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The northern wild</h3><p>No roads. Mud to the axles.</p></div></article>
+        <article class="reg rv" data-w="front"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The frontline</h3><p>Supplies that cannot wait.</p></div></article>
+        <article class="reg rv" data-w="desert"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The long desert</h3><p>An hour of nothing, and the heat.</p></div></article>
+        <article class="reg rv" data-w="cold"><canvas aria-hidden="true"></canvas><svg class="sil" aria-hidden="true" preserveAspectRatio="none"></svg><div class="txt"><h3>The deep cold</h3><p>Stop too long and the truck won't start again.</p></div></article>
+      </div>
     </div>
   </section>
 
   <section class="leg" id="progress" aria-labelledby="progTitle">
     <div class="marker" aria-hidden="true">km 1,000</div>
     <div class="leg-in">
-      <h2 id="progTitle">Where we are</h2>
-      <p class="lede">AFTERHAUL is in early development. We are building the first truck, piece by piece, until it feels right. There is no release date and nothing to download yet.</p>
-      <p>Follow along with Hound Protocol, the community organization making the game.</p>
-      <div class="actions">
+      <h2 id="progTitle" class="rv">Where we are</h2>
+      <p class="lede rv">AFTERHAUL is in early development. We are building the first truck, piece by piece, until it feels right. There is no release date and nothing to download yet.</p>
+      <p class="rv">Follow along with Hound Protocol, the community organization making the game.</p>
+      <div class="actions rv">
         <a class="btn" href="https://discord.gg/QTpJ89kMCM" target="_blank" rel="noopener noreferrer">Join the Discord</a>
         <a class="btn ghost" href="https://hound-protocol.github.io/hound-protocol-web/">Meet Hound Protocol</a>
       </div>
@@ -92,9 +105,18 @@
 </main>
 
 <footer class="foot">
-  <p>AFTERHAUL by Hound Protocol. Pre-release website <span id="siteVersion">0.0.2-pre</span>.</p>
+  <p>AFTERHAUL by Hound Protocol. Pre-release website <span id="siteVersion">0.1.0-pre</span>.</p>
   <p>AFTERHAUL and the Hound Protocol name and logo are reserved. No cookies, analytics or trackers.</p>
 </footer>
+
+<div class="hud" id="hud" aria-hidden="true">
+  <span class="odo"><b id="odo">0000</b><em>km</em></span>
+  <svg class="gauge" viewBox="0 0 120 72"><g id="ticks"></g><path class="arc" d="M12 64 A48 48 0 0 1 108 64"/><g id="needle"><line x1="60" y1="64" x2="60" y2="22"/></g><circle cx="60" cy="64" r="5"/></svg>
+  <span class="eng" id="eng">Engine off</span>
+</div>
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><filter id="heat" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence id="heatNoise" type="fractalNoise" baseFrequency="0.004 0.03" numOctaves="1" seed="3"/><feDisplacementMap in="SourceGraphic" scale="0"/></filter></svg>
+
 <script src="assets/js/afterhaul.js"></script>
 </body>
 </html>
