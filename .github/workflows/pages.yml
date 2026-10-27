@@ -25,6 +25,7 @@ jobs:
         run: |
           mkdir _site
           cp -r index.html robots.txt assets _site/
+          mkdir -p _site/tools && cp -r tools/scene-editor _site/tools/   # the scene editor is served for testing; remove this line before launch
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
