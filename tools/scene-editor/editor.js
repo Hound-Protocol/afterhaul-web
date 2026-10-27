@@ -64,7 +64,7 @@ const S = {
 };
 const camEnt = {
   id: 'cam', type: 'camera', name: 'Shot camera', root: shotCam, keys: [],
-  params: { fov: 40, lookAt: '', lookY: 1.2, drift: 0, push: 0 },
+  params: { fov: 40, lookAt: '', lookY: 1.2, drift: 0, push: 0, pan: 0, tilt: 0, roll: 0 },
 };
 shotCam.userData.eid = 'cam';
 S.objects.push(camEnt);
@@ -152,7 +152,7 @@ function buildFence(p) { // posts and boards are separate pieces so they can bre
   g.userData.pieces = pieces; return g;
 }
 const TYPES = {
-  truck:  { label: 'Truck (stand-in)', build: buildTruck, params: { follow: true, airAt: 1000, wheelSpin: 12 } },
+  truck:  { label: 'Truck (stand-in)', build: buildTruck, params: { follow: true, airAt: 1000, wheelSpin: 6 } },
   fence:  { label: 'Fence', build: buildFence, params: { segments: 6, impact: 2, breaker: '', power: 7, up: 6, spin: 8, reach: 4, seed: 1, conform: true, driftSpin: 0.35, driftMove: 0.12 } },
   hill:   { label: 'Hill', build: buildHill, params: { height: 10, sigma: 12, stretch: 2.4, bumps: 0.7, corridor: 4, seed: 3 } },
   road:   { label: 'Road (from truck path)', build: () => new THREE.Group(), params: { breaker: '', width: 6, until: 3 }, instant: true, world: true },
@@ -188,6 +188,7 @@ function removeEntity(ent) {
 const snapshot = (ent, t) => ({
   t, p: ent.root.position.toArray(), q: ent.root.quaternion.toArray(), s: ent.root.scale.toArray(),
   f: ent.id === 'cam' ? shotCam.fov : undefined,
+  c: ent.id === 'cam' ? [ent.params.pan || 0, ent.params.tilt || 0, ent.params.roll || 0] : undefined,
 });
 function addKey(ent, t = S.t) {
   t = Math.round(t * 100) / 100;
@@ -212,11 +213,14 @@ function poseAt(ent, t) {
   const a = ks[i], b = ks[i + 1], u = (t - a.t) / (b.t - a.t);
   const p0 = (ks[i - 1] || a).p, p3 = (ks[i + 2] || b).p;
   const q = new Q().fromArray(a.q).slerp(new Q().fromArray(b.q), u);
-  return { p: catmull(p0, a.p, b.p, p3, u), q: q.toArray(), s: lerp3(a.s, b.s, u), f: a.f !== undefined ? a.f + (b.f - a.f) * u : undefined };
+  return { p: catmull(p0, a.p, b.p, p3, u), q: q.toArray(), s: lerp3(a.s, b.s, u), f: a.f !== undefined ? a.f + (b.f - a.f) * u : undefined, c: a.c && b.c ? lerp3(a.c, b.c, u) : a.c };
 }
 function applyPose(ent, pose) {
   ent.root.position.fromArray(pose.p); ent.root.quaternion.fromArray(pose.q); ent.root.scale.fromArray(pose.s);
-  if (ent.id === 'cam' && pose.f !== undefined) { shotCam.fov = pose.f; shotCam.updateProjectionMatrix(); }
+  if (ent.id === 'cam') {
+    if (pose.f !== undefined) { shotCam.fov = pose.f; shotCam.updateProjectionMatrix(); }
+    if (pose.c) [ent.params.pan, ent.params.tilt, ent.params.roll] = pose.c;
+  }
 }
 const isTruck = o => o.type === 'truck' || (o.type === 'glb' && o.params.truck);
 function followPose(pose) { // sit the truck on the ground: height, pitch and roll from the terrain, heading from the keys
@@ -236,17 +240,29 @@ function evaluateAll(t) {
   aimCamera();
   camHelper.update();
 }
-function aimCamera() {
-  const tgt = camEnt.params.lookAt && byId(camEnt.params.lookAt);
-  if (tgt) { const v = new V3(); tgt.root.getWorldPosition(v); v.y += camEnt.params.lookY; shotCam.lookAt(v); }
+const rad = THREE.MathUtils.degToRad;
+function liveUpdate(t) { // while frozen: only the slow residual motion, so nothing you edit is overwritten
+  for (const ent of S.objects) { if (ent.root.userData.wheels) updateWheels(ent, t); if (ent.type === 'fence') updateFence(ent, t); }
 }
+function aimCamera() { // with Look at set, the camera aims at the object; Pan, Tilt and Roll then turn it from there
+  const tgt = camEnt.params.lookAt && byId(camEnt.params.lookAt);
+  if (!tgt) return;
+  const v = new V3(); tgt.root.getWorldPosition(v); v.y += camEnt.params.lookY; shotCam.lookAt(v);
+  const { pan = 0, tilt = 0, roll = 0 } = camEnt.params;
+  shotCam.rotateY(rad(pan)); shotCam.rotateX(rad(tilt)); shotCam.rotateZ(rad(roll));
+}
+// Sway and push-in while frozen are applied only while drawing, then taken back, so the camera you edit never moves.
 function applyDrift() {
-  const amt = frozenAmount();
-  const { drift, push } = camEnt.params;
-  if ((!drift && !push) || amt < 0.01) return;
-  const right = new V3(1, 0, 0).applyQuaternion(shotCam.quaternion), fwd = new V3(0, 0, -1).applyQuaternion(shotCam.quaternion);
-  shotCam.position.addScaledVector(right, Math.sin(S.frozenFor * 0.45) * drift * amt).addScaledVector(fwd, push * S.frozenFor);
-  aimCamera();
+  const amt = frozenAmount(), { drift, push } = camEnt.params;
+  if ((!drift && !push) || amt < 0.01) return () => {};
+  const p0 = shotCam.position.clone(), q0 = shotCam.quaternion.clone();
+  const right = new V3(1, 0, 0).applyQuaternion(q0), fwd = new V3(0, 0, -1).applyQuaternion(q0);
+  const tgt = camEnt.params.lookAt && byId(camEnt.params.lookAt); let maxPush = Infinity;
+  if (tgt) { const v = new V3(); tgt.root.getWorldPosition(v); maxPush = p0.distanceTo(v) * 0.4; }
+  const pushM = clamp(push * Math.min(S.frozenFor, 8), -maxPush, maxPush);
+  shotCam.position.addScaledVector(right, Math.sin(S.frozenFor * 0.45) * drift * amt).addScaledVector(fwd, pushM);
+  shotCam.updateMatrixWorld(true);
+  return () => { shotCam.position.copy(p0); shotCam.quaternion.copy(q0); shotCam.updateMatrixWorld(true); };
 }
 
 /* ---------------- ground height (hills) ---------------- */
@@ -406,7 +422,11 @@ tc.addEventListener('objectChange', () => {
   const ent = S.selected; if (!ent) return;
   if (S.autoKey) addKey(ent);
   else if (ent.keys.length) toast('Not keyed. Press K (or turn on Auto-key) or it snaps back when time moves.');
-  if (ent.type === 'fence' || ent.type === 'truck') evaluateAll(S.t);
+  if (ent.type === 'fence' || isTruck(ent)) evaluateAll(S.t);
+  if (ent.id === 'cam') {
+    if (ent.params.lookAt && S.mode === 'rotate') toast('The camera is aimed at an object. Use Pan, Tilt and Roll, or set Look at to Free aim.');
+    aimCamera(); camHelper.update();
+  }
   syncInspector(); markDirty();
 });
 const selBox = new THREE.BoxHelper(new THREE.Object3D(), 0xf0a202); selBox.visible = false; scene.add(selBox);
@@ -487,7 +507,12 @@ const afterEdit = ent => { if (S.autoKey) addKey(ent); if (ent.keys.length === 0
 function paramRow(ent, key, label, min, max, step) {
   const i = numInput(ent.params[key], step, v => {
     ent.params[key] = clamp(v, min, max);
-    if (ent.type === 'camera' && key === 'fov') { shotCam.fov = ent.params.fov; shotCam.updateProjectionMatrix(); }
+    if (ent.type === 'camera') {
+      if (key === 'fov') { shotCam.fov = ent.params.fov; shotCam.updateProjectionMatrix(); }
+      if (S.autoKey && ['pan', 'tilt', 'roll'].includes(key)) addKey(ent);
+      else if (ent.keys.length && ['pan', 'tilt', 'roll', 'fov'].includes(key)) toast('Not keyed yet. Press K (or turn on Auto-key) to keep it.');
+      aimCamera(); camHelper.update(); markDirty(); return;
+    }
     if (ent.type === 'hill') rebuildHill(ent);
     evaluateAll(S.t); markDirty();
   });
@@ -519,6 +544,8 @@ function renderInspector() {
     const sel = document.createElement('select'); sel.innerHTML = '<option value="">Free aim</option>' + S.objects.filter(o => o.id !== 'cam').map(o => `<option value="${o.id}">${o.name}</option>`).join('');
     sel.value = ent.params.lookAt; sel.onchange = () => { ent.params.lookAt = sel.value; evaluateAll(S.t); markDirty(); }; insp.append(rowOf('Look at', sel));
     insp.append(paramRow(ent, 'lookY', 'Aim height', -5, 20, 0.1));
+    insp.append(section('Turn the camera'), paramRow(ent, 'pan', 'Pan (deg)', -180, 180, 1), paramRow(ent, 'tilt', 'Tilt (deg)', -90, 90, 1), paramRow(ent, 'roll', 'Roll (deg)', -180, 180, 1));
+    const th = document.createElement('p'); th.className = 'hint'; th.textContent = 'Pan, Tilt and Roll work with Look at; press K to key them. With Free aim, turn the camera with the rotate gizmo (E).'; insp.append(th);
     insp.append(section('While frozen'));
     insp.append(paramRow(ent, 'drift', 'Sway (m)', 0, 5, 0.05), paramRow(ent, 'push', 'Push-in (m/s)', -2, 2, 0.02));
     const p = document.createElement('p'); p.className = 'hint'; p.textContent = 'Sway and push-in only run while time is frozen, so the picture stays alive.'; insp.append(p);
@@ -649,8 +676,9 @@ function frame(now) {
   const amt = frozenAmount();
   if (amt > 0.001) S.frozenFor = Math.min(S.frozenFor + dt * amt, 30);
   else if (!S.playing && S.frozenFor > 0) { S.frozenFor = 0; S.needEval = true; }
-  if (S.playing || amt > 0.001 || S.view === 'shot' || S.needEval) { evaluateAll(S.t); S.needEval = false; if (S.playing) updateHead(); }
-  if ((S.view === 'shot' || S.pip) && amt > 0.01) applyDrift();
+  if (S.playing) { evaluateAll(S.t); updateHead(); }
+  else if (S.needEval) { evaluateAll(S.t); S.needEval = false; }
+  else if (amt > 0.001) liveUpdate(S.t);
   if (S.selected && S.selected.id !== 'cam' && S.selected.root.children.length < 400) selBox.setFromObject(S.selected.root);
   orbit.update();
   render();
@@ -670,7 +698,7 @@ function render() {
     const x = (w - vw) / 2, y = (h - vh) / 2;
     shotCam.aspect = vw / vh; shotCam.updateProjectionMatrix();
     renderer.setViewport(x, y, vw, vh); renderer.setScissor(x, y, vw, vh); renderer.setScissorTest(true);
-    renderer.render(scene, shotCam); pipEl.hidden = true;
+    const undo = applyDrift(); renderer.render(scene, shotCam); undo(); pipEl.hidden = true;
   } else {
     edCam.aspect = w / h; edCam.updateProjectionMatrix(); renderer.render(scene, edCam);
     pipEl.hidden = !S.pip;
@@ -680,7 +708,7 @@ function render() {
       grid.visible = false; camHelper.visible = false; camBody.visible = false; tc.getHelper().visible = false; selBox.visible = false;
       shotCam.aspect = pw / ph; shotCam.updateProjectionMatrix();
       renderer.setViewport(w - pw - m, m, pw, ph); renderer.setScissor(w - pw - m, m, pw, ph); renderer.setScissorTest(true);
-      renderer.render(scene, shotCam); renderer.setScissorTest(false);
+      const undo = applyDrift(); renderer.render(scene, shotCam); undo(); renderer.setScissorTest(false);
       flags();
     }
   }
@@ -696,7 +724,7 @@ document.querySelectorAll('[data-view]').forEach(b => b.onclick = () => setView(
 function setView(v) {
   S.view = v; document.querySelectorAll('[data-view]').forEach(x => x.classList.toggle('on', x.dataset.view === v));
   camBody.visible = v === 'free';
-  if (v === 'shot') { tc.detach(); S.frozenFor = 0; evaluateAll(S.t); } else if (S.selected && !S.selected.noGizmo) tc.attach(S.selected.root);
+  if (v === 'shot') { tc.detach(); evaluateAll(S.t); } else if (S.selected && !S.selected.noGizmo) tc.attach(S.selected.root);
 }
 $('#snap').onchange = e => { tc.setTranslationSnap(e.target.checked ? 0.5 : null); tc.setRotationSnap(e.target.checked ? THREE.MathUtils.degToRad(15) : null); tc.setScaleSnap(e.target.checked ? 0.1 : null); };
 $('#letterbox').onchange = e => { S.letterbox = e.target.checked; };
@@ -756,7 +784,7 @@ function serialize() {
 function clearScene() {
   S.objects.filter(o => o.id !== 'cam').forEach(o => scene.remove(o.root));
   S.objects = [camEnt]; S.selected = null; S.selKey = null; tc.detach(); S.nextId = 1;
-  camEnt.keys = []; camEnt.params = { fov: 40, lookAt: '', lookY: 1.2, drift: 0, push: 0 };
+  camEnt.keys = []; camEnt.params = { fov: 40, lookAt: '', lookY: 1.2, drift: 0, push: 0, pan: 0, tilt: 0, roll: 0 };
   S.freezeAt = null; S.manualFreeze = false; S.manualScale = 1; S.frozenFor = 0;
 }
 function resetScene() { clearScene(); defaultScene(); rebuildTimeline(); renderInspector(); setTime(0); markDirty(); }
@@ -789,7 +817,7 @@ $('#fileGlb').onchange = e => {
     gltf.scene.traverse(o => { if (o.isMesh) { o.castShadow = o.receiveShadow = true; } });
     const g = new THREE.Group(); g.add(gltf.scene);
     TYPES.glb = TYPES.glb || { label: 'Model', build: () => g, params: {} };
-    const ent = createEntity('crate', { name: f.name.replace(/\.(glb|gltf)$/i, ''), root: g, file: f.name, params: { truck: false, follow: true, airAt: 1000, wheelSpin: 12 } }); ent.type = 'glb'; findWheels(g);
+    const ent = createEntity('crate', { name: f.name.replace(/\.(glb|gltf)$/i, ''), root: g, file: f.name, params: { truck: false, follow: true, airAt: 1000, wheelSpin: 6 } }); ent.type = 'glb'; findWheels(g);
     const b = new THREE.Box3().setFromObject(g); toast(`Loaded ${f.name}: ${b.getSize(new V3()).toArray().map(v => v.toFixed(1)).join(' x ')} m. Add it to the site folder to publish.`);
     select(ent); rebuildTimeline(); markDirty();
   }, undefined, () => toast('Could not read that model.'));
@@ -810,10 +838,10 @@ function defaultScene() { // a long hill, a fence near the crest, a clear road, 
   createEntity('forest');
   const I = new Q().toArray(), cx = 11, cz = 26;
   camEnt.keys = [
-    { t: 0, p: [cx, gy(cx, cz) + 1.4, cz], q: I, s: [1, 1, 1], f: 42 },
-    { t: 2.55, p: [9, gy(9, 3) + 1.0, 3], q: I, s: [1, 1, 1], f: 32 },
+    { t: 0, p: [cx, gy(cx, cz) + 1.4, cz], q: I, s: [1, 1, 1], f: 42, c: [0, 0, 0] },
+    { t: 2.55, p: [9, gy(9, 3) + 1.0, 3], q: I, s: [1, 1, 1], f: 32, c: [0, 0, 0] },
   ];
-  camEnt.params.lookAt = truck.id; camEnt.params.lookY = 1.6; camEnt.params.drift = 0.4; camEnt.params.push = 0.1;
+  camEnt.params.lookAt = truck.id; camEnt.params.lookY = 1.6; camEnt.params.drift = 0.3; camEnt.params.push = 0.05;
   S.freezeAt = 2.55; S.ramp = 0.5; S.duration = 7;
   $('#dur').value = S.duration; $('#ramp').value = S.ramp;
 }

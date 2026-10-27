@@ -2,6 +2,11 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.0.5-pre · Scene editor, camera fixes · 2026-10-27
+- **Camera bug fixed:** while time is frozen, the camera you move stays where you put it. Sway and push-in are applied only while drawing and never move the real camera (push-in is also limited so it cannot reach the aimed object).
+- **Pan, Tilt and Roll** for the shot camera (keyed with K). They work with Look at. With Free aim, use the rotate gizmo.
+- Wheels turn at half speed while frozen (6 m/s by default).
+
 ## 0.0.4-pre · Scene editor, second pass · 2026-10-27
 - **Camera preview:** the shot camera's view in a corner of the free view (click it to look through the camera).
 - **Hill:** long ridge with rolling bumps and a smoother lane for the road. Fence follows the slope. Truck follows the ground (height, pitch, roll) until a set time, then flies on its keys.
