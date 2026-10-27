@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.16-pre · Operators text · 2026-10-27
+- "Heavy Cargo Operator" is now "Heavy Ordnance Operator". The talk paragraph is replaced by the line about operators being capable alone while specialists outperform at their specialty.
+
 ## 0.1.15-pre · Warzone firefight · 2026-10-27
 - Frontline: tanks and soldiers stand still in the far background behind the rocks (no wobble) and shoot at each other: rifle bursts with muzzle flashes and tracers, tank shells with impact flashes.
 
