@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.17-pre · Progress text · 2026-10-27
+- "Where we are" now says the game is in early development stages and that updates will be posted here and at the BETA launch on Steam.
+
 ## 0.1.16-pre · Operators text · 2026-10-27
 - "Heavy Cargo Operator" is now "Heavy Ordnance Operator". The talk paragraph is replaced by the line about operators being capable alone while specialists outperform at their specialty.
 
