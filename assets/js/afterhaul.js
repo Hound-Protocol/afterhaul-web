@@ -130,7 +130,7 @@
       return p;
     }
     function size() { var dpr = Math.min(window.devicePixelRatio || 1, 2); w = el.clientWidth; h = el.clientHeight; c.width = Math.round(w * dpr); c.height = Math.round(h * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); trees = null; parts = []; for (var i = 0; i < cfg; i++) parts.push(spawn({}, true)); }
-    var now = 0, nextShell = 1200, cols = [], trees = null, shells = [], blasts = [], clods = [], smoke = [], tracers = [], flash = 0;
+    var now = 0, nextShell = 1200, mud = [], cols = [], trees = null, shells = [], blasts = [], clods = [], smoke = [], tracers = [], flash = 0;
     function mkTrees() { trees = []; var rr = rng(99), L, n, i; for (L = 0; L < 2; L++) { n = Math.ceil(w / (L ? 38 : 30)); for (i = 0; i < n; i++) trees.push({ L: L, x: (i + rr() * 0.8) * (w / n), hh: (L ? 120 : 90) + rr() * 80, ww: (L ? 34 : 26) + rr() * 16, ph: rr() * 6.28 }); } trees.sort(function (a, b) { return a.L - b.L; }); }
     function drawTrees(t) {
       if (!trees) mkTrees();
@@ -153,28 +153,24 @@
     }
     function boom(x, y) {
       var i;
-      cols.push({ x: x, y: y, t0: now, ph: r() * 6.28 }); flash = 0.6;
+      var vmax = 3.2, v, k; flash = 0.6;
+      for (i = 0; i < 170; i++) { v = 0.5 + vmax * Math.pow(r(), 1.7); k = v / vmax; mud.push({ x: x + (r() - 0.5) * 7, y: y, vx: (r() - 0.5) * 0.45 * (0.35 + k), vy: -v, s: (6.5 * (1 - 0.82 * k) + 1) * (0.7 + 0.6 * r()), d: r() * 24, gy: y + r() * 5, k: k }); }
       blasts.push({ x: x, y: y, a: 0 });
-      for (i = 0; i < 7; i++) clods.push({ x: x + (r() - 0.5) * 6, y: y, vx: (r() - 0.5) * 3, vy: -(2 + r() * 3), s: 2 + r() * 2, rot: 0 });
+      for (i = 0; i < 48; i++) clods.push({ x: x + (r() - 0.5) * 10, y: y, vx: (r() - 0.5) * 7, vy: -(3 + r() * 8), s: 1.5 + r() * 4.5, rot: 0 });
       for (i = 0; i < 5; i++) smoke.push({ x: x + (r() - 0.5) * 30, y: y - r() * 6, vx: (r() - 0.5) * 0.6, vy: -0.25 - r() * 0.3, s: 9 + r() * 10, a: 0.4 });
     }
     function drawCols() {
-      var i, c, age, k, rise, H, n = 30, j, f, yy, xx, rad, g;
-      for (i = cols.length - 1; i >= 0; i--) {
-        c = cols[i]; age = (now - c.t0) / 1000;
-        k = age > 3.4 ? 1 - (age - 3.4) / 1.8 : 1; if (k <= 0) { cols.splice(i, 1); continue; }
-        rise = 1 - Math.pow(1 - Math.min(age / 3, 1), 3); H = h * 0.6 * rise;
-        ctx.globalAlpha = k;
-        ctx.fillStyle = "rgba(60,40,24,.55)"; ctx.beginPath(); ctx.ellipse(c.x, c.y + 2, 26 + 24 * rise, 5 + 4 * rise, 0, 0, 6.283); ctx.fill();
-        for (j = 0; j <= n; j++) {
-          f = j / n; yy = c.y - H * f; xx = c.x + Math.sin(f * 6 + c.ph + age * 1.3) * 3 * f + Math.sin(f * 17 + age * 3) * 1.2;
-          rad = (4 + 9 * Math.pow(1 - f, 2.2) + 7 * f * f * rise) * (0.85 + 0.25 * Math.sin(j * 1.9 + c.ph));
-          ctx.fillStyle = "#5a3d26"; ctx.beginPath(); ctx.arc(xx, yy, rad, 0, 6.283); ctx.fill();
-          ctx.fillStyle = "rgba(255,150,60," + (0.4 * (1 - f) + 0.08) + ")"; ctx.beginPath(); ctx.arc(xx - rad * 0.35, yy, rad * 0.55, 0, 6.283); ctx.fill();
-        }
-        if (age > 1 && age < 3.8 && r() < 0.35) clods.push({ x: c.x + (r() - 0.5) * 14, y: c.y - H * (0.5 + r() * 0.5), vx: (r() - 0.5) * 1.2, vy: 0, s: 2 + r() * 2.5, rot: 0 });
-        ctx.globalAlpha = 1;
+      var i, p, a;
+      for (i = mud.length - 1; i >= 0; i--) {
+        p = mud[i];
+        if (p.d > 0) { p.d--; continue; }
+        p.x += p.vx; p.y += p.vy; p.vy += 0.021; p.vx *= 0.998;
+        if (p.vy > 0 && p.y >= p.gy) { mud.splice(i, 1); continue; }
+        a = p.vy > 0 ? Math.min(1, (p.gy - p.y) / 40 + 0.35) : 1;
+        ctx.globalAlpha = a; ctx.fillStyle = "#5a3d26"; ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, 6.283); ctx.fill();
+        if (p.k < 0.6) { ctx.fillStyle = "rgba(255,150,60," + (0.3 * (1 - p.k)) + ")"; ctx.beginPath(); ctx.arc(p.x - p.s * 0.3, p.y, p.s * 0.5, 0, 6.283); ctx.fill(); }
       }
+      ctx.globalAlpha = 1;
     }
     function drawFront(t) {
       var i, p, g;

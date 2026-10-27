@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.12-pre · Mud pillar and debris · 2026-10-27
+- Frontline: the mud pillar is now made of particles that rise slowly, get smaller and more scattered toward the top, then fall back as the pillar sinks. Six times more flying debris.
+
 ## 0.1.11-pre · Story · 2026-10-27
 - About section: the twist (illicit cargo, choices shape each region), the country at war and the recovery task force, campaign and side quests, and the characters you meet.
 
