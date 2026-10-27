@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.6-pre · Cache busting · 2026-10-27
+- Stylesheet and script links carry a version, so browsers load new files straight after a deploy instead of showing an old copy for up to 10 minutes.
+
 ## 0.1.5-pre · Tighter spacing · 2026-10-27
 - Section padding cut from 120 px to 48-80 px top and bottom, which removes the large empty bands between sections.
 
