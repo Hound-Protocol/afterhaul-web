@@ -2,6 +2,13 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.0.4-pre · Scene editor, second pass · 2026-10-27
+- **Camera preview:** the shot camera's view in a corner of the free view (click it to look through the camera).
+- **Hill:** long ridge with rolling bumps and a smoother lane for the road. Fence follows the slope. Truck follows the ground (height, pitch, roll) until a set time, then flies on its keys.
+- **Road and forest:** a road drawn along the truck path, and trees and rocks scattered by seed, kept clear of the whole route.
+- **Freeze:** pieces keep spinning and drifting very slowly, and the wheels keep turning, while time is frozen.
+- **New demo scene** button. The old demo scene is replaced (saved scenes from version 1 are not loaded).
+
 ## 0.0.3-pre · Scene editor · 2026-10-27
 - **Scene editor** (`tools/scene-editor/`, not deployed): spawn objects, move and rotate with gizmos, shot camera with FOV and look-at, keyframe timeline, a baked fence break, and a freeze with slow-down. Saves a scene JSON. Stand-in truck; load the real GLB with Add GLB.
 - Public page unchanged.

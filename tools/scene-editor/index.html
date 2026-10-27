@@ -26,9 +26,11 @@
       <button id="frame" title="Frame the selected object (F)">Frame</button>
       <button id="camFromView" title="Copy the free view into the shot camera">Shot camera from view</button>
       <label class="chk"><input type="checkbox" id="letterbox"> 2.39:1 bars</label>
+      <label class="chk" title="Show what the shot camera sees in a corner of the free view"><input type="checkbox" id="pipOn" checked> Camera preview</label>
     </span>
     <span class="grp" role="group" aria-label="Scene">
       <button id="freezeBtn" title="Freeze or release time (H)">Freeze</button>
+      <button id="resetBtn" title="Replace the scene with the new demo scene">New demo scene</button>
       <button id="saveBtn">Save</button>
       <button id="loadBtn">Load</button>
       <button id="glbBtn" title="Load a GLB model as a new object">Add GLB</button>
@@ -46,7 +48,7 @@
     <p class="hint">W move, E rotate, R scale, K key, Space play, H freeze, F frame, Delete remove.</p>
   </aside>
 
-  <main id="stage"><canvas id="view"></canvas><div id="gimmick"></div></main>
+  <main id="stage"><canvas id="view"></canvas><div id="pip" title="Click to look through the shot camera"><span>Shot camera</span></div><div id="gimmick"></div></main>
 
   <aside id="right">
     <h2 id="inspTitle">Nothing selected</h2>

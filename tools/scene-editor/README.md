@@ -15,6 +15,9 @@ A small tool to build the fence-break animation for the AFTERHAUL site (and to p
 - **Fence break**: baked from the truck's path at the impact time. Burst, Lift, Spin, Reach and Seed shape it. The same seed always gives the same break. Pieces follow a recorded path, so freezing is just stopping the playhead.
 - **Model**: Add GLB loads your truck as a new object. Keep the GLB in the repo for the public page; the scene JSON stores only its file name.
 
+## Also
+- **Camera preview** in the free view. **Road** follows the truck path. **Forest and rocks** keep clear of the route. The **truck follows the ground** until its Airborne time. While frozen, wheels keep turning and broken pieces drift and spin slowly (Pieces spin, Pieces drift on the fence).
+
 ## Not built yet
 Mud and dust particles, a public-page player for the JSON, cargo boxes that burst, easing per key, and a render of the frozen frame as the phone screenshot.
 
