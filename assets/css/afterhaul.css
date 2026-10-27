@@ -12,7 +12,7 @@
   --amber: #f0a202; --rust: #9a3d1e; --mud: #3a2c1d;
   --ui: "Barlow Semi Condensed", "Arial Narrow", Arial, sans-serif;
   --mono: "Share Tech Mono", ui-monospace, Consolas, monospace;
-  --gutter: 16px; --measure: 66ch; --hud: 54px;
+  --gutter: 16px; --measure: 66ch; --hud: 54px; --warn-h: 34px;
   --shake-x: 0px; --shake-y: 0px;
 }
 *, *::before, *::after { box-sizing: border-box; }
@@ -32,7 +32,7 @@ a:hover { color: #fff; }
 @keyframes grain { 0% { transform: translate(0, 0); } 20% { transform: translate(-3%, 2%); } 40% { transform: translate(2%, -3%); } 60% { transform: translate(-2%, -1%); } 80% { transform: translate(3%, 3%); } 100% { transform: translate(0, 0); } }
 
 /* ---------- Top bar ---------- */
-.bar { position: fixed; top: 0; left: 0; right: 0; z-index: 40; display: flex; align-items: center; gap: 24px; padding: 14px clamp(16px, 4vw, 48px); background: linear-gradient(var(--soot) 35%, rgba(20,17,12,0)); }
+.bar { position: fixed; top: var(--warn-h); left: 0; right: 0; z-index: 40; display: flex; align-items: center; gap: 24px; padding: 14px clamp(16px, 4vw, 48px); background: linear-gradient(var(--soot) 35%, rgba(20,17,12,0)); }
 .mark { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--frost); font: 500 17px/1 var(--ui); letter-spacing: .3em; text-transform: uppercase; }
 .mark svg { width: 28px; height: 28px; }
 .mark path:first-child { fill: var(--amber); }
@@ -193,3 +193,6 @@ a:hover { color: #fff; }
 .ops svg { width: 44px; height: 44px; fill: none; stroke: var(--amber); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-bottom: .8rem; }
 .ops h3 { margin: 0 0 .3rem; font-size: 1.15rem; font-weight: 500; color: var(--frost); }
 .ops p { margin: 0; font-size: 1rem; line-height: 1.45; color: var(--dust); }
+
+.warn { position: fixed; top: 0; left: 0; right: 0; z-index: 50; min-height: var(--warn-h); display: flex; align-items: center; justify-content: center; padding: 6px 16px; text-align: center; background: #b3261e; color: #fff; font: 500 14px/1.25 var(--ui, sans-serif); letter-spacing: .02em; }
+@media (max-width: 620px) { :root { --warn-h: 46px; } }

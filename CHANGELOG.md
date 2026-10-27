@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.1.3-pre · Work-in-progress notice · 2026-10-27
+- Red notice at the top: work in progress, placeholders and incomplete features. Nav link "The game" renamed "About".
+
 ## 0.1.2-pre · Operators and living regions · 2026-10-27
 - "A team you can count on": eight operator classes with icons drawn in code (no generated art) and one-line roles.
 - Frontline is a warzone: falling shells, mud thrown high, smoke, passing tracers. Timber country has wind and swaying trees. The northern wild has near-horizontal storm rain. The desert has an intense sun. The deep cold is now the arctic, with snow, aurora and an icy road.
