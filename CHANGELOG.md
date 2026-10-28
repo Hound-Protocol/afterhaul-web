@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.7.9-pre · Crash video wording · 2026-10-28
+- Reworded the text above the crash-reaction video in Sound design.
+
 ## 0.7.8-pre · Temporary cover art · 2026-10-28
 - Visual design (About) shows the temporary cover art, labelled as AI-generated (AIGC) and as a stand-in, not final art.
 
