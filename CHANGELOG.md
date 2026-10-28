@@ -2,6 +2,11 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.4.7-pre · Compact first screen · 2026-10-28
+- On desktop the first screen is more compact: the heading is sized to the window height and the spacing is tighter, so the section buttons show without scrolling on a 16:9 monitor.
+- The section buttons now grow about 10% when pointed at. They no longer lift, and the grid texture on the Wiki button no longer shifts.
+- Fixed: pressing All sections no longer scrolls the page. The view stays where it was while the section folds away.
+
 ## 0.4.6-pre · New-version notice, tilt, even dashes · 2026-10-28
 - A pulsing "New website version available" bar with a Reload button appears under the red bar when a newer version is live. The page checks every few minutes and when you return to the tab.
 - On phones the hills move as you tilt the device, like they do with the mouse on a computer. iPhones ask for motion permission on the first tap. Reduced-motion settings turn it off. The hills never slide far enough to show an edge.

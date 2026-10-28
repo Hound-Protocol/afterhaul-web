@@ -448,6 +448,7 @@
     var tabsEl = $(".tabs"), back = $("#tabback"), pwrap = $("#pwrap"), picked = null, mobile = function () { return innerWidth <= 860; };
     function sizeAll() { weather.forEach(function (w) { w.size(); }); measure(); }
     function showTab(k) {
+      doc.body.style.minHeight = "";
       if (picked === k) return;
       doc.dispatchEvent(new Event("ah:stopvideos"));
       var sel = tabs.filter(function (t) { return t.getAttribute("data-tab") === k; })[0]; if (!sel) return;
@@ -477,7 +478,16 @@
       }, reduce ? 0 : 560);
       history.replaceState(null, "", location.pathname);
     }
-    back.addEventListener("click", function () { unpick(); var ex = $("#explore"); ex.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); });
+    back.addEventListener("click", function () {
+      /* Keep the view where it is while the panel folds away: hold the page height until the reader scrolls back up. */
+      var de = doc.documentElement, h = de.scrollHeight;
+      if (window.scrollY > 0) {
+        doc.body.style.minHeight = h + "px";
+        var release = function () { if (window.scrollY <= 120) { doc.body.style.minHeight = ""; window.removeEventListener("scroll", release); } };
+        window.addEventListener("scroll", release, { passive: true });
+      }
+      unpick();
+    });
     tabs.forEach(function (t, i) {
       t.addEventListener("click", function () { if (picked) return; showTab(t.getAttribute("data-tab")); history.replaceState(null, "", "#" + t.getAttribute("data-tab")); setTimeout(function () { var ex = $("#explore"); ex.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); }, 60); });
       t.addEventListener("keydown", function (e) {
