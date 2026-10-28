@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.7.7-pre · Links inside guides · 2026-10-28
+- Links between guides ("Where to read next") now open that guide inside the reader instead of closing it.
+
 ## 0.7.6-pre · Two more inspiration videos · 2026-10-28
 - Sound design (About) now shows two more videos under the three truck videos: artillery sound and first-person crash reactions. Videos load only when played.
 

@@ -556,12 +556,17 @@
         $$("a", tocEl).forEach(function (a, i) { a.classList.toggle("on", i === cur); });
       }
       wsb.addEventListener("scroll", onReadScroll, { passive: true });
-      nextEl.addEventListener("click", function (e) {
-        var bt = e.target.closest("[data-go]"); if (!bt || !opened || busy) return;
-        var id2 = bt.getAttribute("data-go"), d2 = doc.getElementById(id2), c2 = cards.filter(function (c) { return c.getAttribute("data-doc") === id2; })[0]; if (!d2 || !c2) return;
+      function switchDoc(id2) {
+        if (!opened || busy || id2 === opened.id) return;
+        var d2 = doc.getElementById(id2), c2 = cards.filter(function (c) { return c.getAttribute("data-doc") === id2; })[0]; if (!d2 || !c2) return;
         if (opened.card) opened.card.classList.remove("lift", "pick", "centre");
         c2.classList.add("lift"); opened = { id: id2, card: c2 }; history.replaceState(null, "", "#" + id2);
         wsb.classList.add("swap"); setTimeout(function () { fillSheet(d2, id2); wsb.classList.remove("swap"); }, 130);
+      }
+      nextEl.addEventListener("click", function (e) { var bt = e.target.closest("[data-go]"); if (bt) switchDoc(bt.getAttribute("data-go")); });
+      $("#wcontent").addEventListener("click", function (e) {
+        var a = e.target.closest("a[href^='#doc-']"); if (!a) return;
+        e.preventDefault(); e.stopPropagation(); switchDoc(a.getAttribute("href").slice(1));
       });
       function openDoc(id, fromCard) {
         var d = doc.getElementById(id); if (!d || busy || opened) return; busy = true;
