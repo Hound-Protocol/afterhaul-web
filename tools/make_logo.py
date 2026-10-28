@@ -41,4 +41,14 @@ dark = slashes(pad) + f'<path d="{td}" fill="#14110c"/>'
 (out / "afterhaul-logo-for-light.svg").write_text(svg(W, H, dark.replace(SAND, "#7a6a4a")))  # for light backgrounds
 ms = 64; mark = f'<path d="M14 48 L30 14 h6 L22 48z" fill="{AMBER}"/><path d="M32 48 L44 22 h6 L38 48z" fill="{SAND}"/>'
 (out / "afterhaul-mark.svg").write_text(svg(ms, ms, mark, "#16130e"))
+# Square (GitHub profile picture, 1024 box): slashes above the name, kept inside the central circle so a round crop loses nothing.
+S = 1024; ms_ = 380 / SL_H                                  # scale slashes to 380 high
+tw_target = 560; sc2 = tw_target / (tw / scale)             # name width 560
+td2, tw2 = text_path("AFTERHAUL", sc2, 0, 0)
+x0 = (S - tw2) / 2; ty = 747
+td2, tw2 = text_path("AFTERHAUL", sc2, x0, ty)
+sx = (S - SL_W * ms_) / 2; sy = 277
+sq = (f'<g transform="translate({sx - pad * 0:.1f},{sy:.1f}) scale({ms_:.4f})"><path d="M0 {SL_H} L16 0 h6 L8 {SL_H}z" fill="{AMBER}"/><path d="M18 {SL_H} L30 8 h6 L24 {SL_H}z" fill="{SAND}"/></g>'
+      f'<path d="{td2}" fill="{FROST}"/>')
+(out / "afterhaul-square.svg").write_text(svg(S, S, sq, "#14110c"))
 print(f"logo {W:.0f}x{H:.0f}")

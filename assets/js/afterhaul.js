@@ -646,3 +646,11 @@
   setInterval(check, 180000);
   document.addEventListener("visibilitychange", function () { if (!document.hidden) check(); });
 })();
+
+/* Changelog times show in the reader's own time zone; the page text holds the UTC time as a fallback. */
+(function () {
+  Array.prototype.forEach.call(document.querySelectorAll(".cllatest time"), function (t) {
+    var d = new Date(t.getAttribute("datetime")); if (isNaN(d)) return;
+    try { t.textContent = d.toLocaleString(undefined, { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZoneName: "short" }); } catch (e) {}
+  });
+})();

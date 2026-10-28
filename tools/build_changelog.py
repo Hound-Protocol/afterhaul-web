@@ -2,7 +2,7 @@
 """Builds the Changelog panel of index.html: the website log (CHANGELOG.md) on the left and the
 selected, player-facing game log (content/game-changelog.md) on the right. Run after editing either file.
 The game's private working log is never published; content/game-changelog.md is curated by hand."""
-import html, re
+import datetime, html, json, re
 from pathlib import Path
 root = Path(__file__).resolve().parent.parent
 
@@ -18,19 +18,32 @@ def parse(text):
 def inline(t):
     t = html.escape(t, quote=False); t = re.sub(r"`([^`]+)`", r"<code>\1</code>", t); return re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", t)
 
-def doc(cls, code, title, intro, entries, owner):
+TIMES = root / "content" / "changelog-times.json"
+times = json.loads(TIMES.read_text(encoding="utf-8")) if TIMES.exists() else {}
+
+def stamp(key, ver):
+    """Time of the newest entry. Set the first time a version is seen, then kept, so rebuilding never changes it."""
+    t = times.get(key)
+    if not t or t["ver"] != ver:
+        t = times[key] = {"ver": ver, "time": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
+    return t["time"]
+
+def doc(cls, code, title, intro, entries, owner, key):
     n = len(entries); latest = entries[0]["ver"] if entries else ""
+    tm = stamp(key, latest) if latest else ""
+    when = (f'<p class="cllatest">Latest change: <time datetime="{tm}">{tm[:10]} {tm[11:16]} UTC</time></p>') if tm else ""
     rows = []
     for e in entries:
         meta = " · ".join(x for x in (e["title"], e["date"]) if x)
         rows.append(f'<section class="clv"><h4><span>{html.escape(e["ver"])}</span>{("<em>" + html.escape(meta) + "</em>") if meta else ""}</h4><ul>' + "".join(f"<li>{inline(i)}</li>" for i in e["items"]) + "</ul></section>")
-    return f'''<article class="cldoc paper {cls}"><span class="holes" aria-hidden="true"><i></i><i></i><i></i></span><header><p class="clcode">Code: {code} · Latest: {html.escape(latest)} · Owner: {owner} · For: players</p><h3>{title}</h3><p class="clint">{intro}</p><p class="clcount"><b>{n}</b> versions</p></header>
+    return f'''<article class="cldoc paper {cls}"><span class="holes" aria-hidden="true"><i></i><i></i><i></i></span><header><p class="clcode">Code: {code} · Latest: {html.escape(latest)} · Owner: {owner} · For: players</p><h3>{title}</h3>{when}<p class="clint">{intro}</p><p class="clcount"><b>{n}</b> versions</p></header>
 <div class="clbody">{"".join(rows)}</div></article>'''
 
 web = parse((root / "CHANGELOG.md").read_text(encoding="utf-8"))
 game = parse((root / "content" / "game-changelog.md").read_text(encoding="utf-8"))
-block = ('<div class="clgrid">' + doc("cl-web", "AH-CL-001", "Website changelog", "Every change to this website.", web, "Web team")
-  + doc("cl-game", "AH-CL-002", "Game changelog", "Selected changes to the game design. The full working log is private.", game, "Design team") + "</div>")
+block = ('<div class="clgrid">' + doc("cl-web", "AH-CL-001", "Website changelog", "Every change to this website.", web, "Web team", "web")
+  + doc("cl-game", "AH-CL-002", "Game changelog", "Selected changes to the game design. The full working log is private.", game, "Design team", "game") + "</div>")
+TIMES.write_text(json.dumps(times, indent=1) + "\n", encoding="utf-8")
 p = root / "index.html"; h = p.read_text(encoding="utf-8")
 h = re.sub(r"<!-- LOG:START -->.*<!-- LOG:END -->", lambda m: "<!-- LOG:START -->\n" + block + "\n<!-- LOG:END -->", h, flags=re.S)
 p.write_text(h, encoding="utf-8"); print("changelog built:", len(web), "website versions,", len(game), "game versions")

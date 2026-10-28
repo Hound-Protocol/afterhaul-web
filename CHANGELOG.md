@@ -2,6 +2,10 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.4.9-pre · Changelog times · 2026-10-28
+- Each changelog document shows the time of its newest entry in red under its name. The time appears in your own time zone.
+- Added a square logo (1024 px, the slashes above the name, safe for a round crop) for GitHub and other profile pictures.
+
 ## 0.4.8-pre · Logo files · 2026-10-28
 - The header mark becomes the AFTERHAUL logo: the two slashes (amber and sand) and the name in Barlow Semi Condensed Medium with wide spacing, letters turned into outlines so no font is needed. Files in assets/img/brand/: logo (transparent, for dark backgrounds), logo on dark, logo for light backgrounds, and the slash mark alone, each as SVG and PNG. Made by tools/make_logo.py. The page itself looks the same.
 
