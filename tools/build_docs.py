@@ -67,7 +67,8 @@ def main():
             cards.append(f'<button type="button" class="wc" data-doc="{pid}" data-folder="{sec["id"]}" style="--fc:{col}"><span class="wc-code">{code}</span><b>{title}</b><span class="wc-sum">{summary(body)}</span><span class="wc-meta">{html.escape(sec["title"])} &middot; {mins} min read</span></button>')
             docs.append(f'<article class="wdoc" id="{pid}" data-folder="{sec["id"]}" data-code="{code}" data-title="{title}" data-meta="{html.escape(sec["title"])} &middot; {mins} min read" data-eff="{datetime.date.today().isoformat()}" data-folder-name="{html.escape(sec["title"])}" style="--fc:{col}" hidden>\n<div class="wbody">\n{body}\n</div>\n</article>')
     block = f'''<div class="wiki" id="wiki">
-<header class="wiki-head"><h2>Documentation of AFTERHAUL</h2><p>The player guide, kept in folders. It is a draft: it describes the game as planned, and the game is not playable yet.</p></header>
+<header class="wiki-head"><h2>Documentation of AFTERHAUL</h2><p>The player guide, kept in folders. It is a draft: it describes the game as planned, and the game is not playable yet.</p>
+<label class="wsearch"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="wq" type="search" placeholder="Search the guide" aria-label="Search the guide" autocomplete="off" spellcheck="false"></label></header>
 <div class="wiki-main">
 <nav class="wf-col" aria-label="Folders">
 {chr(10).join(folders)}
@@ -77,6 +78,7 @@ def main():
 <div class="wgrid" id="wgrid">
 {chr(10).join(cards)}
 </div>
+<p class="wempty" id="wempty" hidden>No documents match that search. Try a shorter word, or pick another folder.</p>
 </div>
 </div>
 <div class="wread" id="wread" hidden aria-hidden="true"><div class="wback"></div>

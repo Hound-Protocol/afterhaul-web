@@ -2,6 +2,11 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.6.0-pre · Wiki makeover · 2026-10-28
+- The wiki has a new look: a calmer dark surface, a folder list with document counts, and cleaner cards with the folder colour and read time.
+- New search box filters the guide as you type, with a message when nothing matches.
+- On phones the folders become a row of chips above the cards.
+
 ## 0.5.8-pre · Stage label wording · 2026-10-28
 - The current stage is now labelled "Currently in progress" on the roadmap and in the release stages.
 

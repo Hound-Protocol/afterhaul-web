@@ -655,3 +655,45 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 .clbody { overscroll-behavior: contain; contain: content; }
 .clv { content-visibility: auto; contain-intrinsic-size: auto 150px; }
 @media (prefers-reduced-motion: reduce) { .js .grain { animation: none; } }
+
+/* ---------- Wiki makeover: quiet surface, folder list, search, cleaner cards ---------- */
+.panel[data-theme="docs"] { background: radial-gradient(900px 340px at 18% 0, rgba(74,163,255,.10), transparent 70%), #0b1118; }
+.wiki-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 340px); gap: 4px 32px; align-items: end; margin-bottom: 26px; }
+.wiki-head h2 { grid-column: 1; font-size: clamp(30px, 3.6vw, 46px); letter-spacing: -.01em; }
+.wiki-head p { grid-column: 1; margin: 0; color: #9db0c4; }
+.wsearch { grid-column: 2; grid-row: 1 / span 2; display: flex; align-items: center; gap: 10px; padding: 0 14px; height: 48px; border: 1px solid #263648; border-radius: 10px; background: #0f1823; color: #7f93a8; transition: border-color .2s, box-shadow .2s, color .2s; }
+.wsearch:focus-within { border-color: #4aa3ff; color: #4aa3ff; box-shadow: 0 0 0 3px rgba(74,163,255,.18); }
+.wsearch input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; color: var(--frost); font: 400 17px var(--ui); }
+.wsearch input::placeholder { color: #6d8095; }
+.wsearch input::-webkit-search-cancel-button { filter: invert(.7); cursor: pointer; }
+.wiki-main { grid-template-columns: 236px minmax(0, 1fr); gap: 36px; }
+.wf-col { position: sticky; top: calc(var(--hud) + var(--warn-h) + 16px); gap: 2px; padding: 0; border: 0; }
+.wf-tab { display: none; }
+.wf { margin: 0; padding: 11px 14px 11px 18px; align-items: center; border: 0; border-radius: 8px; background: transparent; transform: none; box-shadow: none; overflow: hidden; transition: background .2s, color .2s; }
+.wf::before { content: ""; position: absolute; left: 0; top: 9px; bottom: 9px; width: 3px; border-radius: 3px; background: var(--fc); opacity: .55; transform: scaleY(.45); transition: transform .25s var(--ease), opacity .2s; }
+.wf b { font: 400 18px/1.2 var(--ui); color: #c5d2e0; }
+.wf em { min-width: 26px; padding: 1px 8px; border-radius: 99px; text-align: center; font: 400 13px var(--mono); color: #8aa0b6; background: #141f2c; }
+.wf:hover { transform: none; background: #111b27; } .wf:hover::before { opacity: 1; transform: scaleY(.8); }
+.wf[aria-pressed="true"] { transform: none; box-shadow: none; background: color-mix(in srgb, var(--fc) 14%, #0f1823); }
+.wf[aria-pressed="true"]::before { opacity: 1; transform: scaleY(1); }
+.wf[aria-pressed="true"] b { color: var(--frost); } .wf[aria-pressed="true"] em { color: #0b1118; background: var(--fc); }
+.wcount { margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid #1c2a3a; color: #8aa0b6; }
+.wcount b { font-size: 34px; } .wcount i { color: #b8c7d8; }
+.wgrid { grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; }
+.wc { position: relative; min-height: 0; gap: 10px; padding: 20px 20px 16px; border: 1px solid #1f2d3d; border-top: 1px solid #1f2d3d; border-radius: 12px; background: linear-gradient(180deg, #111b27, #0e1620); overflow: hidden; transition: transform .3s var(--ease), border-color .25s, box-shadow .3s, background .3s; }
+.wc::before { content: ""; position: absolute; left: 20px; top: 0; width: 34px; height: 3px; border-radius: 0 0 3px 3px; background: var(--fc); transition: width .3s var(--ease); }
+.wc::after { content: ""; position: absolute; right: -40px; top: -40px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--fc) 22%, transparent), transparent 70%); opacity: 0; transition: opacity .3s; pointer-events: none; }
+.wc:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--fc) 60%, #1f2d3d); box-shadow: 0 14px 30px rgba(0,0,0,.35); }
+.wc:hover::before { width: 64px; } .wc:hover::after { opacity: 1; }
+.wc-code { order: 3; font-size: 11.5px; letter-spacing: .1em; color: #5f7389; }
+.wc b { order: 1; font: 500 22px/1.2 var(--ui); margin-top: 4px; }
+.wc-sum { order: 2; font-size: 15.5px; line-height: 1.5; color: #9db0c4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.wc-meta { order: 4; display: inline-flex; align-self: flex-start; padding: 3px 10px; border-radius: 99px; font-size: 12px; color: color-mix(in srgb, var(--fc) 80%, #fff); background: color-mix(in srgb, var(--fc) 13%, #0e1620); }
+.wc-code { position: absolute; right: 18px; bottom: 18px; }
+.wempty { margin: 28px 0; padding: 22px; border: 1px dashed #263648; border-radius: 12px; color: #9db0c4; text-align: center; }
+@media (max-width: 860px) {
+  .wiki-main { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .wiki-head { grid-template-columns: 1fr; } .wsearch { grid-column: 1; grid-row: auto; margin-top: 14px; }
+  .wf-col { position: static; flex-direction: row; overflow-x: auto; padding: 2px 0 8px; gap: 8px; }
+  .wf { width: auto; flex: none; border: 1px solid #1f2d3d; gap: 10px; padding: 9px 14px; } .wf[aria-pressed="true"] { transform: none; border-color: var(--fc); } .wf::before { display: none; }
+}

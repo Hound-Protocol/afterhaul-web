@@ -505,7 +505,7 @@
     /* ---- Wiki: folders, cards, reader ---- */
     var wiki = $("#wiki"), W = null;
     if (wiki) {
-      var cards = $$(".wc", wiki), fbtn = $$(".wf", wiki), num = $("#wnum"), lab = $("#wlabel"), fname = $("#wfname"), stage = $("#wstage"), cur = "all", opened = null, busy = false;
+      var cards = $$(".wc", wiki), fbtn = $$(".wf", wiki), num = $("#wnum"), lab = $("#wlabel"), fname = $("#wfname"), stage = $("#wstage"), cur = "all", opened = null, busy = false, q = "", emptyMsg = $("#wempty"), qin = $("#wq"), qt = 0;
       var rd = $("#wread"), sheet = $(".wsheet", rd), lastFocus = null;
       function countTo(n) {
         var from = parseInt(num.textContent, 10) || 0; lab.textContent = n === 1 ? "document" : "documents";
@@ -516,7 +516,8 @@
         cur = f; var color = "#4aa3ff", name = "All documents";
         fbtn.forEach(function (b) { var on = b.getAttribute("data-folder") === f; b.setAttribute("aria-pressed", on ? "true" : "false"); if (on) { color = b.style.getPropertyValue("--fc"); name = $("b", b).textContent; } });
         stage.style.setProperty("--fc", color); fname.textContent = name;
-        var show = cards.filter(function (c) { return f === "all" || c.getAttribute("data-folder") === f; });
+        var show = cards.filter(function (c) { return (f === "all" || c.getAttribute("data-folder") === f) && (!q || c.textContent.toLowerCase().indexOf(q) > -1); });
+        if (emptyMsg) emptyMsg.hidden = show.length > 0;
         countTo(show.length);
         var go = function () {
           var i = 0; cards.forEach(function (c) { c.classList.remove("in", "out"); if (show.indexOf(c) < 0) c.hidden = true; });
@@ -526,6 +527,7 @@
         var vis = cards.filter(function (c) { return !c.hidden; }); vis.forEach(function (c) { c.classList.remove("in"); c.classList.add("out"); });
         setTimeout(go, vis.length ? 290 : 0);
       }
+      if (qin) qin.addEventListener("input", function () { clearTimeout(qt); qt = setTimeout(function () { q = qin.value.trim().toLowerCase(); setFolder(cur); }, 140); });
       fbtn.forEach(function (b) { b.addEventListener("click", function () { if (b.getAttribute("aria-pressed") !== "true") setFolder(b.getAttribute("data-folder")); }); });
       function rectVars(rect) { var cx = rect.left + rect.width / 2 - innerWidth / 2, cy = rect.top + rect.height / 2 - innerHeight / 2; return "translate(calc(-50% + " + cx + "px), calc(-50% + " + cy + "px)) scale(" + (rect.width / sheet.offsetWidth) + "," + (rect.height / sheet.offsetHeight) + ")"; }
       function fillSheet(d, id) {
