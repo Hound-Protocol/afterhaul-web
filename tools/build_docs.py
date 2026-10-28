@@ -82,13 +82,13 @@ def main():
 </div>
 </div>
 <div class="wread" id="wread" hidden aria-hidden="true"><div class="wback"></div>
-<div class="wsheet" role="dialog" aria-modal="true" aria-labelledby="wtitle" tabindex="-1"><div class="wsh-bar"><span id="wcode"></span><span id="wmeta"></span><button type="button" class="wclose" aria-label="Close document">Close</button></div>
-<div class="wsh-body"><div class="page paper"><span class="holes" aria-hidden="true"><i></i><i></i><i></i></span><span class="pg-stamp" aria-hidden="true">Draft</span>
-<div class="pg-run r1"><span>AFTERHAUL &middot; Hound Protocol</span><span id="wfolder"></span></div>
+<div class="wsheet" role="dialog" aria-modal="true" aria-labelledby="wtitle" tabindex="-1"><div class="wsh-bar"><span class="wcrumb">Wiki<i aria-hidden="true">/</i><span id="wfolder"></span></span><span id="wcode" class="wcodechip"></span><span id="wmeta"></span><button type="button" class="wclose" aria-label="Close document"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Close</span></button><i class="wprog" id="wprog" aria-hidden="true"></i></div>
+<div class="wsh-body" id="wshbody"><div class="page rd"><nav class="wtoc" id="wtoc" aria-label="On this page"></nav><article class="wart">
+<p class="pg-tags r1"><span class="tg-draft">Draft</span><span>For players</span><span>Updated <b id="wm-eff"></b></span></p>
 <h2 id="wtitle" class="r2"></h2>
-<dl class="pg-meta r3"><div><dt>Code</dt><dd id="wm-code"></dd></div><div><dt>Version</dt><dd>Draft</dd></div><div><dt>Effective</dt><dd id="wm-eff"></dd></div><div><dt>Owner</dt><dd>Design team</dd></div><div><dt>For</dt><dd>Players</dd></div></dl>
 <div id="wcontent" class="r4"></div>
-<div class="pg-foot r5"><span id="wm-foot"></span><span>Written in plain words. No tuned numbers.</span></div></div></div></div></div>
+<nav class="wnext r5" id="wnext" aria-label="More documents"></nav>
+<div class="pg-foot r5"><span id="wm-foot"></span><span>Written in plain words. No tuned numbers.</span></div></article></div></div></div></div>
 <div class="wstore" hidden>
 {chr(10).join(docs)}
 </div>

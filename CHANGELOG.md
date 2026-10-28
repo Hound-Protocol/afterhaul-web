@@ -2,6 +2,11 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.7.0-pre · Reader and hero actions · 2026-10-28
+- Wiki documents open in a new reader: a contents list that follows your place, a reading progress line, tidier typography and previous/next links between guides. The paper-and-stamp look is gone.
+- The first screen has two actions: Read the guide and See the roadmap. The section buttons still fit on one screen on common laptop and desktop sizes.
+- On phones the reader fills the screen from the bottom.
+
 ## 0.6.2-pre · Link preview, in-progress icon, phone fixes · 2026-10-28
 - Shared links now show the square AFTERHAUL logo as their preview image (also used as the home-screen icon on iPhone).
 - In Progress items on the roadmap use a new icon that cycles through writing, drawing and designing.

@@ -533,9 +533,36 @@
       function fillSheet(d, id) {
         sheet.style.setProperty("--fc", d.style.getPropertyValue("--fc"));
         $("#wtitle").textContent = d.getAttribute("data-title"); $("#wcode").textContent = d.getAttribute("data-code"); $("#wmeta").textContent = d.getAttribute("data-meta");
-        $("#wm-code").textContent = d.getAttribute("data-code"); $("#wm-eff").textContent = d.getAttribute("data-eff"); $("#wfolder").textContent = d.getAttribute("data-folder-name"); $("#wm-foot").textContent = d.getAttribute("data-code") + " \u00b7 Draft \u00b7 Page 1 of 1";
+        $("#wm-eff").textContent = d.getAttribute("data-eff"); $("#wfolder").textContent = d.getAttribute("data-folder-name"); $("#wm-foot").textContent = d.getAttribute("data-code") + " \u00b7 Draft \u00b7 Page 1 of 1";
         $("#wcontent").innerHTML = $(".wbody", d).outerHTML; $(".wsh-body", rd).scrollTop = 0;
+        buildReaderExtras(id);
       }
+      var wsb = $(".wsh-body", rd), prog = $("#wprog"), tocEl = $("#wtoc"), nextEl = $("#wnext"), heads = [];
+      function buildReaderExtras(id) {
+        heads = $$("#wcontent h4"); tocEl.innerHTML = "";
+        if (heads.length > 1) {
+          var tt = doc.createElement("b"); tt.textContent = "On this page"; tocEl.appendChild(tt);
+          heads.forEach(function (h, i) { h.id = "wh" + i; var a = doc.createElement("a"); a.href = "#wh" + i; a.textContent = h.textContent; a.addEventListener("click", function (e) { e.preventDefault(); wsb.scrollTo({ top: h.offsetTop - 24, behavior: reduce ? "auto" : "smooth" }); }); tocEl.appendChild(a); });
+          tocEl.hidden = false;
+        } else tocEl.hidden = true;
+        var vis = cards.filter(function (c) { return !c.hidden; }), at = vis.map(function (c) { return c.getAttribute("data-doc"); }).indexOf(id), html = "";
+        function link(c, dir) { return '<button type="button" class="wn wn-' + dir + '" data-go="' + c.getAttribute("data-doc") + '"><small>' + (dir === "prev" ? "Previous" : "Next") + '</small><b>' + $("b", c).textContent + '</b></button>'; }
+        if (at > 0) html += link(vis[at - 1], "prev"); if (at > -1 && at < vis.length - 1) html += link(vis[at + 1], "next");
+        nextEl.innerHTML = html; nextEl.hidden = !html; onReadScroll();
+      }
+      function onReadScroll() {
+        var max = wsb.scrollHeight - wsb.clientHeight; prog.style.transform = "scaleX(" + (max > 0 ? Math.min(1, wsb.scrollTop / max) : 0) + ")";
+        var cur = -1; heads.forEach(function (h, i) { if (h.offsetTop - 60 <= wsb.scrollTop) cur = i; });
+        $$("a", tocEl).forEach(function (a, i) { a.classList.toggle("on", i === cur); });
+      }
+      wsb.addEventListener("scroll", onReadScroll, { passive: true });
+      nextEl.addEventListener("click", function (e) {
+        var bt = e.target.closest("[data-go]"); if (!bt || !opened || busy) return;
+        var id2 = bt.getAttribute("data-go"), d2 = doc.getElementById(id2), c2 = cards.filter(function (c) { return c.getAttribute("data-doc") === id2; })[0]; if (!d2 || !c2) return;
+        if (opened.card) opened.card.classList.remove("lift", "pick", "centre");
+        c2.classList.add("lift"); opened = { id: id2, card: c2 }; history.replaceState(null, "", "#" + id2);
+        wsb.classList.add("swap"); setTimeout(function () { fillSheet(d2, id2); wsb.classList.remove("swap"); }, 130);
+      });
       function openDoc(id, fromCard) {
         var d = doc.getElementById(id); if (!d || busy || opened) return; busy = true;
         var f = d.getAttribute("data-folder"); if (cur !== "all" && cur !== f) setFolder(f, true);
@@ -563,7 +590,7 @@
         setTimeout(run, 190 + 310 + 75);
       }
       function closeDoc() {
-        if (!opened || busy) return; busy = true; var card = opened.card;
+        if (!opened || busy) return; busy = true; var card = opened.card; if (card && !card.hidden) { var qr = card.getBoundingClientRect(); if (qr.top < 90 || qr.bottom > innerHeight - 70) card.scrollIntoView({ block: "center", behavior: "auto" }); }
         rd.classList.remove("show", "stamped");
         var clear = function () { if (card) card.classList.remove("pick", "centre"); wiki.classList.remove("focus"); };
         var fin = function () { rd.classList.remove("open"); sheet.classList.remove("grow"); rd.hidden = true; rd.setAttribute("aria-hidden", "true"); doc.body.classList.remove("wlock"); if (card) card.classList.remove("lift"); opened = null; history.replaceState(null, "", "#docs"); if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true }); };
