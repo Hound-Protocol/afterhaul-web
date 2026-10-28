@@ -783,3 +783,8 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
   .tabs-gap { width: 0; }
 }
 @media (min-width: 861px) { .tabs { margin-inline: calc(-1 * min(124px, max(0px, (100vw - 100%) / 2 - 44px))); } }
+
+/* Stage badge sits under the stage name, left-aligned, on one line */
+.st b { display: block; }
+.st em { display: block; width: fit-content; margin: 8px 0 8px 0; white-space: nowrap; vertical-align: baseline; }
+.rm-hd h3 em { display: block; width: fit-content; margin: 8px 0 0 0; white-space: nowrap; vertical-align: baseline; }

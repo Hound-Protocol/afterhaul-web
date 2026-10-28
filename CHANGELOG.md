@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.7.4-pre · Stage badge placement · 2026-10-28
+- The "Currently in progress" badge now sits under the stage name, aligned left on one line, in the release stages and on the roadmap.
+
 ## 0.7.3-pre · Hero button target · 2026-10-28
 - "More about AFTERHAUL" on the first screen now opens the About section.
 
