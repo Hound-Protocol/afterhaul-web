@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.3.3-pre · About titles · 2026-10-28
+- About sections renamed: About AFTERHAUL, Character classes, The world of AFTERHAUL, Design choices, Current State of AFTERHAUL. The navigation bar uses the same names.
+
 ## 0.3.2-pre · Frontline pacing · 2026-10-28
 - The dark clods now rise and fall at the same slow pace as the mud pillar.
 - Shells fall twice as fast, each at a slightly different angle.
