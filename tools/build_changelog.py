@@ -18,6 +18,7 @@ def parse(text):
 def inline(t):
     t = html.escape(t, quote=False); t = re.sub(r"`([^`]+)`", r"<code>\1</code>", t); return re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", t)
 
+TYPES = json.loads((root / "content" / "patch-types.json").read_text(encoding="utf-8"))
 TIMES = root / "content" / "changelog-times.json"
 times = json.loads(TIMES.read_text(encoding="utf-8")) if TIMES.exists() else {}
 
@@ -35,7 +36,9 @@ def doc(cls, code, title, intro, entries, owner, key):
     rows = []
     for e in entries:
         meta = " · ".join(x for x in (e["title"], e["date"]) if x)
-        rows.append(f'<section class="clv"><h4><span>{html.escape(e["ver"])}</span>{("<em>" + html.escape(meta) + "</em>") if meta else ""}</h4><ul>' + "".join(f"<li>{inline(i)}</li>" for i in e["items"]) + "</ul></section>")
+        ty = TYPES.get(key, {}).get(e["ver"], "Update")
+        if ty == "Update": print("warning: no patch type for", key, e["ver"])
+        rows.append(f'<section class="clv"><h4><span>{html.escape(e["ver"])}</span><b class="pt pt-{ty.lower()}">{html.escape(ty)}</b>{("<em>" + html.escape(meta) + "</em>") if meta else ""}</h4><ul>' + "".join(f"<li>{inline(i)}</li>" for i in e["items"]) + "</ul></section>")
     return f'''<article class="cldoc paper {cls}"><span class="holes" aria-hidden="true"><i></i><i></i><i></i></span><header><p class="clcode">Code: {code} · Latest: {html.escape(latest)} · Owner: {owner} · For: players</p><h3>{title}</h3>{when}<p class="clint">{intro}</p><p class="clcount"><b>{n}</b> versions</p></header>
 <div class="clbody">{"".join(rows)}</div></article>'''
 

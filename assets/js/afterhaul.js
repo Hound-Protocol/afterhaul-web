@@ -628,19 +628,21 @@
   })();
 })();
 
-/* New version notice: checks the live page for a newer version number and offers a reload. */
+/* New version notice: checks the live page for a newer version number and shows a small window with a Reload button. */
 (function () {
-  var cur = document.getElementById("siteVersion"), box = document.getElementById("upd"), go = document.getElementById("updGo");
+  var cur = document.getElementById("siteVersion"), box = document.getElementById("upd"), go = document.getElementById("updGo"), later = document.getElementById("updLater");
   if (!cur || !box || !go || !window.fetch || location.protocol === "file:") return;
-  var mine = cur.textContent.trim(), shown = false;
+  var mine = cur.textContent.trim(), shown = false, skipped = "";
+  try { skipped = sessionStorage.getItem("updSkip") || ""; } catch (e) {}
   go.addEventListener("click", function () { location.reload(); });
+  later.addEventListener("click", function () { box.hidden = true; try { sessionStorage.setItem("updSkip", box.getAttribute("data-ver") || "1"); } catch (e) {} shown = false; });
   function check() {
     if (shown) return;
     fetch(location.pathname + "?_=" + Date.now(), { cache: "no-store" })
       .then(function (r) { return r.ok ? r.text() : ""; })
       .then(function (t) {
-        var m = /id="siteVersion">([^<]+)</.exec(t);
-        if (m && m[1].trim() !== mine) { shown = true; box.hidden = false; document.documentElement.classList.add("has-upd"); }
+        var m = /id="siteVersion">([^<]+)</.exec(t), v = m && m[1].trim();
+        if (v && v !== mine && v !== skipped) { shown = true; box.setAttribute("data-ver", v); box.hidden = false; go.focus({ preventScroll: true }); }
       }).catch(function () {});
   }
   setInterval(check, 180000);

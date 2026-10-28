@@ -62,10 +62,6 @@ a:hover { color: #fff; }
 .running .wordmark { filter: url(#heat); text-shadow: 0 0 40px rgba(240,162,2,.18); }
 .tagline { margin: 34px 0 6px; color: var(--frost); font: 400 clamp(24px, 3vw, 36px)/1.2 var(--ui); }
 .pitch { margin: 0; max-width: 46ch; font-size: clamp(18px, 1.6vw, 21px); }
-.scrollcue { position: absolute; z-index: 2; right: clamp(16px, 4vw, 48px); bottom: calc(var(--hud) + 22px); display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--dust); font: 400 13px/1 var(--mono); letter-spacing: .24em; text-transform: uppercase; text-decoration: none; }
-.scrollcue i { width: 1px; height: 46px; background: linear-gradient(var(--amber), transparent); transform-origin: top; }
-.js .scrollcue i { animation: cue 2.2s ease-in-out infinite; }
-@keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
 
 /* The cold start */
 .dash { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin: 40px 0 26px; }
@@ -171,7 +167,6 @@ a:hover { color: #fff; }
   .cols { grid-template-columns: minmax(0, 1fr); }
   .hero { padding: 110px var(--gutter) 90px; }
   .wordmark span + span { padding-left: .5em; }
-  .scrollcue { display: none; }
   .convoy { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .eng { min-width: 0; font-size: 12px; }
 }
@@ -182,7 +177,7 @@ a:hover { color: #fff; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .js .grain, .js .scrollcue i, .js .shout.in span { animation: none; }
+  .js .grain, .js .shout.in span { animation: none; }
   .js .rv { opacity: 1; transform: none; transition: none; }
   .reg, .reg:hover { transform: none; }
 }
@@ -519,16 +514,21 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 .wc.slid { transform: none; box-shadow: none; }
 .wsheet { transform-origin: 50% 50%; }
 
-/* New-version notice, shown under the red bar. The page offsets move down by its height while it is visible. */
-html.has-upd { --warn-h: calc(var(--warn-base) + 42px); }
-.upd { position: fixed; top: var(--warn-base); left: 0; right: 0; z-index: 49; height: 42px; display: flex; align-items: center; justify-content: center; gap: 14px; padding: 0 16px; background: #1f2f12; color: var(--frost); border-bottom: 1px solid #6fa13a; font-size: 16px; animation: updPulse 1.8s ease-in-out infinite; }
+/* New-version notice: a small window in the corner, under the red bar. */
+.upd { position: fixed; top: calc(var(--warn-base) + 14px); right: 16px; z-index: 60; width: min(340px, calc(100vw - 32px)); animation: updIn .35s cubic-bezier(.2,.8,.2,1) both; }
 .upd[hidden] { display: none; }
-.upd button { font: 500 15px/1 var(--ui); color: #14110c; background: #9fd35a; border: 0; border-radius: 3px; padding: 7px 14px; cursor: pointer; }
+.upd-in { padding: 16px 18px; background: #17210f; color: var(--frost); border: 1px solid #6fa13a; border-radius: 6px; box-shadow: 0 12px 34px rgba(0,0,0,.55); animation: updPulse 1.8s ease-in-out infinite; }
+.upd b { display: block; font: 500 19px/1.2 var(--ui); }
+.upd p { margin: 6px 0 14px; font-size: 15px; line-height: 1.45; color: #cfd8c3; }
+.upd-b { display: flex; gap: 10px; }
+.upd button { font: 500 15px/1 var(--ui); color: #14110c; background: #9fd35a; border: 0; border-radius: 3px; padding: 9px 16px; cursor: pointer; }
 .upd button:hover { background: #b6e374; }
+.upd button.later { background: transparent; color: var(--frost); border: 1px solid #6fa13a; }
+.upd button.later:hover { background: rgba(159,211,90,.14); }
 .upd button:focus-visible { outline: 2px solid var(--frost); outline-offset: 2px; }
-@keyframes updPulse { 0%, 100% { box-shadow: inset 0 0 0 0 rgba(159,211,90,0), 0 0 0 rgba(159,211,90,0); background-color: #1f2f12; } 50% { box-shadow: inset 0 -2px 18px rgba(159,211,90,.35), 0 4px 18px rgba(159,211,90,.25); background-color: #2a3f17; } }
-@media (max-width: 620px) { .upd { font-size: 14px; gap: 10px; } }
-@media (prefers-reduced-motion: reduce) { .upd { animation: none; } }
+@keyframes updIn { from { opacity: 0; transform: translateY(-10px) scale(.96); } }
+@keyframes updPulse { 0%, 100% { box-shadow: 0 12px 34px rgba(0,0,0,.55), 0 0 0 0 rgba(159,211,90,.0); border-color: #6fa13a; } 50% { box-shadow: 0 12px 34px rgba(0,0,0,.55), 0 0 22px 3px rgba(159,211,90,.45); border-color: #9fd35a; } }
+@media (prefers-reduced-motion: reduce) { .upd, .upd-in { animation: none; } }
 
 /* Compact first screen on desktop: the tab buttons show without scrolling (16:9 monitors). */
 @media (min-width: 861px) {
@@ -567,3 +567,9 @@ html.has-upd { --warn-h: calc(var(--warn-base) + 42px); }
   .st p { max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) { .st.here .st-dot { animation: none; } }
+
+/* Patch type badge in changelog headings */
+.pt { display: inline-block; margin: 0 8px 0 2px; padding: 2px 7px; border-radius: 2px; font: 500 11.5px/1.3 var(--mono); letter-spacing: .06em; text-transform: none; vertical-align: 1px; color: #fff; background: #555; }
+.pt-overhaul { background: #a8321f; } .pt-feature { background: #2f6f9f; } .pt-content { background: #6a5a8e; } .pt-polish { background: #8a6d1a; }
+.pt-fix { background: #b0432f; } .pt-optimization { background: #2d7a4f; } .pt-tools { background: #4a5560; } .pt-brand { background: #9a5a1a; }
+.pt-foundation { background: #555; } .pt-systems { background: #2d6f78; } .pt-world { background: #2f7a5a; } .pt-story { background: #7a4a6a; } .pt-documentation { background: #4a6a8a; } .pt-update { background: #666; }

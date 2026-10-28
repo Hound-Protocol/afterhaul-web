@@ -2,6 +2,11 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.4.11-pre · Patch names, update window · 2026-10-28
+- Every changelog entry now carries a named patch type: Overhaul, Feature, Content, Polish, Fix, Optimization, Tools, Brand or Foundation for the website, plus Systems, World, Story and Documentation for the game. Types are kept in content/patch-types.json.
+- The new-version notice is now a small window in the corner with Reload and Later buttons, instead of a line under the red bar.
+- Removed the "Drive on" scroll cue from the first screen.
+
 ## 0.4.10-pre · Release stages · 2026-10-28
 - "Current State of AFTERHAUL" now shows the four release stages as a road with stops: Concept (marked as the current stage), Alpha, Beta and Release. Each says what the stage means. Dates read "to be announced" until they are set.
 
