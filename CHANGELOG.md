@@ -2,6 +2,13 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.5.1-pre · Sound text · 2026-10-28
+- In the in-cab sound design note, the last sentence now reads: "Hit the gas at 100%, and the truck will respond in a full spectrum."
+
+## 0.5.0-pre · Roadmap · 2026-10-28
+- New Roadmap button and section: the plan from Concept through Alpha and Beta to Release, with what is happening now and what comes next. It is a draft, with no dates until a stage is close.
+- "The world of AFTERHAUL" now says the moving scenes are placeholders that real gameplay will replace when the game enters Alpha.
+
 ## 0.4.12-pre · Straighter road · 2026-10-28
 - The hero road leans less to the right. Its vanishing point moved toward the middle and the road is now symmetric around its centre line, so the yellow dashes sit in the road with correct perspective. Narrow screens use their own, slightly more central, values.
 

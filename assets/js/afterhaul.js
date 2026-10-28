@@ -584,7 +584,7 @@
     function route(smooth) {
       var id = decodeURIComponent(location.hash.slice(1)); if (!id) return;
       if (id.indexOf("doc-") === 0 && W) { showTab("docs"); setTimeout(function () { W.open(id); }, 450); setTimeout(function () { $("#explore").scrollIntoView({ block: "start" }); }, 30); return; }
-      if (/^(about|docs|log|community|press)$/.test(id)) { showTab(id); setTimeout(function () { $("#explore").scrollIntoView({ behavior: reduce || !smooth ? "auto" : "smooth", block: "start" }); }, 60); return; }
+      if (/^(about|docs|roadmap|log|community|press)$/.test(id)) { showTab(id); setTimeout(function () { $("#explore").scrollIntoView({ behavior: reduce || !smooth ? "auto" : "smooth", block: "start" }); }, 60); return; }
       var el = doc.getElementById(id); if (!el) return;
       var panel = el.closest ? el.closest(".panel") : null, k = null;
       if (id === "about" || id === "docs") { k = id; el = $("#explore"); }
