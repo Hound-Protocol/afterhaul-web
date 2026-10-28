@@ -2,6 +2,11 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.4.1-pre · Document sequence in order · 2026-10-28
+- Opening: the folders, count and other cards fade out first, the chosen card glides to the middle of the empty area, then the document zooms open from exactly that spot.
+- Closing runs the same steps in reverse: the document shrinks back into the card in the middle, the card glides to its own place, then the rest fades back in.
+- Fixed: the document scaled from its top-left corner, so it started and finished away from the card. It now scales about its centre.
+
 ## 0.4.0-pre · Documents on paper · 2026-10-28
 - Opening a wiki document is now a sequence: the chosen card slides to the right, waits a moment, and the document grows out of the card's own place. Closing reverses it, back into the same card, which then slides back.
 - Documents look like documents: textured paper with a margin rule, punched holes, fold creases, a running header, a details table (code, version, effective date, owner, audience), numbered headings, a footer and a DRAFT stamp that lands once the page has opened. Parts of the page write in one after another.
