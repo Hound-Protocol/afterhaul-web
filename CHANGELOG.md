@@ -2,6 +2,10 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.5.7-pre · Roadmap plans and smoother changelog · 2026-10-28
+- Every roadmap item lists up to five planned work points, drawn from the game design.
+- The changelog scrolls more smoothly: lighter film grain, isolated scroll areas, and version entries that are not drawn until they come into view.
+
 ## 0.5.6-pre · Roadmap filter tidy-up · 2026-10-28
 - Filtering the roadmap by a status hides stages with no matching items, and shows one message when nothing has that status, instead of one in every stage.
 

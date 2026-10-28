@@ -11,27 +11,61 @@
     {
      "status": "complete",
      "title": "Game design written",
-     "text": "The whole game, from the first haul to the last region, is on paper."
+     "text": "The whole game, from the first haul to the last region, is on paper.",
+     "points": [
+      "Core loop: contracts, cargo, fuel, repair and a Ledger economy",
+      "Driver body, needs, injury and rescue rules",
+      "Eight driver classes, each with a skill tree",
+      "Host-run crews with three access levels and hiring from a session browser",
+      "Mod format: data mods and sandboxed script mods"
+     ]
     },
     {
      "status": "complete",
      "title": "Core rules written and tested",
-     "text": "Trucks, weather, hunger and thirst, clothing and truck parts all have working rules."
+     "text": "Trucks, weather, hunger and thirst, clothing and truck parts all have working rules.",
+     "points": [
+      "Drivetrain: engine, clutch, gearbox, driveshaft, heat and coolant",
+      "Weather states, seasons and ground surface tables",
+      "Mass, cargo slots and spill rules",
+      "Needs, stamina and effort models",
+      "Clothing layers and truck mount rules, validated from data files"
+     ]
     },
     {
      "status": "complete",
      "title": "Website and player guide",
-     "text": "You are looking at it. The guide grows with the game."
+     "text": "You are looking at it. The guide grows with the game.",
+     "points": [
+      "Player guide built from the design source, so it cannot drift",
+      "Changelog and roadmap generated from data files",
+      "Logo kit, release stages and patch types",
+      "No trackers; video loads only when played"
+     ]
     },
     {
      "status": "in-progress",
      "title": "First drivable truck",
-     "text": "One truck on a test field, with real weight, steering and engine behaviour."
+     "text": "One truck on a test field, with real weight, steering and engine behaviour.",
+     "points": [
+      "Custom vehicle model on top of the physics engine: per-wheel suspension and load transfer",
+      "Steering force from ground and wheel load, with force-feedback wheel support",
+      "Drivetrain wired to physics: clutch slip, shifts and stalls",
+      "Cab spring and damping",
+      "Dashboard and in-cab tablet readouts"
+     ]
     },
     {
      "status": "in-progress",
      "title": "First driver",
-     "text": "A body that moves with its own muscles, falls and gets back up, and can be dressed."
+     "text": "A body that moves with its own muscles, falls and gets back up, and can be dressed.",
+     "points": [
+      "Active ragdoll: rigid bodies joined by motors, poses set by code",
+      "State machine: standing, stumbling, falling, getting up",
+      "Hands and feet reach targets: wheel, shifter, pedals",
+      "Ten clothing slots and five body types on one shared rig",
+      "Character creation from fixed options with a small adjustable range"
+     ]
     }
    ]
   },
@@ -43,22 +77,48 @@
     {
      "status": "planned",
      "title": "Small crews in one truck",
-     "text": "A few players share a truck, with voice chat and a host who runs the session."
+     "text": "A few players share a truck, with voice chat and a host who runs the session.",
+     "points": [
+      "Host-authoritative sessions: the Operations Chief runs the world",
+      "Full physical bodies up close, cheaper approximations at distance",
+      "Proximity voice with range and weather effects",
+      "Solo, friends-only and invite-only sessions",
+      "World save owned by the host, player profile owned by the player"
+     ]
     },
     {
      "status": "planned",
      "title": "First region and first contracts",
-     "text": "One region to cross, with cargo to haul, fuel to find, and damage to repair."
+     "text": "One region to cross, with cargo to haul, fuel to find, and damage to repair.",
+     "points": [
+      "Land generated from a seed: terrain, water and forests",
+      "Surface types with ruts and soft ground",
+      "Contracts with cargo, payout and risk",
+      "Fuel, damage zones and garage repairs",
+      "Cargo in slots, with mass and securing"
+     ]
     },
     {
      "status": "planned",
      "title": "Real gameplay on this site",
-     "text": "Footage from the game replaces the placeholder animations here."
+     "text": "Footage from the game replaces the placeholder animations here.",
+     "points": [
+      "Capture in-engine footage to replace the placeholder scenes",
+      "Update the stage text and screenshots to match",
+      "Keep the placeholder notice until the swap is done"
+     ]
     },
     {
      "status": "planned",
      "title": "Closed tests",
-     "text": "Invited players on many kinds of computers, Linux included, report what breaks."
+     "text": "Invited players on many kinds of computers, Linux included, report what breaks.",
+     "points": [
+      "Frame-time reporting built into test builds",
+      "Hardware survey: CPU, GPU, memory, Windows and Linux through Proton",
+      "Host-role tests across different machines",
+      "Bug reports through a simple form",
+      "Privacy notice for tester data"
+     ]
     }
    ]
   },
@@ -70,32 +130,71 @@
     {
      "status": "planned",
      "title": "More regions",
-     "text": "The rest of the land opens up, each with its own ground and weather."
+     "text": "The rest of the land opens up, each with its own ground and weather.",
+     "points": [
+      "Remaining regions with their own ground, trees and hazards",
+      "Water crossings: bridges, fords and ice",
+      "Region-specific employers and jobs",
+      "Rebuild progress kept in the world save",
+      "Municipal services in settled areas"
+     ]
     },
     {
      "status": "planned",
      "title": "Weather and seasons",
-     "text": "Storms, snow and heat change how you drive and what you wear."
+     "text": "Storms, snow and heat change how you drive and what you wear.",
+     "points": [
+      "Eight weather states from clear to blizzard and sandstorm",
+      "Seasons on a real-week cycle: four weeks make a year",
+      "Snow build-up, packing and loss of traction",
+      "Cold exposure, frozen trucks and rescue calls",
+      "Weather effects on sound, voice and radio range"
+     ]
     },
     {
      "status": "planned",
      "title": "Driver classes",
-     "text": "All eight classes, with their own skills and truck parts."
+     "text": "All eight classes, with their own skills and truck parts.",
+     "points": [
+      "Eight classes, each with its own skill tree",
+      "Class parts on the truck: medical bay, kitchen, winch, crane and racks",
+      "Role-based contracts and payouts",
+      "Crew balance tuned for eight"
+     ]
     },
     {
      "status": "planned",
      "title": "A living economy",
-     "text": "Prices, jobs and rebuilding that change as the world recovers."
+     "text": "Prices, jobs and rebuilding that change as the world recovers.",
+     "points": [
+      "A Ledger of jobs and aid (tow, rescue, repair) paid between players",
+      "Employers with regional contracts and risk-based payouts",
+      "Truck stops and diners for food, fuel and repairs",
+      "Dynamic and seasonal world events"
+     ]
     },
     {
      "status": "planned",
      "title": "Full crews of eight",
-     "text": "Eight players and eight trucks, tuned until it runs smoothly."
+     "text": "Eight players and eight trucks, tuned until it runs smoothly.",
+     "points": [
+      "Frame budget per system: physics, character, audio, voice, rendering",
+      "Distant players on cheaper bodies; the local player is never degraded",
+      "Shader prewarm and terrain streaming to avoid hitches",
+      "No allocations in hot paths; objects pooled",
+      "Tested with eight players and eight trucks from early on"
+     ]
     },
     {
      "status": "planned",
      "title": "Beta on Steam",
-     "text": "Open to more players, with fixes shipped as patches and listed in the changelog."
+     "text": "Open to more players, with fixes shipped as patches and listed in the changelog.",
+     "points": [
+      "Windows build checked under Proton",
+      "No kernel anti-cheat and no custom launcher",
+      "Fixes shipped as patches, each listed in the changelog",
+      "Beta feedback fed back into the roadmap"
+     ]
     }
    ]
   },
@@ -107,17 +206,37 @@
     {
      "status": "planned",
      "title": "The full campaign",
-     "text": "From the first delivery to the front line, polished."
+     "text": "From the first delivery to the front line, polished.",
+     "points": [
+      "A campaign from the first delivery to the front line of Drennmark",
+      "Employers and characters you meet along the way",
+      "Side quests",
+      "Balance and polish pass",
+      "Versioned, checksummed saves with a backup copy"
+     ]
     },
     {
      "status": "planned",
      "title": "Modding",
-     "text": "Build a truck or a change and share it. A truck is one folder of files."
+     "text": "Build a truck or a change and share it. A truck is one folder of files.",
+     "points": [
+      "A mod is a folder with a manifest; data mods merge by id",
+      "Script mods run in a Lua sandbox and turn achievements off",
+      "The same mod set is required for everyone in a session",
+      "A checker tool validates a mod before it is shared",
+      "Mod portal: not yet decided"
+     ]
     },
     {
      "status": "planned",
      "title": "Later regions as free updates",
-     "text": "More of the land arrives after release."
+     "text": "More of the land arrives after release.",
+     "points": [
+      "Remaining regions released after launch",
+      "Native Linux build planned after release",
+      "Community wiki linking to the official guide",
+      "Player-made designs through a verified site, later"
+     ]
     }
    ]
   }

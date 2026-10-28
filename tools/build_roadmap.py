@@ -12,6 +12,10 @@ ICON = {
  "planned": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-dasharray="3 3.2"/></svg>',
  "abandoned": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 8l8 8M16 8l-8 8"/></svg>'}
 esc = html.escape
+def pts(i):
+    p = i.get("points", [])
+    return ("<ul class=\"rm-pts\">" + "".join(f"<li>{esc(x)}</li>" for x in p) + "</ul>") if p else ""
+
 counts = {k: 0 for k in LABEL}
 for s in d["stages"]:
     for i in s["items"]: counts[i["status"]] += 1
@@ -26,7 +30,7 @@ for n, s in enumerate(d["stages"]):
     its = s["items"]; done = sum(1 for i in its if i["status"] == "complete"); pct = round(100 * done / len(its))
     here = ' <em>We are here</em>' if s.get("here") else ""
     cards = "".join(
-        f'<li class="rm-card s-{i["status"]}" data-status="{i["status"]}" style="--i:{k}"><span class="rm-ic">{ICON[i["status"]]}</span><div><b>{esc(i["title"])}</b><p>{esc(i["text"])}</p></div><span class="rm-chip">{LABEL[i["status"]]}</span></li>'
+        f'<li class="rm-card s-{i["status"]}" data-status="{i["status"]}" style="--i:{k}"><span class="rm-ic">{ICON[i["status"]]}</span><div><b>{esc(i["title"])}</b><p>{esc(i["text"])}</p>{pts(i)}</div><span class="rm-chip">{LABEL[i["status"]]}</span></li>'
         for k, i in enumerate(its))
     out.append(f'<li class="rm-st{" here" if s.get("here") else ""}" data-stage="{s["id"]}"><div class="rm-hd"><h3>{esc(s["name"])}{here}</h3><p class="rm-lead">{esc(s["lead"])}</p>'
                f'<div class="rm-prog"><span class="rm-bar" role="img" aria-label="{done} of {len(its)} complete"><i style="--p:{pct}%"></i></span><span class="rm-pt">{done} of {len(its)} complete</span></div></div>'

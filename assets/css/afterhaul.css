@@ -601,7 +601,7 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 .rm-bar { width: 190px; height: 8px; border-radius: 999px; background: #2a1a14; overflow: hidden; }
 .rm-bar i { display: block; height: 100%; width: var(--p); border-radius: 999px; background: linear-gradient(90deg, #5fbf78, #7bd88f); transform-origin: left; }
 .rm-pt { font: 400 13px var(--mono); color: #bfa79b; letter-spacing: .03em; }
-.rm-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; }
+.rm-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; }
 .rm-card { --s: #8fb0d0; position: relative; display: grid; grid-template-columns: 26px 1fr; gap: 4px 12px; align-items: start; padding: 14px 16px 16px; background: rgba(0,0,0,.3); border: 1px solid #3d261d; border-left: 4px solid var(--s); border-radius: 3px; transition: transform .25s, background .25s, border-color .25s; }
 .rm-card:hover { transform: translateY(-3px); background: color-mix(in srgb, var(--s) 8%, rgba(0,0,0,.3)); }
 .rm-card.s-complete { --s: #7bd88f; } .rm-card.s-in-progress { --s: #ff7a59; background: rgba(255,122,89,.09); } .rm-card.s-planned { --s: #8fb0d0; } .rm-card.s-abandoned { --s: #b48a8a; opacity: .8; }
@@ -641,3 +641,17 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
   .tab { min-height: 76px; padding: 12px 16px; grid-template-columns: auto auto; justify-content: center; align-content: center; column-gap: 12px; text-align: center; }
   .tab svg { width: 30px; height: 30px; }
 }
+
+.rm-pts { list-style: none; margin: 10px 0 0; padding: 10px 0 0; border-top: 1px solid color-mix(in srgb, var(--s) 28%, transparent); display: grid; gap: 5px; }
+.rm-pts li { position: relative; padding-left: 14px; font-size: 14.5px; line-height: 1.4; color: #bfa9a0; }
+.rm-pts li::before { content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 2px; background: var(--s); }
+.rm-card { align-content: start; }
+
+/* Changelog scroll performance: lighter grain, isolated scrollers, off-screen versions not painted */
+.grain { inset: -8%; mix-blend-mode: normal; opacity: .05; will-change: transform; }
+.js .grain { animation: grainLite .7s steps(4) infinite; }
+@keyframes grainLite { 0% { transform: translate(0, 0); } 25% { transform: translate(-14px, 10px); } 50% { transform: translate(10px, -12px); } 75% { transform: translate(-8px, -6px); } 100% { transform: translate(0, 0); } }
+.cldoc { contain: layout paint; }
+.clbody { overscroll-behavior: contain; contain: content; }
+.clv { content-visibility: auto; contain-intrinsic-size: auto 150px; }
+@media (prefers-reduced-motion: reduce) { .js .grain { animation: none; } }
