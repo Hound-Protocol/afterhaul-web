@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.7.10-pre · Grammar fix · 2026-10-28
+- Grammar fix in the text above the crash-reaction video.
+
 ## 0.7.9-pre · Crash video wording · 2026-10-28
 - Reworded the text above the crash-reaction video in Sound design.
 
