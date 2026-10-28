@@ -2,6 +2,12 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.5.5-pre · Roadmap redesign · 2026-10-28
+- The roadmap is rebuilt for players. Every item carries one of four statuses: Complete, In Progress, Planned or Abandoned. Status chips filter the list and show counts, each stage has a progress bar, and the page shows when it was last updated.
+- Items are written for people outside the project: no tools or setup details.
+- The road draws in, bars fill and cards rise in one after another as you scroll. In Progress items spin. Reduced-motion settings turn the motion off.
+- The roadmap is generated from content/roadmap.json by tools/build_roadmap.py, so changing a status is a one-line edit.
+
 ## 0.5.4-pre · Section buttons · 2026-10-28
 - The row of section buttons is about 20% wider (as far as the window allows) and each button is about 10% shorter. The icons are about 20% smaller, and each icon and its text sit centred in the button with free space around them.
 - The Roadmap button now reads "The future of AFTERHAUL".

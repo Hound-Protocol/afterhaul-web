@@ -1,0 +1,125 @@
+{
+ "updated": "2026-10-28",
+ "intro": "Where AFTERHAUL is heading, from the first drivable truck to release. Each item shows its status. This is a draft plan: items can move, change or be dropped, and we set dates only when a stage is close.",
+ "stages": [
+  {
+   "id": "concept",
+   "name": "Concept",
+   "here": true,
+   "lead": "Planning and groundwork. Nothing is playable yet.",
+   "items": [
+    {
+     "status": "complete",
+     "title": "Game design written",
+     "text": "The whole game, from the first haul to the last region, is on paper."
+    },
+    {
+     "status": "complete",
+     "title": "Core rules written and tested",
+     "text": "Trucks, weather, hunger and thirst, clothing and truck parts all have working rules."
+    },
+    {
+     "status": "complete",
+     "title": "Website and player guide",
+     "text": "You are looking at it. The guide grows with the game."
+    },
+    {
+     "status": "in-progress",
+     "title": "First drivable truck",
+     "text": "One truck on a test field, with real weight, steering and engine behaviour."
+    },
+    {
+     "status": "in-progress",
+     "title": "First driver",
+     "text": "A body that moves with its own muscles, falls and gets back up, and can be dressed."
+    }
+   ]
+  },
+  {
+   "id": "alpha",
+   "name": "Alpha",
+   "lead": "The first playable version. Rough, small and for invited testers.",
+   "items": [
+    {
+     "status": "planned",
+     "title": "Small crews in one truck",
+     "text": "A few players share a truck, with voice chat and a host who runs the session."
+    },
+    {
+     "status": "planned",
+     "title": "First region and first contracts",
+     "text": "One region to cross, with cargo to haul, fuel to find, and damage to repair."
+    },
+    {
+     "status": "planned",
+     "title": "Real gameplay on this site",
+     "text": "Footage from the game replaces the placeholder animations here."
+    },
+    {
+     "status": "planned",
+     "title": "Closed tests",
+     "text": "Invited players on many kinds of computers, Linux included, report what breaks."
+    }
+   ]
+  },
+  {
+   "id": "beta",
+   "name": "Beta",
+   "lead": "Most of the game is in. More players try it and help shape it.",
+   "items": [
+    {
+     "status": "planned",
+     "title": "More regions",
+     "text": "The rest of the land opens up, each with its own ground and weather."
+    },
+    {
+     "status": "planned",
+     "title": "Weather and seasons",
+     "text": "Storms, snow and heat change how you drive and what you wear."
+    },
+    {
+     "status": "planned",
+     "title": "Driver classes",
+     "text": "All eight classes, with their own skills and truck parts."
+    },
+    {
+     "status": "planned",
+     "title": "A living economy",
+     "text": "Prices, jobs and rebuilding that change as the world recovers."
+    },
+    {
+     "status": "planned",
+     "title": "Full crews of eight",
+     "text": "Eight players and eight trucks, tuned until it runs smoothly."
+    },
+    {
+     "status": "planned",
+     "title": "Beta on Steam",
+     "text": "Open to more players, with fixes shipped as patches and listed in the changelog."
+    }
+   ]
+  },
+  {
+   "id": "release",
+   "name": "Release",
+   "lead": "The finished first version, ready for everyone.",
+   "items": [
+    {
+     "status": "planned",
+     "title": "The full campaign",
+     "text": "From the first delivery to the front line, polished."
+    },
+    {
+     "status": "planned",
+     "title": "Modding",
+     "text": "Build a truck or a change and share it. A truck is one folder of files."
+    },
+    {
+     "status": "planned",
+     "title": "Later regions as free updates",
+     "text": "More of the land arrives after release."
+    }
+   ]
+  }
+ ]
+}

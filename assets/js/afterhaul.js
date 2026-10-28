@@ -656,3 +656,24 @@
     try { t.textContent = d.toLocaleString(undefined, { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZoneName: "short" }); } catch (e) {}
   });
 })();
+
+/* Roadmap: reveal each stage as it scrolls into view, and filter cards by status. */
+(function () {
+  var stages = Array.prototype.slice.call(document.querySelectorAll(".rm-st")), btns = Array.prototype.slice.call(document.querySelectorAll(".rm-f"));
+  if (!stages.length) return;
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+    stages.forEach(function (s) { io.observe(s); });
+  } else stages.forEach(function (s) { s.classList.add("in"); });
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = b.getAttribute("data-f");
+      btns.forEach(function (x) { var on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-pressed", on ? "true" : "false"); });
+      stages.forEach(function (s) {
+        var shown = 0;
+        Array.prototype.forEach.call(s.querySelectorAll(".rm-card"), function (c) { var ok = f === "all" || c.getAttribute("data-status") === f; c.hidden = !ok; if (ok) shown++; });
+        s.querySelector(".rm-empty").hidden = shown > 0; s.classList.add("in");
+      });
+    });
+  });
+})();
