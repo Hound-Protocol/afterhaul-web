@@ -23,8 +23,9 @@ jobs:
       - uses: actions/checkout@v7
       - name: Collect the site
         run: |
-          mkdir _site
-          cp -r index.html robots.txt assets _site/
+          # Optimized copy: minified CSS and JS, lossless PNG, woff2 fonts. Looks identical. If it fails, deploy the plain files.
+          pip install --quiet fonttools brotli pyoxipng
+          python3 tools/optimize.py _site || { rm -rf _site; mkdir _site; cp -r index.html 404.html robots.txt assets _site/; }
           mkdir -p _site/tools && cp -r tools/scene-editor _site/tools/   # the scene editor is served for testing; remove this line before launch
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
