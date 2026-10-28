@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.4.8-pre · Logo files · 2026-10-28
+- The header mark becomes the AFTERHAUL logo: the two slashes (amber and sand) and the name in Barlow Semi Condensed Medium with wide spacing, letters turned into outlines so no font is needed. Files in assets/img/brand/: logo (transparent, for dark backgrounds), logo on dark, logo for light backgrounds, and the slash mark alone, each as SVG and PNG. Made by tools/make_logo.py. The page itself looks the same.
+
 ## 0.4.7-pre · Compact first screen · 2026-10-28
 - On desktop the first screen is more compact: the heading is sized to the window height and the spacing is tighter, so the section buttons show without scrolling on a 16:9 monitor.
 - The section buttons now grow about 10% when pointed at. They no longer lift, and the grid texture on the Wiki button no longer shifts.
