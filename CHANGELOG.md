@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.4.2-pre · Twice as fast · 2026-10-28
+- The document open and close sequence runs at double speed. The order of the steps is unchanged.
+
 ## 0.4.1-pre · Document sequence in order · 2026-10-28
 - Opening: the folders, count and other cards fade out first, the chosen card glides to the middle of the empty area, then the document zooms open from exactly that spot.
 - Closing runs the same steps in reverse: the document shrinks back into the card in the middle, the card glides to its own place, then the rest fades back in.

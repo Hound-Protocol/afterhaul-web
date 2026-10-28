@@ -488,11 +488,11 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 .wc { will-change: transform; }
 .wc.slid { transform: translateX(38px); border-color: var(--fc); box-shadow: -10px 0 0 -4px var(--fc), 0 12px 30px rgba(0,0,0,.45); transition: transform .38s cubic-bezier(.3,.9,.3,1), box-shadow .3s; }
 .wsheet.grow { box-shadow: 0 40px 90px rgba(0,0,0,.65); }
-.wsh-body .page { opacity: 0; transform: translateY(18px) rotateX(5deg); transition: opacity .5s ease, transform .75s cubic-bezier(.16,.84,.24,1); }
+.wsh-body .page { opacity: 0; transform: translateY(18px) rotateX(5deg); transition: opacity .25s ease, transform .38s cubic-bezier(.16,.84,.24,1); }
 .wread.show .wsh-body .page { opacity: 1; transform: none; }
-.page .r1, .page .r2, .page .r3, .page .r4, .page .r5 { opacity: 0; transform: translateY(10px); transition: opacity .45s ease, transform .55s cubic-bezier(.16,.84,.24,1); }
-.wread.show .page .r1 { opacity: 1; transform: none; transition-delay: .05s; } .wread.show .page .r2 { opacity: 1; transform: none; transition-delay: .18s; }
-.wread.show .page .r3 { opacity: 1; transform: none; transition-delay: .3s; } .wread.show .page .r4 { opacity: 1; transform: none; transition-delay: .42s; } .wread.show .page .r5 { opacity: 1; transform: none; transition-delay: .55s; }
+.page .r1, .page .r2, .page .r3, .page .r4, .page .r5 { opacity: 0; transform: translateY(10px); transition: opacity .22s ease, transform .28s cubic-bezier(.16,.84,.24,1); }
+.wread.show .page .r1 { opacity: 1; transform: none; transition-delay: .03s; } .wread.show .page .r2 { opacity: 1; transform: none; transition-delay: .09s; }
+.wread.show .page .r3 { opacity: 1; transform: none; transition-delay: .15s; } .wread.show .page .r4 { opacity: 1; transform: none; transition-delay: .21s; } .wread.show .page .r5 { opacity: 1; transform: none; transition-delay: .28s; }
 .wsh-body { opacity: 1; transform: none; transition: none; }
 /* changelog documents on paper */
 .cldoc { background-color: color-mix(in srgb, var(--dc) 8%, #e9e7df); color: #1c2026; }
@@ -512,11 +512,11 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 .page .holes i, .cldoc .holes i { flex: none; }
 
 /* focus: the rest of the wiki fades out, the chosen card glides to the middle of the stage */
-.wiki-head, .wf-col, .wcount, .wc { transition: opacity .38s ease, transform .6s cubic-bezier(.65,0,.35,1), border-color .25s, box-shadow .3s; }
+.wiki-head, .wf-col, .wcount, .wc { transition: opacity .19s ease, transform .3s cubic-bezier(.65,0,.35,1), border-color .25s, box-shadow .3s; }
 .wiki.focus .wiki-head, .wiki.focus .wf-col, .wiki.focus .wcount { opacity: 0; pointer-events: none; }
 .wiki.focus .wc:not(.pick) { opacity: 0 !important; pointer-events: none; animation: none; }
 .wiki.focus { pointer-events: none; }
 .wc.pick { position: relative; z-index: 5; animation: none; opacity: 1; }
-.wc.pick.centre { transform: translate(var(--tx, 0), var(--ty, 0)); border-color: var(--fc); box-shadow: 0 18px 44px rgba(0,0,0,.55), 0 0 0 1px var(--fc); transition: transform .62s cubic-bezier(.65,0,.35,1), box-shadow .4s; }
+.wc.pick.centre { transform: translate(var(--tx, 0), var(--ty, 0)); border-color: var(--fc); box-shadow: 0 18px 44px rgba(0,0,0,.55), 0 0 0 1px var(--fc); transition: transform .31s cubic-bezier(.65,0,.35,1), box-shadow .2s; }
 .wc.slid { transform: none; box-shadow: none; }
 .wsheet { transform-origin: 50% 50%; }

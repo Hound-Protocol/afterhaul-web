@@ -519,18 +519,18 @@
           var rect = card.getBoundingClientRect();
           sheet.style.transition = "none"; sheet.style.transform = rectVars(rect); card.classList.add("lift"); void sheet.offsetWidth;
           rd.classList.add("open"); sheet.classList.add("grow");
-          sheet.style.transition = "transform .8s cubic-bezier(.65,0,.35,1)"; sheet.style.transform = "translate(-50%,-50%)";
-          setTimeout(function () { rd.classList.add("show"); }, 480);
-          setTimeout(function () { rd.classList.add("stamped"); }, 1250);
-          setTimeout(function () { busy = false; sheet.focus({ preventScroll: true }); }, 900);
+          sheet.style.transition = "transform .4s cubic-bezier(.65,0,.35,1)"; sheet.style.transform = "translate(-50%,-50%)";
+          setTimeout(function () { rd.classList.add("show"); }, 240);
+          setTimeout(function () { rd.classList.add("stamped"); }, 630);
+          setTimeout(function () { busy = false; sheet.focus({ preventScroll: true }); }, 450);
         }
         if (reduce || !card) { run(); return; }
         /* 1. everything else fades out, 2. the card glides to the middle of the empty stage, 3. it zooms open from there */
         var mr = $(".wiki-main", wiki).getBoundingClientRect(), cr2 = card.getBoundingClientRect(), top = Math.max(mr.top, 110), bot = Math.min(mr.bottom, innerHeight - 70);
         card.style.setProperty("--tx", Math.round(mr.left + mr.width / 2 - (cr2.left + cr2.width / 2)) + "px"); card.style.setProperty("--ty", Math.round((top + bot) / 2 - (cr2.top + cr2.height / 2)) + "px");
         card.classList.add("pick"); wiki.classList.add("focus");
-        setTimeout(function () { card.classList.add("centre"); }, 380);
-        setTimeout(run, 380 + 620 + 150);
+        setTimeout(function () { card.classList.add("centre"); }, 190);
+        setTimeout(run, 190 + 310 + 75);
       }
       function closeDoc() {
         if (!opened || busy) return; busy = true; var card = opened.card;
@@ -539,11 +539,11 @@
         var fin = function () { rd.classList.remove("open"); sheet.classList.remove("grow"); rd.hidden = true; rd.setAttribute("aria-hidden", "true"); doc.body.classList.remove("wlock"); if (card) card.classList.remove("lift"); opened = null; history.replaceState(null, "", "#docs"); if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true }); };
         if (reduce || !card || card.hidden) { clear(); fin(); busy = false; return; }
         /* reverse: shrink into the card at the middle, glide back to its place, then the rest fades in */
-        setTimeout(function () { sheet.style.transition = "transform .8s cubic-bezier(.65,0,.35,1)"; sheet.style.transform = rectVars(card.getBoundingClientRect()); rd.classList.remove("open"); }, 260);
-        setTimeout(fin, 1080);
-        setTimeout(function () { card.classList.remove("centre"); }, 1230);
-        setTimeout(function () { wiki.classList.remove("focus"); }, 1850);
-        setTimeout(function () { card.classList.remove("pick"); busy = false; }, 2250);
+        setTimeout(function () { sheet.style.transition = "transform .4s cubic-bezier(.65,0,.35,1)"; sheet.style.transform = rectVars(card.getBoundingClientRect()); rd.classList.remove("open"); }, 130);
+        setTimeout(fin, 540);
+        setTimeout(function () { card.classList.remove("centre"); }, 615);
+        setTimeout(function () { wiki.classList.remove("focus"); }, 925);
+        setTimeout(function () { card.classList.remove("pick"); busy = false; }, 1125);
       }
       cards.forEach(function (c) { c.addEventListener("click", function () { openDoc(c.getAttribute("data-doc"), c); }); });
       $(".wclose", rd).addEventListener("click", closeDoc); $(".wback", rd).addEventListener("click", closeDoc);
