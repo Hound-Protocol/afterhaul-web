@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.7.3-pre · Hero button target · 2026-10-28
+- "More about AFTERHAUL" on the first screen now opens the About section.
+
 ## 0.7.2-pre · Button hover spacing · 2026-10-28
 - Pointing at a section button no longer overlaps its neighbours or touches the page edge: the row has wider gaps and a safer margin, including at higher zoom levels.
 
