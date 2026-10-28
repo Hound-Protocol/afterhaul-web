@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.7.5-pre · Update notice redesign · 2026-10-28
+- The "New website version available" notice is now a square hazard-style panel with its own solid background, moving warning stripes, a refresh icon and a drop-in animation. Still one centred line. Motion stops with reduced-motion settings.
+
 ## 0.7.4-pre · Stage badge placement · 2026-10-28
 - The "Currently in progress" badge now sits under the stage name, aligned left on one line, in the release stages and on the roadmap.
 
