@@ -593,3 +593,16 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 .ph-note { max-width: 70ch; margin: 0 0 18px; padding: 10px 14px; border-left: 4px solid var(--amber); background: rgba(240,162,2,.08); font-size: 17px; color: var(--dust); }
 .ph-note strong { color: var(--frost); font-weight: 500; }
 @media (max-width: 860px) { .rm-st { padding-left: 24px; } }
+
+/* Section buttons: wider row, 10% shorter, icon about 20% smaller, icon and text centred with free space around */
+@media (min-width: 861px) {
+  .tabs { margin-inline: calc(-1 * min(124px, max(0px, (100vw - 100%) / 2 - 24px))); overflow-x: clip; overflow-clip-margin: 24px; }
+  .tab { min-height: 90px; padding: 8px 20px; grid-template-columns: auto auto; justify-content: center; align-content: center; column-gap: 14px; text-align: center; }
+  .tab svg { width: 30px; height: 30px; }
+  .tab small { width: max-content; max-width: 20ch; justify-self: center; text-wrap: balance; }
+  .tab { column-gap: 10px; }
+}
+@media (max-width: 860px) {
+  .tab { min-height: 76px; padding: 12px 16px; grid-template-columns: auto auto; justify-content: center; align-content: center; column-gap: 12px; text-align: center; }
+  .tab svg { width: 30px; height: 30px; }
+}

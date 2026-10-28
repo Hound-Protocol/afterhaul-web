@@ -2,6 +2,10 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.5.4-pre · Section buttons · 2026-10-28
+- The row of section buttons is about 20% wider (as far as the window allows) and each button is about 10% shorter. The icons are about 20% smaller, and each icon and its text sit centred in the button with free space around them.
+- The Roadmap button now reads "The future of AFTERHAUL".
+
 ## 0.5.3-pre · No sideways jump · 2026-10-28
 - Fixed: opening a wiki document moved the whole page a few pixels to the right, because the page scrollbar disappeared while the document was open. The scrollbar space is now kept, so nothing moves.
 
