@@ -427,42 +427,124 @@
   /* ---------- Tabs, collapsible sections and deep links ---------- */
   (function () {
     var tabs = $$(".tab"), panels = $$(".panel");
-    function setOpen(acc, open) {
-      var b = $(".acc-h button", acc), was = acc.classList.contains("open");
-      acc.classList.toggle("open", open); b.setAttribute("aria-expanded", open ? "true" : "false");
-      if (open && !was) setTimeout(function () { weather.forEach(function (w) { w.size(); }); measure(); }, 520); else setTimeout(measure, 520);
+    var tabsEl = $(".tabs"), back = $("#tabback"), pwrap = $("#pwrap"), picked = null, mobile = function () { return innerWidth <= 860; };
+    function sizeAll() { weather.forEach(function (w) { w.size(); }); measure(); }
+    function showTab(k) {
+      if (picked === k) return;
+      var sel = tabs.filter(function (t) { return t.getAttribute("data-tab") === k; })[0]; if (!sel) return;
+      var was = picked; picked = k;
+      tabsEl.classList.remove("picked"); tabs.forEach(function (t) { t.classList.remove("gone"); }); sel.style.transform = "none"; /* measure from rest position */
+      var tr = tabsEl.getBoundingClientRect(), sr = sel.getBoundingClientRect(), dx = mobile() ? 0 : Math.round(tr.left + tr.width / 2 - (sr.left + sr.width / 2) - (back ? 0 : 0));
+      sel.style.transform = ""; tabsEl.style.setProperty("--dx", dx + "px");
+      void tabsEl.offsetWidth;
+      tabs.forEach(function (t) { var on = t === sel; t.setAttribute("aria-selected", on ? "true" : "false"); t.classList.toggle("gone", !on); });
+      tabsEl.classList.add("picked"); back.removeAttribute("aria-hidden"); back.tabIndex = 0;
+      var delay = was ? 0 : (reduce ? 0 : 620);
+      setTimeout(function () {
+        panels.forEach(function (p) { p.hidden = p.id !== "panel-" + k; });
+        pwrap.classList.add("open");
+        setTimeout(function () { pwrap.classList.add("done"); sizeAll(); }, reduce ? 0 : 700);
+        setTimeout(sizeAll, 80);
+      }, delay);
     }
-    function showTab(k, silent) {
-      tabs.forEach(function (t) { var on = t.getAttribute("data-tab") === k; t.setAttribute("aria-selected", on ? "true" : "false"); });
-      panels.forEach(function (p) { p.hidden = p.id !== "panel-" + k; });
-      setTimeout(function () { weather.forEach(function (w) { w.size(); }); measure(); }, 60);
+    function unpick() {
+      if (!picked) return; picked = null;
+      pwrap.classList.remove("done", "open"); back.setAttribute("aria-hidden", "true"); back.tabIndex = -1;
+      setTimeout(function () {
+        tabsEl.classList.remove("picked"); tabs.forEach(function (t) { t.classList.remove("gone"); t.setAttribute("aria-selected", "false"); });
+        setTimeout(function () { panels.forEach(function (p) { p.hidden = true; }); sizeAll(); }, reduce ? 0 : 600);
+      }, reduce ? 0 : 560);
+      history.replaceState(null, "", location.pathname);
     }
+    back.addEventListener("click", function () { unpick(); var ex = $("#explore"); ex.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); });
     tabs.forEach(function (t, i) {
-      t.addEventListener("click", function () { if (t.getAttribute("aria-disabled") === "true") return; showTab(t.getAttribute("data-tab")); history.replaceState(null, "", "#" + t.getAttribute("data-tab")); });
+      t.addEventListener("click", function () { if (picked) return; showTab(t.getAttribute("data-tab")); history.replaceState(null, "", "#" + t.getAttribute("data-tab")); setTimeout(function () { var ex = $("#explore"); ex.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); }, 60); });
       t.addEventListener("keydown", function (e) {
-        var live = tabs.filter(function (x) { return x.getAttribute("aria-disabled") !== "true"; }), k = live.indexOf(t);
-        if (e.key === "ArrowRight" || e.key === "ArrowLeft") { var n = live[(k + (e.key === "ArrowRight" ? 1 : live.length - 1)) % live.length]; n.focus(); n.click(); e.preventDefault(); }
+        if (picked) return;
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") { var n = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length]; n.focus(); e.preventDefault(); }
       });
     });
-    $$(".acc").forEach(function (acc) {
-      $(".acc-h button", acc).addEventListener("click", function () { setOpen(acc, !acc.classList.contains("open")); });
-      if ($(".acc-h button", acc).getAttribute("aria-expanded") === "true") acc.classList.add("open");
-    });
-    $$(".ptools button").forEach(function (b) {
-      b.addEventListener("click", function () {
-        var open = b.getAttribute("data-act") === "expand";
-        $$(".acc", b.closest(".panel")).forEach(function (a) { setOpen(a, open); });
-      });
-    });
+    /* sub-navigation: highlight the section in view */
+    var sn = $$(".subnav a");
+    sn.forEach(function (a) { a.addEventListener("click", function (e) { var t = doc.getElementById(a.getAttribute("href").slice(1)); if (!t) return; e.preventDefault(); history.replaceState(null, "", a.getAttribute("href")); t.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); }); });
+    if ("IntersectionObserver" in window && sn.length) {
+      var so = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) sn.forEach(function (a) { a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id); }); }); }, { rootMargin: "-30% 0px -60% 0px" });
+      sn.forEach(function (a) { var t = doc.getElementById(a.getAttribute("href").slice(1)); if (t) so.observe(t); });
+    }
+    /* ---- Wiki: folders, cards, reader ---- */
+    var wiki = $("#wiki"), W = null;
+    if (wiki) {
+      var cards = $$(".wc", wiki), fbtn = $$(".wf", wiki), num = $("#wnum"), lab = $("#wlabel"), fname = $("#wfname"), stage = $("#wstage"), cur = "all", opened = null, busy = false;
+      var rd = $("#wread"), sheet = $(".wsheet", rd), lastFocus = null;
+      function countTo(n) {
+        var from = parseInt(num.textContent, 10) || 0; lab.textContent = n === 1 ? "document" : "documents";
+        if (reduce || from === n) { num.textContent = n; return; }
+        var t0 = performance.now(), d = 450; (function f(t) { var k = Math.min(1, (t - t0) / d); num.textContent = Math.round(from + (n - from) * k); if (k < 1) requestAnimationFrame(f); })(t0);
+      }
+      function setFolder(f, first) {
+        cur = f; var color = "#4aa3ff", name = "All documents";
+        fbtn.forEach(function (b) { var on = b.getAttribute("data-folder") === f; b.setAttribute("aria-pressed", on ? "true" : "false"); if (on) { color = b.style.getPropertyValue("--fc"); name = $("b", b).textContent; } });
+        stage.style.setProperty("--fc", color); fname.textContent = name;
+        var show = cards.filter(function (c) { return f === "all" || c.getAttribute("data-folder") === f; });
+        countTo(show.length);
+        var go = function () {
+          var i = 0; cards.forEach(function (c) { c.classList.remove("in", "out"); if (show.indexOf(c) < 0) c.hidden = true; });
+          show.forEach(function (c) { c.hidden = false; c.style.setProperty("--i", i++); c.classList.remove("in"); void c.offsetWidth; c.classList.add("in"); });
+        };
+        if (first || reduce) { go(); return; }
+        var vis = cards.filter(function (c) { return !c.hidden; }); vis.forEach(function (c) { c.classList.remove("in"); c.classList.add("out"); });
+        setTimeout(go, vis.length ? 290 : 0);
+      }
+      fbtn.forEach(function (b) { b.addEventListener("click", function () { if (b.getAttribute("aria-pressed") !== "true") setFolder(b.getAttribute("data-folder")); }); });
+      function place(rect) { /* transform that makes the sheet cover `rect` */
+        var r = sheet.getBoundingClientRect(), base = { l: (innerWidth - sheet.offsetWidth) / 2, t: (innerHeight - sheet.offsetHeight) / 2 };
+        return "translate(" + (rect.left - base.l) + "px," + (rect.top - base.t) + "px) scale(" + (rect.width / sheet.offsetWidth) + "," + (rect.height / sheet.offsetHeight) + ")";
+      }
+      function openDoc(id, fromCard) {
+        var d = doc.getElementById(id); if (!d || busy || opened) return; busy = true;
+        var f = d.getAttribute("data-folder"); if (cur !== "all" && cur !== f) setFolder(f, true);
+        var card = fromCard || cards.filter(function (c) { return c.getAttribute("data-doc") === id; })[0];
+        sheet.style.setProperty("--fc", d.style.getPropertyValue("--fc"));
+        $("#wtitle").textContent = d.getAttribute("data-title"); $("#wcode").textContent = d.getAttribute("data-code"); $("#wmeta").textContent = d.getAttribute("data-meta");
+        $("#wcontent").innerHTML = $(".wbody", d).outerHTML; $(".wsh-body", rd).scrollTop = 0;
+        rd.hidden = false; rd.setAttribute("aria-hidden", "false"); doc.body.classList.add("wlock"); lastFocus = doc.activeElement; opened = { id: id, card: card };
+        var rect = card ? card.getBoundingClientRect() : null;
+        if (reduce || !rect) { sheet.style.transition = "none"; sheet.style.transform = "translate(-50%,-50%)"; rd.classList.add("open", "show"); sheet.focus({ preventScroll: true }); busy = false; history.replaceState(null, "", "#" + id); return; }
+        sheet.style.transition = "none"; sheet.style.left = "50%"; sheet.style.top = "50%"; sheet.style.margin = "0"; sheet.style.transform = "translate(-50%,-50%)";
+        var cx = rect.left + rect.width / 2 - innerWidth / 2, cy = rect.top + rect.height / 2 - innerHeight / 2;
+        sheet.style.transform = "translate(calc(-50% + " + cx + "px), calc(-50% + " + cy + "px)) scale(" + (rect.width / sheet.offsetWidth) + "," + (rect.height / sheet.offsetHeight) + ")";
+        card.classList.add("lift"); void sheet.offsetWidth; rd.classList.add("open");
+        sheet.style.transition = "transform .7s cubic-bezier(.2,.8,.2,1)"; sheet.style.transform = "translate(-50%,-50%)";
+        setTimeout(function () { rd.classList.add("show"); }, 380);
+        setTimeout(function () { busy = false; sheet.focus({ preventScroll: true }); }, 720);
+        history.replaceState(null, "", "#" + id);
+      }
+      function closeDoc() {
+        if (!opened || busy) return; busy = true; var o = opened, card = o.card;
+        rd.classList.remove("show");
+        var fin = function () { rd.classList.remove("open"); rd.hidden = true; rd.setAttribute("aria-hidden", "true"); doc.body.classList.remove("wlock"); if (card) card.classList.remove("lift"); opened = null; busy = false; history.replaceState(null, "", "#docs"); if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true }); };
+        if (reduce || !card || card.hidden) { fin(); return; }
+        var rect = card.getBoundingClientRect(), cx = rect.left + rect.width / 2 - innerWidth / 2, cy = rect.top + rect.height / 2 - innerHeight / 2;
+        setTimeout(function () { sheet.style.transition = "transform .6s cubic-bezier(.5,0,.2,1)"; sheet.style.transform = "translate(calc(-50% + " + cx + "px), calc(-50% + " + cy + "px)) scale(" + (rect.width / sheet.offsetWidth) + "," + (rect.height / sheet.offsetHeight) + ")"; rd.classList.remove("open"); }, 180);
+        setTimeout(fin, 800);
+      }
+      cards.forEach(function (c) { c.addEventListener("click", function () { openDoc(c.getAttribute("data-doc"), c); }); });
+      $(".wclose", rd).addEventListener("click", closeDoc); $(".wback", rd).addEventListener("click", closeDoc);
+      doc.addEventListener("keydown", function (e) { if (e.key === "Escape" && opened) closeDoc(); if (e.key === "Tab" && opened) { var f = $$("button, a[href]", sheet); if (!f.length) return; var a = f[0], z = f[f.length - 1]; if (e.shiftKey && doc.activeElement === a) { z.focus(); e.preventDefault(); } else if (!e.shiftKey && doc.activeElement === z) { a.focus(); e.preventDefault(); } } });
+      wiki.addEventListener("click", function (e) { var a = e.target.closest && e.target.closest(".wbody a[href^='#doc-']"); if (a && opened) { e.preventDefault(); } });
+      rd.addEventListener("click", function (e) { var a = e.target.closest && e.target.closest("a[href^='#doc-']"); if (a) { e.preventDefault(); var id = a.getAttribute("href").slice(1); closeDoc(); setTimeout(function () { openDoc(id); }, 900); } });
+      W = { open: openDoc, folder: setFolder };
+      setFolder("all", true);
+    }
     function route(smooth) {
       var id = decodeURIComponent(location.hash.slice(1)); if (!id) return;
+      if (id.indexOf("doc-") === 0 && W) { showTab("docs"); setTimeout(function () { W.open(id); }, 450); setTimeout(function () { $("#explore").scrollIntoView({ block: "start" }); }, 30); return; }
+      if (/^(about|docs|log|community|press)$/.test(id)) { showTab(id); setTimeout(function () { $("#explore").scrollIntoView({ behavior: reduce || !smooth ? "auto" : "smooth", block: "start" }); }, 60); return; }
       var el = doc.getElementById(id); if (!el) return;
       var panel = el.closest ? el.closest(".panel") : null, k = null;
       if (id === "about" || id === "docs") { k = id; el = $("#explore"); }
       else if (panel) k = panel.id.replace("panel-", "");
       if (k) showTab(k);
-      var p = el; while (p && p.closest) { p = p.closest(".acc"); if (!p) break; setOpen(p, true); p = p.parentElement; }
-      if (el.classList && el.classList.contains("acc")) setOpen(el, true);
       setTimeout(function () { el.scrollIntoView({ behavior: reduce || !smooth ? "auto" : "smooth", block: "start" }); }, 80);
       setTimeout(function () { if (Math.abs(el.getBoundingClientRect().top - 110) > 60) el.scrollIntoView({ behavior: "auto", block: "start" }); }, 900);
     }

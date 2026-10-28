@@ -2,6 +2,13 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.3.0-pre · Wiki, changelog, community, press · 2026-10-28
+- Pick a section: the chosen button glides to the centre, the others fade away and the content rolls out below. A larger All sections button on the right brings the choices back. Each button has its own frame, and there is more space between the buttons and the content.
+- About is now one loose page with a navigation bar on top (What it is, The crew, The land, Design choices, Where we are). The collapsible sections are gone.
+- Documentation became the Wiki, "Documentation of AFTERHAUL": a pillar of coloured folders on the left, document cards on the right with a document count, and a reader that opens the chosen document in the centre. Every step is animated. Built by tools/build_docs.py.
+- Dev log became Changelog: the website log on the left and a selected, player-facing game log on the right, each laid out as a document with its own colour (tools/build_changelog.py).
+- Community lists Discord (held until the prototype), Instagram and YouTube (links to come). Press lists the contact address.
+
 ## 0.2.1-pre · Sound text · 2026-10-27
 - The in-cab sound design video text and the crash sound text now use the owner's wording.
 

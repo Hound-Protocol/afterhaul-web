@@ -43,20 +43,51 @@ def md(src):
         else: out.append(f"<p>{inline(text)}</p>")
     return "\n".join(out)
 
+FOLDER_COLORS = {"start": "#f0a202", "reference": "#4aa3ff", "modding": "#b57bff"}
+
+def summary(body):
+    m = re.search(r"<p>(.*?)</p>", body, flags=re.S)
+    t = re.sub(r"<[^>]+>", "", m.group(1)) if m else ""
+    t = html.unescape(t).strip()
+    return html.escape(t if len(t) <= 130 else t[:127].rsplit(" ", 1)[0] + "...", quote=False)
+
 def main():
     root = Path(sys.argv[1]); idx = json.loads((root / "index.json").read_text(encoding="utf-8"))
-    parts = ['<p class="lede">The player guide. It is a draft: it describes the game as planned, and the game is not playable yet. Pages are written in words, with no tuned numbers.</p>']
+    folders, cards, docs, n = [], [], [], 0
+    total = sum(len(sec["pages"]) for sec in idx["sections"])
+    folders.append(f'<button type="button" class="wf" data-folder="all" style="--fc:#e8e1d0" aria-pressed="true"><span class="wf-tab"></span><b>All documents</b><em>{total}</em></button>')
     for sec in idx["sections"]:
-        parts.append(f'<h3 class="grp">{html.escape(sec["title"])}</h3>')
+        col = FOLDER_COLORS.get(sec["id"], "#8aa")
+        folders.append(f'<button type="button" class="wf" data-folder="{sec["id"]}" style="--fc:{col}" aria-pressed="false"><span class="wf-tab"></span><b>{html.escape(sec["title"])}</b><em>{len(sec["pages"])}</em></button>')
         for pg in sec["pages"]:
+            n += 1; code = f"AH-PG-{n:03d}"
             body = md((root / pg["file"]).read_text(encoding="utf-8")); pid = "doc-" + pg["id"]
-            parts.append(f'''<section class="acc leg" id="{pid}"><h3 class="acc-h"><button type="button" aria-expanded="false" aria-controls="{pid}-b"><span>{html.escape(pg["title"])}</span><i aria-hidden="true"></i></button></h3>
-<div class="acc-b" id="{pid}-b"><div class="acc-in"><div class="leg-in doc">
-{body}
-</div></div></div></section>''')
-    block = "\n".join(parts)
+            words = len(re.sub(r"<[^>]+>", " ", body).split()); mins = max(1, round(words / 200))
+            title = html.escape(pg["title"])
+            cards.append(f'<button type="button" class="wc" data-doc="{pid}" data-folder="{sec["id"]}" style="--fc:{col}"><span class="wc-code">{code}</span><b>{title}</b><span class="wc-sum">{summary(body)}</span><span class="wc-meta">{html.escape(sec["title"])} &middot; {mins} min read</span></button>')
+            docs.append(f'<article class="wdoc" id="{pid}" data-folder="{sec["id"]}" data-code="{code}" data-title="{title}" data-meta="{html.escape(sec["title"])} &middot; {mins} min read" style="--fc:{col}" hidden>\n<div class="wbody">\n{body}\n</div>\n</article>')
+    block = f'''<div class="wiki" id="wiki">
+<header class="wiki-head"><h2>Documentation of AFTERHAUL</h2><p>The player guide, kept in folders. It is a draft: it describes the game as planned, and the game is not playable yet.</p></header>
+<div class="wiki-main">
+<nav class="wf-col" aria-label="Folders">
+{chr(10).join(folders)}
+</nav>
+<div class="wstage" id="wstage">
+<p class="wcount" id="wcount" aria-live="polite"><b id="wnum">{total}</b> <span id="wlabel">documents</span><i id="wfname">All documents</i></p>
+<div class="wgrid" id="wgrid">
+{chr(10).join(cards)}
+</div>
+</div>
+</div>
+<div class="wread" id="wread" hidden aria-hidden="true"><div class="wback"></div>
+<div class="wsheet" role="dialog" aria-modal="true" aria-labelledby="wtitle" tabindex="-1"><div class="wsh-bar"><span id="wcode"></span><span id="wmeta"></span><button type="button" class="wclose" aria-label="Close document">Close</button></div>
+<div class="wsh-body"><h2 id="wtitle"></h2><div id="wcontent"></div></div></div></div>
+<div class="wstore" hidden>
+{chr(10).join(docs)}
+</div>
+</div>'''
     p = Path(__file__).resolve().parent.parent / "index.html"; h = p.read_text(encoding="utf-8")
     new = re.sub(r"<!-- DOCS:START -->.*<!-- DOCS:END -->", lambda m: "<!-- DOCS:START -->\n" + block + "\n<!-- DOCS:END -->", h, flags=re.S)
     if new == h: print("docs panel already up to date")
-    p.write_text(new, encoding="utf-8"); print("docs panel built from", root)
+    p.write_text(new, encoding="utf-8"); print("docs panel built:", total, "documents")
 main()
