@@ -2,6 +2,10 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.3.2-pre · Frontline pacing · 2026-10-28
+- The dark clods now rise and fall at the same slow pace as the mud pillar.
+- Shells fall twice as fast, each at a slightly different angle.
+
 ## 0.3.1-pre · Videos stop when you leave About · 2026-10-28
 - Leaving About (back to the choices, or another section) removes any playing video and brings back its preview.
 

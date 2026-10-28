@@ -177,7 +177,7 @@
       var vmax = 3.2, v, k; flash = 0.6; shake = 1;
       for (i = 0; i < 170; i++) { v = 0.5 + vmax * Math.pow(r(), 1.7); k = v / vmax; mud.push({ x: x + (r() - 0.5) * 7, y: y, vx: (r() - 0.5) * 0.45 * (0.35 + k), vy: -v, s: (6.5 * (1 - 0.82 * k) + 1) * (0.7 + 0.6 * r()), d: r() * 24, gy: y + r() * 5, k: k }); }
       blasts.push({ x: x, y: y, a: 0 });
-      for (i = 0; i < 48; i++) clods.push({ x: x + (r() - 0.5) * 10, y: y, vx: (r() - 0.5) * 7, vy: -(3 + r() * 8), s: 1.5 + r() * 4.5, rot: 0 });
+      for (i = 0; i < 48; i++) clods.push({ x: x + (r() - 0.5) * 10, y: y, y0: y + r() * 5, vx: (r() - 0.5) * 1.7, vy: -(0.8 + r() * 2.6), s: 1.5 + r() * 4.5, rot: 0 });
       for (i = 0; i < 5; i++) smoke.push({ x: x + (r() - 0.5) * 30, y: y - r() * 6, vx: (r() - 0.5) * 0.6, vy: -0.25 - r() * 0.3, s: 9 + r() * 10, a: 0.4 });
     }
     function drawCols() {
@@ -246,12 +246,12 @@
       var i, p, g;
       drawWar(t);
       if (shake > 0.01) { shake *= 0.9; var sx = (Math.sin(t * 0.09) * 2.4 + Math.sin(t * 0.23) * 1.2) * shake, sy = (Math.cos(t * 0.11) * 2 + Math.sin(t * 0.19)) * shake; c.style.transform = sil.style.transform = "translate(" + sx.toFixed(2) + "px," + sy.toFixed(2) + "px) scale(1.03)"; } else if (c.style.transform) { c.style.transform = sil.style.transform = ""; shake = 0; }
-      now = t; if (t >= nextShell) { nextShell = t + 5000 + r() * 5000; shells.push({ x: w * (0.15 + r() * 0.7), y: -20, vx: (r() - 0.5) * 0.5, vy: 26, gy: h * (0.66 + r() * 0.1) }); }
+      now = t; if (t >= nextShell) { nextShell = t + 5000 + r() * 5000; var tx = w * (0.15 + r() * 0.7), gy0 = h * (0.66 + r() * 0.1), ang = (r() - 0.5) * 0.5, vy0 = 52, vx0 = vy0 * Math.tan(ang), fr = (gy0 + 20) / (vy0 + 1.5); shells.push({ x: tx - vx0 * fr, y: -20, vx: vx0, vy: vy0, gy: gy0 }); }
       if (r() < 0.008) { var dir = r() < 0.5 ? 1 : -1; tracers.push({ x: dir > 0 ? -50 : w + 50, y: h * (0.12 + r() * 0.5), vx: dir * (26 + r() * 10), vy: (r() - 0.5) * 1.2 }); }
       flash *= 0.88;
       if (flash > 0.02) { ctx.fillStyle = "rgba(255,170,80," + (flash * 0.16) + ")"; ctx.fillRect(0, 0, w, h); }
       for (i = shells.length - 1; i >= 0; i--) {
-        p = shells[i]; p.x += p.vx; p.y += p.vy; p.vy += 0.05;
+        p = shells[i]; p.x += p.vx; p.y += p.vy; p.vy += 0.1;
         ctx.strokeStyle = "rgba(230,200,150,.7)"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x - p.vx * 3, p.y - p.vy * 3); ctx.stroke();
         if (p.y >= p.gy) { boom(p.x, p.gy); shells.splice(i, 1); }
       }
@@ -263,7 +263,7 @@
         ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, 20 + p.a * 60, 0, 6.283); ctx.fill();
         ctx.strokeStyle = "rgba(255,210,150," + (0.5 * (1 - p.a)) + ")"; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(p.x, p.y + 4, p.a * 120, p.a * 18, 0, 0, 6.283); ctx.stroke();
       }
-      for (i = clods.length - 1; i >= 0; i--) { p = clods[i]; p.x += p.vx; p.y += p.vy; p.vy += 0.22; p.vx *= 0.995; if (p.y > h * 0.9) { clods.splice(i, 1); continue; } ctx.fillStyle = "#2a1c12"; ctx.fillRect(p.x, p.y, p.s, p.s * 0.8); ctx.fillStyle = "rgba(255,150,60,.35)"; ctx.fillRect(p.x, p.y, p.s * 0.4, p.s * 0.3); }
+      for (i = clods.length - 1; i >= 0; i--) { p = clods[i]; p.x += p.vx; p.y += p.vy; p.vy += 0.021; p.vx *= 0.998; if (p.y > h * 0.9 || (p.vy > 0 && p.y > p.y0)) { clods.splice(i, 1); continue; } ctx.fillStyle = "#2a1c12"; ctx.fillRect(p.x, p.y, p.s, p.s * 0.8); ctx.fillStyle = "rgba(255,150,60,.35)"; ctx.fillRect(p.x, p.y, p.s * 0.4, p.s * 0.3); }
       for (i = tracers.length - 1; i >= 0; i--) {
         p = tracers[i]; p.x += p.vx; p.y += p.vy; if (p.x < -80 || p.x > w + 80) { tracers.splice(i, 1); continue; }
         g = ctx.createLinearGradient(p.x, p.y, p.x - p.vx * 2.2, p.y - p.vy * 2.2); g.addColorStop(0, "rgba(255,245,200,1)"); g.addColorStop(1, "rgba(255,170,60,0)");
