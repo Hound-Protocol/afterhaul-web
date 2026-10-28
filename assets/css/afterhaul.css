@@ -809,3 +809,10 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 @media (prefers-reduced-motion: reduce) { .upd, .upd-in, .upd-in::before, .upd-haz, .upd-ic { animation: none !important; } }
 .ph-art img { max-height: 760px; }
 @media (max-width: 860px) { .ph-art img { max-height: none; } }
+
+/* Visual design: character placeholder and cover art side by side */
+.ph-row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 28px 32px; margin-top: 26px; }
+.ph-row .ph { margin: 0; max-width: none; }
+.ph-row .ph img { max-height: 560px; width: auto; }
+.ph-row .ph figcaption { max-width: 34ch; }
+@media (max-width: 860px) { .ph-row { flex-direction: column; } .ph-row .ph img { max-height: none; } }
