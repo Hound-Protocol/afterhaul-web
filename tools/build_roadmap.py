@@ -30,8 +30,8 @@ for n, s in enumerate(d["stages"]):
         for k, i in enumerate(its))
     out.append(f'<li class="rm-st{" here" if s.get("here") else ""}" data-stage="{s["id"]}"><div class="rm-hd"><h3>{esc(s["name"])}{here}</h3><p class="rm-lead">{esc(s["lead"])}</p>'
                f'<div class="rm-prog"><span class="rm-bar" role="img" aria-label="{done} of {len(its)} complete"><i style="--p:{pct}%"></i></span><span class="rm-pt">{done} of {len(its)} complete</span></div></div>'
-               f'<ul class="rm-list">{cards}</ul><p class="rm-empty" hidden>Nothing here with that status.</p></li>')
-out.append("</ol>")
+               f'<ul class="rm-list">{cards}</ul></li>')
+out.append('</ol><p class="rm-none" hidden>Nothing has this status yet.</p>')
 block = "\n".join(out)
 p = root / "index.html"; h = p.read_text(encoding="utf-8")
 if "<!-- ROADMAP:START -->" not in h:

@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.5.6-pre · Roadmap filter tidy-up · 2026-10-28
+- Filtering the roadmap by a status hides stages with no matching items, and shows one message when nothing has that status, instead of one in every stage.
+
 ## 0.5.5-pre · Roadmap redesign · 2026-10-28
 - The roadmap is rebuilt for players. Every item carries one of four statuses: Complete, In Progress, Planned or Abandoned. Status chips filter the list and show counts, each stage has a progress bar, and the page shows when it was last updated.
 - Items are written for people outside the project: no tools or setup details.

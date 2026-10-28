@@ -613,7 +613,7 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 .rm-card p { margin: 4px 0 0; font-size: 16px; line-height: 1.5; color: #cdb8ae; }
 .rm-chip { grid-column: 2; justify-self: start; margin-top: 8px; font: 400 11.5px var(--mono); letter-spacing: .08em; color: var(--s); border: 1px solid color-mix(in srgb, var(--s) 55%, transparent); padding: 2px 8px; border-radius: 999px; }
 .rm-card.s-in-progress .rm-chip { color: #130b08; background: var(--s); border-color: var(--s); }
-.rm-empty { margin: 8px 0 0; color: #bfa79b; font-size: 16px; }
+.rm-none { margin: 22px 0 0 10px; color: #d5bfb4; font-size: 18px; } .rm-st[hidden] { display: none; }
 /* motion: the road draws, bars fill and cards rise in one after another when the roadmap opens */
 .js .rm-st { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
 .js .rm-st.in { opacity: 1; transform: none; }

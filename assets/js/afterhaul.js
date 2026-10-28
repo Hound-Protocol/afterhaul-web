@@ -669,11 +669,13 @@
     b.addEventListener("click", function () {
       var f = b.getAttribute("data-f");
       btns.forEach(function (x) { var on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-pressed", on ? "true" : "false"); });
+      var any = 0;
       stages.forEach(function (s) {
         var shown = 0;
         Array.prototype.forEach.call(s.querySelectorAll(".rm-card"), function (c) { var ok = f === "all" || c.getAttribute("data-status") === f; c.hidden = !ok; if (ok) shown++; });
-        s.querySelector(".rm-empty").hidden = shown > 0; s.classList.add("in");
+        s.hidden = shown === 0; s.classList.add("in"); any += shown;
       });
+      var none = document.querySelector(".rm-none"); if (none) none.hidden = any > 0;
     });
   });
 })();
