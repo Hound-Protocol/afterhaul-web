@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.4.5-pre · Wiki description · 2026-10-28
+- The Wiki button's description now reads "Learn more about AFTERHAUL".
+
 ## 0.4.4-pre · Faster loading · 2026-10-28
 - No visible change. The deployed copy now has minified CSS and JavaScript, losslessly recompressed images and smaller woff2 fonts. The source files stay readable. Built by tools/optimize.py.
 - Fixed: the Road closed page was not included in the deploy.
