@@ -776,3 +776,10 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
   .wordmark { font-size: clamp(70px, 16vw, min(250px, 19vh)); }
   .tagline { margin-top: 20px; } .cta { margin-top: 14px; } .btn { padding: 9px 20px; font-size: 16px; }
 }
+
+/* Section buttons: room to grow on hover (10%) without touching neighbours or the page edge */
+@media (min-width: 861px) {
+  .tabs { gap: 20px; overflow: visible; padding-block: 6px; }
+  .tabs-gap { width: 0; }
+}
+@media (min-width: 861px) { .tabs { margin-inline: calc(-1 * min(124px, max(0px, (100vw - 100%) / 2 - 44px))); } }
