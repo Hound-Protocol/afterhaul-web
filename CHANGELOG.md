@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.7.12-pre · Sound mission line · 2026-10-28
+- Sound design (About): added the line about our primary mission under the drag racing paragraph.
+
 ## 0.7.11-pre · Visual design layout · 2026-10-28
 - The cover art now sits to the right of the placeholder character picture; on phones they stack.
 

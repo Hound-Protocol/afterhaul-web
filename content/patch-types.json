@@ -1,6 +1,7 @@
 {
  "_": "Patch type for each changelog entry. Types: Overhaul (big redesign), Feature (something new), Content (words, text, data), Polish (small look or feel change), Fix (a bug), Optimization (faster or smaller, nothing visible), Tools (builder and editor tools), Brand (logo and identity), Foundation (first setup), Systems (game rules built), World, Story, Documentation.",
  "web": {
+  "0.7.12-pre": "Content",
   "0.7.11-pre": "Polish",
   "0.7.10-pre": "Content",
   "0.7.9-pre": "Content",
