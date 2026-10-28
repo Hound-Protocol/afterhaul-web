@@ -45,11 +45,11 @@
   }
   function drawRoad(t) {
     rctx.clearRect(0, 0, rw, rh);
-    var vx = rw * 0.72, vy = rh * 0.6, bl = rw * 0.1, br = rw * 1.08;
+    var narrow = rw < 700, vx = rw * (narrow ? 0.6 : 0.66), cx = rw * (narrow ? 0.57 : 0.62), vy = rh * 0.6, bl = cx - rw * 0.49, br = cx + rw * 0.49;
     rctx.fillStyle = "#15100a"; rctx.beginPath(); rctx.moveTo(vx - 5, vy); rctx.lineTo(vx + 5, vy); rctx.lineTo(br, rh); rctx.lineTo(bl, rh); rctx.closePath(); rctx.fill();
     rctx.strokeStyle = "rgba(200,183,150,.16)"; rctx.lineWidth = 2;
     rctx.beginPath(); rctx.moveTo(vx - 5, vy); rctx.lineTo(bl, rh); rctx.moveTo(vx + 5, vy); rctx.lineTo(br, rh); rctx.stroke();
-    var cx = rw * 0.59, n = 14, i, p, q;
+    var n = 14, i, p, q;
     for (i = 0; i < n; i++) {
       p = ((i + S.road) % n) / n; q = Math.min(1, p + 0.03);
       var y1 = vy + (rh - vy) * p * p, y2 = vy + (rh - vy) * q * q, x1 = vx + (cx - vx) * p * p, x2 = vx + (cx - vx) * q * q;

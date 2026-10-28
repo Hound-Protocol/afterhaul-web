@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.4.12-pre · Straighter road · 2026-10-28
+- The hero road leans less to the right. Its vanishing point moved toward the middle and the road is now symmetric around its centre line, so the yellow dashes sit in the road with correct perspective. Narrow screens use their own, slightly more central, values.
+
 ## 0.4.11-pre · Patch names, update window · 2026-10-28
 - Every changelog entry now carries a named patch type: Overhaul, Feature, Content, Polish, Fix, Optimization, Tools, Brand or Foundation for the website, plus Systems, World, Story and Documentation for the game. Types are kept in content/patch-types.json.
 - The new-version notice is now a small window in the corner with Reload and Later buttons, instead of a line under the red bar.
