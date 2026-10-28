@@ -24,7 +24,7 @@ def doc(cls, code, title, intro, entries, owner):
     for e in entries:
         meta = " · ".join(x for x in (e["title"], e["date"]) if x)
         rows.append(f'<section class="clv"><h4><span>{html.escape(e["ver"])}</span>{("<em>" + html.escape(meta) + "</em>") if meta else ""}</h4><ul>' + "".join(f"<li>{inline(i)}</li>" for i in e["items"]) + "</ul></section>")
-    return f'''<article class="cldoc {cls}"><header><p class="clcode">Code: {code} · Latest: {html.escape(latest)} · Owner: {owner} · For: players</p><h3>{title}</h3><p class="clint">{intro}</p><p class="clcount"><b>{n}</b> versions</p></header>
+    return f'''<article class="cldoc paper {cls}"><span class="holes" aria-hidden="true"><i></i><i></i><i></i></span><header><p class="clcode">Code: {code} · Latest: {html.escape(latest)} · Owner: {owner} · For: players</p><h3>{title}</h3><p class="clint">{intro}</p><p class="clcount"><b>{n}</b> versions</p></header>
 <div class="clbody">{"".join(rows)}</div></article>'''
 
 web = parse((root / "CHANGELOG.md").read_text(encoding="utf-8"))

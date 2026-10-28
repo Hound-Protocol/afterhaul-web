@@ -453,8 +453,9 @@
       doc.dispatchEvent(new Event("ah:stopvideos"));
       pwrap.classList.remove("done", "open"); back.setAttribute("aria-hidden", "true"); back.tabIndex = -1;
       setTimeout(function () {
+        if (picked) return;
         tabsEl.classList.remove("picked"); tabs.forEach(function (t) { t.classList.remove("gone"); t.setAttribute("aria-selected", "false"); });
-        setTimeout(function () { panels.forEach(function (p) { p.hidden = true; }); sizeAll(); }, reduce ? 0 : 600);
+        setTimeout(function () { if (picked) return; panels.forEach(function (p) { p.hidden = true; }); sizeAll(); }, reduce ? 0 : 600);
       }, reduce ? 0 : 560);
       history.replaceState(null, "", location.pathname);
     }
@@ -498,37 +499,42 @@
         setTimeout(go, vis.length ? 290 : 0);
       }
       fbtn.forEach(function (b) { b.addEventListener("click", function () { if (b.getAttribute("aria-pressed") !== "true") setFolder(b.getAttribute("data-folder")); }); });
-      function place(rect) { /* transform that makes the sheet cover `rect` */
-        var r = sheet.getBoundingClientRect(), base = { l: (innerWidth - sheet.offsetWidth) / 2, t: (innerHeight - sheet.offsetHeight) / 2 };
-        return "translate(" + (rect.left - base.l) + "px," + (rect.top - base.t) + "px) scale(" + (rect.width / sheet.offsetWidth) + "," + (rect.height / sheet.offsetHeight) + ")";
+      function rectVars(rect) { var cx = rect.left + rect.width / 2 - innerWidth / 2, cy = rect.top + rect.height / 2 - innerHeight / 2; return "translate(calc(-50% + " + cx + "px), calc(-50% + " + cy + "px)) scale(" + (rect.width / sheet.offsetWidth) + "," + (rect.height / sheet.offsetHeight) + ")"; }
+      function fillSheet(d, id) {
+        sheet.style.setProperty("--fc", d.style.getPropertyValue("--fc"));
+        $("#wtitle").textContent = d.getAttribute("data-title"); $("#wcode").textContent = d.getAttribute("data-code"); $("#wmeta").textContent = d.getAttribute("data-meta");
+        $("#wm-code").textContent = d.getAttribute("data-code"); $("#wm-eff").textContent = d.getAttribute("data-eff"); $("#wfolder").textContent = d.getAttribute("data-folder-name"); $("#wm-foot").textContent = d.getAttribute("data-code") + " \u00b7 Draft \u00b7 Page 1 of 1";
+        $("#wcontent").innerHTML = $(".wbody", d).outerHTML; $(".wsh-body", rd).scrollTop = 0;
       }
       function openDoc(id, fromCard) {
         var d = doc.getElementById(id); if (!d || busy || opened) return; busy = true;
         var f = d.getAttribute("data-folder"); if (cur !== "all" && cur !== f) setFolder(f, true);
         var card = fromCard || cards.filter(function (c) { return c.getAttribute("data-doc") === id; })[0];
-        sheet.style.setProperty("--fc", d.style.getPropertyValue("--fc"));
-        $("#wtitle").textContent = d.getAttribute("data-title"); $("#wcode").textContent = d.getAttribute("data-code"); $("#wmeta").textContent = d.getAttribute("data-meta");
-        $("#wcontent").innerHTML = $(".wbody", d).outerHTML; $(".wsh-body", rd).scrollTop = 0;
-        rd.hidden = false; rd.setAttribute("aria-hidden", "false"); doc.body.classList.add("wlock"); lastFocus = doc.activeElement; opened = { id: id, card: card };
-        var rect = card ? card.getBoundingClientRect() : null;
-        if (reduce || !rect) { sheet.style.transition = "none"; sheet.style.transform = "translate(-50%,-50%)"; rd.classList.add("open", "show"); sheet.focus({ preventScroll: true }); busy = false; history.replaceState(null, "", "#" + id); return; }
-        sheet.style.transition = "none"; sheet.style.left = "50%"; sheet.style.top = "50%"; sheet.style.margin = "0"; sheet.style.transform = "translate(-50%,-50%)";
-        var cx = rect.left + rect.width / 2 - innerWidth / 2, cy = rect.top + rect.height / 2 - innerHeight / 2;
-        sheet.style.transform = "translate(calc(-50% + " + cx + "px), calc(-50% + " + cy + "px)) scale(" + (rect.width / sheet.offsetWidth) + "," + (rect.height / sheet.offsetHeight) + ")";
-        card.classList.add("lift"); void sheet.offsetWidth; rd.classList.add("open");
-        sheet.style.transition = "transform .7s cubic-bezier(.2,.8,.2,1)"; sheet.style.transform = "translate(-50%,-50%)";
-        setTimeout(function () { rd.classList.add("show"); }, 380);
-        setTimeout(function () { busy = false; sheet.focus({ preventScroll: true }); }, 720);
+        if (card) { var cr = card.getBoundingClientRect(); if (cr.top < 90 || cr.bottom > innerHeight - 70) card.scrollIntoView({ block: "center", behavior: "auto" }); }
+        fillSheet(d, id); opened = { id: id, card: card }; lastFocus = doc.activeElement;
         history.replaceState(null, "", "#" + id);
+        function run() {
+          rd.hidden = false; rd.setAttribute("aria-hidden", "false"); doc.body.classList.add("wlock");
+          if (reduce || !card) { sheet.style.transition = "none"; sheet.style.transform = "translate(-50%,-50%)"; rd.classList.add("open", "show", "stamped"); sheet.focus({ preventScroll: true }); busy = false; return; }
+          var rect = card.getBoundingClientRect();
+          sheet.style.transition = "none"; sheet.style.transform = rectVars(rect); card.classList.add("lift"); void sheet.offsetWidth;
+          rd.classList.add("open"); sheet.classList.add("grow");
+          sheet.style.transition = "transform .85s cubic-bezier(.16,.84,.24,1)"; sheet.style.transform = "translate(-50%,-50%)";
+          setTimeout(function () { rd.classList.add("show"); }, 420);
+          setTimeout(function () { rd.classList.add("stamped"); }, 1250);
+          setTimeout(function () { busy = false; sheet.focus({ preventScroll: true }); }, 900);
+        }
+        if (reduce || !card) { run(); return; }
+        card.classList.add("slid");                       /* 1. the chosen card slides to the right */
+        setTimeout(run, 380 + 200);                         /* 2. a short pause, then it opens from the card */
       }
       function closeDoc() {
-        if (!opened || busy) return; busy = true; var o = opened, card = o.card;
-        rd.classList.remove("show");
-        var fin = function () { rd.classList.remove("open"); rd.hidden = true; rd.setAttribute("aria-hidden", "true"); doc.body.classList.remove("wlock"); if (card) card.classList.remove("lift"); opened = null; busy = false; history.replaceState(null, "", "#docs"); if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true }); };
-        if (reduce || !card || card.hidden) { fin(); return; }
-        var rect = card.getBoundingClientRect(), cx = rect.left + rect.width / 2 - innerWidth / 2, cy = rect.top + rect.height / 2 - innerHeight / 2;
-        setTimeout(function () { sheet.style.transition = "transform .6s cubic-bezier(.5,0,.2,1)"; sheet.style.transform = "translate(calc(-50% + " + cx + "px), calc(-50% + " + cy + "px)) scale(" + (rect.width / sheet.offsetWidth) + "," + (rect.height / sheet.offsetHeight) + ")"; rd.classList.remove("open"); }, 180);
-        setTimeout(fin, 800);
+        if (!opened || busy) return; busy = true; var card = opened.card;
+        rd.classList.remove("show", "stamped");
+        var fin = function () { rd.classList.remove("open"); sheet.classList.remove("grow"); rd.hidden = true; rd.setAttribute("aria-hidden", "true"); doc.body.classList.remove("wlock"); if (card) card.classList.remove("lift"); opened = null; busy = false; history.replaceState(null, "", "#docs"); if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true }); if (card) setTimeout(function () { card.classList.remove("slid"); }, 120); };
+        if (reduce || !card || card.hidden) { if (card) card.classList.remove("slid"); fin(); return; }
+        setTimeout(function () { sheet.style.transition = "transform .7s cubic-bezier(.5,0,.2,1)"; sheet.style.transform = rectVars(card.getBoundingClientRect()); rd.classList.remove("open"); }, 260);
+        setTimeout(fin, 980);
       }
       cards.forEach(function (c) { c.addEventListener("click", function () { openDoc(c.getAttribute("data-doc"), c); }); });
       $(".wclose", rd).addEventListener("click", closeDoc); $(".wback", rd).addEventListener("click", closeDoc);

@@ -2,7 +2,7 @@
 """Builds the Documentation panel of index.html from the player guide source in the game repo (decision 0018).
 Usage: python3 tools/build_docs.py /path/to/Afterhaul/docs/player
 Only the player guide is read. Nothing is written by hand in the panel: edit the source and run this again."""
-import html, json, re, sys
+import datetime, html, json, re, sys
 from pathlib import Path
 
 def inline(t):
@@ -65,7 +65,7 @@ def main():
             words = len(re.sub(r"<[^>]+>", " ", body).split()); mins = max(1, round(words / 200))
             title = html.escape(pg["title"])
             cards.append(f'<button type="button" class="wc" data-doc="{pid}" data-folder="{sec["id"]}" style="--fc:{col}"><span class="wc-code">{code}</span><b>{title}</b><span class="wc-sum">{summary(body)}</span><span class="wc-meta">{html.escape(sec["title"])} &middot; {mins} min read</span></button>')
-            docs.append(f'<article class="wdoc" id="{pid}" data-folder="{sec["id"]}" data-code="{code}" data-title="{title}" data-meta="{html.escape(sec["title"])} &middot; {mins} min read" style="--fc:{col}" hidden>\n<div class="wbody">\n{body}\n</div>\n</article>')
+            docs.append(f'<article class="wdoc" id="{pid}" data-folder="{sec["id"]}" data-code="{code}" data-title="{title}" data-meta="{html.escape(sec["title"])} &middot; {mins} min read" data-eff="{datetime.date.today().isoformat()}" data-folder-name="{html.escape(sec["title"])}" style="--fc:{col}" hidden>\n<div class="wbody">\n{body}\n</div>\n</article>')
     block = f'''<div class="wiki" id="wiki">
 <header class="wiki-head"><h2>Documentation of AFTERHAUL</h2><p>The player guide, kept in folders. It is a draft: it describes the game as planned, and the game is not playable yet.</p></header>
 <div class="wiki-main">
@@ -81,7 +81,12 @@ def main():
 </div>
 <div class="wread" id="wread" hidden aria-hidden="true"><div class="wback"></div>
 <div class="wsheet" role="dialog" aria-modal="true" aria-labelledby="wtitle" tabindex="-1"><div class="wsh-bar"><span id="wcode"></span><span id="wmeta"></span><button type="button" class="wclose" aria-label="Close document">Close</button></div>
-<div class="wsh-body"><h2 id="wtitle"></h2><div id="wcontent"></div></div></div></div>
+<div class="wsh-body"><div class="page paper"><span class="holes" aria-hidden="true"><i></i><i></i><i></i></span><span class="pg-stamp" aria-hidden="true">Draft</span>
+<div class="pg-run r1"><span>AFTERHAUL &middot; Hound Protocol</span><span id="wfolder"></span></div>
+<h2 id="wtitle" class="r2"></h2>
+<dl class="pg-meta r3"><div><dt>Code</dt><dd id="wm-code"></dd></div><div><dt>Version</dt><dd>Draft</dd></div><div><dt>Effective</dt><dd id="wm-eff"></dd></div><div><dt>Owner</dt><dd>Design team</dd></div><div><dt>For</dt><dd>Players</dd></div></dl>
+<div id="wcontent" class="r4"></div>
+<div class="pg-foot r5"><span id="wm-foot"></span><span>Written in plain words. No tuned numbers.</span></div></div></div></div></div>
 <div class="wstore" hidden>
 {chr(10).join(docs)}
 </div>

@@ -2,6 +2,12 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.4.0-pre · Documents on paper · 2026-10-28
+- Opening a wiki document is now a sequence: the chosen card slides to the right, waits a moment, and the document grows out of the card's own place. Closing reverses it, back into the same card, which then slides back.
+- Documents look like documents: textured paper with a margin rule, punched holes, fold creases, a running header, a details table (code, version, effective date, owner, audience), numbered headings, a footer and a DRAFT stamp that lands once the page has opened. Parts of the page write in one after another.
+- The two changelog documents use the same paper.
+- Fixed: choosing another section right after pressing All sections could hide the new section.
+
 ## 0.3.4-pre · Country in conflict · 2026-10-28
 - The setting is now described as a country in conflict (page text, link preview, wiki, game changelog).
 
