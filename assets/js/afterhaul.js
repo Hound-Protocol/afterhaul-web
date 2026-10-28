@@ -376,6 +376,23 @@
   /* ---------- One loop ---------- */
   var last = 0, mx = 0, frameN = 0, lastLabel = "";
   window.addEventListener("mousemove", function (e) { mx = e.clientX / window.innerWidth - 0.5; }, { passive: true });
+  /* Phone tilt moves the hills like the mouse does. iOS asks permission on the first touch; other phones need nothing. */
+  (function () {
+    if (reduce || !("DeviceOrientationEvent" in window)) return;
+    var on = false;
+    function onTilt(e) {
+      var a = (screen.orientation && screen.orientation.angle) || window.orientation || 0, v = (a === 90 || a === 270 ? e.beta : e.gamma);
+      if (v == null || isNaN(v)) return;
+      if (a === 270 || a === -90) v = -v;
+      var target = Math.max(-0.5, Math.min(0.5, v / 40));
+      mx += (target - mx) * 0.12;
+    }
+    function start() { if (on) return; on = true; window.addEventListener("deviceorientation", onTilt, { passive: true }); }
+    if (typeof DeviceOrientationEvent.requestPermission === "function") {
+      var ask = function () { document.removeEventListener("touchend", ask); DeviceOrientationEvent.requestPermission().then(function (s) { if (s === "granted") start(); }).catch(function () {}); };
+      document.addEventListener("touchend", ask, { once: true, passive: true });
+    } else start();
+  })();
   function frame(t) {
     frameN++;
     var y = window.pageYOffset; S.dy = y - S.y; S.y = y; S.progress = clamp(y / S.docH, 0, 1);
@@ -396,7 +413,8 @@
     }
     // hero parallax, road and dust
     if (heroOn) {
-      if (!reduce) layers.forEach(function (l) { l.el.style.transform = "translate(" + (mx * -40 * l.k * 10).toFixed(1) + "px," + (S.y * l.k).toFixed(1) + "px)"; });
+      var edge = window.innerWidth * 0.035;
+      if (!reduce) layers.forEach(function (l) { l.el.style.transform = "translate(" + Math.max(-edge, Math.min(edge, mx * -40 * l.k * 10)).toFixed(1) + "px," + (S.y * l.k).toFixed(1) + "px)"; });
       if (rctx && (!reduce || frameN < 3)) drawRoad(t);
     }
     for (var i = 0; i < weather.length; i++) if (weather[i].vis && !reduce) weather[i].draw(t);
@@ -598,4 +616,23 @@
     img.onload = img.onerror = function () { try { sessionStorage.setItem("gcSeen", "1"); } catch (e) {} setTimeout(show, 400); };
     img.src = base + "/count?p=%2F&t=AFTERHAUL&r=" + encodeURIComponent(doc.referrer || "");
   })();
+})();
+
+/* New version notice: checks the live page for a newer version number and offers a reload. */
+(function () {
+  var cur = document.getElementById("siteVersion"), box = document.getElementById("upd"), go = document.getElementById("updGo");
+  if (!cur || !box || !go || !window.fetch || location.protocol === "file:") return;
+  var mine = cur.textContent.trim(), shown = false;
+  go.addEventListener("click", function () { location.reload(); });
+  function check() {
+    if (shown) return;
+    fetch(location.pathname + "?_=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.text() : ""; })
+      .then(function (t) {
+        var m = /id="siteVersion">([^<]+)</.exec(t);
+        if (m && m[1].trim() !== mine) { shown = true; box.hidden = false; document.documentElement.classList.add("has-upd"); }
+      }).catch(function () {});
+  }
+  setInterval(check, 180000);
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) check(); });
 })();

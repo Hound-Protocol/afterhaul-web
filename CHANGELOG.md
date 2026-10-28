@@ -2,6 +2,11 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.4.6-pre · New-version notice, tilt, even dashes · 2026-10-28
+- A pulsing "New website version available" bar with a Reload button appears under the red bar when a newer version is live. The page checks every few minutes and when you return to the tab.
+- On phones the hills move as you tilt the device, like they do with the mouse on a computer. iPhones ask for motion permission on the first tap. Reduced-motion settings turn it off. The hills never slide far enough to show an edge.
+- Fixed: the road dashes on the About button now run at an even spacing with no jump.
+
 ## 0.4.5-pre · Wiki description · 2026-10-28
 - The Wiki button's description now reads "Learn more about AFTERHAUL".
 
