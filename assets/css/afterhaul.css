@@ -807,3 +807,5 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 @keyframes updGlow { 0%, 100% { border-color: #b57d05; box-shadow: 0 10px 28px rgba(0,0,0,.65), 0 0 0 0 rgba(240,162,2,0); } 50% { border-color: var(--amber); box-shadow: 0 10px 28px rgba(0,0,0,.65), 0 0 20px 2px rgba(240,162,2,.35); } }
 @media (max-width: 480px) { .upd-in { gap: 8px; padding-left: 26px; } .upd b { font-size: 13.5px; white-space: normal; } .upd-ic { display: none; } }
 @media (prefers-reduced-motion: reduce) { .upd, .upd-in, .upd-in::before, .upd-haz, .upd-ic { animation: none !important; } }
+.ph-art img { max-height: 760px; }
+@media (max-width: 860px) { .ph-art img { max-height: none; } }
