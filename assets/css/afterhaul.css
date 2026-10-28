@@ -540,3 +540,30 @@ html.has-upd { --warn-h: calc(var(--warn-base) + 42px); }
 /* Time of the newest changelog entry, under the document name */
 .cllatest { margin: 2px 0 8px; font: 500 15px/1.3 var(--mono); letter-spacing: .04em; color: #ff6b5e; }
 .cldoc.paper .cllatest { color: #b3261e; }
+
+/* Release stages: a road with four stops */
+.stages-h { margin: 28px 0 14px; font: 500 22px/1.2 var(--ui); color: var(--frost); }
+.stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; position: relative; counter-reset: none; }
+.st { position: relative; padding: 30px 18px 4px 0; }
+.st::before { content: ""; position: absolute; left: 0; right: 0; top: 9px; border-top: 3px dashed var(--iron); }
+.st:last-child::before { right: 50%; }
+.st.here::before { border-top-color: var(--amber); }
+.st-dot { position: absolute; left: 0; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--soot); border: 3px solid var(--iron); }
+.st.here .st-dot { border-color: var(--amber); background: var(--amber); box-shadow: 0 0 0 5px rgba(240,162,2,.2); animation: stHere 2.2s ease-in-out infinite; }
+@keyframes stHere { 50% { box-shadow: 0 0 0 9px rgba(240,162,2,0); } }
+.st b { display: inline-block; font: 500 20px/1.2 var(--ui); color: var(--frost); letter-spacing: .02em; }
+.st em { margin-left: 10px; font: 400 12px var(--mono); font-style: normal; letter-spacing: .08em; color: var(--soot); background: var(--amber); padding: 2px 7px; border-radius: 2px; vertical-align: 2px; }
+.st p { margin: 6px 0 8px; font-size: 16px; line-height: 1.5; max-width: 30ch; }
+.st-when { font: 400 13px var(--mono); color: color-mix(in srgb, var(--dust) 75%, transparent); }
+.st.here .st-when { color: var(--amber); }
+.st-note { margin: 16px 0 24px; font-size: 15px; color: color-mix(in srgb, var(--dust) 80%, transparent); }
+@media (max-width: 720px) {
+  .stages { grid-template-columns: 1fr; }
+  .st { padding: 0 0 22px 34px; }
+  .st::before { left: 7px; right: auto; top: 14px; bottom: -6px; border-top: 0; border-left: 3px dashed var(--iron); }
+  .st.here::before { border-left-color: var(--amber); }
+  .st:last-child::before { display: none; }
+  .st-dot { top: 2px; }
+  .st p { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) { .st.here .st-dot { animation: none; } }

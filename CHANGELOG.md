@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.4.10-pre · Release stages · 2026-10-28
+- "Current State of AFTERHAUL" now shows the four release stages as a road with stops: Concept (marked as the current stage), Alpha, Beta and Release. Each says what the stage means. Dates read "to be announced" until they are set.
+
 ## 0.4.9-pre · Changelog times · 2026-10-28
 - Each changelog document shows the time of its newest entry in red under its name. The time appears in your own time zone.
 - Added a square logo (1024 px, the slashes above the name, safe for a round crop) for GitHub and other profile pictures.
