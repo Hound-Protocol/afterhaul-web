@@ -16,7 +16,7 @@
   --shake-x: 0px; --shake-y: 0px;
 }
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scrollbar-gutter: stable; }
 body { margin: 0; background: var(--soot); color: var(--dust); font: 300 19px/1.65 var(--ui); overflow-x: hidden; padding-bottom: var(--hud); }
 a { color: var(--frost); text-decoration-color: var(--amber); text-underline-offset: 4px; }
 a:hover { color: #fff; }

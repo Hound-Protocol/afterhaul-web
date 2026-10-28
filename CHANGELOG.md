@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.5.3-pre · No sideways jump · 2026-10-28
+- Fixed: opening a wiki document moved the whole page a few pixels to the right, because the page scrollbar disappeared while the document was open. The scrollbar space is now kept, so nothing moves.
+
 ## 0.5.2-pre · Smaller update notice · 2026-10-28
 - The new-version notice is now a small one-line pill, centred under the red bar, with Reload and Later. It is about half the size and takes no focus from the page.
 
