@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.7.6-pre · Two more inspiration videos · 2026-10-28
+- Sound design (About) now shows two more videos under the three truck videos: artillery sound and first-person crash reactions. Videos load only when played.
+
 ## 0.7.5-pre · Update notice redesign · 2026-10-28
 - The "New website version available" notice is now a square hazard-style panel with its own solid background, moving warning stripes, a refresh icon and a drop-in animation. Still one centred line. Motion stops with reduced-motion settings.
 
