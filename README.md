@@ -58,6 +58,7 @@ Marketing-level content and the player guide only. **No** tuned numbers, system 
 | `content/` | Data the generators read: roadmap, patch types, game changelog, changelog times |
 | `tools/` | Generators, the logo builder, the deploy optimizer and the scene editor |
 | `CHANGELOG.md` | Website versions |
+| `docs/` | Project notes, including the AI disclosure |
 
 ## Preview
 No build step is needed for the source. Run:
@@ -84,9 +85,6 @@ Pre-release versions are `0.x.y-pre`. A release changes four things together: th
 `.github/workflows/pages.yml` runs on every push to `main`. It builds an optimized copy (minified CSS and JS, lossless PNG recompression, WOFF2 fonts) with `tools/optimize.py`, and falls back to a plain copy if that fails. Source files are never changed.
 
 Settings → Pages → Source must be **GitHub Actions** (once). At launch, remove `<meta name="robots" content="noindex">` from `index.html` and the `Disallow` line in `robots.txt`.
-
-## AI disclosure (HP-POL-002)
-Code, copy and the SVG logo files were written or drawn in code with Claude and reviewed by the owner. The **temporary cover art** shown in About → Visual design was made with generative AI (AIGC) and is labelled as a stand-in on the page; it will be replaced with owner-made art. No other generative AI images, music, sound or voices are used. Videos on the site belong to other people and are shown as inspiration; they load only when played.
 
 ## Licence
 Proprietary. Copyright (C) 2026 Hound Protocol. All rights reserved. See [LICENSE](LICENSE). Fonts are under the SIL Open Font License; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
