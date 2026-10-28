@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.5.2-pre · Smaller update notice · 2026-10-28
+- The new-version notice is now a small one-line pill, centred under the red bar, with Reload and Later. It is about half the size and takes no focus from the page.
+
 ## 0.5.1-pre · Sound text · 2026-10-28
 - In the in-cab sound design note, the last sentence now reads: "Hit the gas at 100%, and the truck will respond in a full spectrum."
 

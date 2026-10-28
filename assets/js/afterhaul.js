@@ -642,7 +642,7 @@
       .then(function (r) { return r.ok ? r.text() : ""; })
       .then(function (t) {
         var m = /id="siteVersion">([^<]+)</.exec(t), v = m && m[1].trim();
-        if (v && v !== mine && v !== skipped) { shown = true; box.setAttribute("data-ver", v); box.hidden = false; go.focus({ preventScroll: true }); }
+        if (v && v !== mine && v !== skipped) { shown = true; box.setAttribute("data-ver", v); box.hidden = false; }
       }).catch(function () {});
   }
   setInterval(check, 180000);

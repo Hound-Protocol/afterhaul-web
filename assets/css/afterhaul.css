@@ -514,20 +514,19 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 .wc.slid { transform: none; box-shadow: none; }
 .wsheet { transform-origin: 50% 50%; }
 
-/* New-version notice: a small window in the corner, under the red bar. */
-.upd { position: fixed; top: calc(var(--warn-base) + 14px); right: 16px; z-index: 60; width: min(340px, calc(100vw - 32px)); animation: updIn .35s cubic-bezier(.2,.8,.2,1) both; }
+/* New-version notice: a small one-line pill, centred under the red bar. */
+.upd { position: fixed; top: calc(var(--warn-base) + 8px); left: 0; right: 0; z-index: 60; display: flex; justify-content: center; pointer-events: none; animation: updIn .35s cubic-bezier(.2,.8,.2,1) both; }
 .upd[hidden] { display: none; }
-.upd-in { padding: 16px 18px; background: #17210f; color: var(--frost); border: 1px solid #6fa13a; border-radius: 6px; box-shadow: 0 12px 34px rgba(0,0,0,.55); animation: updPulse 1.8s ease-in-out infinite; }
-.upd b { display: block; font: 500 19px/1.2 var(--ui); }
-.upd p { margin: 6px 0 14px; font-size: 15px; line-height: 1.45; color: #cfd8c3; }
-.upd-b { display: flex; gap: 10px; }
-.upd button { font: 500 15px/1 var(--ui); color: #14110c; background: #9fd35a; border: 0; border-radius: 3px; padding: 9px 16px; cursor: pointer; }
+.upd-in { pointer-events: auto; display: flex; align-items: center; gap: 10px; max-width: calc(100vw - 24px); padding: 6px 8px 6px 14px; background: #17210f; color: var(--frost); border: 1px solid #6fa13a; border-radius: 999px; box-shadow: 0 6px 18px rgba(0,0,0,.5); animation: updPulse 1.8s ease-in-out infinite; }
+.upd b { font: 500 14px/1.2 var(--ui); white-space: nowrap; }
+.upd button { font: 500 13px/1 var(--ui); color: #14110c; background: #9fd35a; border: 0; border-radius: 999px; padding: 6px 12px; cursor: pointer; white-space: nowrap; }
 .upd button:hover { background: #b6e374; }
-.upd button.later { background: transparent; color: var(--frost); border: 1px solid #6fa13a; }
-.upd button.later:hover { background: rgba(159,211,90,.14); }
+.upd button.later { background: transparent; color: var(--frost); padding: 6px 8px; }
+.upd button.later:hover { background: rgba(159,211,90,.16); }
 .upd button:focus-visible { outline: 2px solid var(--frost); outline-offset: 2px; }
-@keyframes updIn { from { opacity: 0; transform: translateY(-10px) scale(.96); } }
-@keyframes updPulse { 0%, 100% { box-shadow: 0 12px 34px rgba(0,0,0,.55), 0 0 0 0 rgba(159,211,90,.0); border-color: #6fa13a; } 50% { box-shadow: 0 12px 34px rgba(0,0,0,.55), 0 0 22px 3px rgba(159,211,90,.45); border-color: #9fd35a; } }
+@keyframes updIn { from { opacity: 0; transform: translateY(-8px); } }
+@keyframes updPulse { 0%, 100% { box-shadow: 0 6px 18px rgba(0,0,0,.5), 0 0 0 0 rgba(159,211,90,0); border-color: #6fa13a; } 50% { box-shadow: 0 6px 18px rgba(0,0,0,.5), 0 0 16px 2px rgba(159,211,90,.45); border-color: #9fd35a; } }
+@media (max-width: 420px) { .upd b { font-size: 13px; white-space: normal; } }
 @media (prefers-reduced-motion: reduce) { .upd, .upd-in { animation: none; } }
 
 /* Compact first screen on desktop: the tab buttons show without scrolling (16:9 monitors). */
