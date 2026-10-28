@@ -12,7 +12,7 @@ Selected, player-facing changes from the AFTERHAUL game design. The full working
 - Drennmark stays the fifth region. The campaign ends at its front line. The other regions arrive as later updates.
 
 ## 0.0.50-pre · Story premise · 2026-10-27
-- The setting is a country at war, and your crew works for its national recovery task force.
+- The setting is a country in conflict, and your crew works for its national recovery task force.
 - The campaign and its side quests are written into the design.
 
 ## 0.0.49-pre

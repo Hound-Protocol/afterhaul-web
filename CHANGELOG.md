@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.3.4-pre · Country in conflict · 2026-10-28
+- The setting is now described as a country in conflict (page text, link preview, wiki, game changelog).
+
 ## 0.3.3-pre · About titles · 2026-10-28
 - About sections renamed: About AFTERHAUL, Character classes, The world of AFTERHAUL, Design choices, Current State of AFTERHAUL. The navigation bar uses the same names.
 
