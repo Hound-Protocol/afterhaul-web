@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.5.8-pre · Stage label wording · 2026-10-28
+- The current stage is now labelled "Currently in progress" on the roadmap and in the release stages.
+
 ## 0.5.7-pre · Roadmap plans and smoother changelog · 2026-10-28
 - Every roadmap item lists up to five planned work points, drawn from the game design.
 - The changelog scrolls more smoothly: lighter film grain, isolated scroll areas, and version entries that are not drawn until they come into view.

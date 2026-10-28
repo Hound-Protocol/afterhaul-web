@@ -28,7 +28,7 @@ out = [f'<p class="rm-intro">{esc(d["intro"])}</p>',
        '<ol class="rm">']
 for n, s in enumerate(d["stages"]):
     its = s["items"]; done = sum(1 for i in its if i["status"] == "complete"); pct = round(100 * done / len(its))
-    here = ' <em>We are here</em>' if s.get("here") else ""
+    here = ' <em>Currently in progress</em>' if s.get("here") else ""
     cards = "".join(
         f'<li class="rm-card s-{i["status"]}" data-status="{i["status"]}" style="--i:{k}"><span class="rm-ic">{ICON[i["status"]]}</span><div><b>{esc(i["title"])}</b><p>{esc(i["text"])}</p>{pts(i)}</div><span class="rm-chip">{LABEL[i["status"]]}</span></li>'
         for k, i in enumerate(its))
