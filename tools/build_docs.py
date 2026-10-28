@@ -43,7 +43,7 @@ def md(src):
         else: out.append(f"<p>{inline(text)}</p>")
     return "\n".join(out)
 
-FOLDER_COLORS = {"start": "#f0a202", "reference": "#4aa3ff", "modding": "#b57bff"}
+FOLDER_COLORS = {"start": "#f0a202", "driver": "#e5604d", "truck": "#3ecf8e", "reference": "#4aa3ff", "modding": "#b57bff"}
 
 def summary(body):
     m = re.search(r"<p>(.*?)</p>", body, flags=re.S)

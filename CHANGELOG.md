@@ -2,6 +2,10 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.4.3-pre · Fuller wiki · 2026-10-28
+- The wiki grows from five to eleven documents: Your driver, Clothing, Food, drink, sleep and stamina, Customizing your truck, Questions and answers, and a Glossary. Two new folders: Your driver and Your truck.
+- Added a Road closed page for addresses that do not exist (404).
+
 ## 0.4.2-pre · Twice as fast · 2026-10-28
 - The document open and close sequence runs at double speed. The order of the steps is unchanged.
 

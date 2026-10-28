@@ -1,6 +1,11 @@
 # Game changelog
 Selected, player-facing changes from the AFTERHAUL game design. The full working log is private.
 
+## 0.0.57-pre
+- Clothing now has rules in the design: ten slots, layered warmth and weather protection with a ceiling, and skin hidden under clothes.
+- Character creation has rules for looks, colours and names.
+- Trucks gain mount points for parts, with limits on weight, one-per-truck parts and parts that cannot share a truck.
+
 ## 0.0.53-pre
 - The website now shows the player guide.
 - The player guide welcome page tells the war premise.
