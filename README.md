@@ -58,7 +58,7 @@ Marketing-level content and the player guide only. **No** tuned numbers, system 
 | `content/` | Data the generators read: roadmap, patch types, game changelog, changelog times |
 | `tools/` | Generators, the logo builder, the deploy optimizer and the scene editor |
 | `CHANGELOG.md` | Website versions |
-| `docs/` | Project notes, including the AI disclosure |
+| `docs/` | Project notes |
 
 ## Preview
 No build step is needed for the source. Run:
