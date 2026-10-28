@@ -696,3 +696,17 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
   .wf-col { position: static; flex-direction: row; overflow-x: auto; padding: 2px 0 8px; gap: 8px; }
   .wf { width: auto; flex: none; border: 1px solid #1f2d3d; gap: 10px; padding: 9px 14px; } .wf[aria-pressed="true"] { transform: none; border-color: var(--fc); } .wf::before { display: none; }
 }
+
+/* In progress icon: writing, drawing and designing in one loop */
+.rm-ic .mk-g { opacity: 0; animation: mkShow 6s linear infinite; }
+.rm-ic .mk-b, .rm-ic .mk-b path { animation-delay: -4s; } .rm-ic .mk-c, .rm-ic .mk-c path { animation-delay: -2s; }
+.rm-ic .mk-g path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: mkDraw 6s ease-in-out infinite; }
+.rm-ic .mk-a path:nth-child(2) { animation-delay: .25s; } .rm-ic .mk-a path:nth-child(3) { animation-delay: .5s; }
+.rm-ic .mk-dot { fill: var(--s); stroke: none; }
+@keyframes mkShow { 0% { opacity: 0; } 2% { opacity: 1; } 30% { opacity: 1; } 33% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes mkDraw { 0% { stroke-dashoffset: 1; } 22% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .rm-ic .mk-g, .rm-ic .mk-g path { animation: none !important; } .rm-ic .mk-a { opacity: 1; } .rm-ic .mk-g path { stroke-dashoffset: 0; } }
+
+/* Phone fixes: solid top bar so page text does not slide under the logo; readable disabled link cards */
+.lnk.off { opacity: .92; } .lnk.off span { color: #ffb4ac; }
+@media (max-width: 860px) { .bar { background: linear-gradient(var(--soot) 78%, rgba(20,17,12,.88)); box-shadow: 0 6px 14px rgba(20,17,12,.8); } }

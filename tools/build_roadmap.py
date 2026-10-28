@@ -8,7 +8,7 @@ d = json.loads((root / "content" / "roadmap.json").read_text(encoding="utf-8"))
 LABEL = {"complete": "Complete", "in-progress": "In Progress", "planned": "Planned", "abandoned": "Abandoned"}
 ICON = {
  "complete": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7 12.5l3.2 3.2L17 9"/></svg>',
- "in-progress": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" class="trk"/><path d="M12 2a10 10 0 0 1 10 10" class="spin"/></svg>',
+ "in-progress": '<svg viewBox="0 0 24 24" aria-hidden="true" class="mk"><g class="mk-g mk-a"><path pathLength="1" d="M4 7h10"/><path pathLength="1" d="M4 12h16"/><path pathLength="1" d="M4 17h12"/></g><g class="mk-g mk-b"><path pathLength="1" d="M3 18C6 4 11 4 13 12s6 8 8-6"/><circle cx="21" cy="6" r="1.3" class="mk-dot"/></g><g class="mk-g mk-c"><path pathLength="1" d="M5 5h14v14H5z"/><path pathLength="1" d="M5 19 19 5"/><rect x="3.6" y="3.6" width="2.8" height="2.8" class="mk-dot"/><rect x="17.6" y="17.6" width="2.8" height="2.8" class="mk-dot"/></g></svg>',
  "planned": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-dasharray="3 3.2"/></svg>',
  "abandoned": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 8l8 8M16 8l-8 8"/></svg>'}
 esc = html.escape

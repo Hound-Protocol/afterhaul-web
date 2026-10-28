@@ -2,6 +2,11 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.6.2-pre · Link preview, in-progress icon, phone fixes · 2026-10-28
+- Shared links now show the square AFTERHAUL logo as their preview image (also used as the home-screen icon on iPhone).
+- In Progress items on the roadmap use a new icon that cycles through writing, drawing and designing.
+- Phones: the top bar is solid so page text no longer slides under the logo, and the unavailable Community cards are easier to read.
+
 ## 0.6.1-pre · About button · 2026-10-28
 - Removed the animated dashed line from the About button.
 
