@@ -33,7 +33,7 @@ This repository holds the website of **AFTERHAUL**. The game itself lives in a s
 
 > **Status: unlisted.** The repository is public and the site deploys on every push to `main`, but the pages carry `noindex` and `robots.txt` disallows crawling, so search engines skip it until launch. The game is at the **Concept** stage and nothing is playable.
 
-## What is on the site
+## Site Contents
 | Section | What it holds |
 |---|---|
 | **About** | The game, driver classes, the world, design choices (sound, visual) and the release stages |
