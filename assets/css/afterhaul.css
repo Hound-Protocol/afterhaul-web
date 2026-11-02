@@ -816,3 +816,7 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 .ph-row .ph img { max-height: 560px; width: auto; }
 .ph-row .ph figcaption { max-width: 34ch; }
 @media (max-width: 860px) { .ph-row { flex-direction: column; } .ph-row .ph img { max-height: none; } }
+
+/* Wiki tab: the wiki (wiki/) shows inside the page */
+.panel[data-theme="docs"] { padding: 0; overflow: hidden; }
+.wikiframe { display: block; width: 100%; height: min(88vh, 940px); min-height: 520px; border: 0; background: #14110c; }

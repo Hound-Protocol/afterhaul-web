@@ -452,6 +452,7 @@
       if (picked === k) return;
       doc.dispatchEvent(new Event("ah:stopvideos"));
       var sel = tabs.filter(function (t) { return t.getAttribute("data-tab") === k; })[0]; if (!sel) return;
+      if (k === "docs") { var wf = doc.getElementById("wikiFrame"); if (wf && !wf.getAttribute("src")) wf.setAttribute("src", wf.getAttribute("data-src")); }
       var was = picked; picked = k;
       tabsEl.classList.remove("picked"); tabs.forEach(function (t) { t.classList.remove("gone"); }); sel.style.transform = "none"; /* measure from rest position */
       var tr = tabsEl.getBoundingClientRect(), sr = sel.getBoundingClientRect(), dx = mobile() ? 0 : Math.round(tr.left + tr.width / 2 - (sr.left + sr.width / 2) - (back ? 0 : 0));
@@ -489,7 +490,7 @@
       unpick();
     });
     tabs.forEach(function (t, i) {
-      t.addEventListener("click", function () { if (t.getAttribute("data-tab") === "docs") { location.href = "wiki/#/docs"; return; } if (picked) return; showTab(t.getAttribute("data-tab")); history.replaceState(null, "", "#" + t.getAttribute("data-tab")); setTimeout(function () { var ex = $("#explore"); ex.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); }, 60); });
+      t.addEventListener("click", function () { if (picked) return; showTab(t.getAttribute("data-tab")); history.replaceState(null, "", "#" + t.getAttribute("data-tab")); setTimeout(function () { var ex = $("#explore"); ex.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); }, 60); });
       t.addEventListener("keydown", function (e) {
         if (picked) return;
         if (e.key === "ArrowRight" || e.key === "ArrowLeft") { var n = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length]; n.focus(); e.preventDefault(); }
@@ -616,7 +617,7 @@
       setFolder("all", true);
     }
     function route(smooth) {
-      var id = decodeURIComponent(location.hash.slice(1)); if (!id) return; if (id === "docs" || id.indexOf("doc-") === 0) { location.replace("wiki/#/docs"); return; }
+      var id = decodeURIComponent(location.hash.slice(1)); if (!id) return;
       if (id.indexOf("doc-") === 0 && W) { showTab("docs"); setTimeout(function () { W.open(id); }, 450); setTimeout(function () { $("#explore").scrollIntoView({ block: "start" }); }, 30); return; }
       if (/^(about|docs|roadmap|log|community|press)$/.test(id)) { showTab(id); setTimeout(function () { $("#explore").scrollIntoView({ behavior: reduce || !smooth ? "auto" : "smooth", block: "start" }); }, 60); return; }
       var el = doc.getElementById(id); if (!el) return;

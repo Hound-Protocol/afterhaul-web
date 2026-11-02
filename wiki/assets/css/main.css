@@ -2218,3 +2218,6 @@ html.booting .center, html.booting .bar { opacity: 0; }
 .no-motion .pyr-n { animation: none; }
 @media (prefers-reduced-motion: reduce) { .pyr-n { animation: none; } }
 @media (max-width: 560px) { .pyr-t { flex-wrap: wrap; } .pyr-n { max-width: none; } }
+
+/* Embedded in the main site's Wiki tab: no frame bars */
+.embed .bar, .embed .corner, .embed .ruler { display: none; }

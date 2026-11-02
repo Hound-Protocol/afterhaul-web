@@ -3,6 +3,7 @@
   if (window.WIKI_LEGACY) return;
   // Hide the interface until the first screen is ready (20b-ready.js); never longer than 3 s, even if something fails
   document.documentElement.classList.add("booting");
+  if (/[?&]embed=1/.test(location.search)) document.documentElement.classList.add("embed");
   setTimeout(function () { document.documentElement.classList.remove("booting"); }, 3000);
   // Small polyfills for older browsers (Safari 9, old Chromium on older systems)
   if (typeof Object.assign !== "function") {

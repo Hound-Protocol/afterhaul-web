@@ -22,7 +22,7 @@
         '<span class="door-go">' + go + '<i aria-hidden="true">→</i></span></a>';
     }
     v.innerHTML = shell("Documentation", "Choose a zone",
-      '<p class="sub">Documentation has two zones. Pick one; you can switch at any time from the bar at the top.</p>' +
+      '<p class="sub">Documentation has two zones. Pick one; you can switch at any time from the zone cards.</p>' +
       '<div class="doors">' +
       door("lib", "#/docs/library", "Library", "Zone 1 · Reference", "What AFTERHAUL is, where it stands, how it is made, terms and legal. Start here to understand the project.", "Open the Library") +
       door("hb", "#/guides", "Handbook", "Zone 2 · How to", "Guides, policies and procedures: how to play, make and test AFTERHAUL. Printable on A4.", "Open the Handbook") +

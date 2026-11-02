@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.9.2-pre · Wiki inside the page · 2026-11-02
+- The Wiki button now opens the wiki inside the main page, in the Wiki tab, with no page change. The wiki page still works on its own at `wiki/`.
+
 ## 0.9.1-pre · Team page · 2026-11-02
 - New Team page in the wiki Library with a hierarchy pyramid and a roles table. Documents can now draw a pyramid from a `pyramid` code block.
 

@@ -18,6 +18,7 @@
   if (window.WIKI_LEGACY) return;
   // Hide the interface until the first screen is ready (20b-ready.js); never longer than 3 s, even if something fails
   document.documentElement.classList.add("booting");
+  if (/[?&]embed=1/.test(location.search)) document.documentElement.classList.add("embed");
   setTimeout(function () { document.documentElement.classList.remove("booting"); }, 3000);
   // Small polyfills for older browsers (Safari 9, old Chromium on older systems)
   if (typeof Object.assign !== "function") {
@@ -269,7 +270,8 @@
   /* ---------------- Views ---------------- */
   var currentView = "";
   function shell(kicker, title, body) {
-    return '<div class="vh"><div><span class="kicker">' + esc(kicker) + '</span><h2>' + esc(title) + '</h2></div><a class="btn" href="../">AFTERHAUL</a></div><div id="vb">' + body + "</div>";
+    var back = /[?&]embed=1/.test(location.search) ? "" : '<a class="btn" href="../">AFTERHAUL</a>';
+    return '<div class="vh"><div><span class="kicker">' + esc(kicker) + '</span><h2>' + esc(title) + "</h2></div>" + back + '</div><div id="vb">' + body + "</div>";
   }
   function milestone() { return ""; }
   function loading(t) { return '<p class="sub"><span class="spin"></span>' + esc(t) + "</p>"; }
@@ -488,7 +490,7 @@
         '<span class="door-go">' + go + '<i aria-hidden="true">→</i></span></a>';
     }
     v.innerHTML = shell("Documentation", "Choose a zone",
-      '<p class="sub">Documentation has two zones. Pick one; you can switch at any time from the bar at the top.</p>' +
+      '<p class="sub">Documentation has two zones. Pick one; you can switch at any time from the zone cards.</p>' +
       '<div class="doors">' +
       door("lib", "#/docs/library", "Library", "Zone 1 · Reference", "What AFTERHAUL is, where it stands, how it is made, terms and legal. Start here to understand the project.", "Open the Library") +
       door("hb", "#/guides", "Handbook", "Zone 2 · How to", "Guides, policies and procedures: how to play, make and test AFTERHAUL. Printable on A4.", "Open the Handbook") +
