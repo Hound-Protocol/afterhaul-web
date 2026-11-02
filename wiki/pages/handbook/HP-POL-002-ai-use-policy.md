@@ -1,7 +1,7 @@
 # AI Use Policy
 Code: HP-POL-002 · Version 1.1 · Effective 2026-11-02 · Owner: Owner · For: everyone who contributes to AFTERHAUL
 Audience: Makers
-Summary: AI may help with code and text. It may not make art, music, sound or voices.
+Summary: AI is an organisational assistant. People make and decide everything creative.
 
 ## 1. Position
 On AFTERHAUL, AI is an organisational assistant. It helps plan, take notes, tidy and organise documents, keep checklists and operate tools. People decide and make everything creative: design, art, music, sound and voices. AI agents work as tools of the person using them. Hand-written and AI-assisted work are checked the same way. The one hard limit is creative content: **generative AI images, artwork, music, sound effects and voices are never used** (section 5).
