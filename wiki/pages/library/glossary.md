@@ -60,6 +60,7 @@ Project, process and wiki terms for AFTERHAUL. Words about playing are in the [p
 | Open source | Code anyone may copy under a licence. AFTERHAUL is not this |
 | Third-party | Made by someone else. It needs a checked licence |
 | Notices file | The list of third-party items and their licences |
+| Organisational assistant | The only role AI has on AFTERHAUL: it helps plan, take notes, tidy documents and keep work organised. People decide and make everything creative |
 | Generative AI | AI that makes art, music, sound or voices. AFTERHAUL does not use it for final art, music, sound or voices. One temporary placeholder cover picture is the only exception |
 | AI-assisted | Work made with help from an AI tool, and disclosed as such |
 | Disclosure | Saying openly where AI helped |

@@ -1,5 +1,5 @@
 # Working with AI Assistants
-AI assistants are used on AFTERHAUL. Used well, they make work faster. Used badly, they produce work that looks right and is not. The rules are in the [AI Use Policy](HP-POL-002-ai-use-policy.md). This guide is the practice.
+AI is an organisational assistant on AFTERHAUL: it helps plan, take notes, tidy documents and keep work organised, and people decide and make everything creative. Used well, it makes work faster. Used badly, they produce work that looks right and is not. The rules are in the [AI Use Policy](HP-POL-002-ai-use-policy.md). This guide is the practice.
 
 ## 1. The rules that never change
 1. **You are responsible.** The owner reviews and understands every change. "The AI wrote it" is never an answer. Code is run and tested before it is merged.

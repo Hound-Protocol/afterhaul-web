@@ -1,6 +1,6 @@
 # AI Use Policy
 ## 1. Position
-AFTERHAUL welcomes AI-assisted work. AI agents work as tools of the person using them. Hand-written and AI-assisted work are checked the same way. The one hard limit is creative content: **generative AI images, artwork, music, sound effects and voices are never used** (section 5).
+On AFTERHAUL, AI is an organisational assistant. It helps plan, take notes, tidy and organise documents, keep checklists and operate tools. People decide and make everything creative: design, art, music, sound and voices. AI agents work as tools of the person using them. Hand-written and AI-assisted work are checked the same way. The one hard limit is creative content: **generative AI images, artwork, music, sound effects and voices are never used** (section 5).
 
 What counts is that the work is correct, original, licensed and checked.
 

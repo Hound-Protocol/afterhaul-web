@@ -4,6 +4,9 @@ Generated from `CHANGELOG.md`. Newest first.
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.11.3-pre · AI is an organisational assistant · 2026-11-02
+- The overview, both FAQs, the glossary, the AI use policy and the AI assistants guide now say AI is only an organisational assistant.
+
 ## 0.11.2-pre · Stage wording, placeholder art · 2026-11-02
 - Removed "on Steam" from the Beta wording on the page, release stages and roadmap: no store is decided and no Alpha or Beta has started.
 - Pages now say the only AI-made picture is one temporary placeholder cover image.

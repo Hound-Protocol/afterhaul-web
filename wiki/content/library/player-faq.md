@@ -15,7 +15,7 @@ The first builds target PC. We plan to test on Linux through Proton.
 There are no open sessions. The crew's chief picks who joins. You can apply from the session browser.
 
 **Do you use AI art?**
-No. People make the final art, music, sound and voices. One temporary AI-made placeholder cover picture is on the website until real art replaces it. AI helps with planning and tools, and that is stated openly.
+No. People make the final art, music, sound and voices. One temporary AI-made placeholder cover picture is on the website until real art replaces it. AI is only an organisational assistant: it helps with planning, notes and tidying documents, and that is stated openly.
 
 **Will there be mods?**
 Yes. A truck is one folder of files, and the same layout is the way to make a mod. The rules are in the modding guide.
