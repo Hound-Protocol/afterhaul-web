@@ -19,6 +19,15 @@ AFTERHAUL stays independent by using only original work and properly licensed wo
 | Asset Store packs | Standard Asset Store licence: use inside the game only. Do not hand out the files |
 | Free-tool outputs (for example animation libraries) | Read the current terms first. Redistribution and use for machine learning are often forbidden |
 
+### Can I use it? Examples
+| You found | Answer |
+|---|---|
+| A free font under the SIL Open Font License | Yes. Credit it and keep the licence |
+| A texture on a forum with no licence stated | No. No licence means no permission |
+| A sound clip "free for personal use" | No. The game is not personal use |
+| A model pack from the Asset Store | Only after the owner says yes and the licence is read |
+| Code from a tutorial with no licence | Read it to learn. Write your own |
+
 ## 4. Asset files
 - Keep bought or downloaded asset files out of git and out of any public repository.
 - Each team member downloads their own copy. One licence covers one entity.
@@ -38,3 +47,10 @@ Asset picks are temporary and the owner may change them. As of 2026-11-02 nothin
 
 ## 7. Reporting
 If you spot copied work or a licence problem, tell the owner privately. It is removed first and discussed after.
+
+## Where to read next
+- [Licensing and Attribution](HP-POL-008-licensing-and-attribution.md)
+- [AI Use Policy](HP-POL-002-ai-use-policy.md)
+- [Writing Research Notes](HP-GDE-013-research-notes.md): how to record what a licence says
+- [Art Contributor Start](HP-GDE-021-art-contributor-start.md)
+- Library: [Licensing](../library/licensing.md), [Legal](../library/legal.md)

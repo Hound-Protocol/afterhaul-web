@@ -19,6 +19,14 @@ This policy sets the rules for everyone who works on AFTERHAUL. It protects cont
 - Share tokens, passwords, keys or other people's personal data, in any channel.
 - Present someone else's work, or AI output you have not reviewed, as checked work.
 
+## Quick view
+| Do | Do not |
+|---|---|
+| Sign off every commit | Share the design, code or assets outside the team |
+| Use original or licensed work | Use work you do not own or hold a licence for |
+| Say when AI helped | Submit generative AI art, music, sound or voices |
+| Ask the owner when unsure | Paste secrets anywhere |
+
 ## 5. Conduct
 - Be respectful and specific. Criticize work, not people.
 - Write decisions down where the team can find them.
@@ -29,3 +37,10 @@ You can leave at any time. Leave a short handoff note on your open work first. A
 
 ## 7. Breaches
 Careless mistakes are handled by the [Accountability Policy](HP-POL-009-accountability.md). Leaked secrets, shared confidential material or copied work are removed at once and can lead to removal from the project.
+
+## Where to read next
+- [Contributor Quick Start](HP-GDE-003-contributor-quick-start.md)
+- [AI Use Policy](HP-POL-002-ai-use-policy.md), [Third-Party Assets and IP](HP-POL-003-third-party-and-ip.md), [Security Policy](HP-POL-004-security-policy.md)
+- [Accountability Policy](HP-POL-009-accountability.md) and [Chain of Command](HP-POL-007-chain-of-command.md)
+- [Onboarding and Offboarding](HP-SOP-007-onboarding-offboarding.md)
+- Library: [Contributing](../library/contributing.md), [Code of Conduct](../library/conduct.md)

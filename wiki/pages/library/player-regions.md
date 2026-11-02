@@ -64,3 +64,8 @@ Very cold and very remote. Hard rough ground mixed with soft rough ground.
 **Common ground:** mud, gravel, snow, deep mud, dirt track.
 
 **On the map:** many lakes and wetlands, almost no trees.
+
+## Where to read next
+- [Ground surfaces](player-surfaces.md)
+- [The world](the-world.md)
+- [Clothing](player-clothing.md)

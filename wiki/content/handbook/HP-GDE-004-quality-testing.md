@@ -5,11 +5,7 @@ Make sure what ships works on real machines. Nothing ships because it is finishe
 **Hands-on:** what to click, what to try to break and how to measure are in the [Tester's Field Manual](HP-GDE-020-testers-field-manual.md).
 
 ## What "done" means
-1. Every acceptance criterion of the module is met.
-2. The data checks pass, and the Unity edit-mode tests pass once Unity is set up.
-3. The code compiles and has run in the module's test scene.
-4. The docs and the changelog are updated.
-5. The change says whether AI helped.
+The five conditions are in the [Quality Policy](HP-POL-006-quality-policy.md), section 2. In short: acceptance criteria met, checks pass, code has run in its test scene, docs and changelog updated, AI help disclosed. When you check a change, tick them one by one.
 
 ## Status of the code
 Code written before it has run in Unity is **unverified**. It stays unverified until it compiles and its test scene runs. Say so in the changelog. A compile check outside Unity proves syntax and logic only. It says nothing about how Unity behaves.
@@ -34,16 +30,8 @@ Keep the rig the same between tests. If something changes, note it.
 
 Sessions and the first playable build do not exist yet. These tests start when they do.
 
-## Severity
-| Level | Meaning | Example |
-|---|---|---|
-| S1 Critical | Data loss, crash on start, security issue | A save is corrupted; a key leaks |
-| S2 Major | A core feature fails | A truck cannot drive |
-| S3 Minor | Works with a workaround | Wrong marker colour |
-| S4 Cosmetic | Looks wrong, works | Typo, layout gap |
-
-## Release gate
-A build ships only when no S1 or S2 bug is open, and it has been tested on Windows and on Linux (Proton or native), with versions recorded.
+## Severity and the release gate
+Four levels, S1 (critical) to S4 (cosmetic), with examples, and the release gate (no open S1 or S2 bug; tested on Windows and Linux) are in the [Quality Policy](HP-POL-006-quality-policy.md). Rate a bug by what a player loses, not by how hard the fix is.
 
 ## Writing a bug report
 ```
@@ -60,8 +48,28 @@ Video or screenshot: if it helps
 ```
 One bug per report. Search first for duplicates.
 
+**Worked example** (a website bug, because no game build exists yet):
+```
+Title: Roadmap filter "Planned" shows nothing
+Severity: S3
+Build: site 1.2.3 / Firefox 130 on Fedora / 1920x1080
+Steps:
+1. Open Roadmap.
+2. Choose the status filter "Planned".
+Expected: the planned items.
+Actual: an empty list. Other filters work.
+Logs: console shows no error
+```
+(The numbers are made up to show the layout.)
+
 ## Reviewing a change
 Check every acceptance criterion yourself, not from the description. If one fails, say what you saw and ask for changes. See [Pull Request and Review](HP-SOP-002-pull-request-review.md).
 
 ## Signing off a release
 Follow [Release Procedure](HP-SOP-003-release-and-versioning.md) and the gates in the [Quality Policy](HP-POL-006-quality-policy.md). Write the release's quality report: tests run, platforms, open bugs, what was not tested.
+
+## Where to read next
+- [Tester's Field Manual](HP-GDE-020-testers-field-manual.md): the hands-on routine
+- [Bug Triage](HP-SOP-005-bug-triage.md): what happens to your report
+- [Linux and Proton Guide](HP-GDE-002-linux-proton.md): the Linux rig
+- [Reporting a Problem](HP-GDE-016-reporting-a-problem.md): the version for players

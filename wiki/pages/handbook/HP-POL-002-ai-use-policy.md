@@ -1,5 +1,5 @@
 # AI Use Policy
-Code: HP-POL-002 · Version 1.0 · Effective 2026-11-02 · Owner: Owner · For: everyone who contributes to AFTERHAUL
+Code: HP-POL-002 · Version 1.1 · Effective 2026-11-02 · Owner: Owner · For: everyone who contributes to AFTERHAUL
 Audience: Makers
 Summary: AI may help with code and text. It may not make art, music, sound or voices.
 
@@ -45,6 +45,16 @@ AI output passes the same checks as any other work.
 - Voice commands use speech recognition only. There are no synthetic voices.
 - Say when an AI operated a tool, for example "Claude laid this out".
 
+### Can I use AI for this?
+| Task | Answer |
+|---|---|
+| Ask an AI to write a function, then run and test it | Yes. Disclose it |
+| Ask an AI to tidy the layout of a poster you drew | Yes. It operates a tool |
+| Ask an AI to make a logo, icon or texture | No |
+| Ask an AI to read out a line of dialogue | No. Voices come from people |
+| Paste a log with a token in it into a chatbot | No. Remove the secret first |
+| Ask an AI to summarize a public licence page | Yes, then open the page and check it yourself |
+
 ## 6. Data and privacy
 Never paste into an AI tool: tokens, keys, passwords, private messages or players' personal data.
 
@@ -55,3 +65,9 @@ Never paste into an AI tool: tokens, keys, passwords, private messages or player
 
 ## 8. Breaches
 Unreviewed or copied AI output is treated like any other copied or broken work ([HP-POL-001](HP-POL-001-contributor-policy.md), [HP-POL-003](HP-POL-003-third-party-and-ip.md)).
+
+## Where to read next
+- [Working with AI Assistants](HP-GDE-018-working-with-ai-assistants.md): the practice
+- [Third-Party Assets and IP](HP-POL-003-third-party-and-ip.md) and [Licensing and Attribution](HP-POL-008-licensing-and-attribution.md)
+- [Writing Research Notes](HP-GDE-013-research-notes.md)
+- [Brand and Media Guide](HP-GDE-011-brand-and-media.md): graphics rules in practice

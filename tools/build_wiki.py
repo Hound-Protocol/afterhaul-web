@@ -29,6 +29,18 @@ def parse(p):
     return title, meta, body
 
 
+def changelog_pages():
+    """The two changelogs become Library pages, written from the site's own changelog files."""
+    out = {}
+    for src, name, title in (("CHANGELOG.md", "website-changelog", "Website Changelog"), ("content/game-changelog.md", "game-changelog", "Game Changelog")):
+        f = ROOT / src
+        if not f.exists(): continue
+        body = f.read_text(encoding="utf-8")
+        body = re.sub(r"^# .*\n", "", body, count=1).lstrip("\n")
+        out[f"library/{name}.md"] = f"# {title}\nGroup: Project\n\nGenerated from `{src}`. Newest first.\n\n{body}"
+    return out
+
+
 def build():
     files, guides, docs = {}, [], []
     for p in sorted((PAGES / "handbook").glob("*.md")):
@@ -42,11 +54,16 @@ def build():
         files[rel] = "# " + title + "\n" + body.split("\n", 1)[1]
         guides.append({"id": code.lower(), "code": code, "title": title, "type": TYPES[kind], "audience": m.get("Audience", "Players"),
                        "version": ver, "effective": eff, "owner": owner, "for": who, "summary": m.get("Summary", ""), "path": rel})
+    gen = changelog_pages()
     for p in sorted((PAGES / "library").glob("*.md")):
         title, m, body = parse(p)
         rel = "library/" + p.name
         files[rel] = body
         docs.append({"id": p.stem, "title": title, "group": m.get("Group", "Project"), "path": rel})
+    for rel, text in gen.items():
+        lines = text.split("\n"); title = lines[0].lstrip("# ").strip()
+        files[rel] = text.replace("Group: Project\n", "", 1)
+        docs.append({"id": rel.split("/")[1][:-3], "title": title, "group": "Project", "path": rel})
     docs.sort(key=lambda d: (ORDER.index(d["group"]) if d["group"] in ORDER else 99, d["title"]))
     for g in guides:
         docs.append({"id": g["id"], "title": g["title"], "group": "Handbook", "path": g["path"]})

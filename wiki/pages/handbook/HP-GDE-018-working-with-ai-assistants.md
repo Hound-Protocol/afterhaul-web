@@ -1,5 +1,5 @@
 # Working with AI Assistants
-Code: HP-GDE-018 · Version 1.0 · Effective 2026-11-02 · Owner: Owner · For: team members using Claude, ChatGPT, Gemini or similar tools
+Code: HP-GDE-018 · Version 1.1 · Effective 2026-11-02 · Owner: Owner · For: team members using Claude, ChatGPT, Gemini or similar tools
 Audience: Makers
 Summary: How to get good work from AI assistants and how to disclose it, under the AFTERHAUL AI use policy.
 
@@ -23,7 +23,7 @@ Any capable assistant works. What matters is how you check the result.
 For anything niche, such as Proton behaviour or a licence, every assistant can guess. Treat every claim as **unknown** until a real source or a test confirms it ([Research Notes](HP-GDE-013-research-notes.md)).
 
 ## 3. Helper AI for simple text
-Simple text work (lists of names, short descriptions) may go to a helper AI. The brief is text only. Never send it the design document, code or tuned numbers. Check what comes back, and log every result you merge.
+Simple text work (lists of names, short descriptions) may go to a helper AI. The brief is text only. Never send it the design document, code or tuned numbers. Check what comes back, and log every result you merge. Where a helper's output may not go (art, music, sound, voices) is set by the [AI Use Policy](HP-POL-002-ai-use-policy.md), section 5.
 
 ## 4. A good working loop
 1. **State the task and the rules.** "Plain English, cite sources, no generated art, no secrets."
@@ -47,6 +47,8 @@ Simple text work (lists of names, short descriptions) may go to a helper AI. The
 | **Research** | Every claim has a source you opened yourself, in your own words, with confidence marked |
 | **Tests and reports** | Steps reproduce on your machine. Versions and logs are real, not generated |
 
+**Worked example: a disclosure line.** In a pull request: "AI help: Claude drafted the first version of this guide. I checked every link and fact against the sources." In a commit, the `Co-Authored-By` trailer stays as the tool wrote it.
+
 Common AI mistakes: invented functions, links to pages that do not exist, wrong version numbers, "fixes" that hide an error, and text that sounds right but says nothing.
 
 ## 6. Disclosing AI work
@@ -63,3 +65,10 @@ Disclosure never lowers credit.
 - [ ] No AI-generated images, music, sound or voices.
 - [ ] Facts are checked against real sources.
 - [ ] AI help is disclosed and the trailers are kept.
+
+## Where to read next
+- [AI Use Policy](HP-POL-002-ai-use-policy.md): the rules behind this guide
+- [Writing Research Notes](HP-GDE-013-research-notes.md)
+- [Documentation Style](HP-GDE-005-documentation-style.md)
+- [Pull Request and Review](HP-SOP-002-pull-request-review.md): the AI disclosure field
+- [Security Incident Response](HP-SOP-006-security-incident.md): if a secret reached an AI tool

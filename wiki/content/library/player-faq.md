@@ -23,4 +23,14 @@ Yes. A truck is one folder of files, and the same layout is the way to make a mo
 **How do I follow progress?**
 Read the changelog tab, or join the community.
 
+**Where are the project questions?**
+Dates, licence, privacy and the team: see the [project FAQ](faq.md).
+
+**What do the words mean?**
+See the [player glossary](player-glossary.md).
+
+## Where to read next
+- [Welcome](player-welcome.md)
+- [Roadmap](roadmap.md)
+
 *Status: draft. Answers may change as the game does.*

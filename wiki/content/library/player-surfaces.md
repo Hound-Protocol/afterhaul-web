@@ -18,4 +18,12 @@ Every wheel feels the ground under it. Soft ground slows you and pulls at the tr
 | Ice | extreme | no |
 | Shallow water | hard | no |
 
+**Holds ruts** means trucks leave tracks that last.
+
 Ruts deepen as trucks pass: fresh, tracked, then rutted. A rutted track is harder to leave than to follow.
+
+Surface names and difficulty are from the design and may change. Not playable yet.
+
+## Where to read next
+- [Regions](player-regions.md)
+- [Customizing your truck](player-truck-customization.md) for parts that help on soft ground

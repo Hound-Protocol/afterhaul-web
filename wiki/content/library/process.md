@@ -42,4 +42,11 @@ Pre-release versions use `0.0.x-pre`. See [Release and Versioning](../handbook/H
 - The owner supplies every sound. Code only plays sounds and sets their parameters.
 - Third-party material needs a checked licence ([Third-party and IP](../handbook/HP-POL-003-third-party-and-ip.md)).
 
+## Where to read next
+- [Contributor Quick Start](../handbook/HP-GDE-003-contributor-quick-start.md)
+- [Quality Guide](../handbook/HP-GDE-004-quality-testing.md)
+- [Working with AI assistants](../handbook/HP-GDE-018-working-with-ai-assistants.md)
+- [Glossary](glossary.md) for the terms used here
+- [Overview](overview.md)
+
 *Status: draft. Source: project notes, 2026-11-02. Confidence: confirmed.*

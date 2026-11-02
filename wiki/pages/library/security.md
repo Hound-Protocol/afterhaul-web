@@ -27,4 +27,10 @@ No builds exist yet. When they do, we will publish how to tell an official build
 
 Team rules: [Security Policy for Team Members](../handbook/HP-POL-004-security-policy.md).
 
+## Where to read next
+- [Privacy](privacy.md)
+- [Legal and Ethics](legal.md)
+- [Security Incident Response](../handbook/HP-SOP-006-security-incident.md)
+- [Account Security Setup](../handbook/HP-GDE-010-account-security.md)
+
 *Status: draft.*

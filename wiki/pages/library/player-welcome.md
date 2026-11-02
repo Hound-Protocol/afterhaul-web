@@ -10,4 +10,12 @@ Where to read next:
 - [Regions](player-regions.md) for the six maps.
 - [Ground surfaces](player-surfaces.md) for what is under your wheels.
 
+## Also in the guide
+- [Your driver](player-driver.md) and [Clothing](player-clothing.md)
+- [Food, drink, sleep and stamina](player-needs.md)
+- [Customizing your truck](player-truck-customization.md)
+- [Making a mod](player-modding.md)
+- [Questions and answers](player-faq.md) and the [player glossary](player-glossary.md)
+- Project pages: [Overview](overview.md)
+
 *Status: draft. The game is in early development and this guide describes what is planned.*

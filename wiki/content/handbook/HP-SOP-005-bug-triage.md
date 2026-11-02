@@ -12,14 +12,9 @@ Reports come through the repository's bug report template. Testers use the steps
 5. **Route** it to the owner of the module. S1 goes to the project owner at once.
 
 ## Severity
-| Level | Meaning | Example |
-| --- | --- | --- |
-| S1 Critical | Data loss, crash on start, security issue | A save is corrupted; a key leaks |
-| S2 Major | A core feature fails | A truck cannot drive |
-| S3 Minor | Works with a workaround | Wrong marker colour |
-| S4 Cosmetic | Looks wrong, works | Typo, layout gap |
+Use the four levels in the [Quality Policy](HP-POL-006-quality-policy.md): S1 critical, S2 major, S3 minor, S4 cosmetic. A build ships only when no S1 or S2 bug is open ([HP-SOP-003](HP-SOP-003-release-and-versioning.md)).
 
-A build ships only when no S1 or S2 bug is open ([HP-SOP-003](HP-SOP-003-release-and-versioning.md)).
+**Worked example:** a report says "the wiki filter shows nothing for one word". You reproduce it in Firefox only. It has a workaround (use another word), so it is S3. Labels: `bug`, `website`, `S3`. Route it to the owner of the website module.
 
 ## Response times
 Targets are not decided yet, because there is no public build. Until there is one, the order is simple: S1 first, then S2, then S3 and S4 in batches.
@@ -32,3 +27,9 @@ Close a report as one of:
 - **Not ours**, with a pointer to where it belongs.
 
 A security issue never goes in a public report. Follow [HP-SOP-006](HP-SOP-006-security-incident.md).
+
+## Where to read next
+- [Quality Guide](HP-GDE-004-quality-testing.md): the bug report template
+- [Reporting a Problem](HP-GDE-016-reporting-a-problem.md): what reporters are told
+- [Security Incident Response](HP-SOP-006-security-incident.md)
+- [Release Procedure](HP-SOP-003-release-and-versioning.md)

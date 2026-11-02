@@ -24,4 +24,9 @@ Contact the owner with the address in the Press section of the website. Reports 
 ## Consequences
 The owner may warn a person or remove their access if they break this code. Not decided yet: any formal appeal process.
 
+## Where to read next
+- [Community](community.md)
+- [Community and Moderation Policy](../handbook/HP-POL-005-community-moderation.md)
+- [Contributing](contributing.md)
+
 *Status: draft.*

@@ -1,6 +1,15 @@
 # Account Security Setup
 Step by step setup for the rules in the [Security Policy](HP-POL-004-security-policy.md). About 20 minutes.
 
+## What to do
+| Step | Needed? |
+|---|---|
+| 1. Two-factor login on GitHub | Required for everyone ([Security Policy](HP-POL-004-security-policy.md)) |
+| 2. Passkey | Recommended |
+| 3. Signed commits | Recommended |
+| 4. Two-factor on chat accounts | Required if you use them for the project |
+| 5. Password manager | Required for shared credentials |
+
 ## 1. GitHub two-factor authentication (everyone)
 1. GitHub → **Settings → Password and authentication**.
 2. Turn on **two-factor authentication** with an authenticator app (Aegis, 2FAS, Google Authenticator, or your password manager).
@@ -19,9 +28,11 @@ git config --global gpg.format ssh
 git config --global user.signingkey ~/.ssh/id_ed25519.pub
 git config --global commit.gpgsign true
 ```
-4. Your commits now show **Verified** on GitHub.
+4. Make a test commit and push it. On GitHub, the commit shows **Verified**. If it does not, check that the key was added as a *Signing key*, not only an *Authentication key*.
 
 This is separate from the sign-off (`git commit -s`), which every commit also needs.
+
+Keep the private key (the file without `.pub`) on your own computer only. Never send it to anyone.
 
 ## 4. Chat accounts
 Turn on two-factor login on any chat account you use for the project. Never paste a token or webhook address in any channel. If one leaks, follow [Security Incident and Leaked Secret Response](HP-SOP-006-security-incident.md) at once.
@@ -32,5 +43,17 @@ Use one (Bitwarden, KeePassXC, 1Password). Shared team credentials live only the
 ## 6. AI tools
 Never paste tokens, keys, passwords or private messages into an AI tool ([HP-GDE-018](HP-GDE-018-working-with-ai-assistants.md)).
 
+## Check yourself
+- [ ] Two-factor works and the recovery codes are in the password manager.
+- [ ] A second passkey or key is saved as a backup.
+- [ ] A test commit shows Verified.
+- [ ] No token or key sits in a file in your project folder.
+
 ## If something goes wrong
 Lost device, leaked token or a strange login: tell the owner right away and follow [HP-SOP-006](HP-SOP-006-security-incident.md). Reporting fast is never held against you.
+
+## Where to read next
+- [Security Policy for Team Members](HP-POL-004-security-policy.md)
+- [Security Incident and Leaked Secret Response](HP-SOP-006-security-incident.md)
+- [GitHub Basics](HP-GDE-014-github-basics.md)
+- [Security page](../library/security.md): how outsiders report a problem

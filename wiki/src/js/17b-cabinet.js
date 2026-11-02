@@ -68,7 +68,7 @@
   /* Classification stamp, in the middle of a Library document's header: public documents are not classified,
      LV3 to LV5 are low-clearance classified, LV6 and LV7 high-clearance classified */
   function cabStamp(x) {
-    if (!x) return '<span class="ds-cls c-open"><b>Not classified</b><small>Public</small></span>';
+    if (!x) return "<span></span>";
     return '<span class="ds-cls ' + (x.need >= 6 ? 'c-high"><b>Classified</b><small>High clearance</small>' : 'c-low"><b>Classified</b><small>Low clearance</small>') + "</span>";
   }
   function cabWarn(x) {
@@ -265,7 +265,7 @@
         '<div class="ds-tab"><b>' + esc(c[0]) + "</b>" + esc(doc.group) + "</div>" +
         '<div class="ds-folder"><div class="ds-page">' +
           '<span class="ds-clip" aria-hidden="true"></span><span class="ds-holes" aria-hidden="true"></span>' +
-          '<header class="ds-head"><span>AFTERHAUL</span>' + cabStamp(x) + '<span class="ds-class">Class: ' + esc(k[1]) + "</span></header>" + cabWarn(x) +
+          '<header class="ds-head"><span>AFTERHAUL</span>' + cabStamp(x) + '<span class="ds-right">' + docActions("docs", doc.id) + '<span class="ds-class">Class: ' + esc(k[1]) + "</span></span></header>" + cabWarn(x) +
           '<h1 class="ds-title">' + esc(c[1]) + "</h1>" +
           '<div class="ds-meta"><span>' + esc(c[0]) + " · " + esc(doc.path) + "</span>" +
             (/^HP-/.test(c[0]) ? '<a href="#/guides/' + esc(doc.id) + '">Printable sheet</a>' : "") +
@@ -274,6 +274,7 @@
           '<footer class="ds-foot"><span>' + esc(c[0]) + " · " + esc(k[1]) + " · " + esc(doc.path) + "</span><span>" + (x ? "Restricted to " + esc(x.card) + " and up. Do not copy it to public places." : "AFTERHAUL Wiki") + "</span></footer>" +
         "</div></div>";
       body.classList.remove("in"); void body.offsetWidth; body.classList.add("in");
+      wireDocActions(body, function () { return "# " + c[1] + "\n\n" + md.replace(/^# .*\n/, ""); }, doc.id, c[1]);
       var cl = $(".ds-link", body);
       cl.addEventListener("click", function () {
         var u = cl.getAttribute("data-url");

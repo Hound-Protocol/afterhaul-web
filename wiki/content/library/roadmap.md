@@ -46,3 +46,15 @@ The finished first version, ready for everyone.
 | Later regions as free updates | Planned | More of the land arrives after release. |
 
 Dates: none yet. Nothing in this plan is a promise.
+
+## How to read this page
+- **Complete** means done as a plan or as plain code. It does not mean playable.
+- **In progress** means someone is working on it now.
+- **Planned** means wanted, not started. It may move or be dropped.
+- Code is unverified until it has run in Unity ([Quality Guide](../handbook/HP-GDE-004-quality-testing.md)).
+
+## Where to read next
+- [Overview](overview.md)
+- [Release stages](release-stages.md)
+- [Current state](current-state.md)
+- [Changelog](changelog.md)

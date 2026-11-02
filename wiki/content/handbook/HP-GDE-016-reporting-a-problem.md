@@ -33,8 +33,26 @@ For the game, also add: GPU and driver, and the log file the build tells you abo
 
 **Never attach** passwords, tokens, keys or anyone else's saves.
 
+## Example report
+```
+Where: Wiki, filter box
+Version: shown at the bottom of the page
+System: Firefox on Bazzite, desktop, 1920x1080
+What happened: I typed "truck" and no document matched.
+What I expected: at least one document.
+Steps: 1. Open Wiki. 2. Choose Content. 3. Type "truck".
+How often: every time
+```
+Short and exact is better than long and vague.
+
 ## 4. What happens next
 1. Someone tries to reproduce it ([Bug Triage](HP-SOP-005-bug-triage.md)).
 2. It gets a severity, S1 to S4 ([Quality Policy](HP-POL-006-quality-policy.md)). Crashes and anything that damages saves block a release.
 3. If more information is needed, someone asks. Answering helps a lot.
 4. The fix is noted in the changelog.
+
+## Where to read next
+- [Bug Triage](HP-SOP-005-bug-triage.md): what the team does with your report
+- [Quality Policy](HP-POL-006-quality-policy.md): severity levels
+- [Security page](../library/security.md): how to report a security problem privately
+- [Frequently asked questions](../library/faq.md)

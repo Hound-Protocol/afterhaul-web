@@ -28,4 +28,9 @@ You choose between two ways to live on the road:
 ## Sound
 Choose a muffled exhaust for a deep, quiet engine, or open pipes for a loud, raw one with crackle on the overrun.
 
+## Where to read next
+- [Character classes](character-classes.md)
+- [Ground surfaces](player-surfaces.md)
+- [Making a mod](player-modding.md) for trucks as folders
+
 *Status: draft. Written from the design; not yet playable. Part list and weights are placeholders.*

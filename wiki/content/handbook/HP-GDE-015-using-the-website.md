@@ -1,6 +1,17 @@
 # Using the Website and Wiki
 The AFTERHAUL website is the project's public front door. It is **unlisted**: search engines skip it until launch. The game is at the Concept stage and nothing is playable yet ([Roadmap](../library/roadmap.md)).
 
+## Which page do I need?
+| I want to... | Go to |
+|---|---|
+| Know what the game is | [Overview](../library/overview.md) |
+| Learn how it will play | [Player Welcome](../library/player-welcome.md) |
+| See what is done and what is next | [Roadmap](../library/roadmap.md) and [Changelog](../library/changelog.md) |
+| Find a word | [Glossary](../library/glossary.md) |
+| Ask a question | [Frequently asked questions](../library/faq.md) |
+| Report a problem | [Reporting a Problem](HP-GDE-016-reporting-a-problem.md) |
+| Help make the game | [Contributor Quick Start](HP-GDE-003-contributor-quick-start.md) |
+
 ## 1. The sections
 | Section | What you find there |
 |---|---|
@@ -40,3 +51,9 @@ Open a sheet and press **Print**. The sheet prints on A4 and its footer says "Un
 - Reload with **Ctrl+Shift+R**. Your browser may show an old copy.
 - Try another browser, and turn off extensions that block scripts.
 - Still wrong? Follow [Reporting a Problem](HP-GDE-016-reporting-a-problem.md). Say which page, which browser and whether you are on a phone.
+
+## Where to read next
+- [Reporting a Problem](HP-GDE-016-reporting-a-problem.md)
+- [Brand and Media Guide](HP-GDE-011-brand-and-media.md): the Press tab
+- [Website Maintainer Guide](HP-GDE-012-website-maintainers.md): how the site is built
+- [Privacy](../library/privacy.md) and [Legal](../library/legal.md)

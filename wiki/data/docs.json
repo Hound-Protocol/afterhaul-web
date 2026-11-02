@@ -68,10 +68,34 @@
    "path": "library/player-driver.md"
   },
   {
+   "id": "about-afterhaul",
+   "title": "About AFTERHAUL",
+   "group": "Project",
+   "path": "library/about-afterhaul.md"
+  },
+  {
    "id": "changelog",
    "title": "Changelog",
    "group": "Project",
    "path": "library/changelog.md"
+  },
+  {
+   "id": "character-classes",
+   "title": "Character classes",
+   "group": "Project",
+   "path": "library/character-classes.md"
+  },
+  {
+   "id": "current-state",
+   "title": "Current state",
+   "group": "Project",
+   "path": "library/current-state.md"
+  },
+  {
+   "id": "design-choices",
+   "title": "Design choices",
+   "group": "Project",
+   "path": "library/design-choices.md"
   },
   {
    "id": "faq",
@@ -80,10 +104,22 @@
    "path": "library/faq.md"
   },
   {
+   "id": "game-changelog",
+   "title": "Game Changelog",
+   "group": "Project",
+   "path": "library/game-changelog.md"
+  },
+  {
    "id": "overview",
    "title": "Overview",
    "group": "Project",
    "path": "library/overview.md"
+  },
+  {
+   "id": "release-stages",
+   "title": "Release stages",
+   "group": "Project",
+   "path": "library/release-stages.md"
   },
   {
    "id": "roadmap",
@@ -96,6 +132,18 @@
    "title": "Team",
    "group": "Project",
    "path": "library/team.md"
+  },
+  {
+   "id": "the-world",
+   "title": "The world of AFTERHAUL",
+   "group": "Project",
+   "path": "library/the-world.md"
+  },
+  {
+   "id": "website-changelog",
+   "title": "Website Changelog",
+   "group": "Project",
+   "path": "library/website-changelog.md"
   },
   {
    "id": "process",
@@ -122,10 +170,22 @@
    "path": "library/conduct.md"
   },
   {
+   "id": "community",
+   "title": "Community",
+   "group": "Community",
+   "path": "library/community.md"
+  },
+  {
    "id": "contributing",
    "title": "Contributing",
    "group": "Community",
    "path": "library/contributing.md"
+  },
+  {
+   "id": "press",
+   "title": "Press",
+   "group": "Community",
+   "path": "library/press.md"
   },
   {
    "id": "legal",
@@ -248,6 +308,42 @@
    "path": "handbook/HP-GDE-023-truck-and-prop-modelling.md"
   },
   {
+   "id": "hp-gde-024",
+   "title": "Voice Recording Guide",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-024-voice-recording-guide.md"
+  },
+  {
+   "id": "hp-gde-025",
+   "title": "Designer Guide",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-025-designer-guide.md"
+  },
+  {
+   "id": "hp-gde-026",
+   "title": "Game Dev Trainee Guide",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-026-game-dev-trainee-guide.md"
+  },
+  {
+   "id": "hp-gde-027",
+   "title": "Unity Setup and First Steps",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-027-unity-setup-and-first-steps.md"
+  },
+  {
+   "id": "hp-gde-028",
+   "title": "Audio and Sound Guide",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-028-audio-and-sound-guide.md"
+  },
+  {
+   "id": "hp-gde-029",
+   "title": "Animation and Rig Guide",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-029-animation-and-rig-guide.md"
+  },
+  {
    "id": "hp-pol-001",
    "title": "Contributor Policy",
    "group": "Handbook",
@@ -302,6 +398,12 @@
    "path": "handbook/HP-POL-009-accountability.md"
   },
   {
+   "id": "hp-pol-010",
+   "title": "Merchandise Policy",
+   "group": "Handbook",
+   "path": "handbook/HP-POL-010-merchandise-policy.md"
+  },
+  {
    "id": "hp-sop-002",
    "title": "Pull Request and Review",
    "group": "Handbook",
@@ -336,6 +438,24 @@
    "title": "Backup and Restore",
    "group": "Handbook",
    "path": "handbook/HP-SOP-009-backup-and-restore.md"
+  },
+  {
+   "id": "hp-sop-010",
+   "title": "Asset Intake Procedure",
+   "group": "Handbook",
+   "path": "handbook/HP-SOP-010-asset-intake.md"
+  },
+  {
+   "id": "hp-sop-011",
+   "title": "Art Hand-off and Review Procedure",
+   "group": "Handbook",
+   "path": "handbook/HP-SOP-011-art-hand-off-and-review.md"
+  },
+  {
+   "id": "hp-sop-012",
+   "title": "Adding or Changing a Wiki Page",
+   "group": "Handbook",
+   "path": "handbook/HP-SOP-012-adding-a-wiki-page.md"
   }
  ]
 }

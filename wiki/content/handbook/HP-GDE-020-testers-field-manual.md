@@ -1,5 +1,5 @@
 # Tester's Field Manual
-This is the hands-on manual for testing. It works for the website now and for the game when a test build exists. You do not need to code. Nothing in the game is playable yet, so the game sections (6 and 7) are a plan, not a record.
+This is the hands-on manual for testing. It works for the website now and for the game when a test build exists. You do not need to code. Nothing in the game is playable yet, so the game section (7) is a plan, not a record.
 
 **Where it fits:**
 - The [Quality Guide](HP-GDE-004-quality-testing.md) has your test rig, the kinds of tests and the bug report template.
@@ -134,8 +134,26 @@ Not tested: <what and why>
 - **Change review:** post it on the pull request ([Pull Request and Review](HP-SOP-002-pull-request-review.md)).
 - **Release sign-off:** it goes into the release quality report ([Quality Policy](HP-POL-006-quality-policy.md)).
 
+**Worked example** (a made-up run to show the layout):
+```
+Test:     Explore the Handbook filter with odd input
+Build:    Site x.y.z (as shown on the page)
+Rig:      Firefox on Fedora, 1920x1080
+Result:   Fail
+Numbers:  n/a
+Found:    one report: the filter shows no result for "a/b"
+Not tested: Safari, phone width
+```
+
 ## 9. Pinch responsibly
 - Test only our things: our website and our builds. Do not probe GitHub, Steam or other services themselves.
 - Do not flood anything with scripts. A handful of quick clicks is a test. Thousands is an attack.
 - Found a way to see what you should not, or to harm others? Stop, and tell the owner privately. Do not post it in public.
 - Being slow or finding nothing is fine. Write down what you tried. That is useful too.
+
+## Where to read next
+- [Quality Guide](HP-GDE-004-quality-testing.md) and [Quality Policy](HP-POL-006-quality-policy.md)
+- [Bug Triage](HP-SOP-005-bug-triage.md): what happens after you report
+- [Linux and Proton Guide](HP-GDE-002-linux-proton.md): the Linux rig for game tests
+- [Using the Website and Wiki](HP-GDE-015-using-the-website.md): what each section should do
+- [Security Policy](HP-POL-004-security-policy.md): what to do if you find a real hole

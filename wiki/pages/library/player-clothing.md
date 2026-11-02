@@ -24,4 +24,9 @@ A piece of clothing hides the skin underneath it, so nothing pokes through. Hood
 ## Storage
 Your clothes live at home. If you leave a game while your clothes are in someone else's truck, you wake up at your house.
 
+## Where to read next
+- [Your driver](player-driver.md)
+- [Food, drink, sleep and stamina](player-needs.md)
+- [Regions](player-regions.md) for the weather you will dress for
+
 *Status: draft. Written from the design; not yet playable. All values are placeholders.*

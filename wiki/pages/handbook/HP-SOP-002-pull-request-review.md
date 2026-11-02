@@ -1,5 +1,5 @@
 # Pull Request and Review
-Code: HP-SOP-002 · Version 1.0 · Effective 2026-11-02 · Owner: Quality · For: everyone who changes the AFTERHAUL repository
+Code: HP-SOP-002 · Version 1.1 · Effective 2026-11-02 · Owner: Quality · For: everyone who changes the AFTERHAUL repository
 Audience: Makers
 Summary: How to open, check, review and merge a change to AFTERHAUL.
 
@@ -24,6 +24,15 @@ The AFTERHAUL repository is private. Only invited members work in it. Nothing fr
 | Design document | The design document matches its section files |
 
 Be honest about what these prove. The compile check uses stand-ins for Unity. It proves syntax and logic, not behaviour in the engine. Code not run in Unity is **unverified**. Say so in the pull request. See [HP-GDE-004](HP-GDE-004-quality-testing.md).
+
+**Example pull request text:**
+```
+What: Fix a wrong link in the Proton guide.
+Module: docs
+Tested: ran the wiki build check; opened the page.
+AI help: Claude found the link; I checked it.
+Unverified code: none
+```
 
 ## Merging
 | Change | Merge |
@@ -50,3 +59,10 @@ Review rules for other roles are not decided yet. AFTERHAUL has one owner and AI
 - Mark small points as "nit". They do not block.
 - Approve when it is good enough and safe, not when it matches your taste.
 - Answer within 3 days, or say when you will.
+
+## Where to read next
+- [Quality Policy](HP-POL-006-quality-policy.md): done, severity and release gate
+- [Contributor Quick Start](HP-GDE-003-contributor-quick-start.md) and [GitHub Basics](HP-GDE-014-github-basics.md)
+- [Release Procedure](HP-SOP-003-release-and-versioning.md)
+- [AI Use Policy](HP-POL-002-ai-use-policy.md)
+- Library: [Development Process](../library/process.md)

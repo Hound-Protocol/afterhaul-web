@@ -22,6 +22,8 @@ AFTERHAUL has **no deadlines and no time limits**. Nobody is penalized for being
 
 Five clean deliveries clear an earlier warning. There is no waiting period.
 
+**Example:** a first change breaks the main branch because a check was skipped. That is a Note: a friendly written message and a fix. If the same skip happens again after the note, it is a Warning. An honest bug that passed all checks is never a record.
+
 ## 4. Who decides
 The owner decides. Quality reports problems with evidence. Deliberate breaches go to the [Contributor Policy](HP-POL-001-contributor-policy.md). Concerns about the owner are written down openly, and the owner answers them in public.
 
@@ -30,3 +32,9 @@ You can appeal any step, at any time, with no deadline. Someone not involved rev
 
 ## 6. Transparency
 Every record has a written reason and the name of who wrote it. It states facts about the work, never personal judgments. Overturned records never count.
+
+## Where to read next
+- [Chain of Command and Open Communication](HP-POL-007-chain-of-command.md)
+- [Quality Policy](HP-POL-006-quality-policy.md)
+- [Contributor Policy](HP-POL-001-contributor-policy.md)
+- [Community and Moderation Policy](HP-POL-005-community-moderation.md)

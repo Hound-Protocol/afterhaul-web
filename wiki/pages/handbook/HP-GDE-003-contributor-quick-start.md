@@ -1,5 +1,5 @@
 # Contributor Quick Start
-Code: HP-GDE-003 · Version 1.0 · Effective 2026-11-02 · Owner: Owner · For: invited team members and anyone asking how to help
+Code: HP-GDE-003 · Version 1.1 · Effective 2026-11-02 · Owner: Owner · For: invited team members and anyone asking how to help
 Audience: Makers
 Summary: Whether you can help, what to read first, how to set up and how to deliver a change.
 
@@ -14,6 +14,17 @@ What is open today:
 How to get invited, and which roles are open: not decided yet. The community space is on hold. This page will say when that changes.
 
 No programming skill is needed for most useful work: testing, reading docs for mistakes, and clear writing all count. You need a free GitHub account with two-factor login ([GitHub Basics](HP-GDE-014-github-basics.md)).
+
+## What do you want to do?
+| Task | Start here |
+|---|---|
+| Set up accounts safely | [Account Security](HP-GDE-010-account-security.md) |
+| Learn GitHub from zero | [GitHub Basics](HP-GDE-014-github-basics.md) |
+| Test something | [Quality Guide](HP-GDE-004-quality-testing.md), then the [Tester's Field Manual](HP-GDE-020-testers-field-manual.md) |
+| Write or fix a document | [Documentation Style](HP-GDE-005-documentation-style.md) |
+| Change the website | [Website Maintainer Guide](HP-GDE-012-website-maintainers.md) |
+| Make art | [Art Contributor Start](HP-GDE-021-art-contributor-start.md) |
+| Work with an AI assistant | [Working with AI Assistants](HP-GDE-018-working-with-ai-assistants.md) |
 
 ## 2. Read first (20 minutes)
 - [Contributor Policy](HP-POL-001-contributor-policy.md)
@@ -38,7 +49,7 @@ No programming skill is needed for most useful work: testing, reading docs for m
 1. Work on a branch. Keep one topic per change.
 2. Commit with a sign-off: `git commit -s -m "Short, clear message"`. The sign-off says you wrote the work or have the right to submit it.
 3. Keep the `Co-Authored-By` lines if an AI tool made the commit. Removing them breaks the policy.
-4. Add a line to the changelog and raise the version when you release a pre-release.
+4. If your change is a version bump, update `VERSION` and the changelog together ([Release Procedure](HP-SOP-003-release-and-versioning.md)).
 5. Open a pull request, or commit as the owner directs. Say whether AI helped. See [Pull Request and Review](HP-SOP-002-pull-request-review.md).
 6. Fix what review asks for. Changes asked in review are normal.
 
@@ -54,3 +65,9 @@ No programming skill is needed for most useful work: testing, reading docs for m
 
 ## 6. If you get stuck
 Ask the owner. Nobody is penalized for being slow or for asking. Leaving is fine: write a short handoff note first so someone else can pick the work up.
+
+## Where to read next
+- [Contributor Policy](HP-POL-001-contributor-policy.md) and [Chain of Command](HP-POL-007-chain-of-command.md)
+- [Pull Request and Review](HP-SOP-002-pull-request-review.md)
+- [Onboarding and Offboarding](HP-SOP-007-onboarding-offboarding.md): what the owner does when you join or leave
+- Library: [Contributing](../library/contributing.md), [Development Process](../library/process.md), [Glossary](../library/glossary.md)

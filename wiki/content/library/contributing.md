@@ -6,6 +6,15 @@ AFTERHAUL is a closed Hound Protocol project. The game repository is private and
 - **Invited:** read the [Contributor Quick Start](../handbook/HP-GDE-003-contributor-quick-start.md) and the [Contributor Policy](../handbook/HP-POL-001-contributor-policy.md).
 - **Testing:** closed tests come with Alpha. Invitations are not open yet.
 
+## How it works for a new member
+1. You are invited by the owner.
+2. Read the [Contributor Quick Start](../handbook/HP-GDE-003-contributor-quick-start.md).
+3. Take one module. Write the design change first, then the code and its checks.
+4. Open a pull request with signed-off commits.
+5. The owner reviews it. See [Pull Request and Review](../handbook/HP-SOP-002-pull-request-review.md).
+
+Who may be invited and when: not decided yet.
+
 ## Rules for members
 - **Confidential.** Do not copy, post, screenshot or describe the design, code, data or assets outside the team. The public site shows marketing content and the player guide only.
 - **Sign off every commit** (`git commit -s`). It certifies that you wrote the work or have the right to submit it, and that it belongs to Hound Protocol under the project licence.
@@ -17,5 +26,11 @@ AFTERHAUL is a closed Hound Protocol project. The game repository is private and
 - **Be kind.** The [Code of Conduct](conduct.md) applies.
 
 See also [Pull Request and Review](../handbook/HP-SOP-002-pull-request-review.md) and [Bug Triage](../handbook/HP-SOP-005-bug-triage.md).
+
+## Where to read next
+- [Team](team.md)
+- [Development process](process.md)
+- [Contributor Policy](../handbook/HP-POL-001-contributor-policy.md)
+- [Onboarding and Offboarding](../handbook/HP-SOP-007-onboarding-offboarding.md)
 
 *Status: draft.*

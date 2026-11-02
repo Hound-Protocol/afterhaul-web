@@ -29,4 +29,9 @@ Some code and documents come from *Joint Operations*, an earlier project by the 
 ## Contributions
 Every commit is signed off (`git commit -s`). The sign-off certifies that you have the right to submit the work and that it belongs to Hound Protocol under these terms. See [Licensing and Attribution Policy](../handbook/HP-POL-008-licensing-and-attribution.md).
 
+## Where to read next
+- [Legal and Ethics](legal.md)
+- [Brand](brand.md)
+- [Third-party and IP](../handbook/HP-POL-003-third-party-and-ip.md)
+
 *Status: draft. Source: project licence file and decision 0002 (summary only).*

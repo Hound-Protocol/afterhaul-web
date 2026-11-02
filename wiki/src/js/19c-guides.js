@@ -169,7 +169,7 @@
         '<article class="sheet t-' + esc(g.type.toLowerCase()) + '" aria-label="' + esc(g.code + " " + g.title) + '">' +
           typeStripe(g.type, 6) +
           '<header class="sh-head"><div class="sh-org"><img src="assets/img/afterhaul-mark.svg" alt="" width="34" height="34"><span><b>AFTERHAUL</b><i>Hound Protocol Handbook</i></span></div>' +
-          '<div class="sh-code"><b>' + esc(g.code) + "</b><i>" + esc(g.type) + "</i></div></header>" +
+          docActions("guides", g.id) + '<div class="sh-code"><b>' + esc(g.code) + "</b><i>" + esc(g.type) + "</i></div></header>" +
           '<h1 class="sh-title">' + esc(g.title) + "</h1>" +
           '<dl class="sh-meta"><div><dt>Version</dt><dd>' + esc(g.version) + "</dd></div><div><dt>Effective</dt><dd>" + esc(g.effective) + "</dd></div>" +
           "<div><dt>Owner</dt><dd>" + esc(g.owner) + "</dd></div><div><dt>For</dt><dd>" + esc(g.for) + "</dd></div><div><dt>Classification</dt><dd>Public</dd></div></dl>" +
@@ -177,6 +177,7 @@
           '<footer class="sh-foot"><span>' + esc(g.code) + " · v" + esc(g.version) + " · " + esc(g.effective) + '</span><span>Uncontrolled when printed. Current version: ' + esc(url) + "</span></footer>" +
         "</article>";
       $("#gprint").addEventListener("click", function () { printSheet(); });
+      wireDocActions($(".sheet"), function () { return "# " + g.title + "\nCode: " + g.code + " · Version " + g.version + " · Effective " + g.effective + " · Owner: " + g.owner + " · For: " + g.for + "\n\n" + body; }, g.code, g.code + " " + g.title);
       $(".sb-back").addEventListener("click", function () { hbBack = g.type; });
       /* Opening a sheet puts the "Documentation · Handbook" heading on the top line of the page (the camera moves; the layout does not) */
       hbAim();

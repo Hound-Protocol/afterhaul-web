@@ -1,5 +1,5 @@
 # Chain of Command and Open Communication
-Code: HP-POL-007 · Version 1.0 · Effective 2026-11-02 · Owner: Owner · For: everyone who works on AFTERHAUL
+Code: HP-POL-007 · Version 1.1 · Effective 2026-11-02 · Owner: Owner · For: everyone who works on AFTERHAUL
 Audience: Makers
 Summary: Who decides what, and how everyone can speak openly.
 
@@ -26,6 +26,8 @@ Rules:
 - Security reports, personal matters and moderation of a specific person are private ([HP-POL-004](HP-POL-004-security-policy.md), [HP-POL-005](HP-POL-005-community-moderation.md)).
 - Disagree openly, then commit. Say what you think before a decision. Once it is made, follow it.
 
+**Example:** you think a design choice is wrong. Say so in the open, with your reason. The owner decides. If the owner keeps the choice, you follow it, and your note stays on record. If the owner is the one you disagree with, write your concern down openly; the owner answers it in public ([HP-POL-009](HP-POL-009-accountability.md)).
+
 ## 3. Transparency
 - Write down decisions that last.
 - Say who decided and why. "Because I said so" is not a reason.
@@ -36,3 +38,9 @@ Rules:
 2. If you still disagree, ask the owner. The owner's decision is final.
 
 Appeals are never held against the person who makes them.
+
+## Where to read next
+- [Contributor Policy](HP-POL-001-contributor-policy.md)
+- [Accountability Policy](HP-POL-009-accountability.md)
+- [Community and Moderation Policy](HP-POL-005-community-moderation.md)
+- Library: [Team](../library/team.md), [Code of Conduct](../library/conduct.md)

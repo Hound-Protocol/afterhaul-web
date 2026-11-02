@@ -1,5 +1,5 @@
 # Brand and Media Guide
-Code: HP-GDE-011 · Version 1.0 · Effective 2026-11-02 · Owner: Art · For: everyone who makes graphics, posts or videos about AFTERHAUL
+Code: HP-GDE-011 · Version 1.1 · Effective 2026-11-02 · Owner: Art · For: everyone who makes graphics, posts or videos about AFTERHAUL
 Audience: Makers
 Summary: How to use the AFTERHAUL name, logo and colours, and what graphics are allowed.
 
@@ -14,6 +14,17 @@ How to use the AFTERHAUL name and logo. The logo kit is on the website's **Press
 | **Studio** | The site says "AFTERHAUL by Hound Protocol" |
 
 The logo set comes as SVG and PNG: the full logo for dark backgrounds, the logo for light backgrounds, the slash mark alone, and a square version for profile pictures. The letters are outlines, so no font is needed. The website's logo builder draws them in code.
+
+Colour roles in short: amber for the first slash and accents, sand for the second slash, frost for light text, soot for backgrounds. The full colour list is on the [Brand page](../library/brand.md).
+
+## Can I use it? Examples
+| You want to... | Answer |
+|---|---|
+| Put the unchanged logo in an article about the game | Yes, with the right dark or light version |
+| Make the logo green to match your page | No. Do not recolour it |
+| Use a stock icon inside a new logo | No. Stock licences usually forbid it |
+| Make a fan picture with an AI image model | No. Not for the project, and not under our name |
+| Post a screenshot of the design document | No. It is private |
 
 ## Do
 - Use the files as they are. Pick the dark or light version to match the background.
@@ -42,3 +53,9 @@ The community space is on hold and the website is unlisted. Ask the owner before
 
 ## Licence of the brand
 The name and logos are reserved. AFTERHAUL is proprietary ([Licensing and Attribution](HP-POL-008-licensing-and-attribution.md)). You may use them unchanged to refer to the game. Do not use them for another project.
+
+## Where to read next
+- [Brand](../library/brand.md): full colour, font and file list
+- [AI Use Policy](HP-POL-002-ai-use-policy.md) and [Third-Party Assets and IP](HP-POL-003-third-party-and-ip.md)
+- [Website Maintainer Guide](HP-GDE-012-website-maintainers.md): how the Press tab is built
+- [Art Contributor Start](HP-GDE-021-art-contributor-start.md)

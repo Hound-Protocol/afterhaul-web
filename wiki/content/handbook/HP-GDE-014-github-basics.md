@@ -65,8 +65,23 @@ Good for fixing a typo or improving a guide.
 
 Prefer buttons to commands? **GitHub Desktop** does the same on Windows and macOS. On Linux, most editors (for example VS Code) have git built in.
 
-## 7. Good habits
+## 7. When something goes wrong
+| You see | Try this |
+|---|---|
+| A red cross on a check | Open **Details**, read the first error, fix it, push again |
+| `git push` is rejected | Someone changed the branch. Run `git pull`, then push again |
+| "This branch is out of date" | Use **Update branch** on the pull request page |
+| You committed to the wrong branch | Do not panic. Ask the owner before you rewrite anything |
+| You pasted a secret into a commit or issue | Stop. Follow [Security Incident Response](HP-SOP-006-security-incident.md) |
+
+## 8. Good habits
 - One pull request per topic. Small pull requests are reviewed faster.
 - Say in the pull request if you used AI tools ([AI Use Policy](HP-POL-002-ai-use-policy.md)).
 - Be kind in reviews and comments. Disagree with the work, never with the person.
 - Stuck? Ask in the issue or ask the owner. Nobody is penalized for being slow or asking questions ([Accountability](HP-POL-009-accountability.md)).
+
+## Where to read next
+- [Contributor Quick Start](HP-GDE-003-contributor-quick-start.md)
+- [Pull Request and Review](HP-SOP-002-pull-request-review.md): what reviewers look for
+- [Account Security](HP-GDE-010-account-security.md): signed commits
+- [Reporting a Problem](HP-GDE-016-reporting-a-problem.md)

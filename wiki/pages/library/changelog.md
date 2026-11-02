@@ -27,4 +27,9 @@ These are changes to the written design, not to a playable game.
 | 0.0.50-pre | Story premise: a country in conflict and a national recovery task force. Campaign and side quests written |
 | 0.0.49-pre | The main menu opens with an intro sequence |
 
+## Where to read next
+- [Website changelog](website-changelog.md) and [Game changelog](game-changelog.md) for the full lists.
+- [Roadmap](roadmap.md) for what comes next.
+- [Release and Versioning](../handbook/HP-SOP-003-release-and-versioning.md) for how versions work.
+
 *Status: draft. Nothing here describes a playable game. Source: the website changelog and the public game changelog, 2026-11-02. Confidence: confirmed.*

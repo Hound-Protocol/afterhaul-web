@@ -37,4 +37,10 @@ Planned features use voice commands and face expression driven by voice. Legal a
 ## 8. Money
 Donations, sales and funding rules: not decided yet.
 
+## Where to read next
+- [Licensing](licensing.md)
+- [Privacy](privacy.md)
+- [Security](security.md)
+- [Third-party and IP](../handbook/HP-POL-003-third-party-and-ip.md)
+
 *Status: draft. Source: project notes, 2026-11-02.*

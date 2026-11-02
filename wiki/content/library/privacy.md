@@ -26,4 +26,9 @@ Closed tests will collect some technical data, such as frame times and hardware.
 ## Changes
 If the site starts to store or send more, we update this page first.
 
+## Where to read next
+- [Security](security.md)
+- [Legal and Ethics](legal.md)
+- [Press](press.md) for the contact address
+
 *Status: draft. Source: the website code, 2026-11-02. Confidence: confirmed for the points above; third-party behaviour is theirs to state.*

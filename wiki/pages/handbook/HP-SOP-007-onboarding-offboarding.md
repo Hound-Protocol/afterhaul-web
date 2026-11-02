@@ -1,5 +1,5 @@
 # Onboarding and Offboarding
-Code: HP-SOP-007 · Version 1.0 · Effective 2026-11-02 · Owner: Owner · For: whoever brings people onto the team or removes them
+Code: HP-SOP-007 · Version 1.1 · Effective 2026-11-02 · Owner: Owner · For: whoever brings people onto the team or removes them
 Audience: Makers
 Summary: Steps to add a new team member safely, and to remove access the same day they leave.
 
@@ -13,6 +13,13 @@ AFTERHAUL is private. Only invited members get access. The team is small and rol
 5. Point them to the guides for their work: [HP-SOP-002](HP-SOP-002-pull-request-review.md) for changes, [HP-GDE-004](HP-GDE-004-quality-testing.md) for testing.
 6. Add them to a public team list only if they agree.
 
+## Checklist for a new member
+- [ ] Policies read: contributor, AI use, security
+- [ ] Two-factor login on, recovery codes saved
+- [ ] Invited with the lowest access that works
+- [ ] First task chosen with the owner and small
+- [ ] Knows who to ask: the owner
+
 ## Offboarding (same day)
 - [ ] Remove them from the repository and any shared services
 - [ ] Rotate any shared secret they could see ([HP-SOP-006](HP-SOP-006-security-incident.md))
@@ -22,3 +29,9 @@ AFTERHAUL is private. Only invited members get access. The team is small and rol
 
 ## Not decided yet
 Paid roles, contracts, ranks and a community space are not decided yet. The AFTERHAUL community space is on hold.
+
+## Where to read next
+- [Contributor Quick Start](HP-GDE-003-contributor-quick-start.md): what the new member reads
+- [Contributor Policy](HP-POL-001-contributor-policy.md) and [Chain of Command](HP-POL-007-chain-of-command.md)
+- [Account Security Setup](HP-GDE-010-account-security.md)
+- Library: [Team](../library/team.md)

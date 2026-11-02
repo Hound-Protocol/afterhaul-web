@@ -12,6 +12,14 @@ Hound Protocol's open licences apply to other Hound Protocol projects, not to AF
 - Keep the copyright and licence notices in files you change.
 - Do not add material under a licence that conflicts with ours.
 
+### How to write credit
+| Case | Write |
+|---|---|
+| You wrote it alone | "Your name" |
+| You wrote it with an AI agent | "Your name, with Claude" |
+| A free font or library | Name, licence and link in the third-party notices file |
+| Someone else's art, licensed to us | The artist's name, as the licence asks |
+
 ## 4. Credit for people
 - Work and research notes name their author.
 - Do not remove or change someone's credit, except to correct a mistake with their agreement.
@@ -28,3 +36,9 @@ Hound Protocol's open licences apply to other Hound Protocol projects, not to AF
 
 ## 7. Breaches
 Missing credit or a licence problem is fixed first and discussed second. Deliberate removal of credit or copying of protected material is handled under the [Contributor Policy](HP-POL-001-contributor-policy.md).
+
+## Where to read next
+- [Third-Party Assets and IP](HP-POL-003-third-party-and-ip.md)
+- [AI Use Policy](HP-POL-002-ai-use-policy.md)
+- [Contributor Policy](HP-POL-001-contributor-policy.md)
+- Library: [Licensing](../library/licensing.md), [Legal](../library/legal.md), [Brand](../library/brand.md)

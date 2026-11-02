@@ -1,5 +1,5 @@
 # Writing Research Notes
-Code: HP-GDE-013 · Version 1.0 · Effective 2026-11-02 · Owner: Owner · For: anyone who researches a tool, a rule or a source for AFTERHAUL
+Code: HP-GDE-013 · Version 1.1 · Effective 2026-11-02 · Owner: Owner · For: anyone who researches a tool, a rule or a source for AFTERHAUL
 Audience: Makers
 Summary: How to write a research note with sources and a confidence mark, in your own words.
 
@@ -33,6 +33,29 @@ A guess is never written as a fact. Where a licence or a platform claim is only 
 4. **Open questions:** what is still unknown.
 5. **Sources:** links to public pages, with what you took from each and the date you read it.
 
+## Worked example
+```
+# Proton Microphone Support
+Author: YourName, with Claude (AI agent) · Date: 2026-11-02 · Status: desk research
+
+## Question
+Does microphone input work in a Unity game under Proton? We need it for voice commands.
+
+## Findings
+- Microphone capture under Proton: unknown. No test has been run.
+- A fallback exists in the plan: keyboard shortcuts instead of voice.
+
+## Evidence
+None yet. A 5-second capture test on a real Linux PC would settle it.
+
+## Open questions
+Which Proton versions? Does a headset behave differently from a built-in mic?
+
+## Sources
+(Add public pages here, with what you took from each and the date you read it.)
+```
+The note says "unknown" and names the test that would settle it. That is a good note.
+
 ## Rules
 - Write in **your own words**. Do not paste long quotes or other people's text. AI summaries must not copy others' text either ([AI Use Policy](HP-POL-002-ai-use-policy.md)).
 - Open every source yourself. An AI tool may point you to a page, but you read the page.
@@ -45,3 +68,9 @@ A guess is never written as a fact. Where a licence or a platform claim is only 
 - Numbers with units and the version they were measured on.
 - Tables for comparisons, numbered steps for procedures.
 - Update the note when a later test changes the answer, and say what changed and when.
+
+## Where to read next
+- [Documentation Style](HP-GDE-005-documentation-style.md): wording and confidence rules
+- [Working with AI Assistants](HP-GDE-018-working-with-ai-assistants.md): checking what an AI tells you
+- [Linux and Proton Guide](HP-GDE-002-linux-proton.md): claims that are still unknown
+- [Third-Party Assets and IP](HP-POL-003-third-party-and-ip.md): reading licences

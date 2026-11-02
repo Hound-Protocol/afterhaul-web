@@ -27,3 +27,16 @@ Acknowledge the report. Fix it privately. Credit the reporter if they want. A pu
 | Personal data exposed | Remove it, tell the person, tell the owner |
 
 Setting up two-factor sign-in is covered in [HP-GDE-010](HP-GDE-010-account-security.md).
+
+## Worked example
+A token is committed to the website repository at 10:00.
+1. 10:05: you reset the token at the service. The old one is now dead.
+2. 10:10: you tell the owner privately, then remove the file in a new commit.
+3. Same day: check the service's audit log for use between 10:00 and 10:05.
+4. Within a week: write the short note. Add a check or a habit so it does not repeat.
+
+## Where to read next
+- [Security Policy for Team Members](HP-POL-004-security-policy.md)
+- [Account Security Setup](HP-GDE-010-account-security.md)
+- [Backup and Restore](HP-SOP-009-backup-and-restore.md): if an account is compromised
+- [Security page](../library/security.md): how outsiders report

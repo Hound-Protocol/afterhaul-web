@@ -12,4 +12,8 @@ Group: Player guide
 - **Slot:** a space for one item of clothing or cargo.
 - **Zone:** an area of a truck or a body that can be damaged or hidden.
 
+## Where to read next
+- [Project glossary](glossary.md) for stages, tools and process terms
+- [Welcome](player-welcome.md)
+
 *Status: draft.*

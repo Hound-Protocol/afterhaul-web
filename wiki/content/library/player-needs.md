@@ -17,4 +17,9 @@ Sprinting is fast and fluid, and it runs out. Stand still and stamina comes back
 ## The wrist monitor
 There is no screen full of bars. You can buy a wrist monitor that shows your health, hunger, thirst, sleep, stamina and temperature when you look at it.
 
+## Where to read next
+- [Your driver](player-driver.md)
+- [Clothing](player-clothing.md)
+- [Customizing your truck](player-truck-customization.md) for habitat modules
+
 *Status: draft. Written from the design; not yet playable.*

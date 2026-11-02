@@ -1,5 +1,5 @@
 # Quality Policy
-Code: HP-POL-006 · Version 1.0 · Effective 2026-11-02 · Owner: Quality · For: every change and every release
+Code: HP-POL-006 · Version 1.1 · Effective 2026-11-02 · Owner: Quality · For: every change and every release
 Audience: Quality
 Summary: Nothing ships because it is finished. It ships because it is checked.
 
@@ -30,5 +30,19 @@ A build ships only when:
 ## 5. Status of the code
 Code written before it has run in Unity is **unverified**. Mark it so in the changelog. A pass in the compile check proves syntax and logic only. It proves nothing about Unity behaviour.
 
-## 6. Measuring
+## 6. Who checks what
+| Moment | Who | What they check |
+|---|---|---|
+| Before a merge | Reviewer | The acceptance criteria and the checklist in [HP-SOP-002](HP-SOP-002-pull-request-review.md) |
+| Before a release | Quality | Tests run, platforms, open bugs ([HP-SOP-003](HP-SOP-003-release-and-versioning.md)) |
+| After a report | Whoever triages | Severity and routing ([HP-SOP-005](HP-SOP-005-bug-triage.md)) |
+
+## 7. Measuring
 Not decided yet: the release report format. At least record the tests run, the platforms, open bugs by severity, and what was not tested.
+
+## Where to read next
+- [Quality Guide](HP-GDE-004-quality-testing.md): rig, tests and the bug report template
+- [Tester's Field Manual](HP-GDE-020-testers-field-manual.md)
+- [Bug Triage](HP-SOP-005-bug-triage.md) and [Release Procedure](HP-SOP-003-release-and-versioning.md)
+- [Linux and Proton Guide](HP-GDE-002-linux-proton.md)
+- Library: [Development Process](../library/process.md)

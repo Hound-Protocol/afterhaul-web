@@ -1,5 +1,5 @@
 # Community and Moderation Policy
-Code: HP-POL-005 · Version 1.0 · Effective 2026-11-02 · Owner: Owner · For: everyone in AFTERHAUL spaces
+Code: HP-POL-005 · Version 1.1 · Effective 2026-11-02 · Owner: Owner · For: everyone in AFTERHAUL spaces
 Audience: Players
 Summary: How we expect people to behave in AFTERHAUL spaces, and what happens when they do not.
 
@@ -18,6 +18,8 @@ The [Code of Conduct](../library/conduct.md) applies everywhere. In short: be re
 | 4. Removal | Serious or repeated breach | Removal from the space |
 | Immediate removal | Piracy, leaked secrets, harassment, threats, doxxing | Content removed and person removed at once |
 
+**Example:** a member posts a rude reply in a GitHub issue for the first time. Step 1: a friendly reminder, with a link to the Code of Conduct. If it repeats after a warning, a short timeout. If the post contains a leaked key or a threat, the post is removed at once.
+
 ## 4. How moderators act
 - Until more moderators exist, the owner moderates.
 - Act on behavior, not opinions. Explain the action briefly.
@@ -26,3 +28,9 @@ The [Code of Conduct](../library/conduct.md) applies everywhere. In short: be re
 
 ## 5. Appeals
 You can appeal to the owner. The owner decides, and appealing is never held against you.
+
+## Where to read next
+- [Code of Conduct](../library/conduct.md)
+- [Chain of Command and Open Communication](HP-POL-007-chain-of-command.md): appeals
+- [Accountability Policy](HP-POL-009-accountability.md): the same ideas for team work
+- [Security Incident Response](HP-SOP-006-security-incident.md)

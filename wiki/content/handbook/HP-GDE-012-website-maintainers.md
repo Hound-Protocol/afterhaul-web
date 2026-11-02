@@ -41,6 +41,13 @@ Some parts are written by scripts. Edit the source, run the script, commit both.
 4. Add a line to the website `CHANGELOG.md` and raise its version.
 5. Commit with a sign-off (`git commit -s`) and push. The site deploys.
 
+## Worked example: add a roadmap status change
+1. Open `content/roadmap.json` and change the item's status to one of the four allowed values.
+2. Run `python3 tools/build_roadmap.py`.
+3. Preview with `python3 -m http.server 8000` and open the Roadmap section. Check that the status filter counts still add up.
+4. Add a line to `CHANGELOG.md`, raise its version, commit with `-s` and push.
+5. Wait for the deploy, then reload with Ctrl+Shift+R and look again.
+
 ## Common edits
 - **New wiki document:** add a Markdown file to `wiki/pages/handbook/` (name `HP-XXX-NNN-slug.md`) or `wiki/pages/library/` and run the wiki build. The first lines follow the format in [Documentation Style](HP-GDE-005-documentation-style.md).
 - **Roadmap status:** edit `content/roadmap.json`, then run the roadmap script. Statuses are Complete, In Progress, Planned and Abandoned.
@@ -53,10 +60,17 @@ Some parts are written by scripts. Edit the source, run the script, commit both.
 - Switching sections or tabs must not make the page jump or resize.
 - Fonts and scripts are the site's own files. A video loads only when someone presses play.
 - Escape any data you put into HTML.
-- Keep text short, plain and in the game's terms: Operations Chief, Operators, employers, nuts, crew.
+- Keep text short, plain and in the game's terms: Operations Chief, Operators, employers, nuts, crew. The [Glossary](../library/glossary.md) lists them.
 
 ## Third-party items
 Every font, library, image or video the site uses goes in `THIRD_PARTY_NOTICES.md` with its licence ([Third-Party Assets and IP](HP-POL-003-third-party-and-ip.md)). Placeholders are labelled as placeholders.
 
 ## Testing
 Check the site by hand before you push, with the [Tester's Field Manual](HP-GDE-020-testers-field-manual.md). Say what you did not test.
+
+## Where to read next
+- [Documentation Style](HP-GDE-005-documentation-style.md): format of wiki pages
+- [Brand and Media Guide](HP-GDE-011-brand-and-media.md)
+- [Using the Website and Wiki](HP-GDE-015-using-the-website.md): what visitors see
+- [Tester's Field Manual](HP-GDE-020-testers-field-manual.md), section 4: what to click
+- Library: [Development Process](../library/process.md), [Changelog](../library/changelog.md), [Roadmap](../library/roadmap.md)

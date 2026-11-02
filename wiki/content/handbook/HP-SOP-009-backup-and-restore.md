@@ -32,6 +32,13 @@ git clone repo-YYYY-MM-DD.bundle repo-restored
 ```
 Open the result. Check the latest `VERSION` and a few files.
 
+## Keep a log
+Write one line per backup in a file stored with the copies:
+```
+2026-11-02 · repos: game, website · where: <storage name> · restore test: not done
+```
+(The date and details here are an example of the layout.)
+
 ## Restore onto GitHub
 For a new or emptied repository:
 ```
@@ -45,3 +52,9 @@ Issues and pull requests are not restored by this. The exports keep them as an a
 1. Follow [HP-SOP-006](HP-SOP-006-security-incident.md) and secure the accounts first.
 2. Do not make a new backup until the accounts are safe. It may copy the damage.
 3. Restore from the last copy made before the incident.
+
+## Where to read next
+- [Security Policy for Team Members](HP-POL-004-security-policy.md): backups and secrets
+- [Security Incident Response](HP-SOP-006-security-incident.md)
+- [Website Maintainer Guide](HP-GDE-012-website-maintainers.md): what lives in the website repository
+- Library: [Development Process](../library/process.md)

@@ -25,11 +25,31 @@ Source: the project's state notes, 2026-11-02. Confidence: confirmed.
 - Mods are planned. A truck is one folder of files. See [Making a mod](player-modding.md).
 - AFTERHAUL is proprietary. See [Licensing](licensing.md).
 
+## Start here
+Pick the path that fits you. Every Library group is listed.
+
+| If you want to... | Read |
+| --- | --- |
+| Learn what the game is | [About AFTERHAUL](about-afterhaul.md), [The world](the-world.md), [Character classes](character-classes.md) |
+| Understand why it is built this way | [Design choices](design-choices.md) |
+| See how far it has come | [Current state](current-state.md), [Release stages](release-stages.md), [Roadmap](roadmap.md) |
+| Follow what changed | [Changelog](changelog.md), [Game changelog](game-changelog.md), [Website changelog](website-changelog.md) |
+| Get quick answers | [Questions and answers](faq.md), [Glossary](glossary.md) |
+| Read the player guide | [Welcome](player-welcome.md) |
+| See how it is made | [Development process](process.md), [Team](team.md) |
+| Join in or talk to us | [Contributing](contributing.md), [Community](community.md), [Code of Conduct](conduct.md), [Press](press.md) |
+| Use the name or logo | [Brand](brand.md), [Licensing](licensing.md) |
+| Check the rules and your data | [Legal and Ethics](legal.md), [Security](security.md), [Privacy](privacy.md) |
+| Work on the project (invited members) | [Contributor Quick Start](../handbook/HP-GDE-003-contributor-quick-start.md), [Contributor Policy](../handbook/HP-POL-001-contributor-policy.md) |
+| Browse every guide, policy and procedure | The Handbook: [Using the website](../handbook/HP-GDE-015-using-the-website.md), [Documentation Style Guide](../handbook/HP-GDE-005-documentation-style.md), [Quality Guide](../handbook/HP-GDE-004-quality-testing.md) |
+
+## How the wiki is organised
+- **Library** holds the overview, plans and reference pages. Groups: Project, Technical, Community, Legal and Player guide.
+- **Handbook** holds guides (HP-GDE), policies (HP-POL) and procedures (HP-SOP). Each has a code, an owner role and an audience.
+- Pages marked *draft* may change. Anything about code says whether it ran in Unity.
+
 ## Where to read next
-- [Questions and answers](faq.md)
-- [Roadmap](roadmap.md) and [Changelog](changelog.md)
-- [How AFTERHAUL is built](process.md)
-- [Glossary](glossary.md)
-- The player guide starts at [Welcome](player-welcome.md).
+- New to the game: [Welcome](player-welcome.md), then [Regions](player-regions.md).
+- New to the project: [Development process](process.md), then the [Glossary](glossary.md).
 
 *Status: draft. The game is in early development and this page describes what is planned and what is done.*

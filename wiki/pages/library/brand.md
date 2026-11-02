@@ -53,4 +53,9 @@ The mark sits on soot `#16130e`. Source: the website style sheet. Confidence: co
 ## Temporary art
 The cover art on the website is a stand-in and is labelled as AI-generated. It is not final art, and it is not the brand.
 
+## Where to read next
+- [Press](press.md) for the logo files and contact address
+- [Licensing](licensing.md)
+- [Brand and Media Guide](../handbook/HP-GDE-011-brand-and-media.md)
+
 *Status: draft.*

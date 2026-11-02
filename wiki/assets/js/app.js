@@ -430,6 +430,37 @@
     else t.remove();
   }, true);
 
+  /* ---------------- Share and download buttons (every document) ----------------
+     Share copies the document's own link (on phones it opens the system share sheet). Download saves the text as a .md file. */
+  var ICO_SHARE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>';
+  var ICO_DOWN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>';
+  function docUrl(kind, id) { return location.href.split("#")[0].split("?")[0] + "#/" + kind + "/" + id; }
+  function docActions(kind, id) {
+    return '<span class="doc-act" data-kind="' + esc(kind) + '" data-id="' + esc(id) + '">' +
+      '<button type="button" class="da-share" title="Copy the link to this document">' + ICO_SHARE + "<b>Share</b></button>" +
+      '<button type="button" class="da-down" title="Download this document as a .md file">' + ICO_DOWN + "<b>Download</b></button></span>";
+  }
+  /* getText returns the document as Markdown; filename is without extension */
+  function wireDocActions(root, getText, filename, title) {
+    var box = $(".doc-act", root); if (!box) return;
+    var url = docUrl(box.getAttribute("data-kind"), box.getAttribute("data-id"));
+    function flash(btn, txt) { var b = $("b", btn), old = b.textContent; b.textContent = txt; btn.classList.add("done"); setTimeout(function () { b.textContent = old; btn.classList.remove("done"); }, 1400); }
+    $(".da-share", box).addEventListener("click", function () {
+      var btn = this;
+      if (navigator.share && window.matchMedia && matchMedia("(pointer: coarse)").matches) { navigator.share({ title: title, url: url }).catch(function () {}); return; }
+      copyText(url).then(function () { flash(btn, "Link copied"); status("Link copied"); }, function () { flash(btn, "Press Ctrl+C"); window.prompt && 0; });
+    });
+    $(".da-down", box).addEventListener("click", function () {
+      var btn = this, blob;
+      try {
+        blob = new Blob([getText()], { type: "text/markdown;charset=utf-8" });
+        var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = filename + ".md";
+        document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+        flash(btn, "Saved");
+      } catch (e) { flash(btn, "Failed"); }
+    });
+  }
+
   /* ---------------- Position marker ----------------
      The browser's own scrollbar is hard to see against the frame, so a marker rides beside the right-hand ruler, like the
      depth gauge on a Metal Gear radar: an orange chevron pointing at the ruler, with how far down the page you are.
@@ -589,7 +620,7 @@
   /* Classification stamp, in the middle of a Library document's header: public documents are not classified,
      LV3 to LV5 are low-clearance classified, LV6 and LV7 high-clearance classified */
   function cabStamp(x) {
-    if (!x) return '<span class="ds-cls c-open"><b>Not classified</b><small>Public</small></span>';
+    if (!x) return "<span></span>";
     return '<span class="ds-cls ' + (x.need >= 6 ? 'c-high"><b>Classified</b><small>High clearance</small>' : 'c-low"><b>Classified</b><small>Low clearance</small>') + "</span>";
   }
   function cabWarn(x) {
@@ -786,7 +817,7 @@
         '<div class="ds-tab"><b>' + esc(c[0]) + "</b>" + esc(doc.group) + "</div>" +
         '<div class="ds-folder"><div class="ds-page">' +
           '<span class="ds-clip" aria-hidden="true"></span><span class="ds-holes" aria-hidden="true"></span>' +
-          '<header class="ds-head"><span>AFTERHAUL</span>' + cabStamp(x) + '<span class="ds-class">Class: ' + esc(k[1]) + "</span></header>" + cabWarn(x) +
+          '<header class="ds-head"><span>AFTERHAUL</span>' + cabStamp(x) + '<span class="ds-right">' + docActions("docs", doc.id) + '<span class="ds-class">Class: ' + esc(k[1]) + "</span></span></header>" + cabWarn(x) +
           '<h1 class="ds-title">' + esc(c[1]) + "</h1>" +
           '<div class="ds-meta"><span>' + esc(c[0]) + " · " + esc(doc.path) + "</span>" +
             (/^HP-/.test(c[0]) ? '<a href="#/guides/' + esc(doc.id) + '">Printable sheet</a>' : "") +
@@ -795,6 +826,7 @@
           '<footer class="ds-foot"><span>' + esc(c[0]) + " · " + esc(k[1]) + " · " + esc(doc.path) + "</span><span>" + (x ? "Restricted to " + esc(x.card) + " and up. Do not copy it to public places." : "AFTERHAUL Wiki") + "</span></footer>" +
         "</div></div>";
       body.classList.remove("in"); void body.offsetWidth; body.classList.add("in");
+      wireDocActions(body, function () { return "# " + c[1] + "\n\n" + md.replace(/^# .*\n/, ""); }, doc.id, c[1]);
       var cl = $(".ds-link", body);
       cl.addEventListener("click", function () {
         var u = cl.getAttribute("data-url");
@@ -1045,7 +1077,7 @@
         '<article class="sheet t-' + esc(g.type.toLowerCase()) + '" aria-label="' + esc(g.code + " " + g.title) + '">' +
           typeStripe(g.type, 6) +
           '<header class="sh-head"><div class="sh-org"><img src="assets/img/afterhaul-mark.svg" alt="" width="34" height="34"><span><b>AFTERHAUL</b><i>Hound Protocol Handbook</i></span></div>' +
-          '<div class="sh-code"><b>' + esc(g.code) + "</b><i>" + esc(g.type) + "</i></div></header>" +
+          docActions("guides", g.id) + '<div class="sh-code"><b>' + esc(g.code) + "</b><i>" + esc(g.type) + "</i></div></header>" +
           '<h1 class="sh-title">' + esc(g.title) + "</h1>" +
           '<dl class="sh-meta"><div><dt>Version</dt><dd>' + esc(g.version) + "</dd></div><div><dt>Effective</dt><dd>" + esc(g.effective) + "</dd></div>" +
           "<div><dt>Owner</dt><dd>" + esc(g.owner) + "</dd></div><div><dt>For</dt><dd>" + esc(g.for) + "</dd></div><div><dt>Classification</dt><dd>Public</dd></div></dl>" +
@@ -1053,6 +1085,7 @@
           '<footer class="sh-foot"><span>' + esc(g.code) + " · v" + esc(g.version) + " · " + esc(g.effective) + '</span><span>Uncontrolled when printed. Current version: ' + esc(url) + "</span></footer>" +
         "</article>";
       $("#gprint").addEventListener("click", function () { printSheet(); });
+      wireDocActions($(".sheet"), function () { return "# " + g.title + "\nCode: " + g.code + " · Version " + g.version + " · Effective " + g.effective + " · Owner: " + g.owner + " · For: " + g.for + "\n\n" + body; }, g.code, g.code + " " + g.title);
       $(".sb-back").addEventListener("click", function () { hbBack = g.type; });
       /* Opening a sheet puts the "Documentation · Handbook" heading on the top line of the page (the camera moves; the layout does not) */
       hbAim();

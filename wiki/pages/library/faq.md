@@ -38,7 +38,28 @@ Only invited members work in the project. Testers will be invited during closed 
 **How do I follow progress?**
 Read the [Changelog](changelog.md) and the [Roadmap](roadmap.md).
 
+**Where are the player questions?**
+How it plays, crews and mods: see the [player guide Q&A](player-faq.md).
+
+**What do the words mean?**
+See the [Glossary](glossary.md) and the [player glossary](player-glossary.md).
+
+**How do I report a problem or a security issue?**
+For a bug in the website, use the contact address in the Press section. For a security issue, follow the [Security Policy](security.md) and do not post it in public.
+
+**What does the site store about me?**
+Very little. See [Privacy](privacy.md).
+
+**Can I use the logo?**
+Only as the [Brand](brand.md) page allows.
+
 **Who do I contact?**
 Use the contact address in the Press section of the website.
+
+## Where to read next
+- [Overview](overview.md)
+- [Roadmap](roadmap.md)
+- [Player guide Q&A](player-faq.md)
+- [Contributing](contributing.md)
 
 *Status: draft. Answers may change as the project does.*

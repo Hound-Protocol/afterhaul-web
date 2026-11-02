@@ -19,4 +19,9 @@ Each body type changes how you run, how often you eat and drink, and how well yo
 
 Clothes are made for body types. If you change your body type at home, pieces that no longer fit come off and go back into your closet.
 
+## Where to read next
+- [Clothing](player-clothing.md)
+- [Food, drink, sleep and stamina](player-needs.md)
+- [Welcome](player-welcome.md)
+
 *Status: draft. Written from the design; not yet playable.*

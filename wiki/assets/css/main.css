@@ -2221,3 +2221,22 @@ html.booting .center, html.booting .bar { opacity: 0; }
 
 /* Embedded in the main site's Wiki tab: no frame bars */
 .embed .bar, .embed .corner, .embed .ruler { display: none; }
+
+.embed, .embed body { background: transparent; }
+.embed .stage { background: transparent; }
+.embed .view { width: calc(100vw - 80px); }
+.embed .stage::after { display: none; }
+
+/* Share and download buttons, top right of every document, left of the code block */
+.doc-act { display: inline-flex; gap: 6px; align-items: center; margin-left: auto; margin-right: 18px; align-self: flex-start; }
+.doc-act button { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 10px; border: 1px solid var(--ink, var(--gd, #1c2022)); background: transparent; color: var(--ink, var(--gd, #1c2022)); font: 400 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; cursor: pointer; transition: background-color .2s, color .2s, transform .15s; }
+.doc-act button b { font-weight: 400; }
+.doc-act svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.doc-act button:hover, .doc-act button:focus-visible { background: var(--ink, var(--gd, #1c2022)); color: #fff; }
+.doc-act button:active { transform: translateY(1px); }
+.doc-act button.done { background: var(--ink, var(--gd, #1c2022)); color: #fff; }
+.ds-head .ds-right { justify-self: end; display: inline-flex; align-items: center; gap: 0; }
+.ds-head .ds-right .doc-act { margin-left: 0; align-self: center; }
+.sh-head .doc-act { margin-top: 2px; }
+@media (max-width: 700px) { .doc-act button b { display: none; } .doc-act button { padding: 0 8px; } .doc-act { margin-right: 10px; } }
+@media print { .doc-act { display: none !important; } }

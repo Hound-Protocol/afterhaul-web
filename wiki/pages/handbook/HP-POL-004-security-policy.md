@@ -1,5 +1,5 @@
 # Security Policy for Team Members
-Code: HP-POL-004 · Version 1.0 · Effective 2026-11-02 · Owner: Owner · For: everyone with access to AFTERHAUL
+Code: HP-POL-004 · Version 1.1 · Effective 2026-11-02 · Owner: Owner · For: everyone with access to AFTERHAUL
 Audience: Makers
 Summary: How team members protect accounts, secrets and access.
 
@@ -29,5 +29,19 @@ To report a security problem, see the [Security page](../library/security.md).
 ## 5. Backups
 Keep a backup of the repositories and your own copies of asset files. Not decided yet: where and how often.
 
+## Quick reference
+| Situation | Do |
+|---|---|
+| New account for the project | Turn on two-factor login first ([setup](HP-GDE-010-account-security.md)) |
+| You need a token | Make one for one job, then reset it |
+| Someone asks for your password | Refuse. Nobody from the project asks |
+| You find a secret in the wrong place | Revoke it, then tell the owner ([HP-SOP-006](HP-SOP-006-security-incident.md)) |
+
 ## 6. If something leaks
 Tell the owner at once. Revoke the secret first, clean up second, report third. Deleting it from the history is not enough.
+
+## Where to read next
+- [Account Security Setup](HP-GDE-010-account-security.md)
+- [Security Incident and Leaked Secret Response](HP-SOP-006-security-incident.md)
+- [Backup and Restore](HP-SOP-009-backup-and-restore.md)
+- [Security page](../library/security.md) (for outsiders) and [Privacy](../library/privacy.md)
