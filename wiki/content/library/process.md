@@ -19,7 +19,7 @@ How AFTERHAUL is built. This is a public summary. Internal specifications and de
 | --- | --- | --- |
 | Data check | Game data files have the right shape | Run before each commit |
 | Compile check | Game code compiles against small stand-ins for Unity | Runs on every push. It proves syntax, not engine behaviour |
-| Edit Mode tests in Unity | Game logic tests inside the real engine | Run by hand. The first run passed on 2026-10-31 |
+| Edit Mode tests in Unity | Game logic tests inside the real engine | Run by hand. The first run had one failure (a set-up issue, since fixed); a later batch run on 2026-10-31 passed 100 of 100 |
 | Documentation check | The player guide matches the game data | Runs on every push |
 | Play tests on Windows and on Linux (Proton) | The real game | Not done yet |
 

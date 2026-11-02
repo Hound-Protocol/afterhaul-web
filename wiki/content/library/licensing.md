@@ -18,7 +18,7 @@ Third-party parts keep their own licences.
 | Share Tech Mono font | SIL Open Font License 1.1 |
 | Other tools and assets | Listed in the third-party notices file of each repository |
 
-The font licence texts ship with the fonts. Game assets are not handed out. Nothing is bought or imported yet.
+The font licence texts ship with the fonts. Game assets are not handed out. Some third-party packs and a test clip are in use for testing only; they are not handed out and are listed in the third-party notices.
 
 ## Names and logos
 Reserved. You may use the name unchanged to refer to the project. See [Brand](brand.md).

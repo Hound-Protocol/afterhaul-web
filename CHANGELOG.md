@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.11.1-pre · Audit fixes · 2026-11-02
+- Corrected statements about test results and bought assets, the brand colour, and removed the animation clips that showed third-party material.
+
 ## 0.11.0-pre · Media in documents, one button style · 2026-11-02
 - Wiki documents can show pictures, short clips and YouTube videos (a video loads only after you press play). Added: the eight class icons, logos, the placeholder pictures, the sound-design videos and animation test clips.
 - All section buttons (About, Wiki, Roadmap, Changelog, Community, Press) now share one design. Only the accent colour differs.

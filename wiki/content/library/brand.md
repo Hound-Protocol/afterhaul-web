@@ -34,7 +34,7 @@ Each comes as SVG and PNG. The files are in the Press section of the website.
 | Rust | `#9a3d1e` | Warning red-brown |
 | Mud | `#3a2c1d` | Deep brown |
 
-The mark sits on soot `#16130e`. Source: the website style sheet. Confidence: confirmed.
+The mark sits on soot `#14110c`. Source: the website style sheet. Confidence: confirmed.
 
 ## Fonts
 - **Barlow Semi Condensed** for text and the wordmark.

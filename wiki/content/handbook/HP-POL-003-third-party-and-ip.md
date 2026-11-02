@@ -34,7 +34,7 @@ AFTERHAUL stays independent by using only original work and properly licensed wo
 - Some terms are unclear. Example: whether animation clips shipped inside a game count as redistribution is unknown. Read the current terms before release.
 
 ## 5. Current picks
-Asset picks are temporary and the owner may change them. As of 2026-11-02 nothing is bought or imported.
+Asset picks are temporary and the owner may change them. As of 2026-11-02 a free character pack and one animation test clip are in use for testing. Nothing has been bought.
 | Need | Source | Status |
 |---|---|---|
 | Weapons | Unity Asset Store publisher CASTLE BRAVO | Picked. Licence not checked |

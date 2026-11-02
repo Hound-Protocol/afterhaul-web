@@ -14,7 +14,7 @@ AFTERHAUL is a co-op offroad trucking game for up to eight players. It is made b
 | Stage | Concept. Nothing is playable yet |
 | Design | Written |
 | Rules (trucks, weather, needs, clothing) | Built and tested as plain code outside the game engine |
-| Inside the engine (Unity) | Early checks only. The first test run of the rules passed in Unity. A playable game is not verified |
+| Inside the engine (Unity) | Early checks only. The rule tests (100 of 100) passed in a batch run in Unity on a local set-up. A playable game is not verified |
 | Platforms | Windows first. Linux through Proton is a goal, not yet tested |
 | Release date | Not decided yet |
 
