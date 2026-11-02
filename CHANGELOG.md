@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.8.1-pre · Dev log button removed · 2026-11-02
+- Removed the footer button and the unlisted page added in 0.8.0-pre. Nothing else changed.
+
 ## 0.8.0-pre · Dev log · 2026-11-02
 - New small button in the footer, "Dev log, real-time progress". It opens an unlisted dev log page (`noindex`, not in the menu) with plain-English progress for every game version, newest first, with pictures and clips on the version they were made in. Built from the game repository by `tools/devlog_build.py` there; the page and its media live in `devlog/`.
 

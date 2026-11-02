@@ -42,7 +42,6 @@ This repository holds the website of **AFTERHAUL**. The game itself lives in a s
 | **Changelog** | Website and game changelogs, with a patch type for every version |
 | **Community** | Where players will meet (links open as they become ready) |
 | **Press** | Contact, and the logo kit |
-| **Dev log** (unlisted) | A small footer button opens `devlog/`: plain-English progress per game version with pictures and clips. `noindex`. Built from the game repo by `tools/devlog_build.py`; do not edit by hand |
 
 ## What stays off this site
 Marketing-level content and the player guide only. **No** tuned numbers, system specifications or the design document. The player guide is written in plain words (decisions 0003 and 0018 in the game repository).
