@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.8.2-pre · Dev log page, no button · 2026-11-02
+- The dev log page is back at `devlog/`. Nothing on the site links to it: it opens only from its own address. It is `noindex` and uses the site's own fonts.
+
 ## 0.8.1-pre · Dev log button removed · 2026-11-02
 - Removed the footer button and the unlisted page added in 0.8.0-pre. Nothing else changed.
 

@@ -74,7 +74,8 @@
   "0.0.2-pre": "Foundation",
   "0.0.1-pre": "Foundation",
   "0.8.0-pre": "Feature",
-  "0.8.1-pre": "Fix"
+  "0.8.1-pre": "Fix",
+  "0.8.2-pre": "Feature"
  },
  "game": {
   "0.0.57-pre": "Systems",
