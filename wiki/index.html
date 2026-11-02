@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>AFTERHAUL Wiki</title>
+<meta name="description" content="The AFTERHAUL wiki: what the game is, how it is made, and the handbook for everyone who works on it.">
+<meta name="theme-color" content="#14110c">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/barlow-semi-condensed-extralight.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="assets/fonts/barlow-semi-condensed-light.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="assets/fonts/share-tech-mono-regular.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="in-view">
+<div class="stage" id="stage">
+  <div class="fx grid" aria-hidden="true"></div>
+  <div class="fx grid fine" aria-hidden="true"></div>
+  <div class="gl" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="logo" id="logo" aria-hidden="true"><img class="emblem badge" src="assets/img/afterhaul-mark.svg" alt=""></div>
+  <i class="ruler l" aria-hidden="true"></i><i class="ruler r" aria-hidden="true"></i>
+  <i class="corner c1" aria-hidden="true"></i><i class="corner c2" aria-hidden="true"></i>
+  <i class="corner c3" aria-hidden="true"></i><i class="corner c4" aria-hidden="true"></i>
+  <header class="bar top">
+    <span id="build">AFTERHAUL Wiki</span>
+    <span class="keys" id="keys"><kbd>Esc</kbd>Back to the wiki start</span>
+  </header>
+  <main class="center" id="center">
+    <section class="view" id="view" hidden></section>
+    <p class="sr-only" id="srNav" aria-live="polite"></p>
+  </main>
+  <footer class="bar bot">
+    <span class="led" id="ledInfo"></span>
+    <span class="led right" id="ledStatus" role="status"></span>
+  </footer>
+</div>
+<noscript><p class="noscript">This wiki needs JavaScript.</p></noscript>
+<div id="legacy" style="display:none;max-width:640px;margin:60px auto;padding:24px;font:16px/1.6 Arial,sans-serif;color:#e8eeee;background:#1d1812;border:1px solid #3d362b">
+  <h1 style="font-size:22px;font-weight:normal;letter-spacing:2px;margin:0 0 12px">AFTERHAUL WIKI</h1>
+  <p>Your browser is too old for the wiki. It works in any browser from about 2018 onwards: Chrome or Edge 49+, Firefox 52+, Safari 10+.</p>
+</div>
+<script src="assets/js/legacy.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

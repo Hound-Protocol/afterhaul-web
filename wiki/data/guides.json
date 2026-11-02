@@ -1,0 +1,18 @@
+{
+ "note": "Written by tools/build_wiki.py. Do not edit.",
+ "guides": [
+  {
+   "id": "ah-gde-005",
+   "code": "AH-GDE-005",
+   "title": "Documentation Style Guide",
+   "type": "Guide",
+   "audience": "Makers",
+   "version": "1.0",
+   "effective": "2026-11-02",
+   "owner": "Owner",
+   "for": "everyone who writes docs",
+   "summary": "How AFTERHAUL documents are written: plain English, short sentences, honest status.",
+   "path": "handbook/AH-GDE-005-documentation-style.md"
+  }
+ ]
+}

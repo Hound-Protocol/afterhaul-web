@@ -1,0 +1,17 @@
+{
+ "note": "Written by tools/build_wiki.py. Do not edit.",
+ "docs": [
+  {
+   "id": "overview",
+   "title": "AFTERHAUL Overview",
+   "group": "Project",
+   "path": "library/overview.md"
+  },
+  {
+   "id": "ah-gde-005",
+   "title": "Documentation Style Guide",
+   "group": "Handbook",
+   "path": "handbook/AH-GDE-005-documentation-style.md"
+  }
+ ]
+}
