@@ -6,6 +6,7 @@
      or the text. Matching folders stay in their drawers, best first; arrow keys move between them, Enter opens one, and
      the opened page highlights and scrolls to the first match. */
   var CAB_GROUPS = {
+    "Player guide": ["PLY", "#f0a202", "#9a5f00"],
     Handbook: ["HB", "#c9a24a", "#7d5f15"], Decisions: ["ADR", "#e0453f", "#a3352b"], Research: ["RES", "#5aa7d6", "#1d6a8a"],
     Technical: ["TEC", "#f28c28", "#a8560f"], Community: ["COM", "#7fbf8a", "#3b7446"], Project: ["PRJ", "#c9d0d2", "#4d5a60"], Legal: ["LEG", "#b07cd6", "#6e4a96"],
     Staff: ["LV3", "#7fbf8a", "#3b7446"], Leads: ["LV5", "#f28c28", "#a8560f"], Administration: ["LV6", "#a77de0", "#5e3d8f"]
@@ -13,7 +14,7 @@
   var CAB_CLASS = { Decisions: ["decision", "Decision record"], Research: ["research", "Research"], Technical: ["technical", "Technical"],
     Community: ["community", "Community"], Project: ["project", "Project"], Legal: ["legal", "Legal"],
     Staff: ["restricted", "Restricted"], Leads: ["restricted", "Restricted"], Administration: ["restricted", "Restricted"] };
-  var CAB_ORDER = ["Project", "Handbook", "Decisions", "Research", "Technical", "Community", "Legal", "Staff", "Leads", "Administration"];
+  var CAB_ORDER = ["Player guide", "Project", "Handbook", "Decisions", "Research", "Technical", "Community", "Legal", "Staff", "Leads", "Administration"];
   /* Clearance. Everything in the public repository is LV1: anyone can read it. Restricted documents live in private
      repositories, one per clearance (config.signin.areas); GitHub itself decides who can read them (ADR 0011, 0017).
      Each restricted area is a drawer: its files when your card and GitHub both allow it, otherwise one locked file. */
@@ -225,9 +226,7 @@
   }
   /* The clearance line above every document */
   function cabClr(ok, x, need) {
-    var card = x ? x.card : "LV1", lv = ["Public", "#8b9599"];
-    return '<div class="clr ' + (ok ? "ok" : "no") + '" style="--hk:' + lv[1] + '"><i aria-hidden="true"></i><b>Access ' + (ok ? "granted" : "denied") + "</b><span>" +
-      (ok ? esc(card) + " · " + (x ? esc(lv[0]) + " clearance" : "Public") : esc(need || card) + " required") + "</span></div>";
+    return '<div class="clr ' + (ok ? "ok" : "no") + '" style="--hk:#8b9599"><i aria-hidden="true"></i><b>' + (ok ? "Open" : "Closed") + "</b><span>Public document</span></div>";
   }
   /* A document you may not open: a greyed-out draft behind an access-denied screen */
   function cabDenied(body, doc, c) {

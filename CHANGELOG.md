@@ -2,6 +2,11 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.9.0-pre · Wiki rebuilt · 2026-11-02
+- The wiki is now its own page at `wiki/`: a Library (player guide, overview, roadmap, process, terms, legal) and a Handbook (guides, policies and procedures, printable on A4), with search, folders and motion in the AFTERHAUL colours. The Wiki button on the main page opens it.
+- The old in-page wiki panel and `tools/build_docs.py` are gone. New tools: `tools/build_wiki.py`, `tools/build_wiki_js.py`, `tools/import_player_guide.py`.
+- New handbook guides for artists: Blender set-up and hand-off, character modelling, truck and prop modelling.
+
 ## 0.8.2-pre · Dev log page, no button · 2026-11-02
 - The dev log page is back at `devlog/`. Nothing on the site links to it: it opens only from its own address. It is `noindex` and uses the site's own fonts.
 

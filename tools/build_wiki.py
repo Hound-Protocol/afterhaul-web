@@ -2,7 +2,7 @@
 """Build the wiki data from wiki/pages/ (the source of the wiki's documents).
 
 Handbook documents: wiki/pages/handbook/*.md. Line 1 is the title (# ...), then these lines:
-    Code: AH-GDE-001 · Version 1.0 · Effective 2026-11-02 · Owner: Owner · For: everyone
+    Code: HP-GDE-001 · Version 1.0 · Effective 2026-11-02 · Owner: Owner · For: everyone
     Audience: Players
     Summary: One sentence.
 Library documents: wiki/pages/library/*.md. Line 1 is the title, then:
@@ -15,7 +15,7 @@ import json, re, sys, pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PAGES, OUT = ROOT / "wiki" / "pages", ROOT / "wiki"
 TYPES = {"GDE": "Guide", "POL": "Policy", "SOP": "Procedure"}
-ORDER = ["Project", "Handbook", "Technical", "Community", "Legal"]
+ORDER = ["Player guide", "Project", "Handbook", "Technical", "Community", "Legal"]
 
 
 def parse(p):
@@ -34,7 +34,7 @@ def build():
     for p in sorted((PAGES / "handbook").glob("*.md")):
         title, m, body = parse(p)
         code_line = m.get("Code", "")
-        mm = re.match(r"(AH-(GDE|POL|SOP)-\d{3}) · Version ([\d.]+) · Effective (\d{4}-\d{2}-\d{2}) · Owner: (.+?) · For: (.+)$", code_line)
+        mm = re.match(r"(HP-(GDE|POL|SOP)-\d{3}) · Version ([\d.]+) · Effective (\d{4}-\d{2}-\d{2}) · Owner: (.+?) · For: (.+)$", code_line)
         if not mm:
             sys.exit(f"{p.name}: bad Code line: {code_line!r}")
         code, kind, ver, eff, owner, who = mm.groups()
@@ -54,6 +54,21 @@ def build():
            "data/docs.json": json.dumps({"note": "Written by tools/build_wiki.py. Do not edit.", "docs": docs}, indent=1, ensure_ascii=False) + "\n"}
     for rel, t in files.items():
         out["content/" + rel] = t
+    # Links between pages must point at pages that exist
+    known = set(files)
+    bad = []
+    for rel, t in files.items():
+        base = rel.rsplit("/", 1)[0]
+        for m in re.finditer(r"\]\(([^)\s]+\.md)(?:#[^)]*)?\)", t):
+            u = m.group(1)
+            if re.match(r"[a-z]+:", u): continue
+            parts = base.split("/")
+            for seg in u.split("/"):
+                if seg == "..": parts.pop()
+                elif seg != ".": parts.append(seg)
+            if "/".join(parts) not in known: bad.append(f"{rel} -> {u}")
+    if bad:
+        print("Broken links:\n  " + "\n  ".join(bad), file=sys.stderr)
     return out
 
 

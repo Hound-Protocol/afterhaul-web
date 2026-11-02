@@ -10,6 +10,7 @@ out = Path(sys.argv[1]); shutil.rmtree(out, ignore_errors=True); out.mkdir(paren
 for f in ("index.html", "404.html", "robots.txt"):
     if (ROOT / f).exists(): shutil.copy(ROOT / f, out / f)
 shutil.copytree(ROOT / "assets", out / "assets")
+if (ROOT / "wiki").exists(): shutil.copytree(ROOT / "wiki", out / "wiki", ignore=shutil.ignore_patterns("src", "pages"))  # the wiki; its sources stay in the repo
 if (ROOT / "devlog").exists(): shutil.copytree(ROOT / "devlog", out / "devlog")  # unlisted dev log page, built from the game repo
 
 def sz(p): return sum(f.stat().st_size for f in Path(p).rglob("*") if f.is_file())

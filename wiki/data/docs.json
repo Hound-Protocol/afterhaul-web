@@ -2,16 +2,334 @@
  "note": "Written by tools/build_wiki.py. Do not edit.",
  "docs": [
   {
+   "id": "player-clothing",
+   "title": "Clothing",
+   "group": "Player guide",
+   "path": "library/player-clothing.md"
+  },
+  {
+   "id": "player-crew",
+   "title": "Crews and sessions",
+   "group": "Player guide",
+   "path": "library/player-crew.md"
+  },
+  {
+   "id": "player-truck-customization",
+   "title": "Customizing your truck",
+   "group": "Player guide",
+   "path": "library/player-truck-customization.md"
+  },
+  {
+   "id": "player-needs",
+   "title": "Food, drink, sleep and stamina",
+   "group": "Player guide",
+   "path": "library/player-needs.md"
+  },
+  {
+   "id": "player-glossary",
+   "title": "Glossary",
+   "group": "Player guide",
+   "path": "library/player-glossary.md"
+  },
+  {
+   "id": "player-surfaces",
+   "title": "Ground surfaces",
+   "group": "Player guide",
+   "path": "library/player-surfaces.md"
+  },
+  {
+   "id": "player-modding",
+   "title": "Making a mod",
+   "group": "Player guide",
+   "path": "library/player-modding.md"
+  },
+  {
+   "id": "player-faq",
+   "title": "Questions and answers",
+   "group": "Player guide",
+   "path": "library/player-faq.md"
+  },
+  {
+   "id": "player-regions",
+   "title": "Regions",
+   "group": "Player guide",
+   "path": "library/player-regions.md"
+  },
+  {
+   "id": "player-welcome",
+   "title": "Welcome",
+   "group": "Player guide",
+   "path": "library/player-welcome.md"
+  },
+  {
+   "id": "player-driver",
+   "title": "Your driver",
+   "group": "Player guide",
+   "path": "library/player-driver.md"
+  },
+  {
+   "id": "changelog",
+   "title": "Changelog",
+   "group": "Project",
+   "path": "library/changelog.md"
+  },
+  {
+   "id": "faq",
+   "title": "Frequently Asked Questions",
+   "group": "Project",
+   "path": "library/faq.md"
+  },
+  {
    "id": "overview",
-   "title": "AFTERHAUL Overview",
+   "title": "Overview",
    "group": "Project",
    "path": "library/overview.md"
   },
   {
-   "id": "ah-gde-005",
+   "id": "roadmap",
+   "title": "Roadmap",
+   "group": "Project",
+   "path": "library/roadmap.md"
+  },
+  {
+   "id": "process",
+   "title": "Development Process",
+   "group": "Technical",
+   "path": "library/process.md"
+  },
+  {
+   "id": "glossary",
+   "title": "Glossary",
+   "group": "Technical",
+   "path": "library/glossary.md"
+  },
+  {
+   "id": "brand",
+   "title": "Brand",
+   "group": "Community",
+   "path": "library/brand.md"
+  },
+  {
+   "id": "conduct",
+   "title": "Code of Conduct",
+   "group": "Community",
+   "path": "library/conduct.md"
+  },
+  {
+   "id": "contributing",
+   "title": "Contributing",
+   "group": "Community",
+   "path": "library/contributing.md"
+  },
+  {
+   "id": "legal",
+   "title": "Legal and Ethics",
+   "group": "Legal",
+   "path": "library/legal.md"
+  },
+  {
+   "id": "licensing",
+   "title": "Licensing",
+   "group": "Legal",
+   "path": "library/licensing.md"
+  },
+  {
+   "id": "privacy",
+   "title": "Privacy",
+   "group": "Legal",
+   "path": "library/privacy.md"
+  },
+  {
+   "id": "security",
+   "title": "Security Policy",
+   "group": "Legal",
+   "path": "library/security.md"
+  },
+  {
+   "id": "hp-gde-002",
+   "title": "Linux and Proton Guide",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-002-linux-proton.md"
+  },
+  {
+   "id": "hp-gde-003",
+   "title": "Contributor Quick Start",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-003-contributor-quick-start.md"
+  },
+  {
+   "id": "hp-gde-004",
+   "title": "Quality Guide: Testing and Bug Reports",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-004-quality-testing.md"
+  },
+  {
+   "id": "hp-gde-005",
    "title": "Documentation Style Guide",
    "group": "Handbook",
-   "path": "handbook/AH-GDE-005-documentation-style.md"
+   "path": "handbook/HP-GDE-005-documentation-style.md"
+  },
+  {
+   "id": "hp-gde-010",
+   "title": "Account Security Setup",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-010-account-security.md"
+  },
+  {
+   "id": "hp-gde-011",
+   "title": "Brand and Media Guide",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-011-brand-and-media.md"
+  },
+  {
+   "id": "hp-gde-012",
+   "title": "Website Maintainer Guide",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-012-website-maintainers.md"
+  },
+  {
+   "id": "hp-gde-013",
+   "title": "Writing Research Notes",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-013-research-notes.md"
+  },
+  {
+   "id": "hp-gde-014",
+   "title": "GitHub Basics",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-014-github-basics.md"
+  },
+  {
+   "id": "hp-gde-015",
+   "title": "Using the Website and Wiki",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-015-using-the-website.md"
+  },
+  {
+   "id": "hp-gde-016",
+   "title": "Reporting a Problem",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-016-reporting-a-problem.md"
+  },
+  {
+   "id": "hp-gde-018",
+   "title": "Working with AI Assistants",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-018-working-with-ai-assistants.md"
+  },
+  {
+   "id": "hp-gde-020",
+   "title": "Tester's Field Manual",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-020-testers-field-manual.md"
+  },
+  {
+   "id": "hp-gde-021",
+   "title": "Art Contributor Start: Blender, Rules and Hand-off",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-021-art-contributor-start.md"
+  },
+  {
+   "id": "hp-gde-022",
+   "title": "Character Modelling Guide: Body, Rig, Clothes and Face",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-022-character-modelling.md"
+  },
+  {
+   "id": "hp-gde-023",
+   "title": "Truck and Prop Modelling Guide: Parts, Tires, Pivots and Damage Zones",
+   "group": "Handbook",
+   "path": "handbook/HP-GDE-023-truck-and-prop-modelling.md"
+  },
+  {
+   "id": "hp-pol-001",
+   "title": "Contributor Policy",
+   "group": "Handbook",
+   "path": "handbook/HP-POL-001-contributor-policy.md"
+  },
+  {
+   "id": "hp-pol-002",
+   "title": "AI Use Policy",
+   "group": "Handbook",
+   "path": "handbook/HP-POL-002-ai-use-policy.md"
+  },
+  {
+   "id": "hp-pol-003",
+   "title": "Third-Party Assets and IP Policy",
+   "group": "Handbook",
+   "path": "handbook/HP-POL-003-third-party-and-ip.md"
+  },
+  {
+   "id": "hp-pol-004",
+   "title": "Security Policy for Team Members",
+   "group": "Handbook",
+   "path": "handbook/HP-POL-004-security-policy.md"
+  },
+  {
+   "id": "hp-pol-005",
+   "title": "Community and Moderation Policy",
+   "group": "Handbook",
+   "path": "handbook/HP-POL-005-community-moderation.md"
+  },
+  {
+   "id": "hp-pol-006",
+   "title": "Quality Policy",
+   "group": "Handbook",
+   "path": "handbook/HP-POL-006-quality-policy.md"
+  },
+  {
+   "id": "hp-pol-007",
+   "title": "Chain of Command and Open Communication",
+   "group": "Handbook",
+   "path": "handbook/HP-POL-007-chain-of-command.md"
+  },
+  {
+   "id": "hp-pol-008",
+   "title": "Licensing and Attribution Policy",
+   "group": "Handbook",
+   "path": "handbook/HP-POL-008-licensing-and-attribution.md"
+  },
+  {
+   "id": "hp-pol-009",
+   "title": "Accountability Policy",
+   "group": "Handbook",
+   "path": "handbook/HP-POL-009-accountability.md"
+  },
+  {
+   "id": "hp-sop-002",
+   "title": "Pull Request and Review",
+   "group": "Handbook",
+   "path": "handbook/HP-SOP-002-pull-request-review.md"
+  },
+  {
+   "id": "hp-sop-003",
+   "title": "Release Procedure and Versioning",
+   "group": "Handbook",
+   "path": "handbook/HP-SOP-003-release-and-versioning.md"
+  },
+  {
+   "id": "hp-sop-005",
+   "title": "Bug Triage",
+   "group": "Handbook",
+   "path": "handbook/HP-SOP-005-bug-triage.md"
+  },
+  {
+   "id": "hp-sop-006",
+   "title": "Security Incident and Leaked Secret Response",
+   "group": "Handbook",
+   "path": "handbook/HP-SOP-006-security-incident.md"
+  },
+  {
+   "id": "hp-sop-007",
+   "title": "Onboarding and Offboarding",
+   "group": "Handbook",
+   "path": "handbook/HP-SOP-007-onboarding-offboarding.md"
+  },
+  {
+   "id": "hp-sop-009",
+   "title": "Backup and Restore",
+   "group": "Handbook",
+   "path": "handbook/HP-SOP-009-backup-and-restore.md"
   }
  ]
 }

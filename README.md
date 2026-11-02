@@ -73,7 +73,7 @@ Three blocks in `index.html` are written by scripts. Edit the data, run the scri
 
 | Block | Command | Reads |
 |---|---|---|
-| Wiki (player guide) | `python3 tools/build_docs.py <game repo>/docs/player` | The game repository's `docs/player/` (private) |
+| Wiki | `python3 tools/import_player_guide.py <game repo>/docs/player` then `python3 tools/build_wiki.py` | Pages in `wiki/pages/`; the player guide comes from the game repository's `docs/player/` |
 | Changelog | `python3 tools/build_changelog.py` | `CHANGELOG.md`, `content/game-changelog.md`, `content/patch-types.json`, `content/changelog-times.json` |
 | Roadmap | `python3 tools/build_roadmap.py` | `content/roadmap.json` |
 
