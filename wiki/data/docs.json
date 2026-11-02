@@ -92,6 +92,12 @@
    "path": "library/roadmap.md"
   },
   {
+   "id": "team",
+   "title": "Team",
+   "group": "Project",
+   "path": "library/team.md"
+  },
+  {
    "id": "process",
    "title": "Development Process",
    "group": "Technical",

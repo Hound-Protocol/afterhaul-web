@@ -166,9 +166,20 @@
     while (i < lines.length) {
       var l = lines[i];
       if (/^```/.test(l)) {
+        var lang = l.replace(/^```\s*/, "").trim();
         flush(); var code = []; i++;
         while (i < lines.length && !/^```/.test(lines[i])) code.push(lines[i++]);
-        i++; html += "<pre><code>" + esc(code.join("\n")) + "</code></pre>"; continue;
+        i++;
+        /* ```pyramid: one tier per line, "Name | Role, Name | Role"; the first line is the top */
+        if (lang === "pyramid") {
+          html += '<div class="pyr" role="list">' + code.filter(function (t) { return t.trim(); }).map(function (t, k) {
+            return '<div class="pyr-t" role="listitem" style="--n:' + k + '">' + t.split(",").map(function (c) {
+              var b = c.split("|"); return '<span class="pyr-n"><b>' + esc(b[0].trim()) + "</b><i>" + esc((b[1] || "").trim()) + "</i></span>";
+            }).join("") + "</div>";
+          }).join("") + "</div>";
+          continue;
+        }
+        html += "<pre><code>" + esc(code.join("\n")) + "</code></pre>"; continue;
       }
       var h = /^(#{1,4})\s+(.*)$/.exec(l);
       if (h) { flush(); var lv = h[1].length; html += "<h" + lv + ">" + inline(h[2], basePath) + "</h" + lv + ">"; i++; continue; }

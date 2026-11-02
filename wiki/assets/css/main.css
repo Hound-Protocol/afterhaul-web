@@ -2204,3 +2204,17 @@ html.booting .center, html.booting .bar { opacity: 0; }
 .no-motion .mb-tanker { animation: none; }
 /* Base detail, Site 1.7.1: a lifebuoy hung beside the bollards on the south dock */
 .mb-ring { fill: none; stroke: #f28c28; stroke-width: 1.6; stroke-dasharray: 2.5 2.5; }
+
+/* Team pyramid (```pyramid in a document): the top tier is the narrowest */
+.pyr { display: grid; gap: 10px; margin: 18px auto 22px; max-width: 760px; }
+.pyr-t { display: flex; justify-content: center; gap: 10px; position: relative; }
+.pyr-t:not(:first-child)::before { content: ""; position: absolute; left: 50%; top: -10px; height: 10px; border-left: 1px solid var(--amb); }
+.pyr-n { flex: 1 1 0; max-width: 240px; padding: 10px 12px; text-align: center; border: 1px solid var(--amb); border-top-width: 3px; background: rgba(240,162,2,.07); display: grid; gap: 2px; animation: pyrIn .5s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--n) * 140ms); }
+.pyr-t:first-child .pyr-n { background: rgba(240,162,2,.18); }
+.pyr-n { color: #1c2026; }
+.pyr-n b { font-weight: 500; font-size: 1.15em; letter-spacing: .06em; }
+.pyr-n i { font-style: normal; color: #5a5242; font-size: .9em; }
+@keyframes pyrIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+.no-motion .pyr-n { animation: none; }
+@media (prefers-reduced-motion: reduce) { .pyr-n { animation: none; } }
+@media (max-width: 560px) { .pyr-t { flex-wrap: wrap; } .pyr-n { max-width: none; } }

@@ -25,7 +25,7 @@ Some parts are written by scripts. Edit the source, run the script, commit both.
 
 | Block | Command |
 |---|---|
-| Player guide on the main page | `python3 tools/build_docs.py <path to the game's player guide folder>` |
+| Wiki documents | Edit `wiki/pages/`, then `python3 tools/build_wiki.py`. The player guide: `python3 tools/import_player_guide.py <path to the game's player guide folder>` first. |
 | Changelog | `python3 tools/build_changelog.py` |
 | Roadmap | `python3 tools/build_roadmap.py` |
 | Wiki data | `python3 tools/build_wiki.py` (add `--check` to test) |
