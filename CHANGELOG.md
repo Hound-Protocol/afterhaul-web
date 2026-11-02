@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.10.2-pre · A4 width documents · 2026-11-02
+- Every wiki document is a fixed A4 width (210 mm) and grows in height with its text. On narrow screens it shrinks to fit.
+
 ## 0.10.1-pre · Narrower wiki · 2026-11-02
 - The wiki content in the Wiki tab is 30% narrower and centred, never below the standard page width.
 
