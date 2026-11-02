@@ -13,7 +13,7 @@ A rough, playable version: one truck, one region and a small crew. Invited teste
 
 ## Beta
 
-Most of the game is in. The beta opens on Steam so more players can try it and report problems.
+Most of the game is in. The beta opens to more players so they can try it and report problems. Where it is released is not decided yet.
 
 ## Release
 

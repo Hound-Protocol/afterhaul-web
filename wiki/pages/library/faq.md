@@ -24,7 +24,7 @@ No. There are no open sessions. The Chief of each crew chooses who joins.
 No. It is proprietary and all rights are reserved. See [Licensing](licensing.md).
 
 **Do you use AI art, music or voices?**
-No. People make or license all art and audio. AI may help with planning, text and tools, and we disclose it. See the [AI Use Policy](../handbook/HP-POL-002-ai-use-policy.md).
+No. People make or license all final art and audio. One temporary AI-made placeholder cover picture is on the site until real art replaces it. AI may help with planning, text and tools, and we disclose it. See the [AI Use Policy](../handbook/HP-POL-002-ai-use-policy.md).
 
 **Will there be mods?**
 Yes, planned. See [Making a mod](player-modding.md).

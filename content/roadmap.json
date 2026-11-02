@@ -187,7 +187,7 @@
     },
     {
      "status": "planned",
-     "title": "Beta on Steam",
+     "title": "Beta",
      "text": "Open to more players, with fixes shipped as patches and listed in the changelog.",
      "points": [
       "Windows build checked under Proton",

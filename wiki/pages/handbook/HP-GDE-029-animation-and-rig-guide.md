@@ -8,6 +8,10 @@ Status: draft. Steps marked "worked" were done and confirmed by the owner on Lin
 ## Test clips are not the design
 AFTERHAUL's design is a body driven by code-driven poses. Ready-made clips are used only as a **test**, to see how a character moves. A test clip is not a design decision. Do not build anything on the assumption that clips ship in the game.
 
+Test material, for the team only: the test character playing a Mixamo walk clip.
+
+![The animated walk on the test character (test clip)](../media/clips/animated-walk.mp4)
+
 ## Where clips come from
 | Source | Use | Licence note |
 |---|---|---|
@@ -46,6 +50,14 @@ Mixamo download settings that worked:
 
 ## Save your work
 Changes made while Play is on are lost. Set fields with Play stopped, then press **Ctrl+S**.
+
+Feet kept flat on the ground while walking:
+
+![Feet on the ground, after the fix (test clip)](../media/clips/feet-on-ground.mp4)
+
+The hidden pose twin used to compare the physical body with the animation:
+
+![The pose twin (test clip)](../media/clips/pose-twin.webp)
 
 ## Common problems
 | Symptom | Likely cause and fix |

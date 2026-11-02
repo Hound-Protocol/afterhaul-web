@@ -34,7 +34,7 @@ Most of the game is in. More players try it and help shape it.
 | Driver classes | Planned | All eight classes, with their own skills and truck parts. |
 | A living economy | Planned | Prices, jobs and rebuilding that change as the world recovers. |
 | Full crews of eight | Planned | Eight players and eight trucks, tuned until it runs smoothly. |
-| Beta on Steam | Planned | Open to more players, with fixes shipped as patches and listed in the changelog. |
+| Beta | Planned | Open to more players, with fixes shipped as patches and listed in the changelog. |
 
 ## Release
 The finished first version, ready for everyone.

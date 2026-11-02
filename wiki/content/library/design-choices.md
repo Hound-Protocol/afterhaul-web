@@ -51,6 +51,6 @@ The character picture on the website is a placeholder (a low-poly man in a navy 
 
 ![Placeholder character picture. Not actual in-game graphics.](../media/art/placeholder-character.png)
 
-The cover art on the website is temporary. It was made with generative AI (AIGC). It is a stand-in only: not the final art and not in-game graphics.
+The cover art on the website is temporary. It was made with generative AI (AIGC) as a temporary placeholder. It will be replaced by art made by people. It is not the final art and not in-game graphics.
 
 ![Temporary cover art, made with generative AI (AIGC). A stand-in, not final art and not in-game graphics.](../media/art/cover-temporary-aigc.webp)

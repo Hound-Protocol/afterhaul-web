@@ -7,7 +7,7 @@ Public summary for AFTERHAUL. This is not legal advice. Legal review is still ne
 
 ## 2. Original and licensed work only
 - Code, art and audio are made by us or used under a checked licence.
-- We use no generative AI art, music, sound or voices ([AI Use Policy](../handbook/HP-POL-002-ai-use-policy.md)).
+- We use no generative AI music, sound or voices, and no AI art in the final game. One temporary AI-made placeholder cover picture is on the site until real art replaces it ([AI Use Policy](../handbook/HP-POL-002-ai-use-policy.md)).
 - We copy nothing from other games or leaked sources.
 - Third-party material and its licence go in the third-party notices ([Third-party and IP](../handbook/HP-POL-003-third-party-and-ip.md)).
 - Assets from asset stores are used inside the game and are not handed out.

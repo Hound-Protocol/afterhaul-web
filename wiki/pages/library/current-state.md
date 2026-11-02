@@ -1,7 +1,7 @@
 # Current state
 Group: Project
 
-AFTERHAUL is still in early development stages. More information will be posted here as the project is being developed, and upon launch of the BETA on Steam.
+AFTERHAUL is still in early development stages. More information will be posted here as the project is being developed.
 
 ## Where we are
 

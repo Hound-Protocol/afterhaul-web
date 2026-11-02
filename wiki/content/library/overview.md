@@ -21,7 +21,7 @@ AFTERHAUL is a co-op offroad trucking game for up to eight players. It is made b
 Source: the project's state notes, 2026-11-02. Confidence: confirmed.
 
 ## What we promise
-- People make all art, music, sound and voices. AI helps with planning and tools, and we say so openly. See the [AI Use Policy](../handbook/HP-POL-002-ai-use-policy.md).
+- People make all final art, music, sound and voices. AI helps with planning and tools, and we say so openly. The only AI-made picture today is one temporary placeholder cover image, to be replaced by art made by people. See the [AI Use Policy](../handbook/HP-POL-002-ai-use-policy.md).
 - Mods are planned. A truck is one folder of files. See [Making a mod](player-modding.md).
 - AFTERHAUL is proprietary. See [Licensing](licensing.md).
 
