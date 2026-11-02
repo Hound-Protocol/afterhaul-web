@@ -89,6 +89,13 @@ def build():
     return out
 
 
+def copy_media():
+    import shutil
+    src, dst = PAGES / "media", OUT / "content" / "media"
+    if dst.exists(): shutil.rmtree(dst)
+    if src.exists(): shutil.copytree(src, dst)
+
+
 def main():
     out = build()
     if "--check" in sys.argv:
@@ -96,6 +103,7 @@ def main():
         if bad:
             sys.exit("Out of date: " + ", ".join(bad[:5]))
         print("wiki data is current"); return
+    copy_media()
     for r, t in out.items():
         f = OUT / r; f.parent.mkdir(parents=True, exist_ok=True); f.write_text(t, encoding="utf-8")
     print(f"Wrote {len(out)} files: {len(out) - 2} documents")

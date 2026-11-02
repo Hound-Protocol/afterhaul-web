@@ -4,6 +4,19 @@ Generated from `CHANGELOG.md`. Newest first.
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.11.0-pre · Media in documents, one button style · 2026-11-02
+- Wiki documents can show pictures, short clips and YouTube videos (a video loads only after you press play). Added: the eight class icons, logos, the placeholder pictures, the sound-design videos and animation test clips.
+- All section buttons (About, Wiki, Roadmap, Changelog, Community, Press) now share one design. Only the accent colour differs.
+
+## 0.10.3-pre · Wiki fits its content · 2026-11-02
+- The wiki frame now grows and shrinks with the page it shows, so it ends just above the footer line with no empty space. The main page scrolls instead of the frame.
+
+## 0.10.2-pre · A4 width documents · 2026-11-02
+- Every wiki document is a fixed A4 width (210 mm) and grows in height with its text. On narrow screens it shrinks to fit.
+
+## 0.10.1-pre · Narrower wiki · 2026-11-02
+- The wiki content in the Wiki tab is 30% narrower and centred, never below the standard page width.
+
 ## 0.10.0-pre · Wiki expansion · 2026-11-02
 - The wiki grows to 76 documents. New Library pages carry the whole website text: About, Character classes, The world, Design choices, Current state, Release stages, Community, Press, and both changelogs. New handbook guides for voice, design, trainees, Unity set-up, audio and animation, plus a merchandise policy and three procedures. Every older document was reviewed and extended.
 - Every document has its own link: Share copies it, Download saves the text as a .md file. The buttons sit at the top right of the document, left of its code.

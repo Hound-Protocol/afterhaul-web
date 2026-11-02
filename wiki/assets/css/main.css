@@ -2249,3 +2249,18 @@ html.booting .center, html.booting .bar { opacity: 0; }
 .embed .stage { height: auto; min-height: 0; overflow: visible; }
 .embed .center { position: static; overflow: visible; display: block; }
 .embed .view { padding-bottom: 28px; }
+
+/* Pictures, clips and videos inside documents */
+.md-fig { margin: 18px 0; }
+.md-fig img, .md-fig video { display: block; max-width: 100%; height: auto; border: 1px solid rgba(0,0,0,.18); background: #e9e4d6; }
+.md-fig figcaption { margin-top: 6px; font: 400 12.5px/1.4 var(--mono); letter-spacing: .06em; color: #5a5242; }
+.md-fig.icon { float: left; margin: 2px 14px 4px 0; }
+.md-fig.icon img { width: 56px; height: 56px; border: 0; background: none; }
+.md-yt .yt-play { position: relative; display: grid; align-content: center; justify-items: center; gap: 6px; width: 100%; aspect-ratio: 16 / 9; border: 1px solid rgba(0,0,0,.35); background: repeating-linear-gradient(135deg, #1d1812 0 12px, #231d15 12px 24px); color: #e8eeee; cursor: pointer; font: inherit; transition: border-color .2s, transform .2s; }
+.md-yt .yt-play:hover, .md-yt .yt-play:focus-visible { border-color: #f0a202; transform: translateY(-1px); }
+.md-yt .yt-play b { font: 500 1.05em var(--ui); letter-spacing: .08em; text-align: center; padding: 0 16px; }
+.md-yt .yt-play i { font: 400 12px var(--mono); font-style: normal; letter-spacing: .1em; color: #a8997d; }
+.yt-ico { width: 54px; height: 54px; border: 2px solid #f0a202; border-radius: 50%; position: relative; }
+.yt-ico::after { content: ""; position: absolute; left: 21px; top: 15px; border-left: 17px solid #f0a202; border-top: 11px solid transparent; border-bottom: 11px solid transparent; }
+.yt-frame { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; margin: 18px 0; background: #000; }
+@media print { .md-yt { display: none; } }

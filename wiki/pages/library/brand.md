@@ -10,6 +10,10 @@ How to use the AFTERHAUL name, logo, colours and fonts. The brand belongs to Hou
 ## Logo
 The logo is two slanted slashes (amber and sand) above the name set in Barlow Semi Condensed Medium with wide spacing. The letters are outlines, so no font is needed.
 
+![The AFTERHAUL logo, for light backgrounds](../media/brand/afterhaul-logo-for-light.svg)
+
+![The slash mark](../media/brand/afterhaul-mark.svg)
+
 | File | Use |
 | --- | --- |
 | Wordmark, transparent | Dark backgrounds |

@@ -46,3 +46,15 @@ Edit the file, raise the version if the meaning changed, and run the same steps.
 - Publish game design text, tuned numbers or decision records.
 - Link the wiki from the game's private notes or copy private material across.
 - Make claims without a source and a confidence: confirmed, likely or unknown.
+
+## Adding pictures, clips and videos
+Put the file in `wiki/pages/media/` (a sub-folder per topic) and run the build. Then use one of these lines on its own line in a document:
+
+| You want | Write |
+| --- | --- |
+| A picture or GIF-like image | `![Caption](../media/art/name.png)` |
+| A small inline icon | `![Name](../media/ops/name.svg "icon")` |
+| A short clip (mp4 or webm) | `![Caption](../media/clips/name.mp4)` |
+| A YouTube video | `![Title](youtube:VIDEOID)` or `youtube:VIDEOID?start=34` |
+
+Rules: only our own work, or media with a recorded licence ([Third-Party Assets and IP](HP-POL-003-third-party-and-ip.md)). Keep clips short. AI-generated pictures must say so in the caption. A YouTube video loads only after a visitor presses play. Never copy a store pack's pictures here.

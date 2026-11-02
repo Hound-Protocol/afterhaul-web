@@ -821,3 +821,15 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 .panel[data-theme="docs"] { padding: 0; border: 0; border-radius: 0; background: none; overflow: visible; width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw); animation: none; }
 .wikiframe { display: block; width: 100%; height: 640px; min-height: 420px; transition: height .25s ease; border: 0; background: transparent; color-scheme: dark; }
 html { overflow-x: clip; }
+
+/* One button design for every section tab: same surface, border, corners and type; only the accent colour differs */
+.tab.t-about, .tab.t-docs, .tab.t-roadmap, .tab.t-log, .tab.t-community, .tab.t-press {
+  font-family: var(--ui);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 16%, #1c1710), color-mix(in srgb, var(--c) 5%, #14110c));
+  border: 1px solid color-mix(in srgb, var(--c) 55%, transparent);
+  border-bottom-width: 3px;
+  border-radius: 4px 4px 0 0;
+  padding: 16px 18px;
+}
+.tab.t-press:not(:focus-visible) { outline: 0; }
+.tab.t-about::after, .tab.t-about::before { display: none; }

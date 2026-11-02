@@ -182,6 +182,20 @@
         }
         html += "<pre><code>" + esc(code.join("\n")) + "</code></pre>"; continue;
       }
+      /* A picture, a clip or a YouTube video on a line of its own: ![caption](../media/file.png "icon"), (file.mp4), (youtube:ID?start=34) */
+      var im = /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)\s*$/.exec(l);
+      if (im) {
+        flush(); i++;
+        var cap = esc(im[1]), src = im[2], small = im[3] === "icon", yt = /^youtube:([\w-]{6,20})(?:\?start=(\d+))?$/.exec(src);
+        if (yt) {
+          html += '<figure class="md-fig md-yt"><button type="button" class="yt-play" data-yt="' + yt[1] + '" data-start="' + (yt[2] || 0) + '" aria-label="Play video: ' + cap + '"><span class="yt-ico" aria-hidden="true"></span><b>' + cap + "</b><i>YouTube · loads only when you press play</i></button></figure>";
+        } else {
+          var url = "content/" + resolvePath(basePath || "", src);
+          if (/\.(mp4|webm)$/i.test(src)) html += '<figure class="md-fig"><video controls muted loop playsinline preload="metadata" src="' + esc(url) + '" aria-label="' + cap + '"></video><figcaption>' + cap + "</figcaption></figure>";
+          else html += '<figure class="md-fig' + (small ? " icon" : "") + '"><img loading="lazy" src="' + esc(url) + '" alt="' + (small ? "" : cap) + '">' + (small ? "" : "<figcaption>" + cap + "</figcaption>") + "</figure>";
+        }
+        continue;
+      }
       var h = /^(#{1,4})\s+(.*)$/.exec(l);
       if (h) { flush(); var lv = h[1].length; html += "<h" + lv + ">" + inline(h[2], basePath) + "</h" + lv + ">"; i++; continue; }
       if (/^\s*(-{3,}|\*{3,})\s*$/.test(l)) { flush(); html += "<hr>"; i++; continue; }
@@ -496,6 +510,15 @@
     window.addEventListener("hashchange", function () { setTimeout(later, 60); });
     later();
   }
+
+  /* ---------------- Videos: a play button that loads the YouTube player only when pressed (no third-party request before) ---------------- */
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest(".yt-play"); if (!b) return;
+    var f = document.createElement("iframe"), t = +b.getAttribute("data-start") || 0;
+    f.src = "https://www.youtube-nocookie.com/embed/" + b.getAttribute("data-yt") + "?autoplay=1&rel=0" + (t ? "&start=" + t : "");
+    f.title = b.getAttribute("aria-label").replace(/^Play video: /, ""); f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; f.allowFullscreen = true; f.className = "yt-frame";
+    b.parentNode.replaceChild(f, b);
+  });
 
   /* ---------------- Documentation ----------------
      The Docs section is the dossier cabinet (17b-cabinet.js). loadDoc reads a document from the bundled copy,

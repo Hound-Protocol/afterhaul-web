@@ -2,6 +2,10 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.11.0-pre · Media in documents, one button style · 2026-11-02
+- Wiki documents can show pictures, short clips and YouTube videos (a video loads only after you press play). Added: the eight class icons, logos, the placeholder pictures, the sound-design videos and animation test clips.
+- All section buttons (About, Wiki, Roadmap, Changelog, Community, Press) now share one design. Only the accent colour differs.
+
 ## 0.10.3-pre · Wiki fits its content · 2026-11-02
 - The wiki frame now grows and shrinks with the page it shows, so it ends just above the footer line with no empty space. The main page scrolls instead of the frame.
 
