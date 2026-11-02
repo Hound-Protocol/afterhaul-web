@@ -2224,7 +2224,7 @@ html.booting .center, html.booting .bar { opacity: 0; }
 
 .embed, .embed body { background: transparent; }
 .embed .stage { background: transparent; }
-.embed .view { width: calc(100vw - 80px); }
+.embed .view { width: max(min(1040px, 92vw), calc((100vw - 80px) * .7)); }
 .embed .stage::after { display: none; }
 
 /* Share and download buttons, top right of every document, left of the code block */

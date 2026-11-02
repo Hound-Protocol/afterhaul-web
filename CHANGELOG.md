@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.10.1-pre · Narrower wiki · 2026-11-02
+- The wiki content in the Wiki tab is 30% narrower and centred, never below the standard page width.
+
 ## 0.10.0-pre · Wiki expansion · 2026-11-02
 - The wiki grows to 76 documents. New Library pages carry the whole website text: About, Character classes, The world, Design choices, Current state, Release stages, Community, Press, and both changelogs. New handbook guides for voice, design, trainees, Unity set-up, audio and animation, plus a merchandise policy and three procedures. Every older document was reviewed and extended.
 - Every document has its own link: Share copies it, Download saves the text as a .md file. The buttons sit at the top right of the document, left of its code.
