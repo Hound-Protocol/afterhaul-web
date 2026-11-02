@@ -2243,3 +2243,9 @@ html.booting .center, html.booting .bar { opacity: 0; }
 
 /* Documents are A4 wide (210 mm) and as tall as their text */
 .ds-folder { width: fit-content; max-width: 100%; margin-left: auto; margin-right: auto; }
+
+/* Embedded: the page is as tall as its content; the main page scrolls, and the frame ends just above the footer line */
+.embed, .embed body { height: auto; min-height: 0; overflow: hidden; }
+.embed .stage { height: auto; min-height: 0; overflow: visible; }
+.embed .center { position: static; overflow: visible; display: block; }
+.embed .view { padding-bottom: 28px; }

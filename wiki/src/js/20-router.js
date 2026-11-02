@@ -33,6 +33,7 @@
     led($("#ledInfo"), "AFTERHAUL Wiki · " + title);
     document.title = title + " · " + cfg.project + " Wiki";
     VIEWS[name](parts[1]);
+    if (!same || (name === "guides" && parts[1])) tellParent("top");
     if (!same) {
       var h2 = $("#view .vh h2"); if (h2 && document.activeElement !== h2 && !$("#hpModal")) { h2.setAttribute("tabindex", "-1"); try { h2.focus({ preventScroll: true }); } catch (e) { h2.focus(); } }
       readyView();

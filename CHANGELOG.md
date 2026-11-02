@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.10.3-pre · Wiki fits its content · 2026-11-02
+- The wiki frame now grows and shrinks with the page it shows, so it ends just above the footer line with no empty space. The main page scrolls instead of the frame.
+
 ## 0.10.2-pre · A4 width documents · 2026-11-02
 - Every wiki document is a fixed A4 width (210 mm) and grows in height with its text. On narrow screens it shrinks to fit.
 

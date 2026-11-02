@@ -819,5 +819,5 @@ a.lnk:hover { transform: translateY(-4px); background: color-mix(in srgb, var(--
 
 /* Wiki tab: the wiki (wiki/) shows inside the page, full width, with no panel frame or background */
 .panel[data-theme="docs"] { padding: 0; border: 0; border-radius: 0; background: none; overflow: visible; width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw); animation: none; }
-.wikiframe { display: block; width: 100%; height: min(calc(100vw * 9 / 16), 100vh); min-height: 560px; border: 0; background: transparent; color-scheme: dark; }
+.wikiframe { display: block; width: 100%; height: 640px; min-height: 420px; transition: height .25s ease; border: 0; background: transparent; color-scheme: dark; }
 html { overflow-x: clip; }

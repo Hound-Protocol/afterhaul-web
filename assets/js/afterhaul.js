@@ -628,6 +628,13 @@
       setTimeout(function () { el.scrollIntoView({ behavior: reduce || !smooth ? "auto" : "smooth", block: "start" }); }, 80);
       setTimeout(function () { if (Math.abs(el.getBoundingClientRect().top - 110) > 60) el.scrollIntoView({ behavior: "auto", block: "start" }); }, 900);
     }
+    /* The wiki frame reports its page height, so the frame ends just above the footer line instead of leaving empty space */
+    window.addEventListener("message", function (e) {
+      var wf = doc.getElementById("wikiFrame"), d = e.data;
+      if (e.origin !== location.origin || !wf || !d || typeof d.ah !== "string" || e.source !== wf.contentWindow) return;
+      if (d.ah === "wiki-height" && d.h > 0) wf.style.height = Math.max(420, Math.min(d.h, 20000)) + "px";
+      if (d.ah === "wiki-top") { var r = wf.getBoundingClientRect(); if (r.top < 0) window.scrollTo({ top: window.pageYOffset + r.top - 70, behavior: reduce ? "auto" : "smooth" }); }
+    });
     window.addEventListener("hashchange", function () { route(true); });
     if (location.hash) { route(false); window.addEventListener("load", function () { setTimeout(function () { route(false); }, 50); }); }
   })();
