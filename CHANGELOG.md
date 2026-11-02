@@ -2,6 +2,9 @@
 
 All notable changes to the AFTERHAUL website. Pre-release versions are `0.0.x-pre`; the site is offline until launch.
 
+## 0.9.3-pre · Cache fix · 2026-11-02
+- Script and style links now carry the new version, so browsers load the Wiki tab that opens inside the page instead of an older copy that jumped to the separate wiki page.
+
 ## 0.9.2-pre · Wiki inside the page · 2026-11-02
 - The Wiki button now opens the wiki inside the main page, in the Wiki tab, with no page change. The wiki page still works on its own at `wiki/`.
 
